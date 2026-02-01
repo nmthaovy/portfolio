@@ -1,48 +1,98 @@
-body {
-    background-color: #0f172a;
-    color: #f1f5f9;
-    font-family: 'Segoe UI', sans-serif;
-    margin: 0;
-    overflow-x: hidden;
-}
-
-header {
-    height: 100vh;
+/* Hero Section Layout */
+.hero-container {
     display: flex;
-    flex-direction: column;
-    justify-content: center;
     align-items: center;
-    background: radial-gradient(circle at center, #1e293b 0%, #0f172a 100%);
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 50px;
+    gap: 40px;
 }
 
-h1 {
-    font-size: 3.5rem;
-    margin-bottom: 10px;
+.hero-content {
+    flex: 1;
+    text-align: left;
 }
 
-.typing {
-    color: #38bdf8; /* Màu xanh highlight */
+.status-tag {
+    background: rgba(56, 189, 248, 0.1);
+    color: #38bdf8;
+    padding: 5px 12px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    display: inline-block;
+    margin-bottom: 20px;
 }
 
-.project-grid {
+.hero-name {
+    font-size: 4rem;
+    margin: 0;
+    line-height: 1.1;
+}
+
+.hero-description {
+    color: #94a3b8;
+    font-size: 1.1rem;
+    max-width: 500px;
+    margin: 20px 0;
+}
+
+/* USP Styling */
+.hero-usp {
+    display: flex;
+    gap: 40px;
+    margin: 30px 0;
+}
+
+.usp-number {
+    display: block;
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #fff;
+}
+
+.usp-text {
+    color: #64748b;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+}
+
+/* Ảnh đại diện phát sáng */
+.hero-image {
+    flex: 1;
     display: flex;
     justify-content: center;
-    gap: 30px;
-    flex-wrap: wrap;
-    padding: 50px;
 }
 
-.project-card {
-    background: rgba(30, 41, 59, 0.7);
-    border: 1px solid #334155;
-    border-radius: 15px;
-    padding: 30px;
-    width: 280px;
-    transition: 0.3s;
-    backdrop-filter: blur(10px);
+.image-wrapper {
+    position: relative;
+    width: 380px;
+    height: 380px;
+    border-radius: 50%;
+    padding: 10px;
+    background: linear-gradient(45deg, #38bdf8, transparent);
+    box-shadow: 0 0 50px rgba(56, 189, 248, 0.15);
 }
 
-.project-card:hover {
-    border-color: #38bdf8;
-    box-shadow: 0 0 20px rgba(56, 189, 248, 0.2);
+.image-wrapper img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid #0f172a;
+}
+
+/* Buttons */
+.hero-btns {
+    display: flex;
+    gap: 15px;
+}
+
+.btn-primary {
+    background: #38bdf8;
+    color: #0f172a;
+    padding: 12px 25px;
+    border-radius: 8px;
+    font-weight: bold;
+    text-decoration: none;
 }
