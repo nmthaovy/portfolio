@@ -1,35 +1,519 @@
-<header id="home">
-    <div class="hero-container">
-        <div class="hero-content" data-aos="fade-right">
-            <p class="status-tag">OPEN TO WORK</p>
-            <h1 class="hero-name">Nguyễn Mai <span class="highlight">Thảo Vy</span></h1>
-            <h2 class="hero-typing">I am a <span class="typing"></span></h2>
-            <p class="hero-description">
-                SEO is not just about algorithms; it is about understanding human intent.
-            </p>
-            
-            <div class="hero-usp">
-                <div class="usp-item">
-                    <span class="usp-number">2+</span>
-                    <span class="usp-text">Năm kinh nghiệm</span>
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nguyễn Mai Thảo Vy | Portfolio</title>
+    <!-- Thư viện hiệu ứng cuộn và icon -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Google Fonts: Playfair Display cho tiêu đề và Inter cho nội dung -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- CSS STYLING (MỘC ELEMENT & FEMININE STYLE) --- */
+        :root {
+            --bg-color: #f7faf9; /* Nền xanh mint rất nhẹ */
+            --card-bg: #ffffff;
+            --primary-color: #2d6a4f; /* Xanh lá đậm (Mộc) */
+            --accent-color: #74c69d; /* Xanh lá nhạt (Mộc) */
+            --secondary-color: #1a759f; /* Xanh biển (Thủy - tương sinh Mộc) */
+            --text-main: #1b4332; /* Chữ xanh rừng sâu */
+            --text-sub: #52796f;
+            --soft-shadow: 0 10px 30px rgba(45, 106, 79, 0.08);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.7;
+            scroll-behavior: smooth;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 8%;
+            background: rgba(247, 250, 249, 0.85);
+            backdrop-filter: blur(15px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(45, 106, 79, 0.1);
+        }
+
+        .logo {
+            font-size: 1.4rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            letter-spacing: 1px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 35px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-main);
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-color);
+        }
+
+        /* Hero Section (Về Tôi) */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 0 8%;
+            background: linear-gradient(135deg, #f0f7f4 0%, #ffffff 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Trang trí hình lá bay nhẹ nhàng */
+        .hero::before {
+            content: '🌿';
+            position: absolute;
+            top: 15%;
+            left: 5%;
+            font-size: 3rem;
+            opacity: 0.1;
+            filter: blur(1px);
+        }
+
+        .hero-container {
+            display: flex;
+            width: 100%;
+            align-items: center;
+            justify-content: space-between;
+            gap: 50px;
+            z-index: 2;
+        }
+
+        .hero-left {
+            flex: 1.2;
+        }
+
+        .hero-right {
+            flex: 0.8;
+            display: flex;
+            justify-content: center;
+        }
+
+        .open-work {
+            color: var(--primary-color);
+            background: rgba(116, 198, 157, 0.15);
+            padding: 6px 18px;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 25px;
+            border: 1px solid rgba(45, 106, 79, 0.1);
+        }
+
+        .hero-left h1 {
+            font-size: 4.5rem;
+            line-height: 1.1;
+            margin-bottom: 20px;
+            color: var(--text-main);
+        }
+
+        .hero-left h1 span {
+            color: var(--primary-color);
+            font-style: italic;
+        }
+
+        .typing-text {
+            font-size: 1.4rem;
+            color: var(--text-sub);
+            margin-bottom: 25px;
+            font-weight: 300;
+        }
+
+        .description {
+            color: var(--text-sub);
+            font-size: 1.1rem;
+            max-width: 550px;
+            margin-bottom: 40px;
+            line-height: 1.8;
+        }
+
+        /* USP Grid */
+        .usp-grid {
+            display: flex;
+            gap: 50px;
+            margin-bottom: 45px;
+        }
+
+        .usp-item {
+            position: relative;
+        }
+
+        .usp-number {
+            display: block;
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            font-family: 'Playfair Display', serif;
+        }
+
+        .usp-label {
+            color: var(--text-sub);
+            text-transform: uppercase;
+            font-size: 0.7rem;
+            letter-spacing: 1.5px;
+            font-weight: 600;
+        }
+
+        /* Avatar Container */
+        .avatar-glow {
+            width: 420px;
+            height: 420px;
+            border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; /* Dạng hình khối mềm mại tự nhiên */
+            position: relative;
+            padding: 10px;
+            background: linear-gradient(45deg, var(--accent-color), var(--secondary-color));
+            animation: morph 8s ease-in-out infinite;
+            box-shadow: 0 20px 50px rgba(45, 106, 79, 0.15);
+        }
+
+        @keyframes morph {
+            0% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
+            50% { border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%; }
+            100% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
+        }
+
+        .avatar-glow img {
+            width: 100%;
+            height: 100%;
+            border-radius: inherit;
+            object-fit: cover;
+            border: 8px solid #ffffff;
+        }
+
+        /* Section chung */
+        section {
+            padding: 120px 8%;
+        }
+
+        h2.section-title {
+            font-size: 2.8rem;
+            margin-bottom: 60px;
+            text-align: center;
+            color: var(--text-main);
+        }
+
+        h2.section-title span {
+            color: var(--primary-color);
+        }
+
+        /* Kỹ năng */
+        .skills-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .skill-tag {
+            background: var(--card-bg);
+            padding: 14px 28px;
+            border-radius: 12px;
+            font-size: 0.9rem;
+            color: var(--text-main);
+            font-weight: 500;
+            box-shadow: var(--soft-shadow);
+            transition: 0.4s;
+            border: 1px solid transparent;
+        }
+
+        .skill-tag:hover {
+            border-color: var(--accent-color);
+            color: var(--primary-color);
+            transform: translateY(-5px);
+        }
+
+        /* Dự án & Case Studies */
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+        }
+
+        .project-card {
+            background: var(--card-bg);
+            border-radius: 20px;
+            padding: 40px;
+            transition: 0.4s;
+            box-shadow: var(--soft-shadow);
+            border: 1px solid rgba(45, 106, 79, 0.05);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 4px; height: 100%;
+            background: var(--accent-color);
+        }
+
+        .project-card h3 {
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+            color: var(--primary-color);
+        }
+
+        .project-card:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 20px 40px rgba(45, 106, 79, 0.12);
+        }
+
+        /* Chứng chỉ */
+        .cert-list {
+            max-width: 850px;
+            margin: 0 auto;
+        }
+
+        .cert-item {
+            background: var(--card-bg);
+            margin-bottom: 20px;
+            padding: 25px 35px;
+            border-radius: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: var(--soft-shadow);
+            transition: 0.3s;
+        }
+
+        .cert-item:hover {
+            background: #f0f7f4;
+        }
+
+        .cert-item i {
+            color: var(--accent-color);
+            margin-right: 15px;
+        }
+
+        /* Footer / Liên hệ */
+        footer {
+            background: #ffffff;
+            padding: 100px 8% 50px;
+            text-align: center;
+            border-top: 1px solid rgba(45, 106, 79, 0.08);
+        }
+
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin: 40px 0;
+        }
+
+        .contact-links a {
+            color: var(--text-sub);
+            font-size: 1.8rem;
+            transition: 0.4s;
+        }
+
+        .contact-links a:hover {
+            color: var(--primary-color);
+            transform: scale(1.2);
+        }
+
+        .btn-contact {
+            text-decoration: none;
+            background: var(--primary-color);
+            color: #fff;
+            padding: 18px 45px;
+            border-radius: 50px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            display: inline-block;
+            transition: 0.4s;
+            box-shadow: 0 10px 20px rgba(45, 106, 79, 0.2);
+        }
+
+        .btn-contact:hover {
+            background: var(--text-main);
+            transform: translateY(-3px);
+            box-shadow: 0 15px 25px rgba(45, 106, 79, 0.3);
+        }
+
+        /* Mobile responsive */
+        @media (max-width: 968px) {
+            .hero-container {
+                flex-direction: column-reverse;
+                text-align: center;
+                padding-top: 120px;
+                gap: 30px;
+            }
+            .hero-left h1 { font-size: 3rem; }
+            .hero-left { text-align: center; }
+            .description { margin: 20px auto; }
+            .usp-grid { justify-content: center; gap: 30px; }
+            .avatar-glow { width: 300px; height: 300px; }
+            .nav-links { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">MVY.PORTFOLIO</div>
+        <ul class="nav-links">
+            <li><a href="#home">Về tôi</a></li>
+            <li><a href="#skills">Kỹ năng</a></li>
+            <li><a href="#projects">Dự án</a></li>
+            <li><a href="#certs">Chứng chỉ</a></li>
+            <li><a href="#contact">Liên hệ</a></li>
+        </ul>
+    </nav>
+
+    <header id="home" class="hero">
+        <div class="hero-container">
+            <div class="hero-left" data-aos="fade-right">
+                <span class="open-work">SẴN SÀNG CHO DỰ ÁN MỚI</span>
+                <h1>Nguyễn Mai <br><span>Thảo Vy</span></h1>
+                <div class="typing-text">I am a <span id="typed"></span></div>
+                <p class="description">
+                    "SEO không chỉ là về các thuật toán, đó là về việc thấu hiểu ý định và trải nghiệm của con người."
+                </p>
+                
+                <div class="usp-grid">
+                    <div class="usp-item">
+                        <span class="usp-number">2+</span>
+                        <span class="usp-label">Năm kinh nghiệm</span>
+                    </div>
+                    <div class="usp-item">
+                        <span class="usp-number">4+</span>
+                        <span class="usp-label">Dự án trực tiếp</span>
+                    </div>
                 </div>
-                <div class="usp-item">
-                    <span class="usp-number">4+</span>
-                    <span class="usp-text">Dự án trực tiếp</span>
+
+                <div class="cta-btns">
+                    <a href="#contact" class="btn-contact">KẾT NỐI VỚI VY</a>
                 </div>
             </div>
 
-            <div class="hero-btns">
-                <a href="#" class="btn-primary">Tải CV PDF</a>
-                <a href="#projects" class="btn-secondary">Xem Case Studies</a>
+            <div class="hero-right" data-aos="fade-left">
+                <div class="avatar-glow">
+                    <!-- SỬ DỤNG LINK ẢNH CỦA BẠN TẠI ĐÂY -->
+                    <img src="https://via.placeholder.com/450/2d6a4f/ffffff?text=Thao+Vy" alt="Nguyễn Mai Thảo Vy">
+                </div>
             </div>
         </div>
+    </header>
 
-        <div class="hero-image" data-aos="fade-left">
-            <div class="image-wrapper">
-                <img src="https://media.licdn.com/dms/image/v2/D5603AQGtRE0exK86Cg/profile-displayphoto-crop_800_800/B56ZuENpWyJoAI-/0/1767449729429?e=1771459200&v=beta&t=YYvWFVplVhaFVBrKumyd8PNG1Utgmlk8TEcvprhvSzI" alt="Thảo Vy">
+    <section id="skills">
+        <h2 class="section-title" data-aos="fade-up">KỸ NĂNG <span>&</span> CÔNG CỤ</h2>
+        <div class="skills-list" data-aos="fade-up">
+            <div class="skill-tag">Technical SEO</div>
+            <div class="skill-tag">Content Strategy</div>
+            <div class="skill-tag">Google Analytics 4</div>
+            <div class="skill-tag">Search Console</div>
+            <div class="skill-tag">Ahrefs / SEMrush</div>
+            <div class="skill-tag">Keyword Research</div>
+            <div class="skill-tag">On-page Optimization</div>
+            <div class="skill-tag">Branding</div>
+            <div class="skill-tag">User Experience</div>
+        </div>
+    </section>
+
+    <section id="projects" style="background-color: #f0f7f4;">
+        <h2 class="section-title" data-aos="fade-up">DỰ ÁN <span>TIÊU BIỂU</span></h2>
+        <div class="project-grid">
+            <div class="project-card" data-aos="fade-up">
+                <h3>Tăng trưởng Organic Traffic +200%</h3>
+                <p style="color: var(--text-sub);">Tái cấu trúc nội dung và tối ưu trải nghiệm người dùng cho hệ thống thương mại điện tử chuyên ngành.</p>
+            </div>
+            <div class="project-card" data-aos="fade-up" data-aos-delay="100">
+                <h3>SEO Audit & Migration</h3>
+                <p style="color: var(--text-sub);">Quản lý quy trình chuyển đổi domain phức tạp cho dự án bất động sản quy mô lớn, bảo toàn thứ hạng từ khóa.</p>
+            </div>
+            <div class="project-card" data-aos="fade-up" data-aos-delay="200">
+                <h3>Xây dựng Entity & Authority</h3>
+                <p style="color: var(--text-sub);">Thiết lập uy tín thương hiệu trên môi trường số thông qua chiến lược bao phủ từ khóa chuyên gia.</p>
             </div>
         </div>
-    </div>
-    <link rel="stylesheet" href="style.css">
-</header>
+    </section>
+
+    <section id="certs">
+        <h2 class="section-title" data-aos="fade-up">CHỨNG CHỈ <span>&</span> THÀNH TỰU</h2>
+        <div class="cert-list">
+            <div class="cert-item" data-aos="fade-right">
+                <div><i class="fas fa-certificate"></i><span>Google Analytics Individual Qualification</span></div>
+                <span style="font-weight: bold; color: var(--primary-color)">2024</span>
+            </div>
+            <div class="cert-item" data-aos="fade-right" data-aos-delay="100">
+                <div><i class="fas fa-certificate"></i><span>HubSpot Content Marketing Certification</span></div>
+                <span style="font-weight: bold; color: var(--primary-color)">2023</span>
+            </div>
+            <div class="cert-item" data-aos="fade-right" data-aos-delay="200">
+                <div><i class="fas fa-award"></i><span>Top 10 SEO Campaign 2024 (Internal Award)</span></div>
+                <span style="font-weight: bold; color: var(--primary-color)">2024</span>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contact">
+        <h2 style="font-size: 2.2rem; margin-bottom: 15px;">GỬI LỜI CHÀO ĐẾN VY</h2>
+        <p style="color: var(--text-sub); max-width: 600px; margin: 0 auto 30px;">
+            Môi trường làm việc lý tưởng giống như một khu rừng - nơi chúng ta cùng nhau sinh trưởng mạnh mẽ. Hãy liên hệ nếu bạn muốn hợp tác!
+        </p>
+        <div class="contact-links">
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="mailto:thao.vy@example.com"><i class="far fa-envelope"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+        </div>
+        <p style="font-size: 0.85rem; color: var(--text-sub); margin-top: 60px; letter-spacing: 1px;">
+            &copy; 2026 Designed with 🌿 by Thảo Vy.
+        </p>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+    <script>
+        AOS.init({
+            duration: 1000,
+            once: true,
+            offset: 100
+        });
+
+        var typed = new Typed('#typed', {
+            strings: ['SEO Specialist', 'Content Strategist', 'Growth Marketer', 'Green Life Lover'],
+            typeSpeed: 70,
+            backSpeed: 40,
+            loop: true
+        });
+    </script>
+</body>
+</html>
