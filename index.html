@@ -3,26 +3,47 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio của Tôi</title>
+    <title>My Portfolio</title>
     <link rel="stylesheet" href="style.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 </head>
 <body>
     <header>
-        <h1>CHÀO, TÔI LÀ [TÊN CỦA BẠN]</h1>
-        <p>Product Manager / Developer tập sự</p>
+        <h1 data-aos="fade-down" data-aos-duration="1000">
+            CHÀO, TÔI LÀ <span class="typing"></span>
+        </h1>
+        <p data-aos="fade-up" data-aos-delay="500">Product Manager / Developer tập sự</p>
     </header>
 
     <section id="projects">
-        <h2>DỰ ÁN NỔI BẬT</h2>
-        <div class="project-card">
-            <h3>Tên Dự Án 1</h3>
-            <p>Mô tả ngắn gọn về dự án của bạn.</p>
-            <a href="#">Xem chi tiết</a>
+        <h2 data-aos="zoom-in">DỰ ÁN NỔI BẬT</h2>
+        <div class="project-grid">
+            <div class="project-card" data-aos="flip-left" data-aos-delay="200">
+                <h3>Tên Dự Án 1</h3>
+                <p>Mô tả ngắn gọn về dự án.</p>
+                <a href="#">Xem chi tiết</a>
+            </div>
+            <div class="project-card" data-aos="flip-left" data-aos-delay="400">
+                <h3>Tên Dự Án 2</h3>
+                <p>Mô tả ngắn gọn về dự án.</p>
+                <a href="#">Xem chi tiết</a>
+            </div>
         </div>
     </section>
 
-    <footer>
-        <p>© 2026 Designed by [Tên của bạn]</p>
-    </footer>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+    <script>
+        // Kích hoạt hiệu ứng cuộn
+        AOS.init();
+
+        // Hiệu ứng chữ tự chạy giống web mẫu
+        new Typed('.typing', {
+            strings: ['LONG DZ', 'WEB DEVELOPER', 'DESIGNER'],
+            typeSpeed: 100,
+            backSpeed: 60,
+            loop: true
+        });
+    </script>
 </body>
 </html>
