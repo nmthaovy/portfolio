@@ -3,23 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nguyễn Mai Thảo Vy | Chuyên gia SEO & GEO</title>
-    <!-- Thư viện hiệu ứng -->
+    <title>Nguyễn Mai Thảo Vy | SEO & GEO Specialist</title>
+    
+    <!-- Libraries -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <!-- Font chữ: Plus Jakarta Sans (Body) & Space Grotesk (Header) -->
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+    
+    <!-- Premium Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;700;800&display=swap" rel="stylesheet">
     
     <style>
         :root {
-            --bg-color: #ffffff;
-            --card-bg: #fdfaf7; /* Nâu đất cực nhẹ */
-            --primary-color: #f97316; /* Cam năng lượng */
-            --earth-color: #78350f; /* Nâu đất đậm */
+            --primary: #f97316; /* Cam năng lượng */
+            --primary-dark: #ea580c;
+            --secondary: #101828; /* Navy tối */
+            --earth: #78350f; /* Nâu đất */
+            --bg: #ffffff;
+            --card-bg: #fdfaf7;
             --text-main: #0f172a;
             --text-sub: #475569;
             --font-header: 'Space Grotesk', sans-serif;
-            --font-body: 'Plus Jakarta Sans', sans-serif;
+            --font-body: 'Inter', sans-serif;
             --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
@@ -27,467 +31,651 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: var(--font-body);
         }
+
+        html { scroll-behavior: smooth; }
 
         body {
-            background-color: var(--bg-color);
+            font-family: var(--font-body);
+            background-color: var(--bg);
             color: var(--text-main);
             line-height: 1.6;
-            scroll-behavior: smooth;
-            overflow-x: hidden; /* Chống tràn màn hình */
-        }
-
-        h1, h2, h3, .usp-number {
-            font-family: var(--font-header);
-            text-transform: uppercase;
-        }
-
-        /* Họa tiết nền grid mờ */
-        body::before {
-            content: "";
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background-image: radial-gradient(#f9731610 1px, transparent 1px);
+            overflow-x: hidden;
+            /* Dot Grid Background */
+            background-image: radial-gradient(#f9731615 1.5px, transparent 1.5px);
             background-size: 40px 40px;
-            z-index: -1;
         }
 
-        /* Navigation */
+        .container {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 0 5%;
+        }
+
+        /* --- Navigation --- */
         nav {
             position: fixed;
             top: 0; width: 100%;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 20px 5%;
-            background: rgba(255, 255, 255, 0.85);
-            backdrop-filter: blur(20px);
+            padding: 25px 5%;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(15px);
             z-index: 1000;
-            border-bottom: 1px solid #f1f5f9;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
         }
 
         .logo {
-            font-size: 1.3rem;
+            font-family: var(--font-header);
             font-weight: 800;
-            color: var(--earth-color);
+            font-size: 1.4rem;
+            color: var(--earth);
+            text-decoration: none;
             letter-spacing: 1px;
         }
 
         .nav-links {
             display: flex;
             list-style: none;
-            gap: 25px;
+            gap: 35px;
         }
 
         .nav-links a {
             text-decoration: none;
             color: var(--text-main);
-            font-size: 0.8rem;
+            font-size: 0.85rem;
             font-weight: 700;
+            text-transform: uppercase;
             transition: var(--transition);
         }
 
-        .nav-links a:hover { color: var(--primary-color); }
+        .nav-links a:hover { color: var(--primary); }
 
-        /* Hero Section */
+        /* --- Hero Section --- */
         .hero {
             min-height: 100vh;
             display: flex;
             align-items: center;
-            padding: 120px 5% 60px;
+            padding-top: 100px;
         }
 
-        .hero-container {
-            display: flex;
-            width: 100%;
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 60px;
             align-items: center;
-            justify-content: space-between;
-            gap: 40px;
-            max-width: 1200px;
-            margin: 0 auto;
         }
 
-        .hero-left { flex: 1.2; }
-        .hero-right { flex: 0.8; display: flex; justify-content: flex-end; }
-
-        .tag-geo {
+        .tag-badge {
             display: inline-flex;
             align-items: center;
-            gap: 8px;
-            background: rgba(249, 115, 22, 0.1);
-            color: var(--primary-color);
-            padding: 8px 16px;
-            border-radius: 4px;
-            font-size: 0.7rem;
+            gap: 10px;
+            background: #fff5ed;
+            color: var(--primary);
+            padding: 10px 20px;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border: 1px solid #ffe8d6;
+            margin-bottom: 35px;
+        }
+
+        .name-heading {
+            font-family: var(--font-header);
+            font-size: clamp(3.5rem, 8vw, 6rem);
+            line-height: 0.9;
             font-weight: 800;
             margin-bottom: 30px;
-            border: 1px solid rgba(249, 115, 22, 0.2);
+            text-transform: uppercase;
         }
 
-        /* Redesign Name - Đẹp & Sang trọng */
-        .name-main {
-            font-size: clamp(3rem, 7vw, 5.5rem);
-            line-height: 0.95;
-            font-weight: 800;
-            color: var(--text-main);
-            margin-bottom: 25px;
-        }
-
-        .name-main span {
+        .name-heading .surname {
+            color: var(--earth);
             display: block;
-            color: var(--primary-color);
-            position: relative;
+            font-weight: 500;
+            opacity: 0.9;
         }
 
-        .name-main .surname {
-            color: var(--earth-color);
-            font-weight: 400;
-            font-size: 0.8em;
+        .name-heading .firstname {
+            color: var(--secondary);
+            display: block;
         }
 
-        .typing-text {
-            font-size: clamp(1.2rem, 3vw, 1.6rem);
-            color: var(--earth-color);
-            margin-bottom: 30px;
+        .typing-container {
+            font-size: 1.8rem;
             font-weight: 600;
+            color: var(--earth);
+            margin-bottom: 30px;
         }
 
-        .description {
+        .hero-desc {
+            font-size: 1.2rem;
             color: var(--text-sub);
-            font-size: 1.1rem;
-            max-width: 550px;
-            margin-bottom: 40px;
-            border-left: 4px solid var(--primary-color);
-            padding-left: 20px;
+            max-width: 600px;
+            border-left: 5px solid var(--primary);
+            padding-left: 25px;
             font-style: italic;
-        }
-
-        /* --- USP SECTION (HYPERINKERS BOLD STYLE) --- */
-        .hero-usp {
-            display: flex;
-            gap: 50px;
             margin-bottom: 50px;
         }
 
-        .usp-item {
+        /* --- Stats Layout --- */
+        .hero-stats {
             display: flex;
-            flex-direction: column;
+            gap: 60px;
+            margin-bottom: 50px;
         }
 
-        .usp-number {
-            font-size: clamp(3rem, 6vw, 4.5rem);
+        .stat-box .number {
+            font-family: var(--font-header);
+            font-size: 4.5rem;
             font-weight: 800;
-            color: var(--primary-color);
-            line-height: 0.9;
+            color: var(--primary);
+            line-height: 1;
         }
 
-        .usp-label {
-            color: var(--earth-color);
-            font-size: 0.7rem;
+        .stat-box .label {
+            font-size: 0.75rem;
             font-weight: 800;
-            margin-top: 10px;
+            color: var(--secondary);
+            text-transform: uppercase;
             letter-spacing: 2px;
+            margin-top: 10px;
         }
 
-        /* Avatar Container */
-        .avatar-box {
-            position: relative;
-            width: 100%;
-            max-width: 450px;
-            aspect-ratio: 3/4;
-            background: var(--card-bg);
-            border-radius: 20px;
-            overflow: hidden;
-            border: 1px solid #e2e8f0;
+        /* --- Buttons (IMPROVED: MORE COLORFUL) --- */
+        .btn-group {
+            display: flex;
+            gap: 20px;
+        }
+
+        .btn {
+            padding: 18px 36px;
+            font-family: var(--font-header);
+            font-weight: 700;
+            text-decoration: none;
+            border-radius: 6px;
+            text-transform: uppercase;
+            font-size: 0.9rem;
             transition: var(--transition);
-            box-shadow: 20px 20px 0px var(--card-bg), 21px 21px 0px var(--primary-color);
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
         }
 
-        .avatar-box:hover {
-            transform: translate(-5px, -5px);
-            box-shadow: 30px 30px 0px var(--card-bg), 31px 31px 0px var(--primary-color);
+        .btn-primary {
+            background: var(--primary);
+            color: #fff;
+            box-shadow: 0 4px 15px rgba(249, 115, 22, 0.3);
         }
 
-        .avatar-box img {
+        .btn-primary:hover {
+            background: var(--primary-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(249, 115, 22, 0.4);
+        }
+
+        .btn-secondary {
+            background: var(--secondary);
+            color: #fff;
+            box-shadow: 0 4px 15px rgba(16, 24, 40, 0.2);
+        }
+
+        .btn-secondary:hover {
+            background: #1e293b;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(16, 24, 40, 0.3);
+        }
+
+        /* --- Avatar Box --- */
+        .avatar-container {
+            position: relative;
+            z-index: 1;
+        }
+
+        .avatar-frame {
+            width: 100%;
+            aspect-ratio: 4/5;
+            background: var(--card-bg);
+            border: 1px solid #e2e8f0;
+            border-radius: 24px;
+            overflow: hidden;
+            position: relative;
+            box-shadow: 25px 25px 0px var(--card-bg), 26px 26px 0px var(--primary);
+            transition: var(--transition);
+        }
+
+        .avatar-frame:hover {
+            transform: translate(-10px, -10px);
+            box-shadow: 35px 35px 0px var(--card-bg), 36px 36px 0px var(--primary);
+        }
+
+        .avatar-frame img {
             width: 100%;
             height: 100%;
             object-fit: cover;
         }
 
-        /* Buttons */
-        .hero-btns {
-            display: flex;
-            gap: 20px;
-            flex-wrap: wrap;
+        /* --- Section Styling --- */
+        section {
+            padding: 120px 0;
         }
 
-        .btn {
-            padding: 18px 40px;
+        .section-tag {
+            color: var(--primary);
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            display: block;
+            margin-bottom: 15px;
+            font-size: 0.8rem;
+        }
+
+        .section-title {
             font-family: var(--font-header);
-            font-weight: 700;
-            text-decoration: none;
-            font-size: 0.9rem;
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            margin-bottom: 40px;
+            text-transform: uppercase;
+            line-height: 1.2;
+        }
+
+        .section-title span { color: var(--primary); }
+
+        /* Highlight for "không phải" in section title */
+        .section-title i {
+            font-style: italic;
+            font-weight: 800;
+            color: var(--primary);
+            position: relative;
+        }
+
+        /* --- Projects Grid --- */
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 40px;
+        }
+
+        .project-card {
+            background: #fff;
+            padding: 50px;
+            border: 1px solid #f1f5f9;
+            border-radius: 16px;
             transition: var(--transition);
-            border-radius: 4px;
-            display: inline-flex;
-            align-items: center;
-            gap: 12px;
+            position: relative;
+        }
+
+        .project-card:hover {
+            border-color: var(--primary);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.05);
+            transform: translateY(-10px);
+        }
+
+        .project-card h3 {
+            font-family: var(--font-header);
+            font-size: 1.8rem;
+            margin: 20px 0;
             text-transform: uppercase;
         }
 
-        .btn-primary {
-            background: var(--primary-color);
-            color: #fff;
-        }
-
-        .btn-primary:hover {
-            background: var(--earth-color);
-            transform: translateY(-5px);
-        }
-
-        .btn-secondary {
-            background: #fff;
-            border: 2px solid var(--text-main);
-            color: var(--text-main);
-        }
-
-        .btn-secondary:hover {
-            background: var(--text-main);
-            color: #fff;
-            transform: translateY(-5px);
-        }
-
-        /* Section Layout */
-        section { padding: 100px 5%; }
-
-        .section-header {
-            margin-bottom: 60px;
-            border-bottom: 2px solid #f1f5f9;
-            padding-bottom: 20px;
-        }
-
-        .section-title { font-size: clamp(2.2rem, 5vw, 3.2rem); font-weight: 800; }
-        .section-title span { color: var(--primary-color); }
-
-        /* Case Studies Grid */
-        .grid-container {
+        /* --- Process Section (ADJUSTED) --- */
+        .process-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
             gap: 30px;
         }
 
-        .case-card {
+        .process-card {
             background: #fff;
-            border: 1px solid #f1f5f9;
-            padding: 40px;
-            border-radius: 12px;
+            padding: 45px;
+            border: 1px solid #e2e8f0;
+            border-radius: 20px;
             transition: var(--transition);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .case-card::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 5px;
-            background: var(--primary-color);
-            transform: scaleX(0);
-            transition: var(--transition);
-            transform-origin: left;
-        }
-
-        .case-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.05);
-            border-color: var(--primary-color);
-        }
-
-        .case-card:hover::before { transform: scaleX(1); }
-
-        .tag-featured {
-            color: var(--primary-color);
-            font-size: 0.7rem;
-            font-weight: 800;
-            letter-spacing: 1.5px;
-            margin-bottom: 15px;
-            display: block;
-        }
-
-        /* Certificates */
-        .cert-item {
             display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .process-card:hover {
+            background: var(--card-bg);
+            border-color: var(--primary);
+        }
+
+        .process-meta {
+            font-family: var(--font-header);
+            font-size: 1.4rem; /* LARGER as requested */
+            color: var(--primary);
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+            display: block;
+            opacity: 0.8;
+        }
+
+        .process-card h3 {
+            font-family: var(--font-header);
+            font-size: 1.9rem;
+            margin-bottom: 25px;
+            text-transform: none;
+            color: var(--secondary);
+            line-height: 1.3;
+        }
+
+        /* Highlight for the word "Không" in process cards */
+        .process-card h3 i {
+            font-style: italic;
+            font-weight: 800;
+            color: var(--primary); /* MORE PROMINENT as requested */
+            text-decoration: underline wavy rgba(249, 115, 22, 0.3);
+            text-underline-offset: 6px;
+        }
+
+        .process-card p {
+            color: var(--text-sub);
+            margin-bottom: 35px;
+            font-size: 1.05rem;
+            line-height: 1.8;
+        }
+
+        .process-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .mini-badge {
+            font-size: 0.75rem;
+            padding: 8px 16px;
+            background: #fff;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            color: var(--secondary);
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        /* --- Certificate List --- */
+        .cert-list {
+            max-width: 900px;
+        }
+
+        .cert-item {
+            display: grid;
+            grid-template-columns: 80px 1fr auto;
             align-items: center;
-            gap: 25px;
             background: var(--card-bg);
             padding: 30px;
             border-radius: 12px;
             margin-bottom: 20px;
             transition: var(--transition);
+            border: 1px solid transparent;
         }
 
         .cert-item:hover {
-            transform: scale(1.02);
             background: #fff;
+            border-color: var(--primary);
+            transform: scale(1.02);
             box-shadow: 0 10px 30px rgba(0,0,0,0.03);
         }
 
         .cert-icon {
-            font-size: 2rem;
-            color: var(--primary-color);
+            font-size: 2.5rem;
+            color: var(--primary);
         }
 
-        /* Mobile Responsive Fixes */
-        @media (max-width: 968px) {
-            .hero-container {
-                flex-direction: column-reverse;
-                text-align: center;
-                gap: 50px;
-            }
-            .hero-right { width: 100%; justify-content: center; }
-            .hero-left { width: 100%; }
-            .description { margin: 0 auto 40px; border-left: none; border-top: 4px solid var(--primary-color); padding-top: 20px; }
-            .hero-usp { justify-content: center; gap: 30px; flex-wrap: wrap; }
-            .hero-btns { justify-content: center; }
+        /* --- Footer --- */
+        footer {
+            background: var(--secondary);
+            color: #fff;
+            padding: 100px 0 50px;
+            text-align: center;
+        }
+
+        .footer-title {
+            font-family: var(--font-header);
+            font-size: 4rem;
+            margin-bottom: 30px;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 1024px) {
+            .hero-grid { grid-template-columns: 1fr; }
+            .hero-grid { text-align: center; }
+            .hero-desc { margin: 0 auto 50px; border-left: none; border-top: 5px solid var(--primary); padding: 25px 0 0; }
+            .hero-stats { justify-content: center; }
+            .btn-group { justify-content: center; }
+            .avatar-container { order: -1; max-width: 400px; margin: 0 auto 50px; }
             .nav-links { display: none; }
-            .avatar-box { max-width: 320px; margin: 0 auto; }
+            .process-grid { grid-template-columns: 1fr; }
+        }
+
+        @media (max-width: 600px) {
+            .hero-stats { flex-direction: column; gap: 30px; }
+            .footer-title { font-size: 2.5rem; }
+            .project-grid { grid-template-columns: 1fr; }
+            .section-title { font-size: 2.2rem; }
+            .process-card { padding: 30px; }
         }
     </style>
 </head>
 <body>
 
     <nav>
-        <div class="logo">VY.PORTFOLIO</div>
-        <ul class="nav-links">
-            <li><a href="#home">VỀ TÔI</a></li>
-            <li><a href="#projects">DỰ ÁN</a></li>
-            <li><a href="#certs">CHỨNG CHỈ</a></li>
-            <li><a href="#contact">LIÊN HỆ</a></li>
-        </ul>
+        <div class="container" style="display: flex; justify-content: space-between; width: 100%; align-items: center; padding: 0;">
+            <a href="#" class="logo">VY.PORTFOLIO</a>
+            <ul class="nav-links">
+                <li><a href="#home">VỀ TÔI</a></li>
+                <li><a href="#projects">DỰ ÁN</a></li>
+                <li><a href="#process">QUY TRÌNH</a></li>
+                <li><a href="#certs">CHỨNG CHỈ</a></li>
+                <li><a href="#contact">LIÊN HỆ</a></li>
+            </ul>
+        </div>
     </nav>
 
     <header id="home" class="hero">
-        <div class="hero-container">
-            <div class="hero-left" data-aos="fade-right">
-                <div class="tag-geo">
-                    <i class="fas fa-microchip"></i> KỶ NGUYÊN SEO MỚI: TẬP TRUNG GEO
-                </div>
-                
-                <h1 class="name-main">
-                    <span class="surname">NGUYỄN MAI</span>
-                    THẢO VY
-                </h1>
-
-                <div class="typing-text">Tối ưu hóa cho <span id="typed"></span></div>
-                
-                <p class="description">
-                    "SEO không chỉ là về các thuật toán; đó là về việc thấu hiểu ý định của con người và dẫn dắt họ trong kỷ nguyên tìm kiếm bằng AI."
-                </p>
-                
-                <!-- PHẦN USP NỔI BẬT (HYPERINKERS STYLE) -->
-                <div class="hero-usp">
-                    <div class="usp-item">
-                        <span class="usp-number">02+</span>
-                        <span class="usp-label">NĂM KINH NGHIỆM</span>
+        <div class="container">
+            <div class="hero-grid">
+                <div class="hero-content" data-aos="fade-up">
+                    <div class="tag-badge">
+                        <i class="fas fa-microchip"></i> Kỷ nguyên SEO mới: Tập trung GEO
                     </div>
-                    <div class="usp-item">
-                        <span class="usp-number">04+</span>
-                        <span class="usp-label">DỰ ÁN LỚN</span>
+                    
+                    <h1 class="name-heading">
+                        <span class="surname">Nguyễn Mai</span>
+                        <span class="firstname">Thảo Vy</span>
+                    </h1>
+
+                    <div class="typing-container">
+                        Tối ưu hóa cho <span id="typed"></span>
                     </div>
-                    <div class="usp-item">
-                        <span class="usp-number">95%</span>
-                        <span class="usp-label">CHỈ SỐ GEO</span>
+
+                    <p class="hero-desc">
+                        "SEO không chỉ là về các thuật toán; đó là về việc thấu hiểu ý định của con người và dẫn dắt họ trong kỷ nguyên tìm kiếm bằng AI."
+                    </p>
+
+                    <div class="hero-stats">
+                        <div class="stat-box">
+                            <div class="number">02+</div>
+                            <div class="label">Năm kinh nghiệm</div>
+                        </div>
+                        <div class="stat-box">
+                            <div class="number">04+</div>
+                            <div class="label">Dự án lớn</div>
+                        </div>
+                        <div class="stat-box">
+                            <div class="number">95%</div>
+                            <div class="label">Chỉ số GEO</div>
+                        </div>
+                    </div>
+
+                    <div class="btn-group">
+                        <a href="#" class="btn btn-primary">
+                            Tải CV PDF <i class="fas fa-file-pdf"></i>
+                        </a>
+                        <a href="#projects" class="btn btn-secondary">
+                            Case Studies <i class="fas fa-arrow-right"></i>
+                        </a>
                     </div>
                 </div>
 
-                <div class="hero-btns">
-                    <a href="#" class="btn btn-primary">
-                        TẢI CV PDF <i class="fas fa-file-pdf"></i>
-                    </a>
-                    <a href="#projects" class="btn btn-secondary">
-                        CASE STUDIES <i class="fas fa-arrow-right"></i>
-                    </a>
-                </div>
-            </div>
-
-            <div class="hero-right" data-aos="zoom-in">
-                <div class="avatar-box">
-                    <img src="https://media.licdn.com/dms/image/v2/D5603AQGtRE0exK86Cg/profile-displayphoto-scale_400_400/B56ZuENpWyJoAg-/0/1767449729511?e=1774483200&v=beta&t=FZRCdELWRadjEYbeqKXUBGvRKyqIUD8LdwFZKz-Ucgw" alt="Nguyễn Mai Thảo Vy">
+                <div class="avatar-container" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="avatar-frame">
+                        <img src="https://media.licdn.com/dms/image/v2/D5603AQGtRE0exK86Cg/profile-displayphoto-crop_800_800/B56ZuENpWyJoAI-/0/1767449729429?e=1771459200&v=beta&t=YYvWFVplVhaFVBrKumyd8PNG1Utgmlk8TEcvprhvSzI" alt="Nguyễn Mai Thảo Vy">
+                    </div>
                 </div>
             </div>
         </div>
     </header>
 
     <section id="projects">
-        <div class="section-header">
-            <h2 class="section-title">DỰ ÁN <span>TIÊU BIỂU</span></h2>
-        </div>
-        
-        <div class="grid-container">
-            <!-- CASE STUDY TỪ FACEBOOK CEO SHARE -->
-            <div class="case-card" data-aos="fade-up">
-                <span class="tag-featured">CEO GTV SEO CHIA SẺ</span>
-                <h3>Chiến dịch tăng trưởng Organic Traffic đột phá</h3>
-                <p style="color: var(--text-sub); margin: 20px 0;">
-                    <strong>Vai trò: Lead dự án.</strong> Triển khai chiến lược GEO tiên phong giúp website bứt phá lưu lượng truy cập tự nhiên, được CEO trực tiếp công nhận và chia sẻ như một case study mẫu cho cộng đồng SEO Việt Nam.
-                </p>
-                <a href="https://www.facebook.com/share/p/1RXGdzCiVe/" target="_blank" style="color: var(--primary-color); font-weight: 800; text-decoration: none; font-size: 0.8rem;">XEM CHI TIẾT DỰ ÁN <i class="fas fa-external-link-alt"></i></a>
-            </div>
+        <div class="container">
+            <span class="section-tag">Portfolio</span>
+            <h2 class="section-title">Dự án <span>Tiêu biểu</span></h2>
+            
+            <div class="project-grid">
+                <div class="project-card" data-aos="fade-up">
+                    <div class="tag-badge" style="margin-bottom: 15px;">CEO GTV SEO CHIA SẺ</div>
+                    <h3>Chiến dịch tăng trưởng Organic Traffic đột phá</h3>
+                    <p style="color: var(--text-sub); margin-bottom: 30px;">
+                        <strong>Vai trò: Lead dự án.</strong> Triển khai chiến lược GEO tiên phong giúp website bứt phá lưu lượng truy cập tự nhiên, được CEO trực tiếp công nhận và chia sẻ.
+                    </p>
+                    <a href="https://www.facebook.com/share/p/1RXGdzCiVe/" target="_blank" style="color: var(--primary); font-weight: 800; text-decoration: none; font-size: 0.8rem; text-transform: uppercase;">
+                        Xem chi tiết dự án <i class="fas fa-external-link-alt"></i>
+                    </a>
+                </div>
 
-            <div class="case-card" data-aos="fade-up" data-aos-delay="100">
-                <span class="tag-featured">E-COMMERCE</span>
-                <h3>Tối ưu hóa trải nghiệm tìm kiếm AI</h3>
-                <p style="color: var(--text-sub); margin: 20px 0;">
-                    Tăng tỷ lệ hiển thị trên các công cụ tìm kiếm tạo sinh (SGE) cho sàn thương mại điện tử, giúp khách hàng tìm thấy sản phẩm thông qua các truy vấn đàm thoại phức tạp.
-                </p>
+                <div class="project-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="tag-badge" style="margin-bottom: 15px;">E-COMMERCE</div>
+                    <h3>Tối ưu hóa trải nghiệm tìm kiếm AI</h3>
+                    <p style="color: var(--text-sub); margin-bottom: 30px;">
+                        Tăng tỷ lệ hiển thị trên các công cụ tìm kiếm tạo sinh (SGE) cho sàn thương mại điện tử, giúp khách hàng tìm thấy sản phẩm thông qua truy vấn đàm thoại.
+                    </p>
+                </div>
             </div>
         </div>
     </section>
 
-    <section id="certs" style="background-color: #fafafa;">
-        <div class="section-header">
-            <h2 class="section-title">CHỨNG CHỈ <span>& THÀNH TỰU</span></h2>
-        </div>
-        
-        <div style="max-width: 900px; margin: 0 auto;">
-            <!-- CHỨNG NHẬN NHÂN SỰ XUẤT SẮC -->
-            <div class="cert-item" data-aos="fade-left">
-                <div class="cert-icon"><i class="fas fa-award"></i></div>
-                <div>
-                    <h3 style="font-size: 1.2rem; color: var(--earth-color);">Nhân sự Xuất sắc - Best Award 2026</h3>
-                    <p style="color: var(--text-sub);">Được trao tặng bởi CEO GTV SEO - Anh Đỗ Anh Việt cho những nỗ lực và kết quả vượt trội trong việc dẫn dắt dự án.</p>
-                </div>
-                <div style="margin-left: auto; font-weight: 800; color: var(--primary-color);">GTV SEO</div>
-            </div>
+    <!-- SECTION: HOW I WORK (UPDATED STYLES) -->
+    <section id="process" style="background: #fafafa;">
+        <div class="container">
+            <span class="section-tag">Cách tôi làm việc</span>
+            <h2 class="section-title">Process, <i>không phải</i> checklist.</h2>
+            <p style="font-size: 1.2rem; color: var(--text-sub); margin-bottom: 60px; max-width: 800px;">
+                Mỗi dự án bắt đầu từ câu hỏi: vấn đề thực sự là gì? — không phải "keyword nào chưa target?"
+            </p>
 
-            <div class="cert-item" data-aos="fade-left" data-aos-delay="100">
-                <div class="cert-icon"><i class="fas fa-certificate"></i></div>
-                <div>
-                    <h3 style="font-size: 1.2rem; color: var(--earth-color);">Google Analytics Individual Qualification</h3>
-                    <p style="color: var(--text-sub);">Chứng chỉ chuyên sâu về phân tích dữ liệu hành vi và tối ưu hóa chuyển đổi từ Google.</p>
+            <div class="process-grid">
+                <!-- Step 1 -->
+                <div class="process-card" data-aos="fade-up">
+                    <div>
+                        <span class="process-meta">01 . CHUẨN ĐOÁN</span>
+                        <h3>Root Cause, <i>không</i> symptom</h3>
+                        <p>Traffic drop không phải luôn là do content kém. Có thể là crawl budget, có thể là cannibalization, có thể là Google đang đánh giá thấp cả một section vì thiếu chiều sâu chuyên môn. Tôi đọc log files phân tích GSC trước khi đọc content.</p>
+                    </div>
+                    <div class="process-tags">
+                        <span class="mini-badge">Log File Analysis</span>
+                        <span class="mini-badge">GSC Data</span>
+                        <span class="mini-badge">Screaming Frog</span>
+                    </div>
                 </div>
-                <div style="margin-left: auto; font-weight: 800; color: var(--primary-color);">GOOGLE</div>
+
+                <!-- Step 2 -->
+                <div class="process-card" data-aos="fade-up" data-aos-delay="100">
+                    <div>
+                        <span class="process-meta">02 . CHIẾN LƯỢC</span>
+                        <h3>Priority Matrix, <i>không</i> to-do list</h3>
+                        <p>Một website điển hình có hàng trăm thứ cần fix. Làm tất cả cùng lúc là cách nhanh nhất để không đạt được gì. Tôi xây priority matrix dựa trên: impact × effort × time-to-result. Những gì làm trước, những gì defer, những gì không làm.</p>
+                    </div>
+                    <div class="process-tags">
+                        <span class="mini-badge">Impact Framework</span>
+                        <span class="mini-badge">Topical Map</span>
+                        <span class="mini-badge">Competitor Gap</span>
+                    </div>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="process-card" data-aos="fade-up" data-aos-delay="200">
+                    <div>
+                        <span class="process-meta">03 . TRIỂN KHAI</span>
+                        <h3>Semantic depth, <i>không</i> keyword stuffing</h3>
+                        <p>Google ngày càng hiểu chủ đề, không chỉ đọc từ khóa. Một trang muốn rank bền vững phải chứng minh website đó là nguồn đáng tin cậy về toàn bộ lĩnh vực. Tôi xây Semantic Content Network: hệ thống bài viết liên kết chặt chẽ để Google không thể bỏ qua.</p>
+                    </div>
+                    <div class="process-tags">
+                        <span class="mini-badge">Semantic Content Network</span>
+                        <span class="mini-badge">Topical Authority</span>
+                        <span class="mini-badge">Visual Semantic</span>
+                    </div>
+                </div>
+
+                <!-- Step 4 -->
+                <div class="process-card" data-aos="fade-up" data-aos-delay="300">
+                    <div>
+                        <span class="process-meta">04 .  ĐO LƯỜNG</span>
+                        <h3>Business outcome, <i>không</i> vanity metrics</h3>
+                        <p>Traffic là phương tiện, không phải đích đến. Mọi báo cáo tôi làm đều kết nối organic performance với business KPIs: bao nhiêu lead, bao nhiêu chuyển thành khách hàng, ROI là bao nhiêu. Đây là thứ giúp client thực sự hiểu giá trị SEO.</p>
+                    </div>
+                    <div class="process-tags">
+                        <span class="mini-badge">GA4 Custom Events</span>
+                        <span class="mini-badge">Attribution Model</span>
+                        <span class="mini-badge">Monthly Report</span>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
-    <footer id="contact" style="padding: 100px 5% 40px; text-align: center;">
-        <h2 style="font-size: 3rem; margin-bottom: 20px;">HỢP TÁC CÙNG VY</h2>
-        <p style="color: var(--text-sub); margin-bottom: 50px;">Sẵn sàng bứt phá các giới hạn mới trong thế giới Search Marketing AI.</p>
-        <div class="hero-btns" style="justify-content: center;">
-            <a href="mailto:thao.vy@example.com" class="btn btn-primary">GỬI EMAIL NGAY</a>
-            <a href="https://www.linkedin.com/in/nmthaovy/" target="_blank" class="btn btn-secondary">KẾT NỐI LINKEDIN</a>
+    <section id="certs">
+        <div class="container">
+            <span class="section-tag">Recognition</span>
+            <h2 class="section-title">Chứng chỉ <span>& Thành tựu</span></h2>
+            
+            <div class="cert-list">
+                <div class="cert-item" data-aos="fade-left">
+                    <div class="cert-icon"><i class="fas fa-award"></i></div>
+                    <div>
+                        <h3 style="font-family: var(--font-header); font-size: 1.2rem;">Nhân sự Xuất sắc - Best Award 2026</h3>
+                        <p style="color: var(--text-sub);">Trao tặng bởi CEO GTV SEO - Anh Đỗ Anh Việt.</p>
+                    </div>
+                    <div style="font-weight: 800; color: var(--primary);">GTV SEO</div>
+                </div>
+
+                <div class="cert-item" data-aos="fade-left" data-aos-delay="100">
+                    <div class="cert-icon"><i class="fas fa-certificate"></i></div>
+                    <div>
+                        <h3 style="font-family: var(--font-header); font-size: 1.2rem;">Google Analytics Qualification</h3>
+                        <p style="color: var(--text-sub);">Chứng chỉ phân tích dữ liệu chuyên sâu từ Google.</p>
+                    </div>
+                    <div style="font-weight: 800; color: var(--primary);">GOOGLE</div>
+                </div>
+            </div>
         </div>
-        <p style="margin-top: 80px; font-size: 0.7rem; color: var(--text-sub); letter-spacing: 2px;">
-            &copy; 2026 THIẾT KẾ BỞI NGUYỄN MAI THẢO VY
-        </p>
+    </section>
+
+    <footer id="contact">
+        <div class="container">
+            <h2 class="footer-title">HỢP TÁC CÙNG VY</h2>
+            <p style="opacity: 0.8; margin-bottom: 50px; font-size: 1.2rem;">Sẵn sàng bứt phá các giới hạn mới trong thế giới Search Marketing AI.</p>
+            
+            <div class="btn-group" style="justify-content: center;">
+                <a href="mailto:thao.vy@example.com" class="btn btn-primary" style="background: var(--primary); color: #fff;">Gửi Email Ngay</a>
+                <a href="https://www.linkedin.com/in/nmthaovy/" target="_blank" class="btn btn-secondary">Kết nối LinkedIn</a>
+            </div>
+            
+            <p style="margin-top: 100px; font-size: 0.7rem; opacity: 0.5; letter-spacing: 2px; text-transform: uppercase;">
+                &copy; 2026 THIẾT KẾ BỞI NGUYỄN MAI THẢO VY
+            </p>
+        </div>
     </footer>
 
     <!-- Scripts -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
     <script>
-        AOS.init({ duration: 800, once: true });
+        AOS.init({ duration: 1000, once: true });
 
         var typed = new Typed('#typed', {
             strings: ['Thuật toán GEO', 'Trí tuệ Nhân tạo', 'Ý định Người dùng', 'Hiệu suất Tăng trưởng'],
