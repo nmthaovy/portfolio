@@ -535,7 +535,7 @@
             display: grid;
             grid-template-columns: 1fr 1.2fr;
             gap: 50px;
-            align-items: center; /* 🔴 Căn giữa dọc để fix lỗi trống khoảng trắng ở cột hình ảnh */
+            align-items: center; /* 🔴 Căn giữa dọc để không bị trống khoảng trắng */
         }
         .project-card-v2:hover {
             border-color: rgba(255, 178, 44, 0.5);
@@ -565,15 +565,14 @@
         .project-card-v2 h3 {
             font-family: var(--font-header);
             font-size: clamp(1.6rem, 3vw, 2rem);
-            margin-bottom: 10px;
+            margin-bottom: 15px;
             color: var(--secondary);
             line-height: 1.3;
         }
 
-        .project-role {
+        .project-role, .project-timeline {
             font-size: 0.85rem;
             color: var(--text-main);
-            margin-bottom: 15px;
             display: inline-flex;
             align-items: center;
             gap: 8px;
@@ -584,7 +583,7 @@
             width: fit-content;
         }
         .project-role strong { color: var(--secondary); font-weight: 700; }
-        .project-role i { color: var(--primary-dark); }
+        .project-role i, .project-timeline i { color: var(--primary-dark); }
         
         .project-card-v2 p.project-desc {
             color: var(--text-sub);
@@ -606,7 +605,7 @@
             cursor: pointer;
             transition: var(--transition);
             align-self: flex-start;
-            margin-bottom: 25px; /* Khoảng cách với khối số liệu bên dưới */
+            margin-bottom: 25px; 
         }
         .read-more-btn i { transition: transform 0.3s ease; }
         .read-more-btn:hover { color: var(--secondary); }
@@ -619,6 +618,7 @@
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 25px 20px;
+            margin-top: auto; /* Đẩy khối Data xuống sát đáy cho thẳng hàng với ảnh */
         }
 
         .metric-block {
@@ -937,7 +937,7 @@
 
             <div class="project-stack">
                 
-                <!-- 🔴 UPDATE: CASE 1 (Hyper Inkers) - Khôi phục khối Data bự -->
+                <!-- CASE 1 (Hyper Inkers) -->
                 <div class="project-card-v2" data-aos="fade-up">
                     <div class="project-content-v2">
                         <div class="project-industry">
@@ -946,7 +946,7 @@
                         </div>
                         <h3>Hyper Inkers: Dominate Local Search & Kéo 162 Leads/Tháng</h3>
                         
-                   <!-- 🔴 Bố trí Role & Timeline nằm ngang nhau -->
+                        <!-- 🔴 Bố trí Role & Timeline nằm ngang nhau -->
                         <div style="display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 15px;">
                             <div class="project-role" style="margin-bottom: 0;">
                                 <i class="fas fa-user-tag"></i> <span><strong>Vai trò:</strong> Lead dự án</span>
@@ -960,10 +960,9 @@
                             Dự án thuộc lĩnh vực tattoo, có mức độ cạnh tranh cao khi khách hàng tìm kiếm dịch vụ trong bán kính gần hoặc tại San Antonio. Chiến lược lõi được tôi áp dụng là triển khai Semantic SEO kết hợp Content Visual, xây dựng Topic Cluster theo từng Style xăm và chuẩn hóa Entity (Brand - Artist - Location).
                         </p>
                         
-                        <!-- CTA đưa lên trên Data -->
                         <a class="read-more-btn open-cs-modal" data-id="hyper-inkers">Đọc Case Study chi tiết <i class="fas fa-arrow-right"></i></a>
 
-                        <!-- Khối Data khổng lồ chuẩn mockup -->
+                        <!-- 🔴 Khôi phục Khối Data 3 chỉ số bự -->
                         <div class="data-showcase-v2">
                             <div class="metric-block">
                                 <div class="metric-big">+8,269%</div>
@@ -1002,8 +1001,13 @@
                         </div>
                         <h3>Tối ưu tỷ lệ chuyển đổi cuộc gọi (+94%)</h3>
                         
-                        <div class="project-role">
-                            <i class="fas fa-user-tag"></i> <span><strong>Vai trò:</strong> Lead dự án</span>
+                        <div style="display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 15px;">
+                            <div class="project-role" style="margin-bottom: 0;">
+                                <i class="fas fa-user-tag"></i> <span><strong>Vai trò:</strong> Lead dự án</span>
+                            </div>
+                            <div class="project-timeline" style="margin-bottom: 0;">
+                                <i class="far fa-calendar-alt"></i> T8/2024 - Hiện tại
+                            </div>
                         </div>
 
                         <p class="project-desc">
@@ -1045,8 +1049,13 @@
                         </div>
                         <h3>Bảo vệ Top Ranking & Mở rộng Market Share</h3>
                         
-                        <div class="project-role">
-                            <i class="fas fa-user-tag"></i> <span><strong>Vai trò:</strong> Lead dự án</span>
+                        <div style="display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 15px;">
+                            <div class="project-role" style="margin-bottom: 0;">
+                                <i class="fas fa-user-tag"></i> <span><strong>Vai trò:</strong> Lead dự án</span>
+                            </div>
+                            <div class="project-timeline" style="margin-bottom: 0;">
+                                <i class="far fa-calendar-alt"></i> T1/2024 - T12/2024
+                            </div>
                         </div>
 
                         <p class="project-desc">
@@ -1087,8 +1096,13 @@
                         </div>
                         <h3>Xây dựng từ Domain Mới đạt 7.162 Sessions</h3>
                         
-                        <div class="project-role">
-                            <i class="fas fa-user-tag"></i> <span><strong>Vai trò:</strong> Lead dự án</span>
+                        <div style="display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 15px;">
+                            <div class="project-role" style="margin-bottom: 0;">
+                                <i class="fas fa-user-tag"></i> <span><strong>Vai trò:</strong> Lead dự án</span>
+                            </div>
+                            <div class="project-timeline" style="margin-bottom: 0;">
+                                <i class="far fa-calendar-alt"></i> T5/2023 - T5/2024
+                            </div>
                         </div>
 
                         <p class="project-desc">
