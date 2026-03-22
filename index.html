@@ -107,7 +107,7 @@
         .hero-grid {
             display: grid;
             grid-template-columns: 1.2fr 0.8fr;
-            gap: 60px;
+            gap: 40px; /* Giảm gap một chút */
             align-items: center;
         }
 
@@ -122,17 +122,17 @@
             font-size: 0.75rem;
             font-weight: 800;
             letter-spacing: 1px;
-            margin-bottom: 30px;
+            margin-bottom: 20px; /* Ép khoảng cách: 30px -> 20px */
             text-transform: uppercase;
             border: 1px solid rgba(255, 178, 44, 0.3);
         }
 
         .name-heading {
             font-family: var(--font-header);
-            font-size: clamp(3.5rem, 8vw, 6.5rem);
+            font-size: clamp(3rem, 7vw, 6rem); /* Chỉnh size nhẹ lại 1 xíu để an toàn trên laptop */
             line-height: 0.95;
             font-weight: 800;
-            margin-bottom: 30px;
+            margin-bottom: 15px; /* Ép khoảng cách: 30px -> 15px */
             text-transform: uppercase;
             letter-spacing: -2px;
         }
@@ -165,11 +165,11 @@
         }
 
         .typing-container {
-            font-size: clamp(1.3rem, 3vw, 1.8rem);
+            font-size: clamp(1.2rem, 3vw, 1.6rem);
             font-weight: 600;
             color: var(--secondary);
-            margin-bottom: 40px;
-            height: 45px;
+            margin-bottom: 25px; /* Ép khoảng cách: 40px -> 25px */
+            height: 40px;
         }
 
         #typed {
@@ -185,27 +185,27 @@
         .typed-cursor { color: var(--secondary); font-weight: 800; }
 
         .hero-desc {
-            font-size: 1.15rem;
+            font-size: 1.1rem;
             color: var(--text-sub);
             max-width: 600px;
-            margin-bottom: 50px;
+            margin-bottom: 30px; /* Ép khoảng cách: 50px -> 30px */
             border-left: 4px solid var(--primary);
             padding-left: 20px;
             font-style: italic;
-            line-height: 1.7;
+            line-height: 1.6;
         }
 
         /* --- Stats Layout --- */
         .hero-stats {
             display: flex;
-            gap: 50px;
-            margin-bottom: 50px;
+            gap: 40px;
+            margin-bottom: 35px; /* Ép khoảng cách: 50px -> 35px */
             flex-wrap: wrap; 
         }
 
         .stat-item .number {
             font-family: var(--font-header);
-            font-size: clamp(3rem, 6vw, 4.5rem);
+            font-size: clamp(2.5rem, 5vw, 3.8rem); /* Thu nhỏ số liệu một chút xíu để kéo giao diện lên */
             font-weight: 800;
             color: var(--primary);
             line-height: 1;
@@ -213,12 +213,12 @@
         }
 
         .stat-item .label {
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             font-weight: 800;
             color: var(--secondary);
-            margin-top: 12px;
+            margin-top: 8px;
             text-transform: uppercase;
-            letter-spacing: 1.5px;
+            letter-spacing: 1px;
         }
 
         /* --- Buttons --- */
@@ -269,6 +269,8 @@
         /* --- Avatar Box --- */
         .avatar-frame {
             width: 100%;
+            max-width: 440px; /* Khống chế bề ngang tối đa để chiều cao không bị quá lố */
+            margin-left: auto;
             aspect-ratio: 4/5;
             border-radius: 24px;
             overflow: hidden;
@@ -513,7 +515,7 @@
         /* 🔴 RESPONSIVE OPTIMIZATION */
         @media (max-width: 1024px) {
             .hero-grid, .about-grid { grid-template-columns: 1fr; text-align: center; }
-            .hero-desc, .about-text p { margin: 0 auto 40px; text-align: left;}
+            .hero-desc, .about-text p { margin: 0 auto 30px; text-align: left;}
             .hero-stats { justify-content: center; }
             .btn-group { justify-content: center; }
             .avatar-frame { max-width: 450px; margin: 0 auto; }
@@ -596,7 +598,7 @@
                             <div class="label">Năm kinh nghiệm</div>
                         </div>
                         <div class="stat-item">
-                            <div class="number">+<span class="counter" data-target="8269">0</span><span style="font-size: 2.5rem;">%</span></div>
+                            <div class="number">+<span class="counter" data-target="8269">0</span><span style="font-size: 2.2rem;">%</span></div>
                             <div class="label">Tăng trưởng Traffic</div>
                         </div>
                         <div class="stat-item">
