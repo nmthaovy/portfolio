@@ -3,25 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nguyễn Mai Thảo Vy | SEO & GEO Specialist</title>
+    <title>Vy Nguyen | Data-driven SEO Specialist</title>
     
     <!-- Libraries -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     
     <!-- Premium Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;700;800&display=swap" rel="stylesheet">
     
     <style>
         :root {
-            --primary: #f97316; /* Cam năng lượng */
-            --primary-dark: #ea580c;
-            --secondary: #101828; /* Navy tối */
-            --earth: #78350f; /* Nâu đất */
-            --bg: #ffffff;
-            --card-bg: #fdfaf7;
-            --text-main: #0f172a;
-            --text-sub: #475569;
+            /* 🔴 BỘ MÀU VÀNG/NÂU/ĐEN (NĂNG LƯỢNG & TƯƠNG PHẢN CAO) */
+            --primary: #FFB22C;      /* Vàng năng lượng - Nổi bật */
+            --primary-dark: #E5A027; /* Vàng sậm - Hover state */
+            --secondary: #000000;    /* Đen tuyền - Tiêu đề, Footer */
+            --earth: #854836;        /* Nâu đất - Highlight text */
+            
+            --bg: #FFFFFF;           /* Trắng tinh theo yêu cầu */
+            --card-bg: #FFFFFF;      /* Nền card trắng */
+            
+            --text-main: #1A1A1A;    /* Đen nhạt cho text body */
+            --text-sub: #666666;     /* Xám đậm */
+            --success: #FFB22C;      /* Dùng chung tone primary */
+            
             --font-header: 'Space Grotesk', sans-serif;
             --font-body: 'Inter', sans-serif;
             --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
@@ -41,13 +46,13 @@
             color: var(--text-main);
             line-height: 1.6;
             overflow-x: hidden;
-            /* Dot Grid Background */
-            background-image: radial-gradient(#f9731615 1.5px, transparent 1.5px);
-            background-size: 40px 40px;
+            /* Dot Grid Background dùng màu đen trong suốt */
+            background-image: radial-gradient(rgba(0, 0, 0, 0.04) 1.5px, transparent 1.5px);
+            background-size: 30px 30px;
         }
 
         .container {
-            max-width: 1300px;
+            max-width: 1280px;
             margin: 0 auto;
             padding: 0 5%;
         }
@@ -59,34 +64,34 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 25px 5%;
-            background: rgba(255, 255, 255, 0.8);
-            backdrop-filter: blur(15px);
+            padding: 20px 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
             z-index: 1000;
-            border-bottom: 1px solid rgba(0,0,0,0.05);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
         }
 
         .logo {
             font-family: var(--font-header);
             font-weight: 800;
             font-size: 1.4rem;
-            color: var(--earth);
+            color: var(--secondary);
             text-decoration: none;
-            letter-spacing: 1px;
+            letter-spacing: -0.5px;
         }
+        .logo span { color: var(--primary); }
 
         .nav-links {
             display: flex;
             list-style: none;
-            gap: 35px;
+            gap: 30px;
         }
 
         .nav-links a {
             text-decoration: none;
-            color: var(--text-main);
-            font-size: 0.85rem;
-            font-weight: 700;
-            text-transform: uppercase;
+            color: var(--text-sub);
+            font-size: 0.9rem;
+            font-weight: 600;
             transition: var(--transition);
         }
 
@@ -97,7 +102,7 @@
             min-height: 100vh;
             display: flex;
             align-items: center;
-            padding-top: 100px;
+            padding-top: 80px;
         }
 
         .hero-grid {
@@ -110,410 +115,438 @@
         .tag-badge {
             display: inline-flex;
             align-items: center;
-            gap: 10px;
-            background: #fff5ed;
-            color: var(--primary);
-            padding: 10px 20px;
+            gap: 8px;
+            background: rgba(255, 178, 44, 0.15); /* Primary color opacity */
+            color: #D48800; /* Darker yellow/orange for text readability */
+            padding: 8px 18px;
             border-radius: 6px;
             font-size: 0.75rem;
             font-weight: 800;
-            text-transform: uppercase;
             letter-spacing: 1px;
-            border: 1px solid #ffe8d6;
-            margin-bottom: 35px;
+            margin-bottom: 30px;
+            text-transform: uppercase;
+            border: 1px solid rgba(255, 178, 44, 0.3);
         }
 
         .name-heading {
             font-family: var(--font-header);
-            font-size: clamp(3.5rem, 8vw, 6rem);
-            line-height: 0.9;
+            font-size: clamp(3.5rem, 8vw, 6.5rem);
+            line-height: 0.95;
             font-weight: 800;
             margin-bottom: 30px;
             text-transform: uppercase;
+            letter-spacing: -2px;
         }
-
-        .name-heading .surname {
-            color: var(--earth);
-            display: block;
-            font-weight: 500;
-            opacity: 0.9;
+        
+        .name-heading .surname { 
+            color: var(--secondary); 
+            display: block; 
+            font-size: 0.45em; 
+            letter-spacing: 4px;
+            margin-bottom: 5px;
         }
-
-        .name-heading .firstname {
-            color: var(--secondary);
-            display: block;
+        
+        .name-heading .firstname { 
+            color: var(--secondary); 
+            display: inline-block;
+            position: relative;
+            z-index: 1;
+        }
+        
+        /* Hiệu ứng vệt dạ quang phía sau tên */
+        .name-heading .firstname::after {
+            content: '';
+            position: absolute;
+            bottom: 8px;
+            left: -2%;
+            width: 104%;
+            height: 35%;
+            background: var(--primary);
+            z-index: -1;
+            transform: skew(-8deg);
         }
 
         .typing-container {
-            font-size: 1.8rem;
+            font-size: clamp(1.3rem, 3vw, 1.8rem);
             font-weight: 600;
-            color: var(--earth);
-            margin-bottom: 30px;
+            color: var(--secondary);
+            margin-bottom: 40px;
+            height: 45px;
+        }
+
+        /* Highlight box cho chữ đang chạy */
+        #typed {
+            color: #000000;
+            background: var(--primary);
+            padding: 2px 10px;
+            border-radius: 4px;
+            font-weight: 800;
+            box-shadow: 3px 3px 0px #000000;
+            display: inline-block;
+        }
+
+        .typed-cursor {
+            color: var(--secondary);
+            font-weight: 800;
         }
 
         .hero-desc {
-            font-size: 1.2rem;
+            font-size: 1.15rem;
             color: var(--text-sub);
             max-width: 600px;
-            border-left: 5px solid var(--primary);
-            padding-left: 25px;
-            font-style: italic;
             margin-bottom: 50px;
+            border-left: 4px solid var(--primary);
+            padding-left: 20px;
+            font-style: italic;
+            line-height: 1.7;
         }
 
         /* --- Stats Layout --- */
         .hero-stats {
             display: flex;
-            gap: 60px;
+            gap: 50px;
             margin-bottom: 50px;
+            flex-wrap: wrap; 
         }
 
-        .stat-box .number {
+        .stat-item .number {
             font-family: var(--font-header);
-            font-size: 4.5rem;
+            font-size: clamp(3rem, 6vw, 4.5rem);
             font-weight: 800;
             color: var(--primary);
             line-height: 1;
+            letter-spacing: -2px;
         }
 
-        .stat-box .label {
-            font-size: 0.75rem;
+        .stat-item .label {
+            font-size: 0.8rem;
             font-weight: 800;
             color: var(--secondary);
+            margin-top: 12px;
             text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-top: 10px;
+            letter-spacing: 1.5px;
         }
 
-        /* --- Buttons (IMPROVED: MORE COLORFUL) --- */
+        /* --- Buttons --- */
         .btn-group {
             display: flex;
-            gap: 20px;
+            gap: 15px;
         }
 
         .btn {
-            padding: 18px 36px;
+            padding: 16px 36px;
             font-family: var(--font-header);
             font-weight: 700;
             text-decoration: none;
             border-radius: 6px;
-            text-transform: uppercase;
             font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
             transition: var(--transition);
             display: inline-flex;
             align-items: center;
-            gap: 12px;
+            justify-content: center;
+            gap: 10px;
         }
 
         .btn-primary {
             background: var(--primary);
-            color: #fff;
-            box-shadow: 0 4px 15px rgba(249, 115, 22, 0.3);
+            color: #000000; /* Nút màu vàng VÀ bắt buộc phải dùng chữ đen để đủ độ tương phản (CRO) */
+            box-shadow: 0 4px 15px rgba(255, 178, 44, 0.3);
         }
 
         .btn-primary:hover {
             background: var(--primary-dark);
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(249, 115, 22, 0.4);
+            color: #000000;
+            transform: translateY(-2px);
         }
 
         .btn-secondary {
             background: var(--secondary);
             color: #fff;
-            box-shadow: 0 4px 15px rgba(16, 24, 40, 0.2);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
         }
 
         .btn-secondary:hover {
-            background: #1e293b;
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(16, 24, 40, 0.3);
+            background: #222222; 
+            transform: translateY(-2px);
         }
 
         /* --- Avatar Box --- */
-        .avatar-container {
-            position: relative;
-            z-index: 1;
-        }
-
         .avatar-frame {
             width: 100%;
             aspect-ratio: 4/5;
-            background: var(--card-bg);
-            border: 1px solid #e2e8f0;
             border-radius: 24px;
             overflow: hidden;
             position: relative;
-            box-shadow: 25px 25px 0px var(--card-bg), 26px 26px 0px var(--primary);
-            transition: var(--transition);
-        }
-
-        .avatar-frame:hover {
-            transform: translate(-10px, -10px);
-            box-shadow: 35px 35px 0px var(--card-bg), 36px 36px 0px var(--primary);
+            background: var(--card-bg);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.1); 
         }
 
         .avatar-frame img {
             width: 100%;
             height: 100%;
             object-fit: cover;
+            object-position: top;
+            transition: var(--transition);
         }
+        .avatar-frame:hover img { transform: scale(1.05); }
 
         /* --- Section Styling --- */
-        section {
-            padding: 120px 0;
+        section { padding: 100px 0; }
+        
+        .section-header {
+            margin-bottom: 50px;
+            max-width: 700px;
         }
 
         .section-tag {
             color: var(--primary);
             font-weight: 800;
             text-transform: uppercase;
-            letter-spacing: 3px;
+            letter-spacing: 2px;
+            font-size: 0.85rem;
+            margin-bottom: 10px;
             display: block;
-            margin-bottom: 15px;
-            font-size: 0.8rem;
         }
 
         .section-title {
             font-family: var(--font-header);
-            font-size: clamp(2.5rem, 5vw, 3.5rem);
-            margin-bottom: 40px;
-            text-transform: uppercase;
-            line-height: 1.2;
+            font-size: clamp(2.2rem, 5vw, 3.5rem);
+            line-height: 1.1;
+            color: var(--secondary);
+            letter-spacing: -1px;
         }
+        .section-title i { color: var(--primary); font-style: normal; text-decoration: underline; text-decoration-color: rgba(255, 178, 44, 0.4); text-underline-offset: 8px;}
 
-        .section-title span { color: var(--primary); }
-
-        /* Highlight for "không phải" in section title */
-        .section-title i {
-            font-style: italic;
-            font-weight: 800;
-            color: var(--primary);
-            position: relative;
-        }
-
-        /* --- Projects Grid --- */
-        .project-grid {
+        /* --- DATA-DRIVEN CASE STUDIES (BENTO BOX) --- */
+        .bento-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-            gap: 40px;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 24px;
         }
 
-        .project-card {
-            background: #fff;
-            padding: 50px;
-            border: 1px solid #f1f5f9;
-            border-radius: 16px;
-            transition: var(--transition);
-            position: relative;
-        }
-
-        .project-card:hover {
-            border-color: var(--primary);
-            box-shadow: 0 30px 60px rgba(0,0,0,0.05);
-            transform: translateY(-10px);
-        }
-
-        .project-card h3 {
-            font-family: var(--font-header);
-            font-size: 1.8rem;
-            margin: 20px 0;
-            text-transform: uppercase;
-        }
-
-        /* --- Process Section (ADJUSTED) --- */
-        .process-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
-            gap: 30px;
-        }
-
-        .process-card {
-            background: #fff;
-            padding: 45px;
-            border: 1px solid #e2e8f0;
-            border-radius: 20px;
-            transition: var(--transition);
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-
-        .process-card:hover {
+        .bento-card {
             background: var(--card-bg);
-            border-color: var(--primary);
+            border: 1px solid rgba(0, 0, 0, 0.08);
+            border-radius: 24px;
+            padding: 40px;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.02);
+        }
+        .bento-card:hover {
+            border-color: rgba(255, 178, 44, 0.5);
+            box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.08);
+            transform: translateY(-5px);
         }
 
-        .process-meta {
-            font-family: var(--font-header);
-            font-size: 1.4rem; /* LARGER as requested */
-            color: var(--primary);
-            font-weight: 800;
+        /* Span configurations */
+        .card-large { grid-column: span 8; }
+        .card-medium { grid-column: span 4; }
+        .card-half { grid-column: span 6; }
+
+        .project-industry {
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: var(--text-sub);
             text-transform: uppercase;
             letter-spacing: 1px;
-            margin-bottom: 10px;
-            display: block;
-            opacity: 0.8;
+            margin-bottom: 15px;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 10px;
         }
-
-        .process-card h3 {
+        
+        .bento-card h3 {
             font-family: var(--font-header);
-            font-size: 1.9rem;
-            margin-bottom: 25px;
-            text-transform: none;
+            font-size: clamp(1.4rem, 3vw, 1.8rem);
+            margin-bottom: 15px;
             color: var(--secondary);
             line-height: 1.3;
         }
 
-        /* Highlight for the word "Không" in process cards */
-        .process-card h3 i {
-            font-style: italic;
-            font-weight: 800;
-            color: var(--primary); /* MORE PROMINENT as requested */
-            text-decoration: underline wavy rgba(249, 115, 22, 0.3);
-            text-underline-offset: 6px;
+        /* Data Visualization Elements inside Cards */
+        .data-showcase {
+            margin-top: 30px;
+            padding-top: 25px;
+            border-top: 1px solid rgba(0, 0, 0, 0.05);
         }
 
-        .process-card p {
-            color: var(--text-sub);
-            margin-bottom: 35px;
-            font-size: 1.05rem;
-            line-height: 1.8;
-        }
-
-        .process-tags {
+        .metric-row {
             display: flex;
+            align-items: baseline;
+            gap: 10px;
+            margin-bottom: 5px;
             flex-wrap: wrap;
-            gap: 12px;
         }
 
-        .mini-badge {
-            font-size: 0.75rem;
-            padding: 8px 16px;
-            background: #fff;
-            border: 1px solid #e2e8f0;
-            border-radius: 8px;
-            color: var(--secondary);
-            font-weight: 700;
-            text-transform: uppercase;
+        .metric-big {
+            font-family: var(--font-header);
+            font-size: clamp(2.2rem, 5vw, 3rem);
+            font-weight: 800;
+            color: var(--success);
+            line-height: 1;
         }
 
-        /* --- Certificate List --- */
-        .cert-list {
-            max-width: 900px;
+        .metric-desc {
+            font-size: 0.95rem;
+            color: var(--text-sub);
+            font-weight: 500;
         }
 
-        .cert-item {
-            display: grid;
-            grid-template-columns: 80px 1fr auto;
+        /* Bar Chart CSS */
+        .bar-chart { margin-top: 20px; width: 100%;}
+        .bar-row {
+            display: flex;
             align-items: center;
+            gap: 15px;
+            margin-bottom: 12px;
+        }
+        .bar-label { width: 50px; font-size: 0.85rem; font-weight: 600; color: var(--text-sub);}
+        .bar-track {
+            flex: 1;
+            height: 12px;
+            background: #F0F0F0; 
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        .bar-fill {
+            height: 100%;
+            border-radius: 10px;
+            background: var(--primary);
+            transition: width 1.5s ease-in-out;
+        }
+        .bar-fill.before { background: #D9D9D9; width: 10%; } 
+        .bar-number { width: 60px; font-size: 0.85rem; font-weight: 700; text-align: right;}
+
+        /* --- Process Section --- */
+        .process-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); 
+            gap: 24px;
+        }
+        .process-card {
             background: var(--card-bg);
-            padding: 30px;
-            border-radius: 12px;
-            margin-bottom: 20px;
+            padding: 35px;
+            border-radius: 20px;
+            border: 1px solid rgba(0, 0, 0, 0.06);
             transition: var(--transition);
-            border: 1px solid transparent;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.02);
         }
+        .process-card:hover { border-color: rgba(255, 178, 44, 0.4); box-shadow: 0 15px 30px rgba(0, 0, 0, 0.06);}
+        
+        .process-step { font-family: var(--font-header); font-size: 3rem; color: rgba(255, 178, 44, 0.3); font-weight: 800; margin-bottom: 10px; line-height: 1;}
+        .process-card h3 { font-family: var(--font-header); font-size: 1.4rem; margin-bottom: 15px; color: var(--secondary);}
+        .process-card p { color: var(--text-sub); font-size: 0.95rem; margin-bottom: 25px; }
+        
+        .tag-list { display: flex; flex-wrap: wrap; gap: 8px;}
+        .tag-list span { padding: 6px 12px; background: #FAFAFA; border: 1px solid rgba(0, 0, 0, 0.08); border-radius: 6px; font-size: 0.75rem; font-weight: 600; color: var(--text-main);}
 
-        .cert-item:hover {
-            background: #fff;
-            border-color: var(--primary);
-            transform: scale(1.02);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
-        }
-
-        .cert-icon {
-            font-size: 2.5rem;
-            color: var(--primary);
-        }
-
-        /* --- Footer --- */
+        /* --- Footer / Contact CTA --- */
         footer {
             background: var(--secondary);
-            color: #fff;
+            color: #FFFFFF;
             padding: 100px 0 50px;
             text-align: center;
         }
+        .footer-cta h2 { font-family: var(--font-header); font-size: clamp(2rem, 5vw, 3.5rem); margin-bottom: 20px;}
+        .footer-cta p { font-size: 1.1rem; color: #CCCCCC; margin-bottom: 40px; max-width: 600px; margin-inline: auto;}
 
-        .footer-title {
-            font-family: var(--font-header);
-            font-size: 4rem;
-            margin-bottom: 30px;
-        }
-
-        /* Mobile Responsive */
+        /* 🔴 RESPONSIVE OPTIMIZATION (MOBILE & TABLET) */
         @media (max-width: 1024px) {
-            .hero-grid { grid-template-columns: 1fr; }
-            .hero-grid { text-align: center; }
-            .hero-desc { margin: 0 auto 50px; border-left: none; border-top: 5px solid var(--primary); padding: 25px 0 0; }
+            .hero-grid { grid-template-columns: 1fr; text-align: center; }
+            .hero-desc { margin: 0 auto 40px; text-align: left;}
             .hero-stats { justify-content: center; }
             .btn-group { justify-content: center; }
-            .avatar-container { order: -1; max-width: 400px; margin: 0 auto 50px; }
-            .nav-links { display: none; }
-            .process-grid { grid-template-columns: 1fr; }
+            .avatar-frame { max-width: 450px; margin: 0 auto; }
+            
+            .card-large, .card-medium, .card-half { grid-column: span 12; }
+            .nav-links { display: none; } 
         }
 
         @media (max-width: 600px) {
-            .hero-stats { flex-direction: column; gap: 30px; }
-            .footer-title { font-size: 2.5rem; }
-            .project-grid { grid-template-columns: 1fr; }
-            .section-title { font-size: 2.2rem; }
-            .process-card { padding: 30px; }
+            section { padding: 70px 0; }
+            .hero { padding-top: 100px; }
+            
+            .name-heading { letter-spacing: -1px; }
+            .hero-desc { font-size: 1rem; padding-left: 15px; }
+            
+            .hero-stats { gap: 30px; justify-content: center; flex-direction: row; }
+            .stat-item { width: 40%; } 
+            .stat-item .number span { font-size: 1.8rem !important; }
+
+            .btn-group { flex-direction: column; width: 100%; gap: 12px; }
+            .btn { width: 100%; padding: 18px; }
+
+            .bento-card { padding: 25px; border-radius: 20px;}
+            
+            .data-showcase > div { flex-direction: column; align-items: flex-start; gap: 20px !important; }
+            .metric-row { gap: 8px; }
+            
+            .data-showcase.vibim-fix { flex-direction: column !important; align-items: flex-start !important; }
+            .vibim-pattern { width: 100%; height: 40px !important; }
+
+            .process-grid { grid-template-columns: 1fr; }
+            .process-card { padding: 25px; }
         }
     </style>
 </head>
 <body>
 
+    <!-- Navigation -->
     <nav>
         <div class="container" style="display: flex; justify-content: space-between; width: 100%; align-items: center; padding: 0;">
-            <a href="#" class="logo">VY.PORTFOLIO</a>
+            <a href="#" class="logo">Vy<span>.</span>CRO</a>
             <ul class="nav-links">
-                <li><a href="#home">VỀ TÔI</a></li>
-                <li><a href="#projects">DỰ ÁN</a></li>
-                <li><a href="#process">QUY TRÌNH</a></li>
-                <li><a href="#certs">CHỨNG CHỈ</a></li>
-                <li><a href="#contact">LIÊN HỆ</a></li>
+                <li><a href="#projects">Case Studies</a></li>
+                <li><a href="#process">Tư duy</a></li>
+                <li><a href="#contact" style="color: var(--primary);">Đặt lịch Audit</a></li>
             </ul>
         </div>
     </nav>
 
+    <!-- Hero Section -->
     <header id="home" class="hero">
         <div class="container">
             <div class="hero-grid">
-                <div class="hero-content" data-aos="fade-up">
+                <div data-aos="fade-up">
                     <div class="tag-badge">
                         <i class="fas fa-microchip"></i> Kỷ nguyên SEO mới: Tập trung GEO
                     </div>
                     
                     <h1 class="name-heading">
-                        <span class="surname">Nguyễn Mai</span>
-                        <span class="firstname">Thảo Vy</span>
+                        <span class="surname">NGUYỄN MAI</span>
+                        <span class="firstname">THẢO VY</span>
                     </h1>
 
                     <div class="typing-container">
-                        Tối ưu hóa cho <span id="typed"></span>
+                        Tối ưu hóa <br class="mobile-break" style="display: none;"> <span id="typed"></span>
                     </div>
 
-                    <p class="hero-desc">
-                        "SEO không chỉ là về các thuật toán; đó là về việc thấu hiểu ý định của con người và dẫn dắt họ trong kỷ nguyên tìm kiếm bằng AI."
-                    </p>
+                    <blockquote class="hero-desc">
+                        "SEO không chỉ là về các thuật toán; đó là về việc thấu hiểu ý định tìm kiếm của người dùng và dẫn dắt họ trong kỷ nguyên tìm kiếm bằng AI."
+                    </blockquote>
 
                     <div class="hero-stats">
-                        <div class="stat-box">
-                            <div class="number">02+</div>
+                        <div class="stat-item">
+                            <div class="number"><span class="counter pad-zero" data-target="2">0</span>+</div>
                             <div class="label">Năm kinh nghiệm</div>
                         </div>
-                        <div class="stat-box">
-                            <div class="number">04+</div>
-                            <div class="label">Dự án lớn</div>
+                        <div class="stat-item">
+                            <div class="number">+<span class="counter" data-target="8269">0</span><span style="font-size: 2.5rem;">%</span></div>
+                            <div class="label">Tăng trưởng Traffic</div>
                         </div>
-                        <div class="stat-box">
-                            <div class="number">95%</div>
-                            <div class="label">Chỉ số GEO</div>
+                        <div class="stat-item">
+                            <div class="number"><span class="counter pad-zero" data-target="4">0</span>+</div>
+                            <div class="label">Dự án trực tiếp</div>
                         </div>
                     </div>
 
                     <div class="btn-group">
-                        <a href="#" class="btn btn-primary">
+                        <a href="#contact" class="btn btn-primary">
                             Tải CV PDF <i class="fas fa-file-pdf"></i>
                         </a>
                         <a href="#projects" class="btn btn-secondary">
@@ -522,151 +555,212 @@
                     </div>
                 </div>
 
-                <div class="avatar-container" data-aos="zoom-in" data-aos-delay="200">
+                <div data-aos="zoom-in" data-aos-delay="200">
                     <div class="avatar-frame">
-                        <img src="https://media.licdn.com/dms/image/v2/D5603AQGtRE0exK86Cg/profile-displayphoto-crop_800_800/B56ZuENpWyJoAI-/0/1767449729429?e=1771459200&v=beta&t=YYvWFVplVhaFVBrKumyd8PNG1Utgmlk8TEcvprhvSzI" alt="Nguyễn Mai Thảo Vy">
+                        <img src="https://github.com/nmthaovy/portfolio/blob/1110100c67e51645fbbea2c8b73a1fc9bb1a339f/vynguyen.png" alt="Nguyễn Mai Thảo Vy">
                     </div>
                 </div>
             </div>
         </div>
     </header>
 
+    <!-- 🔴 DATA-DRIVEN CASE STUDIES -->
     <section id="projects">
         <div class="container">
-            <span class="section-tag">Portfolio</span>
-            <h2 class="section-title">Dự án <span>Tiêu biểu</span></h2>
-            
-            <div class="project-grid">
-                <div class="project-card" data-aos="fade-up">
-                    <div class="tag-badge" style="margin-bottom: 15px;">CEO GTV SEO CHIA SẺ</div>
-                    <h3>Chiến dịch tăng trưởng Organic Traffic đột phá</h3>
-                    <p style="color: var(--text-sub); margin-bottom: 30px;">
-                        <strong>Vai trò: Lead dự án.</strong> Triển khai chiến lược GEO tiên phong giúp website bứt phá lưu lượng truy cập tự nhiên, được CEO trực tiếp công nhận và chia sẻ.
-                    </p>
-                    <a href="https://www.facebook.com/share/p/1RXGdzCiVe/" target="_blank" style="color: var(--primary); font-weight: 800; text-decoration: none; font-size: 0.8rem; text-transform: uppercase;">
-                        Xem chi tiết dự án <i class="fas fa-external-link-alt"></i>
-                    </a>
+            <div class="section-header" data-aos="fade-up">
+                <span class="section-tag">Proof of Work</span>
+                <h2 class="section-title">Những con số <i>không biết nói dối.</i></h2>
+                <p style="color: var(--text-sub); margin-top: 15px; font-size: 1.1rem;">Khám phá cách tôi cấu trúc chiến lược để mang lại tăng trưởng đột phá về lượng truy cập và quan trọng nhất là: Khách hàng tiềm năng.</p>
+            </div>
+
+            <div class="bento-grid">
+                
+                <!-- CASE 1: Hyper Inkers (LARGE) -->
+                <div class="bento-card card-large" data-aos="fade-up">
+                    <div class="project-industry">
+                        <span>Tattoo US (Thị trường Mỹ)</span>
+                        <span style="color: var(--primary);"><i class="fas fa-map-marker-alt"></i> Local SEO & AI Search</span>
+                    </div>
+                    <h3>Hyper Inkers: Dominate Local Search & Kéo 162 Leads/Tháng</h3>
+                    <p style="color: var(--text-sub);">Chiến lược xây dựng 1.500+ citations và tối ưu thực thể (Entity) giúp doanh nghiệp xăm hình tại Mỹ thống lĩnh Google Maps và SGE.</p>
+                    
+                    <div class="data-showcase">
+                        <!-- Mobile Responsive: Changed to flex-wrap and responsive gaps -->
+                        <div style="display: flex; justify-content: space-between; gap: 20px; flex-wrap: wrap;">
+                            <div>
+                                <div class="metric-desc">Tăng trưởng Organic Traffic</div>
+                                <div class="metric-row">
+                                    <div class="metric-big">108,800</div>
+                                    <div style="color: var(--text-sub); font-weight: 600;">/ tháng</div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="metric-desc">Qualified Leads (Form & Call)</div>
+                                <div class="metric-row">
+                                    <div class="metric-big">162</div>
+                                    <div style="color: var(--text-sub); font-weight: 600;">/ tháng</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bar-chart">
+                            <div class="bar-row">
+                                <div class="bar-label">Before</div>
+                                <div class="bar-track"><div class="bar-fill before"></div></div>
+                                <div class="bar-number">1.3K</div>
+                            </div>
+                            <div class="bar-row">
+                                <div class="bar-label">After</div>
+                                <div class="bar-track"><div class="bar-fill" style="width: 100%;"></div></div>
+                                <div class="bar-number">108.8K</div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
-                <div class="project-card" data-aos="fade-up" data-aos-delay="100">
-                    <div class="tag-badge" style="margin-bottom: 15px;">E-COMMERCE</div>
-                    <h3>Tối ưu hóa trải nghiệm tìm kiếm AI</h3>
-                    <p style="color: var(--text-sub); margin-bottom: 30px;">
-                        Tăng tỷ lệ hiển thị trên các công cụ tìm kiếm tạo sinh (SGE) cho sàn thương mại điện tử, giúp khách hàng tìm thấy sản phẩm thông qua truy vấn đàm thoại.
-                    </p>
+                <!-- CASE 2: Interimm (MEDIUM) -->
+                <div class="bento-card card-medium" data-aos="fade-up" data-aos-delay="100">
+                    <div class="project-industry">
+                        <span>Di trú EB5 (High-ticket)</span>
+                        <span style="color: var(--primary);"><i class="fas fa-phone-alt"></i> CRO Focus</span>
+                    </div>
+                    <h3>Tối ưu tỷ lệ chuyển đổi cuộc gọi (+94%)</h3>
+                    <p style="color: var(--text-sub); margin-bottom: 20px; font-size: 0.95rem;">Với ngành High-ticket, traffic ít nhưng chất lượng. Tập trung tối ưu UI/UX và Search Intent để thúc đẩy hành động gọi điện.</p>
+                    
+                    <div class="data-showcase" style="margin-top: auto; border-top: none; padding-top: 0;">
+                        <div class="metric-row">
+                            <div class="metric-big">+94%</div>
+                        </div>
+                        <div class="metric-desc">Call Conversions</div>
+                        
+                        <div class="metric-row" style="margin-top: 20px;">
+                            <div class="metric-big" style="font-size: 2rem; color: var(--text-main);">6,100</div>
+                        </div>
+                        <div class="metric-desc">Organic Traffic (+40%)</div>
+                    </div>
                 </div>
+
+                <!-- CASE 3: Housedesign (HALF) -->
+                <div class="bento-card card-half" data-aos="fade-up">
+                    <div class="project-industry">
+                        <span>Nội Thất</span>
+                        <span style="color: var(--primary);"><i class="fas fa-chess-knight"></i> Chiến lược Thủ/Công</span>
+                    </div>
+                    <h3>Bảo vệ Top Ranking & Mở rộng Market Share</h3>
+                    <p style="color: var(--text-sub);">Giữ vững 95% Top 5 từ khóa cốt lõi trong đợt Google Core Update, đồng thời đẩy 36% Top 3 cho nhóm từ khóa mới.</p>
+                    
+                    <div class="data-showcase">
+                        <div class="bar-chart">
+                            <div class="bar-row">
+                                <div class="bar-label">Traffic</div>
+                                <div class="bar-track"><div class="bar-fill before" style="width: 60%;"></div></div>
+                                <div class="bar-number">27.7K</div>
+                            </div>
+                            <div class="bar-row">
+                                <div class="bar-label">Peak</div>
+                                <div class="bar-track"><div class="bar-fill" style="width: 95%;"></div></div>
+                                <div class="bar-number">44.0K</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CASE 4: ViBIM (HALF) -->
+                <div class="bento-card card-half" data-aos="fade-up" data-aos-delay="100">
+                    <div class="project-industry">
+                        <span>B2B Global</span>
+                        <span style="color: var(--primary);"><i class="fas fa-globe"></i> Global SEO</span>
+                    </div>
+                    <h3>Xây dựng từ Domain Mới đạt 7.162 Sessions</h3>
+                    <p style="color: var(--text-sub);">Chiến lược thâm nhập thị trường B2B quốc tế, mang lại lead chất lượng cao qua các form Demo và LinkedIn.</p>
+                    
+                    <!-- Added specific class for mobile override -->
+                    <div class="data-showcase vibim-fix" style="display: flex; gap: 30px; align-items: center;">
+                        <div>
+                            <div class="metric-big" style="color: var(--secondary); font-size: 2.5rem;">50+</div>
+                            <div class="metric-desc">Key B2B CTAs (Demo/Form)</div>
+                        </div>
+                        <div class="vibim-pattern" style="flex: 1; height: 60px; background: repeating-linear-gradient(45deg, rgba(255, 178, 44, 0.15), rgba(255, 178, 44, 0.15) 10px, transparent 10px, transparent 20px); border-radius: 8px;">
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
     </section>
 
-    <!-- SECTION: HOW I WORK (UPDATED STYLES) -->
-    <section id="process" style="background: #fafafa;">
+    <!-- SECTION: HOW I WORK -->
+    <section id="process">
         <div class="container">
-            <span class="section-tag">Cách tôi làm việc</span>
-            <h2 class="section-title">Process, <i>không phải</i> checklist.</h2>
-            <p style="font-size: 1.2rem; color: var(--text-sub); margin-bottom: 60px; max-width: 800px;">
-                Mỗi dự án bắt đầu từ câu hỏi: vấn đề thực sự là gì? — không phải "keyword nào chưa target?"
-            </p>
+            <div class="section-header" data-aos="fade-up">
+                <span class="section-tag">Cách tôi làm việc</span>
+                <h2 class="section-title">Process, <i>không phải</i> checklist.</h2>
+                <p style="color: var(--text-sub); margin-top: 15px; font-size: 1.1rem;">
+                    Mỗi dự án bắt đầu từ câu hỏi: vấn đề thực sự là gì? — không phải "keyword nào chưa target?"
+                </p>
+            </div>
 
             <div class="process-grid">
                 <!-- Step 1 -->
                 <div class="process-card" data-aos="fade-up">
-                    <div>
-                        <span class="process-meta">01 . CHUẨN ĐOÁN</span>
-                        <h3>Root Cause, <i>không</i> symptom</h3>
-                        <p>Traffic drop không phải luôn là do content kém. Có thể là crawl budget, có thể là cannibalization, có thể là Google đang đánh giá thấp cả một section vì thiếu chiều sâu chuyên môn. Tôi đọc log files phân tích GSC trước khi đọc content.</p>
-                    </div>
-                    <div class="process-tags">
-                        <span class="mini-badge">Log File Analysis</span>
-                        <span class="mini-badge">GSC Data</span>
-                        <span class="mini-badge">Screaming Frog</span>
+                    <div class="process-step">01</div>
+                    <h3>Root Cause, không symptom</h3>
+                    <p>Traffic drop không phải luôn là do content kém. Có thể là crawl budget, cannibalization, hoặc thiếu chiều sâu chuyên môn. Tôi đọc log files & GSC trước khi đọc content.</p>
+                    <div class="tag-list">
+                        <span>Log File</span><span>GSC Data</span><span>Screaming Frog</span>
                     </div>
                 </div>
 
                 <!-- Step 2 -->
                 <div class="process-card" data-aos="fade-up" data-aos-delay="100">
-                    <div>
-                        <span class="process-meta">02 . CHIẾN LƯỢC</span>
-                        <h3>Priority Matrix, <i>không</i> to-do list</h3>
-                        <p>Một website điển hình có hàng trăm thứ cần fix. Làm tất cả cùng lúc là cách nhanh nhất để không đạt được gì. Tôi xây priority matrix dựa trên: impact × effort × time-to-result. Những gì làm trước, những gì defer, những gì không làm.</p>
-                    </div>
-                    <div class="process-tags">
-                        <span class="mini-badge">Impact Framework</span>
-                        <span class="mini-badge">Topical Map</span>
-                        <span class="mini-badge">Competitor Gap</span>
+                    <div class="process-step">02</div>
+                    <h3>Priority Matrix, không to-do list</h3>
+                    <p>Một website có hàng trăm thứ cần fix. Xây priority matrix dựa trên: impact × effort × time-to-result. Quyết định rõ: những gì làm trước, những gì bỏ qua.</p>
+                    <div class="tag-list">
+                        <span>Impact Framework</span><span>Competitor Gap</span>
                     </div>
                 </div>
 
                 <!-- Step 3 -->
                 <div class="process-card" data-aos="fade-up" data-aos-delay="200">
-                    <div>
-                        <span class="process-meta">03 . TRIỂN KHAI</span>
-                        <h3>Semantic depth, <i>không</i> keyword stuffing</h3>
-                        <p>Google ngày càng hiểu chủ đề, không chỉ đọc từ khóa. Một trang muốn rank bền vững phải chứng minh website đó là nguồn đáng tin cậy về toàn bộ lĩnh vực. Tôi xây Semantic Content Network: hệ thống bài viết liên kết chặt chẽ để Google không thể bỏ qua.</p>
-                    </div>
-                    <div class="process-tags">
-                        <span class="mini-badge">Semantic Content Network</span>
-                        <span class="mini-badge">Topical Authority</span>
-                        <span class="mini-badge">Visual Semantic</span>
+                    <div class="process-step">03</div>
+                    <h3>Semantic depth, không nhồi nhét</h3>
+                    <p>Xây dựng Semantic Content Network: hệ thống bài viết liên kết chặt chẽ để chứng minh Topical Authority, khiến Google và AI Search không thể bỏ qua.</p>
+                    <div class="tag-list">
+                        <span>Topical Map</span><span>Entity Optimization</span>
                     </div>
                 </div>
 
                 <!-- Step 4 -->
                 <div class="process-card" data-aos="fade-up" data-aos-delay="300">
-                    <div>
-                        <span class="process-meta">04 .  ĐO LƯỜNG</span>
-                        <h3>Business outcome, <i>không</i> vanity metrics</h3>
-                        <p>Traffic là phương tiện, không phải đích đến. Mọi báo cáo tôi làm đều kết nối organic performance với business KPIs: bao nhiêu lead, bao nhiêu chuyển thành khách hàng, ROI là bao nhiêu. Đây là thứ giúp client thực sự hiểu giá trị SEO.</p>
-                    </div>
-                    <div class="process-tags">
-                        <span class="mini-badge">GA4 Custom Events</span>
-                        <span class="mini-badge">Attribution Model</span>
-                        <span class="mini-badge">Monthly Report</span>
+                    <div class="process-step">04</div>
+                    <h3>Business outcome, không vanity metrics</h3>
+                    <p>Traffic là phương tiện, không phải đích đến. Mọi báo cáo kết nối trực tiếp organic performance với business KPIs: Lead, ROI, Conversion Rate.</p>
+                    <div class="tag-list">
+                        <span>GA4 Events</span><span>Attribution Model</span>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="certs">
-        <div class="container">
-            <span class="section-tag">Recognition</span>
-            <h2 class="section-title">Chứng chỉ <span>& Thành tựu</span></h2>
-            
-            <div class="cert-list">
-                <div class="cert-item" data-aos="fade-left">
-                    <div class="cert-icon"><i class="fas fa-award"></i></div>
-                    <div>
-                        <h3 style="font-family: var(--font-header); font-size: 1.2rem;">Nhân sự Xuất sắc - Best Award 2026</h3>
-                        <p style="color: var(--text-sub);">Trao tặng bởi CEO GTV SEO - Anh Đỗ Anh Việt.</p>
-                    </div>
-                    <div style="font-weight: 800; color: var(--primary);">GTV SEO</div>
-                </div>
-
-                <div class="cert-item" data-aos="fade-left" data-aos-delay="100">
-                    <div class="cert-icon"><i class="fas fa-certificate"></i></div>
-                    <div>
-                        <h3 style="font-family: var(--font-header); font-size: 1.2rem;">Google Analytics Qualification</h3>
-                        <p style="color: var(--text-sub);">Chứng chỉ phân tích dữ liệu chuyên sâu từ Google.</p>
-                    </div>
-                    <div style="font-weight: 800; color: var(--primary);">GOOGLE</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
+    <!-- Footer / Contact -->
     <footer id="contact">
-        <div class="container">
-            <h2 class="footer-title">HỢP TÁC CÙNG VY</h2>
-            <p style="opacity: 0.8; margin-bottom: 50px; font-size: 1.2rem;">Sẵn sàng bứt phá các giới hạn mới trong thế giới Search Marketing AI.</p>
+        <div class="container footer-cta" data-aos="fade-up">
+            <h2>Sẵn sàng bứt phá giới hạn?</h2>
+            <p>Trò chuyện 15 phút về cấu trúc website hiện tại của bạn và tìm ra "lỗ hổng" chuyển đổi.</p>
             
             <div class="btn-group" style="justify-content: center;">
-                <a href="mailto:thao.vy@example.com" class="btn btn-primary" style="background: var(--primary); color: #fff;">Gửi Email Ngay</a>
-                <a href="https://www.linkedin.com/in/nmthaovy/" target="_blank" class="btn btn-secondary">Kết nối LinkedIn</a>
+                <a href="mailto:thao.vy@example.com" class="btn btn-primary">
+                    Book Lịch Audit 15 Phút
+                </a>
+                <a href="https://www.linkedin.com/in/nmthaovy/" target="_blank" class="btn btn-secondary" style="border-color: rgba(255, 255, 255, 0.2); color: #FFFFFF;">
+                    Kết nối LinkedIn <i class="fab fa-linkedin"></i>
+                </a>
             </div>
             
-            <p style="margin-top: 100px; font-size: 0.7rem; opacity: 0.5; letter-spacing: 2px; text-transform: uppercase;">
-                &copy; 2026 THIẾT KẾ BỞI NGUYỄN MAI THẢO VY
+            <p style="margin-top: 100px; font-size: 0.8rem; opacity: 0.4; letter-spacing: 2px; text-transform: uppercase;">
+                &copy; 2026 CODED BY CRITICAL ARCHITECT FOR THẢO VY
             </p>
         </div>
     </footer>
@@ -675,14 +769,51 @@
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
     <script>
-        AOS.init({ duration: 1000, once: true });
+        // Init Scroll Animations
+        AOS.init({ duration: 800, once: true, offset: 50 });
 
+        // Fix CSS break logic for Typing effect on Mobile
+        if(window.innerWidth < 600) {
+            document.querySelector('.mobile-break').style.display = 'block';
+        }
+
+        // Init Typing Effect
         var typed = new Typed('#typed', {
-            strings: ['Thuật toán GEO', 'Trí tuệ Nhân tạo', 'Ý định Người dùng', 'Hiệu suất Tăng trưởng'],
-            typeSpeed: 60,
-            backSpeed: 40,
+            strings: ['hành trình khách hàng.', 'thuật toán GEO.', 'hiệu suất tăng trưởng.'],
+            typeSpeed: 50,
+            backSpeed: 30,
+            backDelay: 2000,
             loop: true
         });
+
+        // Init Number Counter Animation
+        const animateCounters = () => {
+            const counters = document.querySelectorAll('.counter');
+            counters.forEach(counter => {
+                counter.innerText = '0';
+                const updateCounter = () => {
+                    const target = +counter.getAttribute('data-target');
+                    const c = +counter.innerText.replace(/,/g, '');
+                    const increment = target / 40; 
+                    
+                    if (c < target) {
+                        const nextVal = Math.ceil(c + increment);
+                        counter.innerText = nextVal.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+                        setTimeout(updateCounter, 30);
+                    } else {
+                        let finalStr = target.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+                        if (counter.classList.contains('pad-zero') && target < 10) {
+                            finalStr = '0' + target;
+                        }
+                        counter.innerText = finalStr;
+                    }
+                };
+                updateCounter();
+            });
+        };
+        
+        // Delay trigger cho mượt
+        setTimeout(animateCounters, 300);
     </script>
 </body>
 </html>
