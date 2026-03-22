@@ -377,7 +377,6 @@
             margin: 0;
         }
 
-        /* --- CREDENTIAL LINK & FILE MODAL CSS --- */
         .credential-link {
             display: inline-flex;
             align-items: center;
@@ -517,7 +516,7 @@
         .cs-section ul { margin: 10px 0 0 20px; color: var(--text-sub); line-height: 1.7;}
         .cs-section li { margin-bottom: 8px; }
 
-        /* --- DATA-DRIVEN CASE STUDIES (1 COLUMN V2 & GALLERY) --- */
+        /* --- DATA-DRIVEN CASE STUDIES (V4 - ALIGNED NUMBERS) --- */
         .project-stack {
             display: flex;
             flex-direction: column;
@@ -536,7 +535,7 @@
             display: grid;
             grid-template-columns: 1fr 1.2fr;
             gap: 50px;
-            align-items: center;
+            align-items: center; /* 🔴 Căn giữa dọc để fix lỗi trống khoảng trắng ở cột hình ảnh */
         }
         .project-card-v2:hover {
             border-color: rgba(255, 178, 44, 0.5);
@@ -566,12 +565,11 @@
         .project-card-v2 h3 {
             font-family: var(--font-header);
             font-size: clamp(1.6rem, 3vw, 2rem);
-            margin-bottom: 10px; /* 🔴 Giảm margin để nhường chỗ cho thẻ Role */
+            margin-bottom: 10px;
             color: var(--secondary);
             line-height: 1.3;
         }
-        
-        /* 🔴 NEW: Thẻ hiển thị Vai trò dự án */
+
         .project-role {
             font-size: 0.85rem;
             color: var(--text-main);
@@ -587,7 +585,7 @@
         }
         .project-role strong { color: var(--secondary); font-weight: 700; }
         .project-role i { color: var(--primary-dark); }
-
+        
         .project-card-v2 p.project-desc {
             color: var(--text-sub);
             margin-bottom: 20px;
@@ -605,28 +603,31 @@
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            margin-bottom: 20px;
             cursor: pointer;
             transition: var(--transition);
             align-self: flex-start;
+            margin-bottom: 25px; /* Khoảng cách với khối số liệu bên dưới */
         }
         .read-more-btn i { transition: transform 0.3s ease; }
         .read-more-btn:hover { color: var(--secondary); }
         .read-more-btn:hover i { transform: translateX(5px); }
 
+        /* 🔴 DATA BLOCK LỚN NẰM BÊN DƯỚI NÚT CTA */
         .data-showcase-v2 {
-            margin-top: auto; 
             padding-top: 25px;
             border-top: 1px solid rgba(0, 0, 0, 0.05);
-            display: flex;
-            gap: 30px;
-            flex-wrap: wrap;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px 20px;
         }
 
         .metric-block {
             display: flex;
             flex-direction: column;
             gap: 5px;
+        }
+        .metric-block.full-width {
+            grid-column: span 2;
         }
 
         .metric-big {
@@ -644,7 +645,7 @@
             text-transform: uppercase;
         }
 
-        /* 🔴 CAROUSEL GALLERY CSS */
+        /* CAROUSEL GALLERY CSS */
         .project-gallery {
             position: relative;
             width: 100%;
@@ -656,20 +657,20 @@
         }
         .gallery-track {
             display: flex;
-            align-items: center; /* SỬA LỖI FLEX STRETCH */
+            align-items: center; 
             transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
         }
         .gallery-img {
             flex: 0 0 100%; 
-            width: 100%; /* SỬA LỖI RESPONSIVE ASPECT RATIO */
-            height: auto; /* SỬA LỖI RESPONSIVE ASPECT RATIO */
+            width: 100%; 
+            height: auto; 
             object-fit: contain; 
             border-radius: 10px;
             border: 1px solid rgba(0,0,0,0.08);
             box-shadow: 0 4px 12px rgba(0,0,0,0.05);
             aspect-ratio: 16/9;
             background: #fff;
-            max-height: 400px;
+            max-height: 450px;
             cursor: zoom-in; 
         }
         .gallery-dots {
@@ -692,7 +693,6 @@
             border-radius: 4px;
         }
 
-        /* Nút mũi tên Carousel */
         .carousel-btn {
             position: absolute;
             top: calc(50% - 15px); 
@@ -775,9 +775,9 @@
             .btn { width: 100%; padding: 18px; }
             
             .project-card-v2 { padding: 25px; border-radius: 20px;}
-            .data-showcase-v2 { flex-direction: column; gap: 20px; }
             
-            /* Đã fix gallery-img width 100% thay vì flex-basis */
+            .data-showcase-v2 { grid-template-columns: 1fr; gap: 20px; }
+            .metric-block.full-width { grid-column: span 1; }
 
             .process-grid { grid-template-columns: 1fr; }
             .process-card { padding: 25px; }
@@ -937,7 +937,7 @@
 
             <div class="project-stack">
                 
-                <!-- CASE 1 (Hyper Inkers) -->
+                <!-- 🔴 UPDATE: CASE 1 (Hyper Inkers) - Khôi phục khối Data bự -->
                 <div class="project-card-v2" data-aos="fade-up">
                     <div class="project-content-v2">
                         <div class="project-industry">
@@ -946,7 +946,6 @@
                         </div>
                         <h3>Hyper Inkers: Dominate Local Search & Kéo 162 Leads/Tháng</h3>
                         
-                        <!-- 🔴 NEW: Vai trò dự án -->
                         <div class="project-role">
                             <i class="fas fa-user-tag"></i> <span><strong>Vai trò:</strong> Lead dự án</span>
                         </div>
@@ -955,8 +954,10 @@
                             Dự án thuộc lĩnh vực tattoo, có mức độ cạnh tranh cao khi khách hàng tìm kiếm dịch vụ trong bán kính gần hoặc tại San Antonio. Chiến lược lõi được tôi áp dụng là triển khai Semantic SEO kết hợp Content Visual, xây dựng Topic Cluster theo từng Style xăm và chuẩn hóa Entity (Brand - Artist - Location).
                         </p>
                         
+                        <!-- CTA đưa lên trên Data -->
                         <a class="read-more-btn open-cs-modal" data-id="hyper-inkers">Đọc Case Study chi tiết <i class="fas fa-arrow-right"></i></a>
-                        
+
+                        <!-- Khối Data khổng lồ chuẩn mockup -->
                         <div class="data-showcase-v2">
                             <div class="metric-block">
                                 <div class="metric-big">+8,269%</div>
@@ -966,11 +967,12 @@
                                 <div class="metric-big">108,800</div>
                                 <div class="metric-desc">Truy cập / tháng</div>
                             </div>
-                            <div class="metric-block">
+                            <div class="metric-block full-width">
                                 <div class="metric-big">1,500+</div>
                                 <div class="metric-desc">Trích dẫn AI Search</div>
                             </div>
                         </div>
+                        
                     </div>
                     <div class="project-gallery" data-carousel>
                         <button class="carousel-btn prev-btn"><i class="fas fa-chevron-left"></i></button>
@@ -994,7 +996,6 @@
                         </div>
                         <h3>Tối ưu tỷ lệ chuyển đổi cuộc gọi (+94%)</h3>
                         
-                        <!-- 🔴 NEW: Vai trò dự án -->
                         <div class="project-role">
                             <i class="fas fa-user-tag"></i> <span><strong>Vai trò:</strong> Lead dự án</span>
                         </div>
@@ -1002,7 +1003,7 @@
                         <p class="project-desc">
                             Với ngành High-ticket, traffic ít nhưng chất lượng. Tập trung tối ưu UI/UX và Search Intent để thúc đẩy hành động gọi điện. Đẩy mạnh content đánh đúng Search Intent (Ý định tìm kiếm) của tệp khách hàng V.I.P.
                         </p>
-                        
+
                         <a class="read-more-btn open-cs-modal" data-id="interimm">Đọc Case Study chi tiết <i class="fas fa-arrow-right"></i></a>
                         
                         <div class="data-showcase-v2">
@@ -1015,6 +1016,7 @@
                                 <div class="metric-desc">Organic Traffic (+40%)</div>
                             </div>
                         </div>
+
                     </div>
                     <div class="project-gallery" data-carousel>
                         <button class="carousel-btn prev-btn"><i class="fas fa-chevron-left"></i></button>
@@ -1037,7 +1039,6 @@
                         </div>
                         <h3>Bảo vệ Top Ranking & Mở rộng Market Share</h3>
                         
-                        <!-- 🔴 NEW: Vai trò dự án -->
                         <div class="project-role">
                             <i class="fas fa-user-tag"></i> <span><strong>Vai trò:</strong> Lead dự án</span>
                         </div>
@@ -1045,19 +1046,20 @@
                         <p class="project-desc">
                             Website đối mặt với đợt càn quét lớn từ Google Core Update. Chiến lược Thủ (giữ 95% Top 5 từ khóa cũ) và Công (đẩy 36% Top 3 cho nhóm từ khóa ngách mới) giúp doanh nghiệp vững vàng băng qua đợt Update khốc liệt.
                         </p>
-                        
+
                         <a class="read-more-btn open-cs-modal" data-id="housedesign">Đọc Case Study chi tiết <i class="fas fa-arrow-right"></i></a>
                         
                         <div class="data-showcase-v2">
                             <div class="metric-block">
                                 <div class="metric-big">95%</div>
-                                <div class="metric-desc">Bảo vệ thành công Top 5</div>
+                                <div class="metric-desc">Bảo vệ Top 5</div>
                             </div>
                             <div class="metric-block">
                                 <div class="metric-big">44,000</div>
-                                <div class="metric-desc">Đỉnh Traffic đạt được</div>
+                                <div class="metric-desc">Đỉnh Traffic</div>
                             </div>
                         </div>
+
                     </div>
                     <div class="project-gallery" data-carousel>
                         <button class="carousel-btn prev-btn"><i class="fas fa-chevron-left"></i></button>
@@ -1079,7 +1081,6 @@
                         </div>
                         <h3>Xây dựng từ Domain Mới đạt 7.162 Sessions</h3>
                         
-                        <!-- 🔴 NEW: Vai trò dự án -->
                         <div class="project-role">
                             <i class="fas fa-user-tag"></i> <span><strong>Vai trò:</strong> Lead dự án</span>
                         </div>
@@ -1089,7 +1090,7 @@
                         </p>
                         
                         <a class="read-more-btn open-cs-modal" data-id="vibim">Đọc Case Study chi tiết <i class="fas fa-arrow-right"></i></a>
-                        
+
                         <div class="data-showcase-v2">
                             <div class="metric-block">
                                 <div class="metric-big">7,162</div>
@@ -1097,9 +1098,10 @@
                             </div>
                             <div class="metric-block">
                                 <div class="metric-big">50+</div>
-                                <div class="metric-desc">B2B Leads (Demo/Form)</div>
+                                <div class="metric-desc">B2B Leads</div>
                             </div>
                         </div>
+
                     </div>
                     <div class="project-gallery" data-carousel>
                         <button class="carousel-btn prev-btn"><i class="fas fa-chevron-left"></i></button>
@@ -1202,11 +1204,14 @@
                 
                 <div class="cs-section">
                     <div class="cs-section-title"><i class="fas fa-exclamation-circle"></i> Hiện trạng & Thách thức</div>
-                    <p id="csCurrent">Nội dung hiện trạng...</p>
+                    <!-- 🔴 Đổi từ thẻ <p> sang <div> để chứa văn bản và danh sách chuẩn HTML -->
+                    <div id="csCurrent" style="color: var(--text-sub); line-height: 1.7; font-size: 1.05rem;">Nội dung hiện trạng...</div>
                 </div>
 
                 <div class="cs-section">
                     <div class="cs-section-title"><i class="fas fa-bolt"></i> Giải pháp Triển khai</div>
+                    <!-- 🔴 Thêm thẻ để hiển thị đoạn mô tả Giải pháp -->
+                    <p id="csActionDesc" style="margin-bottom: 15px; display: none;"></p>
                     <ul id="csAction">
                         <li>Công việc 1</li>
                         <li>Công việc 2</li>
@@ -1325,19 +1330,28 @@
             });
         });
 
-        // CASE STUDY MODAL LOGIC & DATA
+        // 🔴 CASE STUDY MODAL LOGIC & DATA (CẬP NHẬT DATA HYPER INKERS)
         const caseStudyData = {
             'hyper-inkers': {
                 title: 'Hyper Inkers: Dominate Local Search tại Mỹ',
-                current: 'Khởi điểm là một website mới với lưu lượng truy cập lẹt đẹt (~1.300/tháng). Chưa có sự hiện diện trên bản đồ Local SEO tại thị trường xăm hình Mỹ vô cùng khốc liệt, khách hàng không tìm thấy thương hiệu trên Google Maps hay AI Search.',
+                current: '<p style="margin-bottom: 10px;">Dự án thuộc Ngách Tattoo tại thị trường Mỹ. Khách hàng là một Studio xăm hình nghệ thuật đặt tại San Antonio, TX - đặc thù cạnh tranh cực kỳ gay gắt trên Local Search. Tại thời điểm tiếp nhận (02/2025), website chỉ lẹt đẹt ở mức 1.300 Organic Traffic/tháng, với lượng truy cập chủ yếu dựa dẫm vào trang chủ.</p><p style="margin-bottom: 10px;"><strong>3 Thách thức cốt lõi:</strong></p><ul><li><strong>Nền tảng Technical yếu:</strong> Website dính nhiều lỗi chí mạng (Page speed kém, URL 404, thiếu Canonical, cấu trúc phân tầng lộn xộn và Sitemap không đạt chuẩn).</li><li><strong>Thin Content:</strong> Sở hữu 154 bài viết nhưng tỷ lệ Thin Content là 100%, thiếu chiều sâu, không giải quyết đúng Search Intent của người dùng Mỹ và không target từ khóa rõ ràng.</li><li><strong>Đặc thù ngành khó:</strong> Khách hàng ngành Tattoo có hành vi tìm kiếm hình ảnh (Visual Search) rất cao trước khi chọn tiệm. Họ đòi hỏi sự uy tín, độ an toàn vệ sinh và năng lực thực tế của Artist (Thợ xăm). Đây là rào cản chuyển đổi cực lớn nếu website không chứng minh được tiêu chuẩn E-E-A-T.</li></ul>',
+                actionDesc: 'Nhận thấy các đối thủ trực tiếp khá yếu về mặt Content Blog, tôi quyết định không đánh trực diện bằng Backlink mà tập trung nguồn lực vào việc xây dựng Topical Authority và Local Entity.',
                 action: [
-                    'Nghiên cứu đối thủ và xây dựng hệ thống 1.500+ Local Citations tại Mỹ.',
-                    'Tối ưu hóa thực thể (Entity Optimization) để định danh thương hiệu rõ ràng cho Google.',
-                    'Xây dựng Topical Map sâu về mảng Tattoo để đón đầu xu hướng SGE (AI Search).'
+                    'Xử lý triệt để các rào cản kỹ thuật (Page speed, Sitemap, Canonical, 404).',
+                    'Cấu trúc lại toàn bộ website. Tiến hành xóa/gộp các bài viết Thin Content để tập trung sức mạnh (Link Juice) cho các trang dịch vụ lõi.',
+                    'Tối ưu Onsite chuẩn E-E-A-T (Tạo trang Artist Profile, Tattoo Gallery, Aftercare).',
+                    'Đồng bộ hóa tín hiệu địa phương (Local Signals): Khai báo Schema Local Business, phủ sóng từ khóa "Tattoo + San Antonio" vào các trang cốt lõi và Footer (NAP).',
+                    'Triển khai bộ nội dung bao phủ toàn bộ các Style xăm (Realism, Traditional, Cover-up...) kết hợp Semantic Internal Linking chặt chẽ.',
+                    'Tận dụng kho ảnh xăm thực tế chất lượng cao, phân phối trên các nền tảng thiên về Visual như Pinterest, Behance để kéo traffic hình ảnh - đúng với hành vi cốt lõi của khách hàng xăm.',
+                    'Khai thác "Lazy Link Building" (Đặc thù thị trường US): Sản xuất các nội dung nghiên cứu sâu trong ngành để tự động thu hút backlink trích dẫn tự nhiên từ các blogger/website cùng ngách.'
                 ],
                 result: [
-                    'Traffic tăng trưởng đột phá 8.269%, đạt đỉnh 108.800 visits/tháng.',
-                    'Tạo ra dòng Lead ổn định: 162 Qualified Leads/tháng (thông qua Form & Call).'
+                    'Đạt <strong>100% KPI</strong> chỉ trong 8 tháng triển khai.',
+                    'Tăng trưởng từ <strong>1.300</strong> lên <strong>108.800 Organic Traffic/tháng</strong> (Semrush).',
+                    'Thứ hạng từ khóa: <strong>70,4% Top 3</strong> | <strong>91,8% Top 5</strong> | <strong>97,7% Top 10</strong>.',
+                    '<strong>170+ keywords lên TOP3</strong>, bao gồm các key chuyển đổi cao: san antonio tattoo shops, tattoo parlor san antonio...',
+                    'Ghi nhận <strong>1.500+ trích dẫn AI Overview</strong>, 446 ChatGPT, 142 Gemini.',
+                    'Thúc đẩy lượng Lead Organic lên <strong>78 lượt Submit Form</strong> và <strong>84 lượt Click Call/tháng</strong>.'
                 ]
             },
             'interimm': {
@@ -1393,6 +1407,15 @@
                 if(data) {
                     document.getElementById('csTitle').innerHTML = data.title;
                     document.getElementById('csCurrent').innerHTML = data.current;
+                    
+                    // 🔴 Kiểm tra xem dự án có actionDesc (Mô tả giải pháp) không để hiển thị
+                    const actionDescEl = document.getElementById('csActionDesc');
+                    if (data.actionDesc) {
+                        actionDescEl.innerHTML = data.actionDesc;
+                        actionDescEl.style.display = 'block';
+                    } else {
+                        actionDescEl.style.display = 'none';
+                    }
                     
                     document.getElementById('csAction').innerHTML = data.action.map(item => `<li>${item}</li>`).join('');
                     document.getElementById('csResult').innerHTML = data.result.map(item => `<li>${item}</li>`).join('');
