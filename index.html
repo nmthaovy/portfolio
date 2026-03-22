@@ -96,7 +96,7 @@
 
         .nav-links a:hover { color: var(--primary-dark); }
 
-        /* --- Hero Section (Optimized Above-the-fold) --- */
+        /* --- Hero Section --- */
         .hero {
             min-height: 100vh;
             display: flex;
@@ -377,7 +377,7 @@
             margin: 0;
         }
 
-        /* --- CREDENTIAL LINK & MODAL CSS --- */
+        /* --- CREDENTIAL LINK & FILE MODAL CSS --- */
         .credential-link {
             display: inline-flex;
             align-items: center;
@@ -449,14 +449,82 @@
             z-index: 2001;
         }
 
-        /* --- DATA-DRIVEN CASE STUDIES --- */
-        .bento-grid {
-            display: grid;
-            grid-template-columns: repeat(12, 1fr);
-            gap: 24px;
+        /* --- 🔴 NEW: CASE STUDY TEXT MODAL CSS --- */
+        .cs-modal-overlay {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0; top: 0;
+            width: 100%; height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(8px);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        .cs-modal-overlay.show {
+            display: flex;
+            opacity: 1;
+        }
+        .cs-modal-box {
+            background: #fff;
+            width: 100%;
+            max-width: 700px;
+            max-height: 85vh;
+            border-radius: 20px;
+            overflow-y: auto;
+            position: relative;
+            transform: translateY(30px);
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            border: 1px solid rgba(0,0,0,0.1);
+        }
+        .cs-modal-overlay.show .cs-modal-box {
+            transform: translateY(0);
+        }
+        .cs-close-btn {
+            position: sticky;
+            top: 20px; right: 20px;
+            float: right;
+            width: 36px; height: 36px;
+            background: #f1f1f1;
+            border-radius: 50%;
+            display: flex;
+            align-items: center; justify-content: center;
+            font-size: 1.2rem; color: #000;
+            cursor: pointer;
+            transition: var(--transition);
+            z-index: 10;
+        }
+        .cs-close-btn:hover { background: var(--primary); }
+        
+        .cs-modal-body { padding: 40px; }
+        .cs-modal-title { font-family: var(--font-header); font-size: 2rem; color: var(--secondary); margin-bottom: 30px; line-height: 1.2; padding-right: 40px;}
+        
+        .cs-section { margin-bottom: 30px; }
+        .cs-section-title { 
+            display: flex; align-items: center; gap: 10px;
+            font-family: var(--font-header); font-size: 1.1rem; 
+            text-transform: uppercase; letter-spacing: 1px;
+            color: var(--secondary); margin-bottom: 15px; 
+            border-bottom: 2px solid rgba(255, 178, 44, 0.3);
+            padding-bottom: 10px;
+        }
+        .cs-section-title i { color: var(--primary-dark); font-size: 1.3rem;}
+        .cs-section p { color: var(--text-sub); line-height: 1.7; font-size: 1.05rem; margin: 0;}
+        .cs-section ul { margin: 10px 0 0 20px; color: var(--text-sub); line-height: 1.7;}
+        .cs-section li { margin-bottom: 8px; }
+
+        /* --- DATA-DRIVEN CASE STUDIES (1 COLUMN V2 & GALLERY) --- */
+        .project-stack {
+            display: flex;
+            flex-direction: column;
+            gap: 50px;
         }
 
-        .bento-card {
+        .project-card-v2 {
             background: var(--card-bg);
             border: 1px solid rgba(0, 0, 0, 0.08);
             border-radius: 24px;
@@ -465,16 +533,22 @@
             position: relative;
             overflow: hidden;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.02);
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 50px;
+            align-items: center;
         }
-        .bento-card:hover {
+        .project-card-v2:hover {
             border-color: rgba(255, 178, 44, 0.5);
             box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.08);
             transform: translateY(-5px);
         }
 
-        .card-large { grid-column: span 8; }
-        .card-medium { grid-column: span 4; }
-        .card-half { grid-column: span 6; }
+        .project-content-v2 {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
 
         .project-industry {
             font-size: 0.8rem;
@@ -489,31 +563,51 @@
             gap: 10px;
         }
         
-        .bento-card h3 {
+        .project-card-v2 h3 {
             font-family: var(--font-header);
-            font-size: clamp(1.4rem, 3vw, 1.8rem);
+            font-size: clamp(1.6rem, 3vw, 2rem);
             margin-bottom: 15px;
             color: var(--secondary);
             line-height: 1.3;
         }
 
-        .data-showcase {
-            margin-top: 30px;
+        .read-more-btn {
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: var(--primary-dark);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 20px;
+            cursor: pointer;
+            transition: var(--transition);
+            align-self: flex-start;
+        }
+        .read-more-btn i { transition: transform 0.3s ease; }
+        .read-more-btn:hover { color: var(--secondary); }
+        .read-more-btn:hover i { transform: translateX(5px); }
+
+        .data-showcase-v2 {
+            margin-top: auto; 
             padding-top: 25px;
             border-top: 1px solid rgba(0, 0, 0, 0.05);
+            display: flex;
+            gap: 40px;
+            flex-wrap: wrap;
         }
 
-        .metric-row {
+        .metric-block {
             display: flex;
-            align-items: baseline;
-            gap: 10px;
-            margin-bottom: 5px;
-            flex-wrap: wrap;
+            flex-direction: column;
+            gap: 5px;
         }
 
         .metric-big {
             font-family: var(--font-header);
-            font-size: clamp(2.2rem, 5vw, 3rem);
+            font-size: clamp(2.2rem, 4vw, 2.8rem);
             font-weight: 800;
             color: var(--primary-dark);
             line-height: 1;
@@ -525,29 +619,51 @@
             font-weight: 500;
         }
 
-        .bar-chart { margin-top: 20px; width: 100%;}
-        .bar-row {
+        /* 🔴 NEW: Gallery Carousel CSS */
+        .project-gallery {
+            position: relative;
+            width: 100%;
+            border-radius: 16px;
+            background: #FAFAFA;
+            border: 1px solid rgba(0,0,0,0.04);
+            padding: 15px 15px 5px 15px;
+        }
+        .gallery-track {
             display: flex;
-            align-items: center;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
             gap: 15px;
-            margin-bottom: 12px;
+            padding-bottom: 15px;
+            scrollbar-width: thin; 
+            scrollbar-color: rgba(255, 178, 44, 0.5) transparent;
         }
-        .bar-label { width: 50px; font-size: 0.85rem; font-weight: 600; color: var(--text-sub);}
-        .bar-track {
-            flex: 1;
-            height: 12px;
-            background: #F0F0F0; 
+        .gallery-track::-webkit-scrollbar {
+            height: 6px;
+        }
+        .gallery-track::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .gallery-track::-webkit-scrollbar-thumb {
+            background-color: rgba(255, 178, 44, 0.5);
             border-radius: 10px;
-            overflow: hidden;
         }
-        .bar-fill {
-            height: 100%;
+        .gallery-img {
+            flex: 0 0 85%; /* Giúp hở ra một đoạn ảnh sau để gợi ý cuộn */
+            scroll-snap-align: center;
             border-radius: 10px;
-            background: var(--primary);
-            transition: width 1.5s ease-in-out;
+            object-fit: cover;
+            border: 1px solid rgba(0,0,0,0.08);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            aspect-ratio: 16/9;
+            background: #fff;
         }
-        .bar-fill.before { background: #D9D9D9; width: 10%; } 
-        .bar-number { width: 60px; font-size: 0.85rem; font-weight: 700; text-align: right;}
+        .gallery-hint {
+            text-align: center;
+            font-size: 0.75rem;
+            color: var(--text-sub);
+            padding-top: 5px;
+            padding-bottom: 5px;
+        }
 
         /* --- Process Section --- */
         .process-grid {
@@ -589,9 +705,10 @@
             .hero-stats { justify-content: center; }
             .btn-group { justify-content: center; }
             .avatar-frame { max-width: 450px; margin: 0 auto; }
-            .card-large, .card-medium, .card-half { grid-column: span 12; }
             .nav-links { display: none; } 
             .cert-card { text-align: left; }
+            
+            .project-card-v2 { grid-template-columns: 1fr; gap: 30px; }
         }
 
         @media (max-width: 600px) {
@@ -601,9 +718,16 @@
             .stat-item { width: 40%; } 
             .btn-group { flex-direction: column; width: 100%; gap: 12px; }
             .btn { width: 100%; padding: 18px; }
-            .bento-card { padding: 25px; border-radius: 20px;}
+            
+            .project-card-v2 { padding: 25px; border-radius: 20px;}
+            .data-showcase-v2 { flex-direction: column; gap: 20px; }
+            .gallery-img { flex: 0 0 92%; }
+
             .process-grid { grid-template-columns: 1fr; }
+            .process-card { padding: 25px; }
             .cert-card { flex-direction: column; gap: 15px; }
+            .cs-modal-body { padding: 25px; }
+            .cs-modal-title { font-size: 1.6rem; }
         }
     </style>
 </head>
@@ -678,7 +802,7 @@
         </div>
     </header>
 
-    <!-- 🔴 ABOUT ME SECTION -->
+    <!-- ABOUT ME SECTION -->
     <section id="about">
         <div class="container">
             <div class="about-grid">
@@ -695,7 +819,6 @@
                 </div>
 
                 <div class="about-credentials" data-aos="fade-left">
-                    <!-- Credential 1: Học vấn -->
                     <div class="cert-card">
                         <div class="cert-icon"><i class="fas fa-graduation-cap"></i></div>
                         <div class="cert-content">
@@ -711,7 +834,6 @@
                         </div>
                     </div>
 
-                    <!-- Credential 2: Chứng chỉ -->
                     <div class="cert-card">
                         <div class="cert-icon"><i class="fas fa-certificate"></i></div>
                         <div class="cert-content">
@@ -720,7 +842,6 @@
                                 <ul style="margin: 0; padding-left: 15px; color: var(--text-sub);">
                                     <li style="margin-bottom: 8px;">
                                         <strong style="color: var(--text-main);">Fundamentals of Digital Marketing</strong> 
-                                        <!-- SỬ DỤNG GOOGLE VIEWER ĐỂ CHỐNG DOWNLOAD -->
                                         <a href="javascript:void(0)" data-file="https://docs.google.com/viewer?url=https://raw.githubusercontent.com/nmthaovy/portfolio/main/digitalgarage_certificate.pdf&embedded=true" class="credential-link open-modal">Xem <i class="fas fa-search-plus" style="font-size: 0.6rem;"></i></a>
                                         <br>Cấp bởi Google (2021)
                                     </li>
@@ -732,14 +853,12 @@
                         </div>
                     </div>
 
-                    <!-- Credential 3: Giải thưởng -->
                     <div class="cert-card">
                         <div class="cert-icon"><i class="fas fa-trophy"></i></div>
                         <div class="cert-content">
                             <h4>Giải thưởng thực chiến</h4>
                             <div style="font-size: 0.9rem; color: var(--text-sub); margin-top: 8px;">
                                 <strong style="color: var(--secondary);">Nhân viên xuất sắc</strong>
-                                <!-- SỬ DỤNG GOOGLE VIEWER VỚI LINK MÃ HÓA CHÍNH XÁC -->
                                 <a href="javascript:void(0)" data-file="https://docs.google.com/viewer?url=https://raw.githubusercontent.com/nmthaovy/portfolio/main/GTV_CT2026_Gi%25E1%25BA%25A5y%2520khen%2520Vy%2520Nguyen.pdf&embedded=true" class="credential-link open-modal">Xem <i class="fas fa-search-plus" style="font-size: 0.6rem;"></i></a>
                                 <br>
                                 Được GTV SEO vinh danh vì sự cống hiến tận tâm, bền bỉ và những đóng góp xuất sắc.
@@ -755,118 +874,134 @@
     <section id="projects">
         <div class="container">
             <div class="section-header" data-aos="fade-up">
-                <span class="section-tag">Proof of Work</span>
-                <h2 class="section-title">Những con số <i>không biết nói dối.</i></h2>
+                <span class="section-tag">Dự án nổi bật của tôi</span>
+                <h2 class="section-title">Từ chiến lược đến <br><i>tăng trưởng thực tế.</i></h2>
                 <p style="color: var(--text-sub); margin-top: 15px; font-size: 1.1rem;">Khám phá cách tôi cấu trúc chiến lược để mang lại tăng trưởng đột phá về lượng truy cập và quan trọng nhất là: Khách hàng tiềm năng.</p>
             </div>
 
-            <div class="bento-grid">
+            <div class="project-stack">
                 
-                <!-- CASE 1: Hyper Inkers (LARGE) -->
-                <div class="bento-card card-large" data-aos="fade-up">
-                    <div class="project-industry">
-                        <span>Tattoo US (Thị trường Mỹ)</span>
-                        <span style="color: var(--primary-dark);"><i class="fas fa-map-marker-alt"></i> Local SEO & AI Search</span>
-                    </div>
-                    <h3>Hyper Inkers: Dominate Local Search & Kéo 162 Leads/Tháng</h3>
-                    <p style="color: var(--text-sub);">Chiến lược xây dựng 1.500+ citations và tối ưu thực thể (Entity) giúp doanh nghiệp xăm hình tại Mỹ thống lĩnh Google Maps và SGE.</p>
-                    
-                    <div class="data-showcase">
-                        <div style="display: flex; justify-content: space-between; gap: 20px; flex-wrap: wrap;">
-                            <div>
-                                <div class="metric-desc">Tăng trưởng Organic Traffic</div>
-                                <div class="metric-row">
-                                    <div class="metric-big">108,800</div>
-                                    <div style="color: var(--text-sub); font-weight: 600;">/ tháng</div>
-                                </div>
-                            </div>
-                            <div>
-                                <div class="metric-desc">Qualified Leads (Form & Call)</div>
-                                <div class="metric-row">
-                                    <div class="metric-big">162</div>
-                                    <div style="color: var(--text-sub); font-weight: 600;">/ tháng</div>
-                                </div>
-                            </div>
+                <!-- CASE 1: Hyper Inkers -->
+                <div class="project-card-v2" data-aos="fade-up">
+                    <div class="project-content-v2">
+                        <div class="project-industry">
+                            <span>Tattoo US (Thị trường Mỹ)</span>
+                            <span style="color: var(--primary-dark);"><i class="fas fa-map-marker-alt"></i> Local SEO & AI Search</span>
                         </div>
-
-                        <div class="bar-chart">
-                            <div class="bar-row">
-                                <div class="bar-label">Before</div>
-                                <div class="bar-track"><div class="bar-fill before"></div></div>
-                                <div class="bar-number">1.3K</div>
-                            </div>
-                            <div class="bar-row">
-                                <div class="bar-label">After</div>
-                                <div class="bar-track"><div class="bar-fill" style="width: 100%;"></div></div>
-                                <div class="bar-number">108.8K</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- CASE 2: Interimm (MEDIUM) -->
-                <div class="bento-card card-medium" data-aos="fade-up" data-aos-delay="100">
-                    <div class="project-industry">
-                        <span>Di trú EB5 (High-ticket)</span>
-                        <span style="color: var(--primary-dark);"><i class="fas fa-phone-alt"></i> CRO Focus</span>
-                    </div>
-                    <h3>Tối ưu tỷ lệ chuyển đổi cuộc gọi (+94%)</h3>
-                    <p style="color: var(--text-sub); margin-bottom: 20px; font-size: 0.95rem;">Với ngành High-ticket, traffic ít nhưng chất lượng. Tập trung tối ưu UI/UX và Search Intent để thúc đẩy hành động gọi điện.</p>
-                    
-                    <div class="data-showcase" style="margin-top: auto; border-top: none; padding-top: 0;">
-                        <div class="metric-row">
-                            <div class="metric-big">+94%</div>
-                        </div>
-                        <div class="metric-desc">Call Conversions</div>
+                        <h3>Hyper Inkers: Dominate Local Search & Kéo 162 Leads/Tháng</h3>
+                        <a class="read-more-btn open-cs-modal" data-id="hyper-inkers">Đọc Case Study chi tiết <i class="fas fa-arrow-right"></i></a>
                         
-                        <div class="metric-row" style="margin-top: 20px;">
-                            <div class="metric-big" style="font-size: 2rem; color: var(--text-main);">6,100</div>
-                        </div>
-                        <div class="metric-desc">Organic Traffic (+40%)</div>
-                    </div>
-                </div>
-
-                <!-- CASE 3: Housedesign (HALF) -->
-                <div class="bento-card card-half" data-aos="fade-up">
-                    <div class="project-industry">
-                        <span>Nội Thất</span>
-                        <span style="color: var(--primary-dark);"><i class="fas fa-chess-knight"></i> Chiến lược Thủ/Công</span>
-                    </div>
-                    <h3>Bảo vệ Top Ranking & Mở rộng Market Share</h3>
-                    <p style="color: var(--text-sub);">Giữ vững 95% Top 5 từ khóa cốt lõi trong đợt Google Core Update, đồng thời đẩy 36% Top 3 cho nhóm từ khóa mới.</p>
-                    
-                    <div class="data-showcase">
-                        <div class="bar-chart">
-                            <div class="bar-row">
-                                <div class="bar-label">Traffic</div>
-                                <div class="bar-track"><div class="bar-fill before" style="width: 60%;"></div></div>
-                                <div class="bar-number">27.7K</div>
+                        <div class="data-showcase-v2">
+                            <div class="metric-block">
+                                <div class="metric-big">108,800</div>
+                                <div class="metric-desc">Lượt truy cập / tháng</div>
                             </div>
-                            <div class="bar-row">
-                                <div class="bar-label">Peak</div>
-                                <div class="bar-track"><div class="bar-fill" style="width: 95%;"></div></div>
-                                <div class="bar-number">44.0K</div>
+                            <div class="metric-block">
+                                <div class="metric-big">162</div>
+                                <div class="metric-desc">Qualified Leads / tháng</div>
                             </div>
                         </div>
                     </div>
+                    <div class="project-gallery">
+                        <div class="gallery-track">
+                            <!-- Chèn 3-5 ảnh vào đây, người dùng có thể cuộn ngang -->
+                            <img src="https://via.placeholder.com/800x450.png?text=Biểu+đồ+Traffic+Tăng+Trưởng" class="gallery-img" alt="Chart 1">
+                            <img src="https://via.placeholder.com/800x450.png?text=Báo+cáo+Lead+Conversion" class="gallery-img" alt="Chart 2">
+                            <img src="https://via.placeholder.com/800x450.png?text=Thứ+hạng+Google+Maps" class="gallery-img" alt="Chart 3">
+                        </div>
+                        <div class="gallery-hint"><i class="fas fa-arrows-alt-h"></i> Cuộn ngang để xem biểu đồ</div>
+                    </div>
                 </div>
 
-                <!-- CASE 4: ViBIM (HALF) -->
-                <div class="bento-card card-half" data-aos="fade-up" data-aos-delay="100">
-                    <div class="project-industry">
-                        <span>B2B Global</span>
-                        <span style="color: var(--primary-dark);"><i class="fas fa-globe"></i> Global SEO</span>
+                <!-- CASE 2: Interimm -->
+                <div class="project-card-v2" data-aos="fade-up" data-aos-delay="100">
+                    <div class="project-content-v2">
+                        <div class="project-industry">
+                            <span>Di trú EB5 (High-ticket)</span>
+                            <span style="color: var(--primary-dark);"><i class="fas fa-phone-alt"></i> CRO Focus</span>
+                        </div>
+                        <h3>Tối ưu tỷ lệ chuyển đổi cuộc gọi (+94%)</h3>
+                        <a class="read-more-btn open-cs-modal" data-id="interimm">Đọc Case Study chi tiết <i class="fas fa-arrow-right"></i></a>
+                        
+                        <div class="data-showcase-v2">
+                            <div class="metric-block">
+                                <div class="metric-big">+94%</div>
+                                <div class="metric-desc">Call Conversions</div>
+                            </div>
+                            <div class="metric-block">
+                                <div class="metric-big">6,100</div>
+                                <div class="metric-desc">Organic Traffic (+40%)</div>
+                            </div>
+                        </div>
                     </div>
-                    <h3>Xây dựng từ Domain Mới đạt 7.162 Sessions</h3>
-                    <p style="color: var(--text-sub);">Chiến lược thâm nhập thị trường B2B quốc tế, mang lại lead chất lượng cao qua các form Demo và LinkedIn.</p>
-                    
-                    <div class="data-showcase vibim-fix" style="display: flex; gap: 30px; align-items: center;">
-                        <div>
-                            <div class="metric-big" style="color: var(--secondary); font-size: 2.5rem;">50+</div>
-                            <div class="metric-desc">Key B2B CTAs (Demo/Form)</div>
+                    <div class="project-gallery">
+                        <div class="gallery-track">
+                            <img src="https://via.placeholder.com/800x450.png?text=Heatmap+Landing+Page" class="gallery-img" alt="Chart 1">
+                            <img src="https://via.placeholder.com/800x450.png?text=Biểu+đồ+Click+to+Call" class="gallery-img" alt="Chart 2">
+                            <img src="https://via.placeholder.com/800x450.png?text=Tăng+trưởng+Traffic+Tự+nhiên" class="gallery-img" alt="Chart 3">
                         </div>
-                        <div class="vibim-pattern" style="flex: 1; height: 60px; background: repeating-linear-gradient(45deg, rgba(255, 178, 44, 0.15), rgba(255, 178, 44, 0.15) 10px, transparent 10px, transparent 20px); border-radius: 8px;">
+                        <div class="gallery-hint"><i class="fas fa-arrows-alt-h"></i> Cuộn ngang để xem biểu đồ</div>
+                    </div>
+                </div>
+
+                <!-- CASE 3: Housedesign -->
+                <div class="project-card-v2" data-aos="fade-up" data-aos-delay="100">
+                    <div class="project-content-v2">
+                        <div class="project-industry">
+                            <span>Nội Thất</span>
+                            <span style="color: var(--primary-dark);"><i class="fas fa-chess-knight"></i> Chiến lược Thủ/Công</span>
                         </div>
+                        <h3>Bảo vệ Top Ranking & Mở rộng Market Share</h3>
+                        <a class="read-more-btn open-cs-modal" data-id="housedesign">Đọc Case Study chi tiết <i class="fas fa-arrow-right"></i></a>
+                        
+                        <div class="data-showcase-v2">
+                            <div class="metric-block">
+                                <div class="metric-big">95%</div>
+                                <div class="metric-desc">Bảo vệ thành công Top 5</div>
+                            </div>
+                            <div class="metric-block">
+                                <div class="metric-big">44,000</div>
+                                <div class="metric-desc">Đỉnh Traffic đạt được</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-gallery">
+                        <div class="gallery-track">
+                            <img src="https://via.placeholder.com/800x450.png?text=Google+Core+Update+Defense" class="gallery-img" alt="Chart 1">
+                            <img src="https://via.placeholder.com/800x450.png?text=Topic+Cluster+Performance" class="gallery-img" alt="Chart 2">
+                        </div>
+                        <div class="gallery-hint"><i class="fas fa-arrows-alt-h"></i> Cuộn ngang để xem biểu đồ</div>
+                    </div>
+                </div>
+
+                <!-- CASE 4: ViBIM -->
+                <div class="project-card-v2" data-aos="fade-up" data-aos-delay="100">
+                    <div class="project-content-v2">
+                        <div class="project-industry">
+                            <span>B2B Global</span>
+                            <span style="color: var(--primary-dark);"><i class="fas fa-globe"></i> Global SEO</span>
+                        </div>
+                        <h3>Xây dựng từ Domain Mới đạt 7.162 Sessions</h3>
+                        <a class="read-more-btn open-cs-modal" data-id="vibim">Đọc Case Study chi tiết <i class="fas fa-arrow-right"></i></a>
+                        
+                        <div class="data-showcase-v2">
+                            <div class="metric-block">
+                                <div class="metric-big">7,162</div>
+                                <div class="metric-desc">Sessions / Tháng</div>
+                            </div>
+                            <div class="metric-block">
+                                <div class="metric-big">50+</div>
+                                <div class="metric-desc">B2B Leads (Demo/Form)</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-gallery">
+                        <div class="gallery-track">
+                            <img src="https://via.placeholder.com/800x450.png?text=Traffic+từ+Zero+Domain" class="gallery-img" alt="Chart 1">
+                            <img src="https://via.placeholder.com/800x450.png?text=Global+Search+Visibility" class="gallery-img" alt="Chart 2">
+                            <img src="https://via.placeholder.com/800x450.png?text=Lead+Tracking+Dashboard" class="gallery-img" alt="Chart 3">
+                        </div>
+                        <div class="gallery-hint"><i class="fas fa-arrows-alt-h"></i> Cuộn ngang để xem biểu đồ</div>
                     </div>
                 </div>
 
@@ -876,6 +1011,7 @@
 
     <!-- SECTION: HOW I WORK -->
     <section id="process">
+        <!-- Kept the exact same code to preserve layout -->
         <div class="container">
             <div class="section-header" data-aos="fade-up">
                 <span class="section-tag">Cách tôi làm việc</span>
@@ -886,7 +1022,6 @@
             </div>
 
             <div class="process-grid">
-                <!-- Step 1 -->
                 <div class="process-card" data-aos="fade-up">
                     <div class="process-step">01</div>
                     <h3>Root Cause, không symptom</h3>
@@ -895,8 +1030,6 @@
                         <span>Log File</span><span>GSC Data</span><span>Screaming Frog</span>
                     </div>
                 </div>
-
-                <!-- Step 2 -->
                 <div class="process-card" data-aos="fade-up" data-aos-delay="100">
                     <div class="process-step">02</div>
                     <h3>Priority Matrix, không to-do list</h3>
@@ -905,8 +1038,6 @@
                         <span>Impact Framework</span><span>Competitor Gap</span>
                     </div>
                 </div>
-
-                <!-- Step 3 -->
                 <div class="process-card" data-aos="fade-up" data-aos-delay="200">
                     <div class="process-step">03</div>
                     <h3>Semantic depth, không nhồi nhét</h3>
@@ -915,8 +1046,6 @@
                         <span>Topical Map</span><span>Entity Optimization</span>
                     </div>
                 </div>
-
-                <!-- Step 4 -->
                 <div class="process-card" data-aos="fade-up" data-aos-delay="300">
                     <div class="process-step">04</div>
                     <h3>Business outcome, không vanity metrics</h3>
@@ -950,11 +1079,41 @@
         </div>
     </footer>
 
-    <!-- 🔴 NEW: MULTI-FORMAT MODAL -->
+    <!-- FILE MODAL (For certificates) -->
     <div id="fileModal" class="modal-overlay">
         <span class="close-modal">&times;</span>
         <div class="modal-content-container" id="modalContainer">
-            <!-- Content will be injected by JS -->
+        </div>
+    </div>
+
+    <!-- 🔴 NEW: CASE STUDY DETAIL MODAL -->
+    <div id="csModal" class="cs-modal-overlay">
+        <div class="cs-modal-box">
+            <span class="cs-close-btn">&times;</span>
+            <div class="cs-modal-body">
+                <h3 class="cs-modal-title" id="csTitle">Tiêu đề dự án</h3>
+                
+                <div class="cs-section">
+                    <div class="cs-section-title"><i class="fas fa-exclamation-circle"></i> Hiện trạng & Thách thức</div>
+                    <p id="csCurrent">Nội dung hiện trạng...</p>
+                </div>
+
+                <div class="cs-section">
+                    <div class="cs-section-title"><i class="fas fa-bolt"></i> Giải pháp Triển khai</div>
+                    <ul id="csAction">
+                        <li>Công việc 1</li>
+                        <li>Công việc 2</li>
+                    </ul>
+                </div>
+
+                <div class="cs-section">
+                    <div class="cs-section-title"><i class="fas fa-chart-line"></i> Kết quả Đạt được</div>
+                    <ul id="csResult">
+                        <li>Kết quả 1</li>
+                        <li>Kết quả 2</li>
+                    </ul>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -965,7 +1124,6 @@
         // Init Scroll Animations
         AOS.init({ duration: 800, once: true, offset: 50 });
 
-        // Fix CSS break logic for Typing effect on Mobile
         if(window.innerWidth < 600) {
             const mobileBreak = document.querySelector('.mobile-break');
             if(mobileBreak) mobileBreak.style.display = 'block';
@@ -980,11 +1138,10 @@
             loop: true
         });
 
-        // Init Number Counter Animation
+        // Counter Animation
         const animateCounters = () => {
             const counters = document.querySelectorAll('.counter');
             let hasAnimated = false; 
-
             const startAnimation = () => {
                 counters.forEach(counter => {
                     counter.innerText = '0';
@@ -992,7 +1149,6 @@
                         const target = +counter.getAttribute('data-target');
                         const c = +counter.innerText.replace(/,/g, '');
                         const increment = target / 40; 
-                        
                         if (c < target) {
                             const nextVal = Math.ceil(c + increment);
                             counter.innerText = nextVal.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
@@ -1008,57 +1164,141 @@
                     updateCounter();
                 });
             };
-
             const observer = new IntersectionObserver((entries) => {
                 if(entries[0].isIntersecting && !hasAnimated) {
                     setTimeout(startAnimation, 300);
                     hasAnimated = true;
                 }
             });
-            
             const statsSection = document.querySelector('.hero-stats');
             if(statsSection) {
                 observer.observe(statsSection);
             }
         };
-        
         animateCounters();
 
-        // 🔴 SMART MODAL LOGIC (Handles Images and PDFs via Google Docs Viewer)
-        const modal = document.getElementById("fileModal");
+        // Certificate Modal Logic
+        const fileModal = document.getElementById("fileModal");
         const modalContainer = document.getElementById("modalContainer");
-        const closeBtn = document.querySelector(".close-modal");
-        const openModalBtns = document.querySelectorAll(".open-modal");
+        const closeFileBtn = document.querySelector(".close-modal");
+        const openFileBtns = document.querySelectorAll(".open-modal");
 
-        openModalBtns.forEach(btn => {
+        openFileBtns.forEach(btn => {
             btn.addEventListener("click", function(e) {
                 e.preventDefault();
                 const fileUrl = this.getAttribute("data-file");
-                
-                modalContainer.innerHTML = ''; // Clear previous
-                
-                // Nếu là link PDF (đã được bọc bởi Google Viewer hoặc kết thúc bằng .pdf)
+                modalContainer.innerHTML = ''; 
                 if (fileUrl.includes('google.com/viewer') || fileUrl.toLowerCase().endsWith('.pdf')) {
                     modalContainer.innerHTML = `<iframe src="${fileUrl}" type="application/pdf"></iframe>`;
                 } else {
                     modalContainer.innerHTML = `<img src="${fileUrl}" alt="Credential">`;
                 }
-
-                modal.style.display = "flex";
-                setTimeout(() => modal.classList.add("show"), 10);
+                fileModal.style.display = "flex";
+                setTimeout(() => fileModal.classList.add("show"), 10);
             });
         });
 
-        const closeModal = () => {
-            modal.classList.remove("show");
+        const closeFileModal = () => {
+            fileModal.classList.remove("show");
             setTimeout(() => {
-                modal.style.display = "none";
+                fileModal.style.display = "none";
                 modalContainer.innerHTML = '';
             }, 300);
         };
+        closeFileBtn.addEventListener("click", closeFileModal);
+        fileModal.addEventListener("click", (e) => { if(e.target === fileModal) closeFileModal(); });
 
-        closeBtn.addEventListener("click", closeModal);
-        modal.addEventListener("click", (e) => { if(e.target === modal) closeModal(); });
+        // 🔴 NEW: CASE STUDY MODAL LOGIC & DATA
+        const caseStudyData = {
+            'hyper-inkers': {
+                title: 'Hyper Inkers: Dominate Local Search tại Mỹ',
+                current: 'Khởi điểm là một website mới với lưu lượng truy cập lẹt đẹt (~1.300/tháng). Chưa có sự hiện diện trên bản đồ Local SEO tại thị trường xăm hình Mỹ vô cùng khốc liệt, khách hàng không tìm thấy thương hiệu trên Google Maps hay AI Search.',
+                action: [
+                    'Nghiên cứu đối thủ và xây dựng hệ thống 1.500+ Local Citations tại Mỹ.',
+                    'Tối ưu hóa thực thể (Entity Optimization) để định danh thương hiệu rõ ràng cho Google.',
+                    'Xây dựng Topical Map sâu về mảng Tattoo để đón đầu xu hướng SGE (AI Search).'
+                ],
+                result: [
+                    'Traffic tăng trưởng đột phá 8.269%, đạt đỉnh 108.800 visits/tháng.',
+                    'Tạo ra dòng Lead ổn định: 162 Qualified Leads/tháng (thông qua Form & Call).'
+                ]
+            },
+            'interimm': {
+                title: 'Interimm: Tối ưu chuyển đổi ngành Di trú High-ticket',
+                current: 'Đặc thù ngành Di trú EB5 có lượng search volume rất thấp nhưng giá trị chuyển đổi cực cao (High-ticket). Website có traffic nhưng tỷ lệ rớt phễu (drop-off) tại Landing Page lớn, người dùng đọc thông tin xong không có hành động gọi điện tư vấn.',
+                action: [
+                    'Tái cấu trúc UI/UX toàn bộ Landing Page dịch vụ, đặt CTA "Hotline tư vấn" tại các điểm chạm vàng (Heatmap analysis).',
+                    'Đẩy mạnh content đánh đúng Search Intent (Ý định tìm kiếm) của tệp khách hàng V.I.P.',
+                    'Cắt bỏ các keyword rác mang lại traffic ảo nhưng không có giá trị chuyển đổi.'
+                ],
+                result: [
+                    'Organic traffic tăng trưởng 40%, đạt 6.100 visits/tháng từ đúng tệp khách hàng tiềm năng.',
+                    'Call Conversions (Tỷ lệ chuyển đổi cuộc gọi) tăng vọt +94%.'
+                ]
+            },
+            'housedesign': {
+                title: 'Housedesign: Chiến lược Thủ/Công mùa Core Update',
+                current: 'Website đối mặt với đợt càn quét lớn từ Google Core Update. Nguy cơ mất Top hàng loạt ở các nhóm từ khóa hạt giống mang lại doanh thu chính của công ty thiết kế nội thất.',
+                action: [
+                    '<strong>Chiến lược THỦ:</strong> Audit toàn bộ content cũ, nâng cấp Semantic depth và củng cố Internal Link để bảo vệ Top ranking hiện tại.',
+                    '<strong>Chiến lược CÔNG:</strong> Triển khai thêm các cụm Topic Cluster mới ngách hơn, ít cạnh tranh hơn để mở rộng thị phần (Market share).'
+                ],
+                result: [
+                    'Bảo vệ thành công 95% Top 5 từ khóa cốt lõi giữa "tâm bão" Update.',
+                    'Đẩy thành công 36% Top 3 cho nhóm từ khóa ngách mới, đưa Traffic chạm đỉnh 44.000 visits.'
+                ]
+            },
+            'vibim': {
+                title: 'ViBIM: Đánh chiếm thị trường B2B Global',
+                current: 'Bắt đầu từ một Domain mới tinh (Fresh Domain). Thách thức cực lớn khi phải đánh vào thị trường B2B quốc tế (Global SEO) với các đối thủ lâu năm và có chỉ số Authority rất cao.',
+                action: [
+                    'Xây dựng cấu trúc Silo website chuẩn quốc tế ngay từ ngày đầu tiên.',
+                    'Triển khai chiến lược Content Marketing B2B chuyên sâu, tập trung vào việc educate khách hàng và mời tải tài liệu/Demo.',
+                    'Thiết lập hệ thống Tracking MQL (Marketing Qualified Leads) liên kết với form tải và LinkedIn.'
+                ],
+                result: [
+                    'Build thành công website từ con số 0 lên 7.162 Sessions/tháng đền từ thị trường Global.',
+                    'Mang về 50+ Key B2B CTAs (Lượt đăng ký Demo, điền Form tư vấn chất lượng cao).'
+                ]
+            }
+        };
+
+        const csModal = document.getElementById("csModal");
+        const csCloseBtn = document.querySelector(".cs-close-btn");
+        const openCsBtns = document.querySelectorAll(".open-cs-modal");
+
+        openCsBtns.forEach(btn => {
+            btn.addEventListener("click", function(e) {
+                e.preventDefault();
+                const projectId = this.getAttribute("data-id");
+                const data = caseStudyData[projectId];
+
+                if(data) {
+                    document.getElementById('csTitle').innerHTML = data.title;
+                    document.getElementById('csCurrent').innerHTML = data.current;
+                    
+                    document.getElementById('csAction').innerHTML = data.action.map(item => `<li>${item}</li>`).join('');
+                    document.getElementById('csResult').innerHTML = data.result.map(item => `<li>${item}</li>`).join('');
+
+                    csModal.style.display = "flex";
+                    setTimeout(() => csModal.classList.add("show"), 10);
+                    // Chống cuộn nền khi mở modal
+                    document.body.style.overflow = 'hidden'; 
+                }
+            });
+        });
+
+        const closeCsModal = () => {
+            csModal.classList.remove("show");
+            setTimeout(() => {
+                csModal.style.display = "none";
+                document.body.style.overflow = 'auto'; // Cho phép cuộn lại
+            }, 300);
+        };
+
+        csCloseBtn.addEventListener("click", closeCsModal);
+        csModal.addEventListener("click", (e) => { if(e.target === csModal) closeCsModal(); });
+
     </script>
 </body>
 </html>
