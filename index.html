@@ -570,6 +570,13 @@
             color: var(--secondary);
             line-height: 1.3;
         }
+        
+        .project-card-v2 p.project-desc {
+            color: var(--text-sub);
+            margin-bottom: 20px;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
 
         .read-more-btn {
             font-size: 0.9rem;
@@ -595,7 +602,7 @@
             padding-top: 25px;
             border-top: 1px solid rgba(0, 0, 0, 0.05);
             display: flex;
-            gap: 40px;
+            gap: 30px;
             flex-wrap: wrap;
         }
 
@@ -607,63 +614,91 @@
 
         .metric-big {
             font-family: var(--font-header);
-            font-size: clamp(2.2rem, 4vw, 2.8rem);
+            font-size: clamp(1.8rem, 4vw, 2.5rem); /* Thu nhỏ xíu cho 3 cột */
             font-weight: 800;
             color: var(--primary-dark);
             line-height: 1;
         }
 
         .metric-desc {
-            font-size: 0.95rem;
+            font-size: 0.85rem;
             color: var(--text-sub);
-            font-weight: 500;
+            font-weight: 600;
+            text-transform: uppercase;
         }
 
-        /* 🔴 NEW: Gallery Carousel CSS */
+        /* 🔴 NEW: JS Auto-Carousel CSS */
         .project-gallery {
             position: relative;
             width: 100%;
             border-radius: 16px;
             background: #FAFAFA;
             border: 1px solid rgba(0,0,0,0.04);
-            padding: 15px 15px 5px 15px;
-        }
-        .gallery-track {
-            display: flex;
-            overflow-x: auto;
-            scroll-snap-type: x mandatory;
-            gap: 15px;
-            padding-bottom: 15px;
-            scrollbar-width: thin; 
-            scrollbar-color: rgba(255, 178, 44, 0.5) transparent;
-        }
-        .gallery-track::-webkit-scrollbar {
-            height: 6px;
-        }
-        .gallery-track::-webkit-scrollbar-track {
-            background: transparent;
+            padding: 15px;
+            overflow: hidden; /* Bắt buộc để cắt phần ảnh bị tràn */
         }
         .gallery-track::-webkit-scrollbar-thumb {
             background-color: rgba(255, 178, 44, 0.5);
             border-radius: 10px;
         }
         .gallery-img {
-            flex: 0 0 85%; /* Giúp hở ra một đoạn ảnh sau để gợi ý cuộn */
-            scroll-snap-align: center;
+            flex: 0 0 100%; /* Ép hiển thị đúng 1 ảnh chiếm 100% khung hình */
+            object-fit: contain; 
             border-radius: 10px;
-            object-fit: cover;
             border: 1px solid rgba(0,0,0,0.08);
             box-shadow: 0 4px 12px rgba(0,0,0,0.05);
             aspect-ratio: 16/9;
             background: #fff;
+            max-height: 400px;
+            cursor: zoom-in; /* 🔴 Trỏ chuột đổi thành kính lúp báo hiệu có thể click */
         }
-        .gallery-hint {
-            text-align: center;
-            font-size: 0.75rem;
-            color: var(--text-sub);
-            padding-top: 5px;
-            padding-bottom: 5px;
+        .gallery-dots {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 15px;
         }
+        .dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: rgba(0,0,0,0.15);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        .dot.active {
+            background: var(--primary);
+            width: 24px;
+            border-radius: 4px;
+        }
+
+        /* 🔴 NEW: Nút mũi tên Carousel */
+        .carousel-btn {
+            position: absolute;
+            top: calc(50% - 15px); /* Căn giữa, trừ hao phần chấm dot */
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.95);
+            color: var(--secondary);
+            border: 1px solid rgba(0,0,0,0.1);
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 10;
+            transition: var(--transition);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+        }
+        .carousel-btn:hover {
+            background: var(--primary);
+            color: #000;
+            border-color: var(--primary);
+            transform: translateY(-50%) scale(1.1);
+        }
+        .prev-btn { left: 25px; }
+        .next-btn { right: 25px; }
 
         /* --- Process Section --- */
         .process-grid {
@@ -881,7 +916,7 @@
 
             <div class="project-stack">
                 
-                <!-- CASE 1: Hyper Inkers -->
+                <!-- 🔴 UPDATE: CASE 1 (Hyper Inkers) with Auto-Carousel & Image Order -->
                 <div class="project-card-v2" data-aos="fade-up">
                     <div class="project-content-v2">
                         <div class="project-industry">
@@ -889,27 +924,39 @@
                             <span style="color: var(--primary-dark);"><i class="fas fa-map-marker-alt"></i> Local SEO & AI Search</span>
                         </div>
                         <h3>Hyper Inkers: Dominate Local Search & Kéo 162 Leads/Tháng</h3>
+                        
+                        <p class="project-desc">
+                            Dự án thuộc lĩnh vực tattoo, có mức độ cạnh tranh cao khi khách hàng tìm kiếm dịch vụ trong bán kính gần hoặc tại San Antonio. Chiến lược lõi được tôi áp dụng là triển khai Semantic SEO kết hợp Content Visual, xây dựng Topic Cluster theo từng Style xăm và chuẩn hóa Entity (Brand - Artist - Location).
+                        </p>
+                        
                         <a class="read-more-btn open-cs-modal" data-id="hyper-inkers">Đọc Case Study chi tiết <i class="fas fa-arrow-right"></i></a>
                         
                         <div class="data-showcase-v2">
                             <div class="metric-block">
-                                <div class="metric-big">108,800</div>
-                                <div class="metric-desc">Lượt truy cập / tháng</div>
+                                <div class="metric-big">+8,269%</div>
+                                <div class="metric-desc">Organic Traffic</div>
                             </div>
                             <div class="metric-block">
-                                <div class="metric-big">162</div>
-                                <div class="metric-desc">Qualified Leads / tháng</div>
+                                <div class="metric-big">108,800</div>
+                                <div class="metric-desc">Truy cập / tháng</div>
+                            </div>
+                            <div class="metric-block">
+                                <div class="metric-big">1,500+</div>
+                                <div class="metric-desc">Trích dẫn AI Search</div>
                             </div>
                         </div>
                     </div>
-                    <div class="project-gallery">
+                    <div class="project-gallery" data-carousel>
+                        <button class="carousel-btn prev-btn"><i class="fas fa-chevron-left"></i></button>
+                        <button class="carousel-btn next-btn"><i class="fas fa-chevron-right"></i></button>
                         <div class="gallery-track">
-                            <!-- Chèn 3-5 ảnh vào đây, người dùng có thể cuộn ngang -->
-                            <img src="https://via.placeholder.com/800x450.png?text=Biểu+đồ+Traffic+Tăng+Trưởng" class="gallery-img" alt="Chart 1">
-                            <img src="https://via.placeholder.com/800x450.png?text=Báo+cáo+Lead+Conversion" class="gallery-img" alt="Chart 2">
-                            <img src="https://via.placeholder.com/800x450.png?text=Thứ+hạng+Google+Maps" class="gallery-img" alt="Chart 3">
+                            <!-- Đã đổi thứ tự: Ảnh GTV xuống cuối -->
+                            <img src="https://raw.githubusercontent.com/nmthaovy/portfolio/main/hyperinkers-overview.jpg" class="gallery-img" alt="Hyper Inkers Overview Data">
+                            <img src="https://raw.githubusercontent.com/nmthaovy/portfolio/main/hyperinkers-gsc.jpg" class="gallery-img" alt="Google Search Console Data">
+                            <img src="https://raw.githubusercontent.com/nmthaovy/portfolio/main/hyperinkers-semrush.jpg" class="gallery-img" alt="Semrush Traffic Trend">
+                            <img src="https://gtvseo.com/wp-content/uploads/2026/02/Du-an-Hyper-Inkers-1.webp" class="gallery-img" alt="Hyper Inkers GTV SEO Overview">
                         </div>
-                        <div class="gallery-hint"><i class="fas fa-arrows-alt-h"></i> Cuộn ngang để xem biểu đồ</div>
+                        <div class="gallery-dots"></div>
                     </div>
                 </div>
 
@@ -921,6 +968,11 @@
                             <span style="color: var(--primary-dark);"><i class="fas fa-phone-alt"></i> CRO Focus</span>
                         </div>
                         <h3>Tối ưu tỷ lệ chuyển đổi cuộc gọi (+94%)</h3>
+                        
+                        <p class="project-desc">
+                            Với ngành High-ticket, traffic ít nhưng chất lượng. Tập trung tối ưu UI/UX và Search Intent để thúc đẩy hành động gọi điện. Đẩy mạnh content đánh đúng Search Intent (Ý định tìm kiếm) của tệp khách hàng V.I.P.
+                        </p>
+                        
                         <a class="read-more-btn open-cs-modal" data-id="interimm">Đọc Case Study chi tiết <i class="fas fa-arrow-right"></i></a>
                         
                         <div class="data-showcase-v2">
@@ -934,13 +986,15 @@
                             </div>
                         </div>
                     </div>
-                    <div class="project-gallery">
+                    <div class="project-gallery" data-carousel>
+                        <button class="carousel-btn prev-btn"><i class="fas fa-chevron-left"></i></button>
+                        <button class="carousel-btn next-btn"><i class="fas fa-chevron-right"></i></button>
                         <div class="gallery-track">
                             <img src="https://via.placeholder.com/800x450.png?text=Heatmap+Landing+Page" class="gallery-img" alt="Chart 1">
                             <img src="https://via.placeholder.com/800x450.png?text=Biểu+đồ+Click+to+Call" class="gallery-img" alt="Chart 2">
                             <img src="https://via.placeholder.com/800x450.png?text=Tăng+trưởng+Traffic+Tự+nhiên" class="gallery-img" alt="Chart 3">
                         </div>
-                        <div class="gallery-hint"><i class="fas fa-arrows-alt-h"></i> Cuộn ngang để xem biểu đồ</div>
+                        <div class="gallery-dots"></div>
                     </div>
                 </div>
 
@@ -952,6 +1006,11 @@
                             <span style="color: var(--primary-dark);"><i class="fas fa-chess-knight"></i> Chiến lược Thủ/Công</span>
                         </div>
                         <h3>Bảo vệ Top Ranking & Mở rộng Market Share</h3>
+                        
+                        <p class="project-desc">
+                            Website đối mặt với đợt càn quét lớn từ Google Core Update. Chiến lược Thủ (giữ 95% Top 5 từ khóa cũ) và Công (đẩy 36% Top 3 cho nhóm từ khóa ngách mới) giúp doanh nghiệp vững vàng băng qua đợt Update khốc liệt.
+                        </p>
+                        
                         <a class="read-more-btn open-cs-modal" data-id="housedesign">Đọc Case Study chi tiết <i class="fas fa-arrow-right"></i></a>
                         
                         <div class="data-showcase-v2">
@@ -965,12 +1024,14 @@
                             </div>
                         </div>
                     </div>
-                    <div class="project-gallery">
+                    <div class="project-gallery" data-carousel>
+                        <button class="carousel-btn prev-btn"><i class="fas fa-chevron-left"></i></button>
+                        <button class="carousel-btn next-btn"><i class="fas fa-chevron-right"></i></button>
                         <div class="gallery-track">
                             <img src="https://via.placeholder.com/800x450.png?text=Google+Core+Update+Defense" class="gallery-img" alt="Chart 1">
                             <img src="https://via.placeholder.com/800x450.png?text=Topic+Cluster+Performance" class="gallery-img" alt="Chart 2">
                         </div>
-                        <div class="gallery-hint"><i class="fas fa-arrows-alt-h"></i> Cuộn ngang để xem biểu đồ</div>
+                        <div class="gallery-dots"></div>
                     </div>
                 </div>
 
@@ -982,6 +1043,11 @@
                             <span style="color: var(--primary-dark);"><i class="fas fa-globe"></i> Global SEO</span>
                         </div>
                         <h3>Xây dựng từ Domain Mới đạt 7.162 Sessions</h3>
+                        
+                        <p class="project-desc">
+                            Chiến lược thâm nhập thị trường B2B quốc tế từ một fresh domain, mang lại nguồn traffic sạch và kéo lead chất lượng cao qua các form Demo và LinkedIn bằng hệ thống Silo chuẩn Global.
+                        </p>
+                        
                         <a class="read-more-btn open-cs-modal" data-id="vibim">Đọc Case Study chi tiết <i class="fas fa-arrow-right"></i></a>
                         
                         <div class="data-showcase-v2">
@@ -995,13 +1061,15 @@
                             </div>
                         </div>
                     </div>
-                    <div class="project-gallery">
+                    <div class="project-gallery" data-carousel>
+                        <button class="carousel-btn prev-btn"><i class="fas fa-chevron-left"></i></button>
+                        <button class="carousel-btn next-btn"><i class="fas fa-chevron-right"></i></button>
                         <div class="gallery-track">
                             <img src="https://via.placeholder.com/800x450.png?text=Traffic+từ+Zero+Domain" class="gallery-img" alt="Chart 1">
                             <img src="https://via.placeholder.com/800x450.png?text=Global+Search+Visibility" class="gallery-img" alt="Chart 2">
                             <img src="https://via.placeholder.com/800x450.png?text=Lead+Tracking+Dashboard" class="gallery-img" alt="Chart 3">
                         </div>
-                        <div class="gallery-hint"><i class="fas fa-arrows-alt-h"></i> Cuộn ngang để xem biểu đồ</div>
+                        <div class="gallery-dots"></div>
                     </div>
                 </div>
 
@@ -1208,6 +1276,16 @@
         closeFileBtn.addEventListener("click", closeFileModal);
         fileModal.addEventListener("click", (e) => { if(e.target === fileModal) closeFileModal(); });
 
+        // 🔴 NEW: Click vào ảnh trong Gallery để phóng to
+        const galleryImages = document.querySelectorAll('.gallery-img');
+        galleryImages.forEach(img => {
+            img.addEventListener('click', function() {
+                modalContainer.innerHTML = `<img src="${this.src}" alt="Zoomed Image">`;
+                fileModal.style.display = "flex";
+                setTimeout(() => fileModal.classList.add("show"), 10);
+            });
+        });
+
         // 🔴 NEW: CASE STUDY MODAL LOGIC & DATA
         const caseStudyData = {
             'hyper-inkers': {
@@ -1298,6 +1376,105 @@
 
         csCloseBtn.addEventListener("click", closeCsModal);
         csModal.addEventListener("click", (e) => { if(e.target === csModal) closeCsModal(); });
+
+        // 🔴 AUTO-PLAY CAROUSEL LOGIC WITH ARROWS
+        const carousels = document.querySelectorAll('[data-carousel]');
+        carousels.forEach(carousel => {
+            const track = carousel.querySelector('.gallery-track');
+            const slides = Array.from(track.children);
+            const dotsContainer = carousel.querySelector('.gallery-dots');
+            const prevBtn = carousel.querySelector('.prev-btn');
+            const nextBtn = carousel.querySelector('.next-btn');
+            
+            if (slides.length <= 1) {
+                if(prevBtn) prevBtn.style.display = 'none';
+                if(nextBtn) nextBtn.style.display = 'none';
+                return;
+            }
+
+            let currentIndex = 0;
+            let slideInterval;
+
+            // Tạo các chấm điều hướng (dots)
+            slides.forEach((_, index) => {
+                const dot = document.createElement('div');
+                dot.classList.add('dot');
+                if (index === 0) dot.classList.add('active');
+                dot.addEventListener('click', () => goToSlide(index));
+                dotsContainer.appendChild(dot);
+            });
+
+            const dots = Array.from(dotsContainer.children);
+
+            const goToSlide = (index) => {
+                track.style.transform = `translateX(-${index * 100}%)`;
+                dots.forEach(d => d.classList.remove('active'));
+                dots[index].classList.add('active');
+                currentIndex = index;
+            };
+
+            const nextSlide = () => {
+                let nextIndex = (currentIndex + 1) % slides.length;
+                goToSlide(nextIndex);
+            };
+
+            const prevSlide = () => {
+                let prevIndex = (currentIndex - 1 + slides.length) % slides.length;
+                goToSlide(prevIndex);
+            };
+
+            // Xử lý click mũi tên
+            if (prevBtn) {
+                prevBtn.addEventListener('click', () => {
+                    stopAutoPlay();
+                    prevSlide();
+                    startAutoPlay();
+                });
+            }
+
+            if (nextBtn) {
+                nextBtn.addEventListener('click', () => {
+                    stopAutoPlay();
+                    nextSlide();
+                    startAutoPlay();
+                });
+            }
+
+            // Tự động chuyển ảnh mỗi 3.5 giây
+            const startAutoPlay = () => {
+                slideInterval = setInterval(nextSlide, 3500);
+            };
+
+            const stopAutoPlay = () => {
+                clearInterval(slideInterval);
+            };
+
+            startAutoPlay();
+
+            // Tạm dừng khi người dùng trỏ chuột vào xem ảnh
+            carousel.addEventListener('mouseenter', stopAutoPlay);
+            carousel.addEventListener('mouseleave', startAutoPlay);
+            
+            // Hỗ trợ vuốt trên Mobile (Touch Events)
+            let startX = 0;
+
+            carousel.addEventListener('touchstart', (e) => {
+                stopAutoPlay();
+                startX = e.touches[0].clientX;
+            }, {passive: true});
+
+            carousel.addEventListener('touchend', (e) => {
+                let endX = e.changedTouches[0].clientX;
+                if (startX - endX > 50) {
+                    nextSlide(); // Vuốt sang trái -> Ảnh tiếp theo
+                } else if (endX - startX > 50) {
+                    // Vuốt sang phải -> Ảnh trước đó
+                    let prevIndex = (currentIndex - 1 + slides.length) % slides.length;
+                    goToSlide(prevIndex);
+                }
+                startAutoPlay();
+            }, {passive: true});
+        });
 
     </script>
 </body>
