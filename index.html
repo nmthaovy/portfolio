@@ -449,7 +449,7 @@
             z-index: 2001;
         }
 
-        /* --- 🔴 NEW: CASE STUDY TEXT MODAL CSS --- */
+        /* --- CASE STUDY TEXT MODAL CSS --- */
         .cs-modal-overlay {
             display: none;
             position: fixed;
@@ -566,11 +566,28 @@
         .project-card-v2 h3 {
             font-family: var(--font-header);
             font-size: clamp(1.6rem, 3vw, 2rem);
-            margin-bottom: 15px;
+            margin-bottom: 10px; /* 🔴 Giảm margin để nhường chỗ cho thẻ Role */
             color: var(--secondary);
             line-height: 1.3;
         }
         
+        /* 🔴 NEW: Thẻ hiển thị Vai trò dự án */
+        .project-role {
+            font-size: 0.85rem;
+            color: var(--text-main);
+            margin-bottom: 15px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: #FAFAFA;
+            padding: 6px 12px;
+            border-radius: 6px;
+            border: 1px solid rgba(0,0,0,0.06);
+            width: fit-content;
+        }
+        .project-role strong { color: var(--secondary); font-weight: 700; }
+        .project-role i { color: var(--primary-dark); }
+
         .project-card-v2 p.project-desc {
             color: var(--text-sub);
             margin-bottom: 20px;
@@ -614,7 +631,7 @@
 
         .metric-big {
             font-family: var(--font-header);
-            font-size: clamp(1.8rem, 4vw, 2.5rem); /* Thu nhỏ xíu cho 3 cột */
+            font-size: clamp(1.8rem, 4vw, 2.5rem); 
             font-weight: 800;
             color: var(--primary-dark);
             line-height: 1;
@@ -627,7 +644,7 @@
             text-transform: uppercase;
         }
 
-        /* 🔴 NEW: JS Auto-Carousel CSS */
+        /* 🔴 CAROUSEL GALLERY CSS */
         .project-gallery {
             position: relative;
             width: 100%;
@@ -635,14 +652,17 @@
             background: #FAFAFA;
             border: 1px solid rgba(0,0,0,0.04);
             padding: 15px;
-            overflow: hidden; /* Bắt buộc để cắt phần ảnh bị tràn */
+            overflow: hidden; 
         }
-        .gallery-track::-webkit-scrollbar-thumb {
-            background-color: rgba(255, 178, 44, 0.5);
-            border-radius: 10px;
+        .gallery-track {
+            display: flex;
+            align-items: center; /* SỬA LỖI FLEX STRETCH */
+            transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
         }
         .gallery-img {
-            flex: 0 0 100%; /* Ép hiển thị đúng 1 ảnh chiếm 100% khung hình */
+            flex: 0 0 100%; 
+            width: 100%; /* SỬA LỖI RESPONSIVE ASPECT RATIO */
+            height: auto; /* SỬA LỖI RESPONSIVE ASPECT RATIO */
             object-fit: contain; 
             border-radius: 10px;
             border: 1px solid rgba(0,0,0,0.08);
@@ -650,7 +670,7 @@
             aspect-ratio: 16/9;
             background: #fff;
             max-height: 400px;
-            cursor: zoom-in; /* 🔴 Trỏ chuột đổi thành kính lúp báo hiệu có thể click */
+            cursor: zoom-in; 
         }
         .gallery-dots {
             display: flex;
@@ -672,10 +692,10 @@
             border-radius: 4px;
         }
 
-        /* 🔴 NEW: Nút mũi tên Carousel */
+        /* Nút mũi tên Carousel */
         .carousel-btn {
             position: absolute;
-            top: calc(50% - 15px); /* Căn giữa, trừ hao phần chấm dot */
+            top: calc(50% - 15px); 
             transform: translateY(-50%);
             background: rgba(255, 255, 255, 0.95);
             color: var(--secondary);
@@ -756,7 +776,8 @@
             
             .project-card-v2 { padding: 25px; border-radius: 20px;}
             .data-showcase-v2 { flex-direction: column; gap: 20px; }
-            .gallery-img { flex: 0 0 92%; }
+            
+            /* Đã fix gallery-img width 100% thay vì flex-basis */
 
             .process-grid { grid-template-columns: 1fr; }
             .process-card { padding: 25px; }
@@ -916,7 +937,7 @@
 
             <div class="project-stack">
                 
-                <!-- 🔴 UPDATE: CASE 1 (Hyper Inkers) with Auto-Carousel & Image Order -->
+                <!-- CASE 1 (Hyper Inkers) -->
                 <div class="project-card-v2" data-aos="fade-up">
                     <div class="project-content-v2">
                         <div class="project-industry">
@@ -924,6 +945,11 @@
                             <span style="color: var(--primary-dark);"><i class="fas fa-map-marker-alt"></i> Local SEO & AI Search</span>
                         </div>
                         <h3>Hyper Inkers: Dominate Local Search & Kéo 162 Leads/Tháng</h3>
+                        
+                        <!-- 🔴 NEW: Vai trò dự án -->
+                        <div class="project-role">
+                            <i class="fas fa-user-tag"></i> <span><strong>Vai trò:</strong> Lead dự án</span>
+                        </div>
                         
                         <p class="project-desc">
                             Dự án thuộc lĩnh vực tattoo, có mức độ cạnh tranh cao khi khách hàng tìm kiếm dịch vụ trong bán kính gần hoặc tại San Antonio. Chiến lược lõi được tôi áp dụng là triển khai Semantic SEO kết hợp Content Visual, xây dựng Topic Cluster theo từng Style xăm và chuẩn hóa Entity (Brand - Artist - Location).
@@ -950,7 +976,6 @@
                         <button class="carousel-btn prev-btn"><i class="fas fa-chevron-left"></i></button>
                         <button class="carousel-btn next-btn"><i class="fas fa-chevron-right"></i></button>
                         <div class="gallery-track">
-                            <!-- Đã đổi thứ tự: Ảnh GTV xuống cuối -->
                             <img src="https://raw.githubusercontent.com/nmthaovy/portfolio/main/hyperinkers-overview.jpg" class="gallery-img" alt="Hyper Inkers Overview Data">
                             <img src="https://raw.githubusercontent.com/nmthaovy/portfolio/main/hyperinkers-gsc.jpg" class="gallery-img" alt="Google Search Console Data">
                             <img src="https://raw.githubusercontent.com/nmthaovy/portfolio/main/hyperinkers-semrush.jpg" class="gallery-img" alt="Semrush Traffic Trend">
@@ -969,6 +994,11 @@
                         </div>
                         <h3>Tối ưu tỷ lệ chuyển đổi cuộc gọi (+94%)</h3>
                         
+                        <!-- 🔴 NEW: Vai trò dự án -->
+                        <div class="project-role">
+                            <i class="fas fa-user-tag"></i> <span><strong>Vai trò:</strong> Lead dự án</span>
+                        </div>
+
                         <p class="project-desc">
                             Với ngành High-ticket, traffic ít nhưng chất lượng. Tập trung tối ưu UI/UX và Search Intent để thúc đẩy hành động gọi điện. Đẩy mạnh content đánh đúng Search Intent (Ý định tìm kiếm) của tệp khách hàng V.I.P.
                         </p>
@@ -1007,6 +1037,11 @@
                         </div>
                         <h3>Bảo vệ Top Ranking & Mở rộng Market Share</h3>
                         
+                        <!-- 🔴 NEW: Vai trò dự án -->
+                        <div class="project-role">
+                            <i class="fas fa-user-tag"></i> <span><strong>Vai trò:</strong> Lead dự án</span>
+                        </div>
+
                         <p class="project-desc">
                             Website đối mặt với đợt càn quét lớn từ Google Core Update. Chiến lược Thủ (giữ 95% Top 5 từ khóa cũ) và Công (đẩy 36% Top 3 cho nhóm từ khóa ngách mới) giúp doanh nghiệp vững vàng băng qua đợt Update khốc liệt.
                         </p>
@@ -1044,6 +1079,11 @@
                         </div>
                         <h3>Xây dựng từ Domain Mới đạt 7.162 Sessions</h3>
                         
+                        <!-- 🔴 NEW: Vai trò dự án -->
+                        <div class="project-role">
+                            <i class="fas fa-user-tag"></i> <span><strong>Vai trò:</strong> Lead dự án</span>
+                        </div>
+
                         <p class="project-desc">
                             Chiến lược thâm nhập thị trường B2B quốc tế từ một fresh domain, mang lại nguồn traffic sạch và kéo lead chất lượng cao qua các form Demo và LinkedIn bằng hệ thống Silo chuẩn Global.
                         </p>
@@ -1079,7 +1119,6 @@
 
     <!-- SECTION: HOW I WORK -->
     <section id="process">
-        <!-- Kept the exact same code to preserve layout -->
         <div class="container">
             <div class="section-header" data-aos="fade-up">
                 <span class="section-tag">Cách tôi làm việc</span>
@@ -1147,14 +1186,14 @@
         </div>
     </footer>
 
-    <!-- FILE MODAL (For certificates) -->
+    <!-- FILE MODAL (For certificates & Images) -->
     <div id="fileModal" class="modal-overlay">
         <span class="close-modal">&times;</span>
         <div class="modal-content-container" id="modalContainer">
         </div>
     </div>
 
-    <!-- 🔴 NEW: CASE STUDY DETAIL MODAL -->
+    <!-- CASE STUDY DETAIL MODAL -->
     <div id="csModal" class="cs-modal-overlay">
         <div class="cs-modal-box">
             <span class="cs-close-btn">&times;</span>
@@ -1245,7 +1284,7 @@
         };
         animateCounters();
 
-        // Certificate Modal Logic
+        // Modal Logic (Certificates & Image Zoom)
         const fileModal = document.getElementById("fileModal");
         const modalContainer = document.getElementById("modalContainer");
         const closeFileBtn = document.querySelector(".close-modal");
@@ -1276,7 +1315,7 @@
         closeFileBtn.addEventListener("click", closeFileModal);
         fileModal.addEventListener("click", (e) => { if(e.target === fileModal) closeFileModal(); });
 
-        // 🔴 NEW: Click vào ảnh trong Gallery để phóng to
+        // Click ảnh Gallery để phóng to
         const galleryImages = document.querySelectorAll('.gallery-img');
         galleryImages.forEach(img => {
             img.addEventListener('click', function() {
@@ -1286,7 +1325,7 @@
             });
         });
 
-        // 🔴 NEW: CASE STUDY MODAL LOGIC & DATA
+        // CASE STUDY MODAL LOGIC & DATA
         const caseStudyData = {
             'hyper-inkers': {
                 title: 'Hyper Inkers: Dominate Local Search tại Mỹ',
@@ -1360,7 +1399,6 @@
 
                     csModal.style.display = "flex";
                     setTimeout(() => csModal.classList.add("show"), 10);
-                    // Chống cuộn nền khi mở modal
                     document.body.style.overflow = 'hidden'; 
                 }
             });
@@ -1370,14 +1408,14 @@
             csModal.classList.remove("show");
             setTimeout(() => {
                 csModal.style.display = "none";
-                document.body.style.overflow = 'auto'; // Cho phép cuộn lại
+                document.body.style.overflow = 'auto'; 
             }, 300);
         };
 
         csCloseBtn.addEventListener("click", closeCsModal);
         csModal.addEventListener("click", (e) => { if(e.target === csModal) closeCsModal(); });
 
-        // 🔴 AUTO-PLAY CAROUSEL LOGIC WITH ARROWS
+        // AUTO-PLAY CAROUSEL LOGIC WITH ARROWS
         const carousels = document.querySelectorAll('[data-carousel]');
         carousels.forEach(carousel => {
             const track = carousel.querySelector('.gallery-track');
@@ -1395,7 +1433,6 @@
             let currentIndex = 0;
             let slideInterval;
 
-            // Tạo các chấm điều hướng (dots)
             slides.forEach((_, index) => {
                 const dot = document.createElement('div');
                 dot.classList.add('dot');
@@ -1423,7 +1460,6 @@
                 goToSlide(prevIndex);
             };
 
-            // Xử lý click mũi tên
             if (prevBtn) {
                 prevBtn.addEventListener('click', () => {
                     stopAutoPlay();
@@ -1440,7 +1476,6 @@
                 });
             }
 
-            // Tự động chuyển ảnh mỗi 3.5 giây
             const startAutoPlay = () => {
                 slideInterval = setInterval(nextSlide, 3500);
             };
@@ -1451,11 +1486,9 @@
 
             startAutoPlay();
 
-            // Tạm dừng khi người dùng trỏ chuột vào xem ảnh
             carousel.addEventListener('mouseenter', stopAutoPlay);
             carousel.addEventListener('mouseleave', startAutoPlay);
             
-            // Hỗ trợ vuốt trên Mobile (Touch Events)
             let startX = 0;
 
             carousel.addEventListener('touchstart', (e) => {
@@ -1466,9 +1499,8 @@
             carousel.addEventListener('touchend', (e) => {
                 let endX = e.changedTouches[0].clientX;
                 if (startX - endX > 50) {
-                    nextSlide(); // Vuốt sang trái -> Ảnh tiếp theo
+                    nextSlide(); 
                 } else if (endX - startX > 50) {
-                    // Vuốt sang phải -> Ảnh trước đó
                     let prevIndex = (currentIndex - 1 + slides.length) % slides.length;
                     goToSlide(prevIndex);
                 }
