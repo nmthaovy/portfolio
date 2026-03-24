@@ -38,7 +38,10 @@
             box-sizing: border-box;
         }
 
-        html { scroll-behavior: smooth; }
+        html { 
+            scroll-behavior: smooth; 
+            scrollbar-gutter: stable; /* 🔴 FIX LỖI NHẢY GIAO DIỆN (LAYOUT SHIFT) KHI BẬT/TẮT POPUP */
+        }
 
         body {
             font-family: var(--font-body);
@@ -516,6 +519,46 @@
         .cs-section ul { margin: 10px 0 0 20px; color: var(--text-sub); line-height: 1.7;}
         .cs-section li { margin-bottom: 8px; }
 
+        /* 🔴 NEW: LÀM NỔI BẬT KHỐI KẾT QUẢ BÊN TRONG POPUP (ĐỒNG BỘ UI BÊN NGOÀI) */
+        .cs-result-box {
+            background: rgba(255, 178, 44, 0.05);
+            border: 1px solid rgba(255, 178, 44, 0.2);
+            border-radius: 12px;
+            padding: 25px;
+            margin-top: 15px;
+        }
+        .cs-result-box ul {
+            list-style: none !important;
+            padding: 0 !important;
+            margin: 0 !important;
+        }
+        .cs-result-box li {
+            position: relative;
+            padding-left: 32px !important;
+            margin-bottom: 12px !important;
+            font-size: 1.05rem;
+            color: var(--text-sub);
+            line-height: 1.6;
+        }
+        .cs-result-box li:last-child { margin-bottom: 0 !important; }
+        .cs-result-box li::before {
+            content: '\f058'; /* Icon Check-circle */
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            position: absolute;
+            left: 0;
+            top: 2px;
+            color: var(--primary-dark);
+            font-size: 1.2rem;
+        }
+        .cs-result-box li strong {
+            color: var(--secondary);
+            font-weight: 800;
+            background: linear-gradient(120deg, rgba(255,178,44,0.4) 0%, rgba(255,178,44,0) 100%);
+            padding: 0 4px;
+            border-radius: 3px;
+        }
+
         /* --- DATA-DRIVEN CASE STUDIES (V4 - ALIGNED NUMBERS) --- */
         .project-stack {
             display: flex;
@@ -944,7 +987,7 @@
                             <span>Tattoo US (Thị trường Mỹ)</span>
                             <span style="color: var(--primary-dark);"><i class="fas fa-map-marker-alt"></i> Local SEO & AI Search</span>
                         </div>
-                        <h3>Hyper Inkers: Dominate Local Search & Kéo 162 Leads/Tháng</h3>
+                        <h3>Dominate thị trường ngách Tattoo tại Mỹ với Semantic SEO</h3>
                         
                         <!-- 🔴 Bố trí Role & Timeline nằm ngang nhau -->
                         <div style="display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 15px;">
@@ -1240,10 +1283,13 @@
 
                 <div class="cs-section">
                     <div class="cs-section-title"><i class="fas fa-chart-line"></i> Kết quả Đạt được</div>
-                    <ul id="csResult">
-                        <li>Kết quả 1</li>
-                        <li>Kết quả 2</li>
-                    </ul>
+                    <!-- 🔴 Bọc thẻ ul bằng div cs-result-box để áp dụng UI nổi bật -->
+                    <div class="cs-result-box">
+                        <ul id="csResult">
+                            <li>Kết quả 1</li>
+                            <li>Kết quả 2</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
@@ -1327,6 +1373,7 @@
                 }
                 fileModal.style.display = "flex";
                 setTimeout(() => fileModal.classList.add("show"), 10);
+                document.body.style.overflow = 'hidden'; /* 🔴 Đảm bảo background không cuộn */
             });
         });
 
@@ -1335,6 +1382,7 @@
             setTimeout(() => {
                 fileModal.style.display = "none";
                 modalContainer.innerHTML = '';
+                document.body.style.overflow = ''; /* 🔴 Trả lại trạng thái cuộn bình thường mượt mà */
             }, 300);
         };
         closeFileBtn.addEventListener("click", closeFileModal);
@@ -1347,6 +1395,7 @@
                 modalContainer.innerHTML = `<img src="${this.src}" alt="Zoomed Image">`;
                 fileModal.style.display = "flex";
                 setTimeout(() => fileModal.classList.add("show"), 10);
+                document.body.style.overflow = 'hidden'; /* 🔴 Đảm bảo background không cuộn */
             });
         });
 
@@ -1451,7 +1500,7 @@
             csModal.classList.remove("show");
             setTimeout(() => {
                 csModal.style.display = "none";
-                document.body.style.overflow = 'auto'; 
+                document.body.style.overflow = ''; /* 🔴 Trả lại trạng thái cuộn bình thường mượt mà */
             }, 300);
         };
 
