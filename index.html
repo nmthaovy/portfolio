@@ -587,7 +587,7 @@
             border-radius: 3px;
         }
 
-        /* 🔴 DATA-DRIVEN CASE STUDIES (NEW SANDWICH LAYOUT) */
+        /* --- DATA-DRIVEN CASE STUDIES (NEW SANDWICH LAYOUT) --- */
         .project-stack {
             display: flex;
             flex-direction: column;
@@ -604,7 +604,7 @@
             overflow: hidden;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.02);
             
-            /* 🔴 Chuyển sang Flexbox dọc để tách 3 tầng rõ ràng */
+            /* Chuyển sang Flexbox dọc để tách 3 tầng rõ ràng */
             display: flex; 
             flex-direction: column;
             gap: 30px; 
@@ -615,7 +615,7 @@
             transform: translateY(-5px);
         }
 
-        /* 🔴 TẦNG 1: HEADER FULL-WIDTH (CĂN GIỮA) */
+        /* TẦNG 1: HEADER FULL-WIDTH (CĂN GIỮA) */
         .project-header-full {
             text-align: center;
             display: flex;
@@ -645,7 +645,7 @@
             max-width: 900px;
         }
 
-        /* 🔴 CẬP NHẬT: Căn trái cho cụm Vai trò & Timeline khi được chuyển xuống cột Text */
+        /* Căn trái cho cụm Vai trò & Timeline khi được chuyển xuống cột Text */
         .project-meta {
             display: flex;
             justify-content: flex-start;
@@ -668,7 +668,7 @@
         .project-role strong { color: var(--secondary); font-weight: 700; }
         .project-role i, .project-timeline i { color: var(--primary-dark); }
 
-        /* 🔴 TẦNG 2: BODY CHIA 2 CỘT (GIẢI QUYẾT KHOẢNG TRẮNG) */
+        /* TẦNG 2: BODY CHIA 2 CỘT (GIẢI QUYẾT KHOẢNG TRẮNG) */
         .project-body {
             display: grid;
             grid-template-columns: 1fr 1.2fr;
@@ -707,7 +707,7 @@
         .read-more-btn:hover { color: var(--secondary); }
         .read-more-btn:hover i { transform: translateX(5px); }
 
-        /* 🔴 TẦNG 3: FOOTER HIGHLIGHTS FULL-WIDTH (DÀN NGANG) */
+        /* TẦNG 3: FOOTER HIGHLIGHTS FULL-WIDTH (DÀN NGANG) */
         .data-showcase-v2 {
             padding-top: 30px;
             border-top: 1px solid rgba(0, 0, 0, 0.05);
@@ -821,8 +821,8 @@
         /* --- Process Section --- */
         .process-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); 
-            gap: 24px;
+            grid-template-columns: repeat(2, 1fr); /* 🔴 Cấu trúc 2x2 thay vì auto-fit */
+            gap: 30px;
         }
         .process-card {
             background: var(--card-bg);
@@ -1042,7 +1042,7 @@
                 <!-- CASE 1 (Hyper Inkers) -->
                 <div class="project-card-v2" data-aos="fade-up">
                     
-                    <!-- 🔴 TẦNG 1: HEADER (Chỉ còn Tag & Title) -->
+                    <!-- 🔴 TẦNG 1: HEADER -->
                     <div class="project-header-full">
                         <div class="project-industry">
                             <span>Tattoo US (Thị trường Mỹ)</span>
@@ -1054,7 +1054,6 @@
                     <!-- 🔴 TẦNG 2: BODY CHIA CỘT -->
                     <div class="project-body">
                         <div class="project-desc-wrapper">
-                            <!-- 🔴 Đã chuyển Vai trò & Timeline xuống đây -->
                             <div class="project-meta">
                                 <div class="project-role" style="margin-bottom: 0;">
                                     <i class="fas fa-user-tag"></i> <span><strong>Vai trò:</strong> Lead dự án</span>
@@ -1113,7 +1112,6 @@
 
                     <div class="project-body">
                         <div class="project-desc-wrapper">
-                            <!-- 🔴 Đã chuyển Vai trò & Timeline xuống đây -->
                             <div class="project-meta">
                                 <div class="project-role" style="margin-bottom: 0;">
                                     <i class="fas fa-user-tag"></i> <span><strong>Vai trò:</strong> Lead & Trực tiếp triển khai</span>
@@ -1171,7 +1169,6 @@
 
                     <div class="project-body">
                         <div class="project-desc-wrapper">
-                            <!-- 🔴 Đã chuyển Vai trò & Timeline xuống đây -->
                             <div class="project-meta">
                                 <div class="project-role" style="margin-bottom: 0;">
                                     <i class="fas fa-user-tag"></i> <span><strong>Vai trò:</strong> Trực tiếp triển khai</span>
@@ -1226,7 +1223,6 @@
 
                     <div class="project-body">
                         <div class="project-desc-wrapper">
-                            <!-- 🔴 Đã chuyển Vai trò & Timeline xuống đây -->
                             <div class="project-meta">
                                 <div class="project-role" style="margin-bottom: 0;">
                                     <i class="fas fa-user-tag"></i> <span><strong>Vai trò:</strong> Trực tiếp triển khai</span>
@@ -1603,7 +1599,7 @@
                 actionTitle: '<i class="fas fa-bolt"></i> Giải pháp Triển khai',
                 action: [
                     '<strong>Research:</strong> Phân tích đối thủ chuyên sâu để thiết lập cấu trúc website, giao diện UI/UX và các trang Entity mang tính đặc thù của ngành nhằm nâng cao Trust rate: Case Studies, Testimonials và Team Profiles.',
-                    '<strong>Kiểm soát:</strong> Phối hợp chặt chẽ với team Dev để đảm bảo timeline code và Go-live website hoàn chỉnh.',
+                    '<strong>Kiểm soát:</strong> Phối hợp chặt tiếp với team Dev để đảm bảo timeline code và Go-live website hoàn chỉnh.',
                     '<strong>Định danh Entity:</strong> Triển khai Schema Markup kết hợp với việc thiết lập hệ thống Entity Offsite (Social Stack, Google Stack) để Google nhanh chóng xác thực và định danh thực thể trên môi trường số.',
                     '<strong>Xây dựng Topical Map:</strong> Research và thiết lập Topical Map bao phủ toàn diện các luồng chủ đề ngách kỹ thuật Scan to BIM để tạo đà Trust ban đầu, sau đó mở rộng sang chủ đề lớn là BIM.',
                     '<strong>Kiểm soát chất lượng Content:</strong> Với đặc thù kiến thức ngành xây dựng/kỹ thuật cực kỳ phức tạp, team tiến hành Audit Content liên tục nhằm bóc tách chính xác Search Intent, từ đó chuẩn hóa cấu trúc bài viết và tối ưu Information Gain.',
