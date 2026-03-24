@@ -451,6 +451,34 @@
             z-index: 2001;
         }
 
+        /* 🔴 Nút mũi tên cho Popup Phóng to Ảnh */
+        .modal-nav-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.1);
+            color: rgba(255,255,255,0.7);
+            border: 1px solid rgba(255,255,255,0.2);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 2002;
+            transition: var(--transition);
+            font-size: 1.2rem;
+            backdrop-filter: blur(5px);
+        }
+        .modal-nav-btn:hover {
+            background: var(--primary);
+            color: #000;
+            border-color: var(--primary);
+        }
+        .prev-modal-btn { left: 30px; }
+        .next-modal-btn { right: 30px; }
+
         /* --- CASE STUDY TEXT MODAL CSS --- */
         .cs-modal-overlay {
             display: none;
@@ -519,7 +547,7 @@
         .cs-section ul { margin: 10px 0 0 20px; color: var(--text-sub); line-height: 1.7;}
         .cs-section li { margin-bottom: 8px; }
 
-        /* 🔴 NEW: LÀM NỔI BẬT KHỐI KẾT QUẢ BÊN TRONG POPUP (ĐỒNG BỘ UI BÊN NGOÀI) */
+        /* 🔴 LÀM NỔI BẬT KHỐI KẾT QUẢ BÊN TRONG POPUP (ĐỒNG BỘ UI BÊN NGOÀI) */
         .cs-result-box {
             background: rgba(255, 178, 44, 0.05);
             border: 1px solid rgba(255, 178, 44, 0.2);
@@ -578,7 +606,7 @@
             display: grid;
             grid-template-columns: 1fr 1.2fr;
             gap: 50px;
-            align-items: center; /* 🔴 Căn giữa dọc để không bị trống khoảng trắng */
+            align-items: center; 
         }
         .project-card-v2:hover {
             border-color: rgba(255, 178, 44, 0.5);
@@ -661,7 +689,7 @@
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 25px 20px;
-            margin-top: auto; /* Đẩy khối Data xuống sát đáy cho thẳng hàng với ảnh */
+            margin-top: auto; 
         }
 
         .metric-block {
@@ -827,6 +855,11 @@
             .cert-card { flex-direction: column; gap: 15px; }
             .cs-modal-body { padding: 25px; }
             .cs-modal-title { font-size: 1.6rem; }
+
+            /* Mobile Navigation Buttons */
+            .modal-nav-btn { width: 40px; height: 40px; font-size: 1rem; }
+            .prev-modal-btn { left: 10px; }
+            .next-modal-btn { right: 10px; }
         }
     </style>
 </head>
@@ -987,9 +1020,8 @@
                             <span>Tattoo US (Thị trường Mỹ)</span>
                             <span style="color: var(--primary-dark);"><i class="fas fa-map-marker-alt"></i> Local SEO & AI Search</span>
                         </div>
-                        <h3>Dominate thị trường ngách Tattoo tại Mỹ với Semantic SEO</h3>
+                        <h3>Hyper Inkers: Dominate Local Search & Kéo 162 Leads/Tháng</h3>
                         
-                        <!-- 🔴 Bố trí Role & Timeline nằm ngang nhau -->
                         <div style="display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 15px;">
                             <div class="project-role" style="margin-bottom: 0;">
                                 <i class="fas fa-user-tag"></i> <span><strong>Vai trò:</strong> Lead dự án</span>
@@ -1005,7 +1037,6 @@
                         
                         <a class="read-more-btn open-cs-modal" data-id="hyper-inkers">Đọc Case Study chi tiết <i class="fas fa-arrow-right"></i></a>
 
-                        <!-- 🔴 Khôi phục Khối Data 3 chỉ số bự -->
                         <div class="data-showcase-v2">
                             <div class="metric-block">
                                 <div class="metric-big">+8,269%</div>
@@ -1042,31 +1073,35 @@
                             <span>Di trú EB5 (High-ticket)</span>
                             <span style="color: var(--primary-dark);"><i class="fas fa-phone-alt"></i> CRO Focus</span>
                         </div>
-                        <h3>Tối ưu tỷ lệ chuyển đổi cuộc gọi (+94%)</h3>
+                        <h3>Interimm: Bứt phá 6.100 Traffic ngách Di trú</h3>
                         
                         <div style="display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 15px;">
                             <div class="project-role" style="margin-bottom: 0;">
-                                <i class="fas fa-user-tag"></i> <span><strong>Vai trò:</strong> Lead dự án</span>
+                                <i class="fas fa-user-tag"></i> <span><strong>Vai trò:</strong> Trực tiếp triển khai</span>
                             </div>
                             <div class="project-timeline" style="margin-bottom: 0;">
-                                <i class="far fa-calendar-alt"></i> T8/2024 - Hiện tại
+                                <i class="far fa-calendar-alt"></i> 03/2024 - 01/2025
                             </div>
                         </div>
 
                         <p class="project-desc">
-                            Với ngành High-ticket, traffic ít nhưng chất lượng. Tập trung tối ưu UI/UX và Search Intent để thúc đẩy hành động gọi điện. Đẩy mạnh content đánh đúng Search Intent (Ý định tìm kiếm) của tệp khách hàng V.I.P.
+                            Định cư Mỹ EB-5 là ngách High-ticket với rào cản tài chính cực cao, đòi hỏi điểm Trust tuyệt đối. Với vai trò trực tiếp thực thi, tôi tập trung xử lý triệt để rào cản Technical, đảm bảo chất lượng content đánh trúng Search Intent và tối ưu Onpage chuyên sâu nhằm dẫn dắt hiệu quả luồng tìm kiếm của tệp khách hàng V.I.P.
                         </p>
 
-                        <a class="read-more-btn open-cs-modal" data-id="interimm">Đọc Case Study chi tiết <i class="fas fa-arrow-right"></i></a>
+                        <a class="read-more-btn open-cs-modal" data-id="interimm">Xem chi tiết quá trình triển khai <i class="fas fa-arrow-right"></i></a>
                         
                         <div class="data-showcase-v2">
                             <div class="metric-block">
-                                <div class="metric-big">+94%</div>
-                                <div class="metric-desc">Call Conversions</div>
+                                <div class="metric-big">170+</div>
+                                <div class="metric-desc">Keywords TOP 3</div>
                             </div>
                             <div class="metric-block">
                                 <div class="metric-big">6,100</div>
                                 <div class="metric-desc">Organic Traffic (+40%)</div>
+                            </div>
+                            <div class="metric-block full-width">
+                                <div class="metric-big">+94%</div>
+                                <div class="metric-desc">Call Conversions</div>
                             </div>
                         </div>
 
@@ -1075,9 +1110,10 @@
                         <button class="carousel-btn prev-btn"><i class="fas fa-chevron-left"></i></button>
                         <button class="carousel-btn next-btn"><i class="fas fa-chevron-right"></i></button>
                         <div class="gallery-track">
-                            <img src="https://via.placeholder.com/800x450.png?text=Heatmap+Landing+Page" class="gallery-img" alt="Chart 1">
-                            <img src="https://via.placeholder.com/800x450.png?text=Biểu+đồ+Click+to+Call" class="gallery-img" alt="Chart 2">
-                            <img src="https://via.placeholder.com/800x450.png?text=Tăng+trưởng+Traffic+Tự+nhiên" class="gallery-img" alt="Chart 3">
+                            <img src="https://raw.githubusercontent.com/nmthaovy/portfolio/main/interimm.png" class="gallery-img" alt="Interimm Traffic Growth">
+                            <img src="https://raw.githubusercontent.com/nmthaovy/portfolio/main/interimm2.png" class="gallery-img" alt="Interimm Lead Conversion">
+                            <img src="https://raw.githubusercontent.com/nmthaovy/portfolio/main/hien-trang-sau-khi-trien-khai-2.png" class="gallery-img" alt="Interimm Before and After">
+                            <img src="https://raw.githubusercontent.com/nmthaovy/portfolio/main/Screenshot%202025-12-23%20145911.jpg" class="gallery-img" alt="Interimm Performance Data">
                         </div>
                         <div class="gallery-dots"></div>
                     </div>
@@ -1254,6 +1290,9 @@
     <!-- FILE MODAL (For certificates & Images) -->
     <div id="fileModal" class="modal-overlay">
         <span class="close-modal">&times;</span>
+        <!-- Nút điều hướng khi phóng to ảnh -->
+        <button class="modal-nav-btn prev-modal-btn" style="display: none;"><i class="fas fa-chevron-left"></i></button>
+        <button class="modal-nav-btn next-modal-btn" style="display: none;"><i class="fas fa-chevron-right"></i></button>
         <div class="modal-content-container" id="modalContainer">
         </div>
     </div>
@@ -1267,13 +1306,11 @@
                 
                 <div class="cs-section">
                     <div class="cs-section-title"><i class="fas fa-exclamation-circle"></i> Hiện trạng & Thách thức</div>
-                    <!-- 🔴 Đổi từ thẻ <p> sang <div> để chứa văn bản và danh sách chuẩn HTML -->
                     <div id="csCurrent" style="color: var(--text-sub); line-height: 1.7; font-size: 1.05rem;">Nội dung hiện trạng...</div>
                 </div>
 
                 <div class="cs-section">
                     <div class="cs-section-title"><i class="fas fa-bolt"></i> Giải pháp Triển khai</div>
-                    <!-- 🔴 Thêm thẻ để hiển thị đoạn mô tả Giải pháp -->
                     <p id="csActionDesc" style="margin-bottom: 15px; display: none;"></p>
                     <ul id="csAction">
                         <li>Công việc 1</li>
@@ -1283,7 +1320,6 @@
 
                 <div class="cs-section">
                     <div class="cs-section-title"><i class="fas fa-chart-line"></i> Kết quả Đạt được</div>
-                    <!-- 🔴 Bọc thẻ ul bằng div cs-result-box để áp dụng UI nổi bật -->
                     <div class="cs-result-box">
                         <ul id="csResult">
                             <li>Kết quả 1</li>
@@ -1355,17 +1391,28 @@
         };
         animateCounters();
 
-        // Modal Logic (Certificates & Image Zoom)
+        // Modal Logic (Certificates & Image Zoom Navigation)
         const fileModal = document.getElementById("fileModal");
         const modalContainer = document.getElementById("modalContainer");
         const closeFileBtn = document.querySelector(".close-modal");
         const openFileBtns = document.querySelectorAll(".open-modal");
+        
+        // Khai báo biến cho chức năng xem slide Popup
+        const prevZoomBtn = document.querySelector(".prev-modal-btn");
+        const nextZoomBtn = document.querySelector(".next-modal-btn");
+        let currentZoomGroup = [];
+        let currentZoomIndex = 0;
 
         openFileBtns.forEach(btn => {
             btn.addEventListener("click", function(e) {
                 e.preventDefault();
                 const fileUrl = this.getAttribute("data-file");
                 modalContainer.innerHTML = ''; 
+                
+                // Ẩn nút điều hướng khi mở chứng chỉ/PDF
+                if(prevZoomBtn) prevZoomBtn.style.display = "none";
+                if(nextZoomBtn) nextZoomBtn.style.display = "none";
+
                 if (fileUrl.includes('google.com/viewer') || fileUrl.toLowerCase().endsWith('.pdf')) {
                     modalContainer.innerHTML = `<iframe src="${fileUrl}" type="application/pdf"></iframe>`;
                 } else {
@@ -1373,7 +1420,7 @@
                 }
                 fileModal.style.display = "flex";
                 setTimeout(() => fileModal.classList.add("show"), 10);
-                document.body.style.overflow = 'hidden'; /* 🔴 Đảm bảo background không cuộn */
+                document.body.style.overflow = 'hidden'; 
             });
         });
 
@@ -1382,24 +1429,53 @@
             setTimeout(() => {
                 fileModal.style.display = "none";
                 modalContainer.innerHTML = '';
-                document.body.style.overflow = ''; /* 🔴 Trả lại trạng thái cuộn bình thường mượt mà */
+                document.body.style.overflow = ''; 
             }, 300);
-        };
+        }; // Fixed missing closing brace here
+
         closeFileBtn.addEventListener("click", closeFileModal);
         fileModal.addEventListener("click", (e) => { if(e.target === fileModal) closeFileModal(); });
 
-        // Click ảnh Gallery để phóng to
+        // Click ảnh Gallery để phóng to & Kích hoạt xem Slide
         const galleryImages = document.querySelectorAll('.gallery-img');
         galleryImages.forEach(img => {
             img.addEventListener('click', function() {
-                modalContainer.innerHTML = `<img src="${this.src}" alt="Zoomed Image">`;
+                // Xác định bộ sưu tập ảnh hiện tại (từ thẻ cha gallery-track)
+                const track = this.closest('.gallery-track');
+                currentZoomGroup = Array.from(track.querySelectorAll('.gallery-img'));
+                currentZoomIndex = currentZoomGroup.indexOf(this);
+
+                modalContainer.innerHTML = `<img id="zoomedImg" src="${this.src}" alt="Zoomed Image">`;
+                
+                // Hiển thị 2 nút điều hướng nếu có nhiều hơn 1 ảnh
+                if(currentZoomGroup.length > 1) {
+                    if(prevZoomBtn) prevZoomBtn.style.display = "flex";
+                    if(nextZoomBtn) nextZoomBtn.style.display = "flex";
+                } else {
+                    if(prevZoomBtn) prevZoomBtn.style.display = "none";
+                    if(nextZoomBtn) nextZoomBtn.style.display = "none";
+                }
+
                 fileModal.style.display = "flex";
                 setTimeout(() => fileModal.classList.add("show"), 10);
-                document.body.style.overflow = 'hidden'; /* 🔴 Đảm bảo background không cuộn */
+                document.body.style.overflow = 'hidden'; 
             });
         });
 
-        // 🔴 CASE STUDY MODAL LOGIC & DATA (CẬP NHẬT DATA HYPER INKERS)
+        // Xử lý chuyển ảnh trong Popup
+        const changeZoomedImage = (direction) => {
+            if(currentZoomGroup.length === 0) return;
+            currentZoomIndex = (currentZoomIndex + direction + currentZoomGroup.length) % currentZoomGroup.length;
+            const zoomedImg = document.getElementById("zoomedImg");
+            if(zoomedImg) {
+                zoomedImg.src = currentZoomGroup[currentZoomIndex].src;
+            }
+        };
+
+        if(prevZoomBtn) prevZoomBtn.addEventListener("click", () => changeZoomedImage(-1));
+        if(nextZoomBtn) nextZoomBtn.addEventListener("click", () => changeZoomedImage(1));
+
+        // CASE STUDY MODAL LOGIC & DATA
         const caseStudyData = {
             'hyper-inkers': {
                 title: 'Hyper Inkers: Dominate Local Search tại Mỹ',
@@ -1424,16 +1500,20 @@
                 ]
             },
             'interimm': {
-                title: 'Interimm: Tối ưu chuyển đổi ngành Di trú High-ticket',
-                current: 'Đặc thù ngành Di trú EB5 có lượng search volume rất thấp nhưng giá trị chuyển đổi cực cao (High-ticket). Website có traffic nhưng tỷ lệ rớt phễu (drop-off) tại Landing Page lớn, người dùng đọc thông tin xong không có hành động gọi điện tư vấn.',
+                title: 'Interimm: Bứt phá 6.100 Traffic ngách Di trú',
+                current: 'Ngành Di trú Mỹ (EB-5) là sân chơi "High-ticket" cực kỳ khốc liệt. Với vai trò triển khai SEO trực tiếp cho dự án, nhiệm vụ của tôi là trực tiếp biến chiến lược thành kết quả thực tế thông qua khả năng kiểm soát chất lượng Onpage, Technical và Entity một cách kỷ luật trong suốt 10 tháng.',
+                actionDesc: '',
                 action: [
-                    'Tái cấu trúc UI/UX toàn bộ Landing Page dịch vụ, đặt CTA "Hotline tư vấn" tại các điểm chạm vàng (Heatmap analysis).',
-                    'Đẩy mạnh content đánh đúng Search Intent (Ý định tìm kiếm) của tệp khách hàng V.I.P.',
-                    'Cắt bỏ các keyword rác mang lại traffic ảo nhưng không có giá trị chuyển đổi.'
+                    '<strong style="color: var(--secondary);">1. Tối ưu Onpage & Semantic Content</strong><ul style="margin-top: 8px; margin-bottom: 15px; list-style-type: circle;"><li>Trực tiếp quản lý tiến độ, kiểm duyệt chất lượng Outline/AM và bài viết đảm bảo tính chuyên môn cao, đánh trúng Search Intent của tệp khách V.I.P.</li><li>Triển khai hệ thống Internal Link theo cấu trúc cụm chủ đề (Topic Cluster) và thiết lập Schema Markup nâng cao (Service, BlogPosting) để giúp Google hiểu rõ thực thể website.</li><li>Follow ranking và lên action Audit Content thúc đẩy ranking keywords cam kết đảm bảo đạt KPI theo hợp đồng, đồng thời bổ sung Information Gain cho các bài viết để duy trì lợi thế cạnh tranh.</li></ul>',
+                    '<strong style="color: var(--secondary);">2. Kiểm soát Technical & Trải nghiệm người dùng trên website</strong><ul style="margin-top: 8px; margin-bottom: 15px; list-style-type: circle;"><li>Thực hiện Audit Technical định kỳ, làm việc trực tiếp với đội ngũ Dev để xử lý triệt để các lỗi Technical nền tảng (Lỗi Crawl/Index, tốc độ tải trang, cấu trúc URL).</li></ul>',
+                    '<strong style="color: var(--secondary);">3. Xây dựng Trust (Entity & Offsite Control)</strong><ul style="margin-top: 8px; list-style-type: circle;"><li>Quản lý và đồng bộ tín hiệu Trust đa nền tảng thông qua: Hệ thống Social Stack (Brand & CEO), Google Stack, Syndication, và bài đăng Google My Business (GMB).</li><li>Audit Backlink website định kỳ, phát hiện và Disavow các domain kém chất lượng, spam.</li></ul>'
                 ],
                 result: [
-                    'Organic traffic tăng trưởng 40%, đạt 6.100 visits/tháng từ đúng tệp khách hàng tiềm năng.',
-                    'Call Conversions (Tỷ lệ chuyển đổi cuộc gọi) tăng vọt +94%.'
+                    'Góp phần đưa dự án nghiệm thu trước thời hạn 1 tháng với bộ chỉ số vượt kỳ vọng:',
+                    'Tăng trưởng từ <strong>390</strong> lên <strong>6.100 Organic Traffic/tháng</strong> (Semrush).',
+                    'Thứ hạng từ khóa: <strong>52,7% Top 3</strong> | <strong>72,8% Top 5</strong> | <strong>95,2% Top 10</strong>.',
+                    '<strong>170+ keywords lên TOP3</strong>, trong đó bao gồm các keywords chuyển đổi: công ty eb5, eb-5 là gì, định cư mỹ eb5,...',
+                    'Thu hút chính xác tệp khách hàng mục tiêu, duy trì Engagement Rate ở mức xuất sắc <strong>>91%</strong> và thúc đẩy lượng Lead Organic lên <strong>34 lượt Call Conversions/tháng</strong>.'
                 ]
             },
             'housedesign': {
@@ -1477,7 +1557,6 @@
                     document.getElementById('csTitle').innerHTML = data.title;
                     document.getElementById('csCurrent').innerHTML = data.current;
                     
-                    // 🔴 Kiểm tra xem dự án có actionDesc (Mô tả giải pháp) không để hiển thị
                     const actionDescEl = document.getElementById('csActionDesc');
                     if (data.actionDesc) {
                         actionDescEl.innerHTML = data.actionDesc;
@@ -1500,7 +1579,7 @@
             csModal.classList.remove("show");
             setTimeout(() => {
                 csModal.style.display = "none";
-                document.body.style.overflow = ''; /* 🔴 Trả lại trạng thái cuộn bình thường mượt mà */
+                document.body.style.overflow = ''; 
             }, 300);
         };
 
