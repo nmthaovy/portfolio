@@ -40,7 +40,7 @@
 
         html { 
             scroll-behavior: smooth; 
-            scrollbar-gutter: stable; /* FIX LỖI NHẢY GIAO DIỆN KHI BẬT/TẮT POPUP */
+            scrollbar-gutter: stable;
         }
 
         body {
@@ -590,7 +590,7 @@
             border-radius: 3px;
         }
 
-        /* --- DATA-DRIVEN CASE STUDIES (NEW SANDWICH LAYOUT) --- */
+        /* --- DATA-DRIVEN CASE STUDIES --- */
         .project-stack {
             display: flex;
             flex-direction: column;
@@ -606,8 +606,6 @@
             position: relative;
             overflow: hidden;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.02);
-            
-            /* Chuyển sang Flexbox dọc để tách 3 tầng rõ ràng */
             display: flex; 
             flex-direction: column;
             gap: 30px; 
@@ -618,7 +616,6 @@
             transform: translateY(-5px);
         }
 
-        /* TẦNG 1: HEADER FULL-WIDTH (CĂN GIỮA) */
         .project-header-full {
             text-align: center;
             display: flex;
@@ -648,7 +645,6 @@
             max-width: 900px;
         }
 
-        /* Căn trái cho cụm Vai trò & Timeline khi được chuyển xuống cột Text */
         .project-meta {
             display: flex;
             justify-content: flex-start;
@@ -671,12 +667,11 @@
         .project-role strong { color: var(--secondary); font-weight: 700; }
         .project-role i, .project-timeline i { color: var(--primary-dark); }
 
-        /* TẦNG 2: BODY CHIA 2 CỘT (GIẢI QUYẾT KHOẢNG TRẮNG) */
         .project-body {
             display: grid;
             grid-template-columns: 1fr 1.2fr;
             gap: 50px;
-            align-items: center; /* Ôm khít nhau theo chiều dọc */
+            align-items: center;
         }
 
         .project-desc-wrapper {
@@ -710,12 +705,11 @@
         .read-more-btn:hover { color: var(--secondary); }
         .read-more-btn:hover i { transform: translateX(5px); }
 
-        /* TẦNG 3: FOOTER HIGHLIGHTS FULL-WIDTH (DÀN NGANG) */
         .data-showcase-v2 {
             padding-top: 30px;
             border-top: 1px solid rgba(0, 0, 0, 0.05);
             display: flex;
-            justify-content: space-evenly; /* Dàn đều khoảng cách */
+            justify-content: space-evenly; 
             flex-wrap: wrap;
             gap: 20px;
             width: 100%;
@@ -725,9 +719,9 @@
             display: flex;
             flex-direction: column;
             gap: 5px;
-            align-items: center; /* Căn giữa text trong khối */
+            align-items: center;
             text-align: center;
-            flex: 1; /* Cho phép các khối chia đều diện tích */
+            flex: 1; 
             min-width: 200px;
         }
 
@@ -822,9 +816,14 @@
         .next-btn { right: 25px; }
 
         /* --- Process Section --- */
+        .process-slider-wrapper {
+            position: relative;
+            width: 100%;
+        }
+        
         .process-grid {
             display: grid;
-            grid-template-columns: repeat(2, 1fr); /* 🔴 Cấu trúc 2x2 thay vì auto-fit */
+            grid-template-columns: repeat(2, 1fr);
             gap: 30px;
         }
         .process-card {
@@ -844,7 +843,12 @@
         .tag-list { display: flex; flex-wrap: wrap; gap: 8px;}
         .tag-list span { padding: 6px 12px; background: #FAFAFA; border: 1px solid rgba(0, 0, 0, 0.08); border-radius: 6px; font-size: 0.75rem; font-weight: 600; color: var(--text-main);}
 
-        /* 🔴 NEW: TIMELINE SECTION CSS */
+        /* Nút slider cho Process trên Mobile (Ẩn trên Desktop) */
+        .process-nav-btn {
+            display: none;
+        }
+
+        /* 🔴 NEW: KHÔI PHỤC TIMELINE SECTION CSS */
         .timeline-container {
             position: relative;
             max-width: 900px;
@@ -857,7 +861,7 @@
             position: absolute;
             top: 0;
             bottom: 0;
-            left: 24px; /* Center of the dot */
+            left: 24px;
             width: 2px;
             background: rgba(0, 0, 0, 0.06);
         }
@@ -986,7 +990,7 @@
             background: rgba(255, 178, 44, 0.8);
         }
 
-        /* 🔴 NEW: THANKS FOR WATCHING SECTION CSS */
+        /* 🔴 THANKS FOR WATCHING SECTION CSS */
         .thanks-section {
             padding: 80px 0 40px;
             text-align: center;
@@ -1011,7 +1015,7 @@
             text-transform: uppercase;
         }
 
-        /* 🔴 NEW: STICKY SOCIAL BAR (GÓC PHẢI DƯỚI) */
+        /* 🔴 STICKY SOCIAL BAR */
         .sticky-social-bar {
             position: fixed;
             right: 30px;
@@ -1019,7 +1023,7 @@
             display: flex;
             flex-direction: column;
             gap: 12px;
-            z-index: 9999;
+            z-index: 999;
         }
         .social-btn {
             width: 48px;
@@ -1038,7 +1042,6 @@
             position: relative;
         }
         
-        /* Tooltip khi Hover (Đảo sang hiển thị bên trái nút) */
         .social-btn::after {
             content: attr(data-tooltip);
             position: absolute;
@@ -1059,19 +1062,47 @@
             pointer-events: none;
         }
 
-        /* Màu riêng cho từng nút */
         .social-btn.zalo:hover { background: #0068FF; color: #fff; border-color: #0068FF;}
         .social-btn.phone:hover { background: #00B14F; color: #fff; border-color: #00B14F;}
         .social-btn.email:hover { background: var(--primary); color: #000; border-color: var(--primary);}
         .social-btn.linkedin:hover { background: #0077b5; color: #fff; border-color: #0077b5;}
 
-        .social-btn:hover {
-            transform: scale(1.1);
-        }
+        .social-btn:hover { transform: scale(1.1); }
         .social-btn:hover::after {
             opacity: 1;
             visibility: visible;
             transform: translateY(-50%) translateX(0);
+        }
+
+        /* 🔴 NEW: BACK TO TOP BUTTON CSS */
+        #backToTop {
+            position: fixed;
+            left: 30px;
+            bottom: 30px;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: var(--secondary);
+            color: #fff;
+            border: none;
+            font-size: 1.2rem;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            transition: var(--transition);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(20px);
+            z-index: 999;
+        }
+        #backToTop.show {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        #backToTop:hover {
+            background: var(--primary);
+            color: #000;
+            transform: translateY(-5px);
         }
 
         /* --- Footer --- */
@@ -1084,7 +1115,7 @@
         .footer-cta h2 { font-family: var(--font-header); font-size: clamp(2rem, 5vw, 3.5rem); margin-bottom: 20px;}
         .footer-cta p { font-size: 1.1rem; color: #CCCCCC; margin-bottom: 40px; max-width: 600px; margin-inline: auto;}
 
-        /* 🔴 RESPONSIVE */
+        /* 🔴 RESPONSIVE MOBILE TỐI ƯU TOÀN DIỆN */
         @media (max-width: 1024px) {
             .hero-grid, .about-grid { grid-template-columns: 1fr; text-align: center; }
             .hero-desc, .about-text p { margin: 0 auto 30px; text-align: left;}
@@ -1094,38 +1125,116 @@
             .nav-links { display: none; } 
             .cert-card { text-align: left; }
             
-            .project-body { grid-template-columns: 1fr; gap: 30px; } /* Stack cột Text và Ảnh trên tablet */
+            .project-body { grid-template-columns: 1fr; gap: 30px; } 
         }
 
         @media (max-width: 600px) {
-            section { padding: 70px 0; }
-            /* Responsive Tabs */
-            .exp-wrapper { flex-direction: column; padding: 25px; gap: 25px; }
-            .exp-tabs { 
-                flex-direction: row; 
-                border-right: none; 
-                border-bottom: 2px solid rgba(0,0,0,0.05); 
-                padding-right: 0; 
-                padding-bottom: 10px; 
+            section { padding: 60px 0; }
+            .hero { padding-top: 100px; }
+            .hero-stats { gap: 15px; justify-content: space-between; }
+            .stat-item { width: 45%; text-align: left;} 
+            .stat-item .number { font-size: 2rem; }
+            .btn-group { flex-direction: column; width: 100%; gap: 12px; }
+            .btn { width: 100%; padding: 18px; }
+            
+            .project-card-v2 { padding: 25px 20px; border-radius: 20px; gap: 25px;}
+            .project-header-full h3 { font-size: 1.5rem; }
+            .project-meta { justify-content: center; }
+            
+            .data-showcase-v2 { flex-direction: row; flex-wrap: wrap; gap: 15px; } 
+            .metric-block { flex: 1 1 45%; min-width: 130px; }
+            .metric-big { font-size: 1.5rem; }
+
+            .carousel-btn { width: 32px; height: 32px; font-size: 0.9rem; }
+            .prev-btn { left: 10px; }
+            .next-btn { right: 10px; }
+
+            /* Tối ưu Slider Vuốt ngang trên Mobile */
+            .process-slider-wrapper { position: relative; }
+            .process-grid { 
+                display: flex; 
                 overflow-x: auto; 
-                white-space: nowrap; 
+                scroll-snap-type: x mandatory; 
+                padding-bottom: 20px; 
+                gap: 15px;
+                -webkit-overflow-scrolling: touch;
+                scrollbar-width: none; /* Firefox */
             }
-            .exp-tabs::-webkit-scrollbar { height: 3px; }
-            .exp-tabs::-webkit-scrollbar-thumb { background: rgba(0,0,0,0.1); border-radius: 4px; }
-            .exp-tab { padding: 10px 15px; font-size: 1rem; }
-            .exp-tab::after { right: 0; bottom: -12px; top: auto; width: 100%; height: 3px; }
+            .process-grid::-webkit-scrollbar { display: none; } /* Chrome */
+            
+            .process-card { 
+                flex: 0 0 85%; 
+                scroll-snap-align: center; 
+                padding: 25px; 
+                box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            }
+            .process-step { font-size: 2.5rem; }
+            .process-card h3 { font-size: 1.25rem; }
+            
+            /* 🔴 Hiển thị 2 nút điều hướng Slider trên Mobile */
+            .process-nav-btn {
+                display: flex;
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%);
+                width: 36px;
+                height: 36px;
+                border-radius: 50%;
+                background: rgba(255,255,255,0.95);
+                box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+                border: 1px solid rgba(0,0,0,0.05);
+                align-items: center;
+                justify-content: center;
+                z-index: 10;
+                color: var(--secondary);
+                cursor: pointer;
+            }
+            .process-prev-btn { left: -10px; }
+            .process-next-btn { right: -10px; }
+
+            .cert-card { flex-direction: column; gap: 15px; }
+            .cs-modal-body { padding: 25px; }
+            .cs-modal-title { font-size: 1.6rem; }
+
+            .modal-nav-btn { width: 40px; height: 40px; font-size: 1rem; }
+            .prev-modal-btn { left: 10px; }
+            .next-modal-btn { right: 10px; }
+            
+            /* Responsive Timeline (Khôi phục) */
+            .timeline-container::before { left: 15px; }
+            .timeline-item { padding-left: 45px; }
+            .timeline-dot { left: 8px; top: 25px;}
+            .timeline-card { padding: 25px; }
             .timeline-header { flex-direction: column; align-items: flex-start; text-align: left;}
             .timeline-meta-right { text-align: left; align-items: flex-start; margin-top: 10px;}
             .timeline-role h3 { font-size: 1.4rem; }
 
-            /* Responsive Sticky Bar */
+            /* Tối ưu Sticky Bar Mobile */
             .sticky-social-bar {
-                right: 15px;
-                left: auto;
-                bottom: 15px;
+                flex-direction: row;
+                top: auto;
+                bottom: 20px;
+                left: 50%;
+                right: auto;
+                transform: translateX(-50%);
+                background: rgba(255,255,255,0.95);
+                backdrop-filter: blur(10px);
+                padding: 10px 20px;
+                border-radius: 50px;
+                box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+                border: 1px solid rgba(0,0,0,0.08);
+                gap: 20px;
             }
-            .social-btn { width: 42px; height: 42px; font-size: 1.1rem; }
-            .social-btn::after { display: none; /* Tắt tooltip trên mobile */ }
+            .social-btn { width: 40px; height: 40px; font-size: 1.1rem; box-shadow: none; border: none; background: #FAFAFA;}
+            .social-btn::after { display: none; }
+
+            /* Nút Back to top trên Mobile né thanh Dock */
+            #backToTop {
+                bottom: 90px;
+                left: auto;
+                right: 20px;
+                width: 42px; height: 42px; font-size: 1rem;
+            }
         }
     </style>
 </head>
@@ -1140,7 +1249,6 @@
                 <li><a href="#projects">Case Studies</a></li>
                 <li><a href="#process">Tư duy</a></li>
                 <li><a href="#experience">Kinh nghiệm</a></li>
-                <!-- 🔴 Cập nhật text Menu từ "Đặt lịch Audit" sang "Liên hệ" -->
                 <li><a href="#contact" style="color: var(--primary-dark);">Liên hệ</a></li>
             </ul>
         </div>
@@ -1242,6 +1350,7 @@
                                 <ul style="margin: 0; padding-left: 15px; color: var(--text-sub);">
                                     <li style="margin-bottom: 8px;">
                                         <strong style="color: var(--text-main);">Fundamentals of Digital Marketing</strong> 
+                                        <!-- 🔴 KHÔI PHỤC LẠI GOOGLE DOCS VIEWER -->
                                         <a href="javascript:void(0)" data-file="https://docs.google.com/viewer?url=https://raw.githubusercontent.com/nmthaovy/portfolio/main/digitalgarage_certificate.pdf&embedded=true" class="credential-link open-modal">Xem <i class="fas fa-search-plus" style="font-size: 0.6rem;"></i></a>
                                         <br>Cấp bởi Google (2021)
                                     </li>
@@ -1259,6 +1368,7 @@
                             <h4>Giải thưởng thực chiến</h4>
                             <div style="font-size: 0.9rem; color: var(--text-sub); margin-top: 8px;">
                                 <strong style="color: var(--secondary);">Nhân viên xuất sắc</strong>
+                                <!-- 🔴 KHÔI PHỤC LẠI GOOGLE DOCS VIEWER -->
                                 <a href="javascript:void(0)" data-file="https://docs.google.com/viewer?url=https://raw.githubusercontent.com/nmthaovy/portfolio/main/GTV_CT2026_Gi%25E1%25BA%25A5y%2520khen%2520Vy%2520Nguyen.pdf&embedded=true" class="credential-link open-modal">Xem <i class="fas fa-search-plus" style="font-size: 0.6rem;"></i></a>
                                 <br>
                                 Được GTV SEO vinh danh vì sự cống hiến tận tâm, bền bỉ và những đóng góp xuất sắc.
@@ -1284,7 +1394,6 @@
                 <!-- CASE 1 (Hyper Inkers) -->
                 <div class="project-card-v2" data-aos="fade-up">
                     
-                    <!-- TẦNG 1: HEADER -->
                     <div class="project-header-full">
                         <div class="project-industry">
                             <span>Tattoo US (Thị trường Mỹ)</span>
@@ -1293,7 +1402,6 @@
                         <h3 style="margin-bottom: 0;">Hyper Inkers: Dominate Local Search & Kéo 162 Leads/Tháng</h3>
                     </div>
 
-                    <!-- TẦNG 2: BODY CHIA CỘT -->
                     <div class="project-body">
                         <div class="project-desc-wrapper">
                             <div class="project-meta">
@@ -1323,7 +1431,6 @@
                         </div>
                     </div>
 
-                    <!-- TẦNG 3: HIGHLIGHTS -->
                     <div class="data-showcase-v2">
                         <div class="metric-block">
                             <div class="metric-big">+8,269%</div>
@@ -1524,44 +1631,49 @@
                 </p>
             </div>
 
-            <div class="process-grid">
-                <div class="process-card" data-aos="fade-up">
-                    <div class="process-step">01</div>
-                    <h3>Root Cause, không symptom</h3>
-                    <p>Traffic drop không phải luôn là do content kém. Có thể là crawl budget, cannibalization, hoặc thiếu chiều sâu chuyên môn. Tôi đọc log files & GSC trước khi đọc content.</p>
-                    <div class="tag-list">
-                        <span>Log File</span><span>GSC Data</span><span>Screaming Frog</span>
+            <!-- 🔴 ĐÃ THÊM WRAPPER VÀ NÚT ĐIỀU HƯỚNG DÀNH RIÊNG CHO MOBILE -->
+            <div class="process-slider-wrapper">
+                <button class="process-nav-btn process-prev-btn"><i class="fas fa-chevron-left"></i></button>
+                <div class="process-grid" id="processGrid">
+                    <div class="process-card" data-aos="fade-up">
+                        <div class="process-step">01</div>
+                        <h3>Root Cause, không symptom</h3>
+                        <p>Traffic drop không phải luôn là do content kém. Có thể là crawl budget, cannibalization, hoặc thiếu chiều sâu chuyên môn. Tôi đọc log files & GSC trước khi đọc content.</p>
+                        <div class="tag-list">
+                            <span>Log File</span><span>GSC Data</span><span>Screaming Frog</span>
+                        </div>
+                    </div>
+                    <div class="process-card" data-aos="fade-up" data-aos-delay="100">
+                        <div class="process-step">02</div>
+                        <h3>Priority Matrix, không to-do list</h3>
+                        <p>Một website có hàng trăm thứ cần fix. Xây priority matrix dựa trên: impact × effort × time-to-result. Quyết định rõ: những gì làm trước, những gì bỏ qua.</p>
+                        <div class="tag-list">
+                            <span>Impact Framework</span><span>Competitor Gap</span>
+                        </div>
+                    </div>
+                    <div class="process-card" data-aos="fade-up" data-aos-delay="200">
+                        <div class="process-step">03</div>
+                        <h3>Semantic depth, không nhồi nhét</h3>
+                        <p>Xây dựng Semantic Content Network: hệ thống bài viết liên kết chặt chẽ để chứng minh Topical Authority, khiến Google và AI Search không thể bỏ qua.</p>
+                        <div class="tag-list">
+                            <span>Topical Map</span><span>Entity Optimization</span>
+                        </div>
+                    </div>
+                    <div class="process-card" data-aos="fade-up" data-aos-delay="300">
+                        <div class="process-step">04</div>
+                        <h3>Business outcome, không vanity metrics</h3>
+                        <p>Traffic là phương tiện, không phải đích đến. Mọi báo cáo kết nối trực tiếp organic performance với business KPIs: Lead, ROI, Conversion Rate.</p>
+                        <div class="tag-list">
+                            <span>GA4 Events</span><span>Attribution Model</span>
+                        </div>
                     </div>
                 </div>
-                <div class="process-card" data-aos="fade-up" data-aos-delay="100">
-                    <div class="process-step">02</div>
-                    <h3>Priority Matrix, không to-do list</h3>
-                    <p>Một website có hàng trăm thứ cần fix. Xây priority matrix dựa trên: impact × effort × time-to-result. Quyết định rõ: những gì làm trước, những gì bỏ qua.</p>
-                    <div class="tag-list">
-                        <span>Impact Framework</span><span>Competitor Gap</span>
-                    </div>
-                </div>
-                <div class="process-card" data-aos="fade-up" data-aos-delay="200">
-                    <div class="process-step">03</div>
-                    <h3>Semantic depth, không nhồi nhét</h3>
-                    <p>Xây dựng Semantic Content Network: hệ thống bài viết liên kết chặt chẽ để chứng minh Topical Authority, khiến Google và AI Search không thể bỏ qua.</p>
-                    <div class="tag-list">
-                        <span>Topical Map</span><span>Entity Optimization</span>
-                    </div>
-                </div>
-                <div class="process-card" data-aos="fade-up" data-aos-delay="300">
-                    <div class="process-step">04</div>
-                    <h3>Business outcome, không vanity metrics</h3>
-                    <p>Traffic là phương tiện, không phải đích đến. Mọi báo cáo kết nối trực tiếp organic performance với business KPIs: Lead, ROI, Conversion Rate.</p>
-                    <div class="tag-list">
-                        <span>GA4 Events</span><span>Attribution Model</span>
-                    </div>
-                </div>
+                <button class="process-nav-btn process-next-btn"><i class="fas fa-chevron-right"></i></button>
             </div>
         </div>
     </section>
 
-    <!-- 🔴 NEW SECTION: KINH NGHIỆM LÀM VIỆC (TIMELINE) -->
+    <!-- 🔴 ĐÃ KHÔI PHỤC LẠI TIMELINE SECTION XỔ DỌC -->
     <section id="experience" style="background: #FAFAFA; border-top: 1px solid rgba(0,0,0,0.05); border-bottom: 1px solid rgba(0,0,0,0.05);">
         <div class="container">
             <div class="section-header" data-aos="fade-up" style="text-align: center; margin: 0 auto 60px;">
@@ -1581,16 +1693,16 @@
                                 <span class="timeline-company">CTY TNHH TMDV GTV SEO</span>
                             </div>
                             <div class="timeline-meta-right">
-                                <span class="timeline-date">11/2023 - 04/2026</span>
-                                <!-- Tạm dùng link ảnh web làm ví dụ, bạn có thể thay bằng link chứng nhận thực -->
-                                <span class="timeline-cert">Chứng nhận: <a href="javascript:void(0)" data-file="https://docs.google.com/viewer?url=https://raw.githubusercontent.com/nmthaovy/portfolio/main/GTV_CT2026_Gi%25E1%25BA%25A5y%2520khen%2520Vy%2520Nguyen.pdf&embedded=true" class="credential-link open-modal">Tại đây <i class="fas fa-search-plus" style="font-size: 0.6rem;"></i></a></span>
+                                <span class="timeline-date">11/2023 - Hiện tại</span>
+                                <!-- 🔴 KHÔI PHỤC LẠI GOOGLE DOCS VIEWER -->
+                                <span class="timeline-cert">Chứng nhận: <a class="open-modal" data-file="https://docs.google.com/viewer?url=https://raw.githubusercontent.com/nmthaovy/portfolio/main/GTV_CT2026_Gi%25E1%25BA%25A5y%2520khen%2520Vy%2520Nguyen.pdf&embedded=true">Tại đây</a></span>
                             </div>
                         </div>
                         <div class="timeline-body">
                             <ul>
                                 <li><strong>Hoạch định chiến lược & Content Planning:</strong> Phân tích thị trường/đối thủ, xây dựng chiến lược SEO tổng thể (Topical Map, Offpage) và trực tiếp quản lý, kiểm duyệt chất lượng nội dung đảm bảo tiêu chuẩn E-E-A-T và Search Intent.</li>
                                 <li><strong>Technical Audits chuyên sâu:</strong> Thực hiện Audit website định kỳ và tối ưu Onpage nâng cao. Phối hợp trực tiếp với đội ngũ Dev để giải quyết triệt để các bài toán kỹ thuật phức tạp (Crawlability, Indexability, Core Web Vitals).</li>
-                                <li><strong>Phân tích dữ liệu:</strong> Theo dõi hiệu suất trên GA4, GSC và xây dựng dashboard báo cáo.</li>
+                                <li><strong>Phân tích dữ liệu & CRO:</strong> Theo dõi hiệu suất trên GA4, GSC và xây dựng dashboard báo cáo. Phân tích chuyên sâu dữ liệu hành vi người dùng để đưa ra đề xuất Tối ưu hóa tỷ lệ chuyển đổi (CRO).</li>
                                 <li><strong>Đào tạo & Quản lý:</strong> Trực tiếp hướng dẫn, đào tạo nhân sự mới về tư duy SEO thực chiến và quy trình vận hành dự án.</li>
                             </ul>
                         </div>
@@ -1608,38 +1720,48 @@
                             </div>
                             <div class="timeline-meta-right">
                                 <span class="timeline-date">02/2023 - 05/2023</span>
-                                <span class="timeline-cert">Chứng nhận: <a href="javascript:void(0)" data-file="https://docs.google.com/viewer?url=https://raw.githubusercontent.com/nmthaovy/portfolio/main/journey on air.pdf&embedded=true" class="credential-link open-modal">Tại đây <i class="fas fa-search-plus" style="font-size: 0.6rem;"></i></a></span>
+                                <!-- 🔴 KHÔI PHỤC LẠI GOOGLE DOCS VIEWER -->
+                                <span class="timeline-cert">Chứng nhận: <a class="open-modal" data-file="https://docs.google.com/viewer?url=https://raw.githubusercontent.com/nmthaovy/portfolio/main/journey%20on%20air.pdf&embedded=true">Tại đây</a></span>
                             </div>
                         </div>
                         <div class="timeline-body">
                             <ul>
                                 <li>Sáng tạo nội dung tiếng Anh chuẩn SEO lĩnh vực du lịch, truyền tải văn hóa Việt Nam ra quốc tế.</li>
-                    <!-- TAB 3: Ybox -->
-                    <div class="exp-panel" id="exp-ybox">
-                        <div class="timeline-header" style="border:none; padding-bottom: 0;">
+                                <li>Cùng xây dựng và quản trị cộng đồng Facebook đạt hơn 10.000 thành viên, phát triển bài viết theo Content Pillar định sẵn.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Kinh nghiệm 3 -->
+                <div class="timeline-item" data-aos="fade-up" data-aos-delay="200">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-card">
+                        <div class="timeline-header">
                             <div class="timeline-role">
                                 <h3>CTV DỊCH THUẬT</h3>
                                 <span class="timeline-company">Dự án Tâm Lý Học Tuổi Trẻ của Ybox</span>
                             </div>
                             <div class="timeline-meta-right">
                                 <span class="timeline-date">02/2023 - 10/2023</span>
-                                <span class="timeline-cert">Chứng nhận: <a href="javascript:void(0)" data-file="https://docs.google.com/viewer?url=https://raw.githubusercontent.com/nmthaovy/portfolio/main/tâm lý học tuổi trẻ.pdf&embedded=true" class="credential-link open-modal">Tại đây <i class="fas fa-search-plus" style="font-size: 0.6rem;"></i></a></span>
+                                <!-- 🔴 KHÔI PHỤC LẠI GOOGLE DOCS VIEWER -->
+                                <span class="timeline-cert">Chứng nhận: <a class="open-modal" data-file="https://docs.google.com/viewer?url=https://raw.githubusercontent.com/nmthaovy/portfolio/main/t%C3%A2m%20l%C3%BD%20h%E1%BB%8Dc%20tu%E1%BB%95i%20tr%E1%BA%BB.pdf&embedded=true">Tại đây</a></span>
                             </div>
                         </div>
-                        <div class="timeline-body" style="margin-top: 25px;">
+                        <div class="timeline-body">
                             <ul>
                                 <li>Phụ trách dịch thuật Anh - Việt các bài viết học thuật chuyên sâu về tâm lý học và giáo dục.</li>
                                 <li>Đảm bảo văn phong mượt mà, tối ưu nội dung để đăng tải lên website nền tảng Ybox.</li>
                             </ul>
                         </div>
                     </div>
-
                 </div>
+
             </div>
         </div>
     </section>
 
-    <!-- 🔴 NEW: THANKS FOR WATCHING SECTION -->
+    <!-- THANKS FOR WATCHING SECTION -->
     <section class="thanks-section" data-aos="zoom-in">
         <div class="container">
             <h2 class="thanks-title">Thanks</h2>
@@ -1650,7 +1772,6 @@
     <!-- Footer / Contact -->
     <footer id="contact">
         <div class="container footer-cta" data-aos="fade-up">
-            <!-- 🔴 Cập nhật thông điệp tìm việc chuyên nghiệp -->
             <h2>Sẵn sàng cho những mục tiêu mới?</h2>
             <p>Tôi luôn cởi mở với các cơ hội nghề nghiệp và sẵn sàng đồng hành cùng doanh nghiệp kiến tạo những cột mốc tăng trưởng tiếp theo.</p>
             
@@ -1669,7 +1790,7 @@
         </div>
     </footer>
 
-    <!-- 🔴 NEW: STICKY SOCIAL BAR -->
+    <!-- STICKY SOCIAL BAR -->
     <div class="sticky-social-bar">
         <a href="https://zalo.me/0342852605" target="_blank" class="social-btn zalo" data-tooltip="Zalo: 0342852605">
             <span style="font-weight: 900; font-family: 'Inter', sans-serif;">Z</span>
@@ -1684,6 +1805,11 @@
             <i class="fab fa-linkedin-in"></i>
         </a>
     </div>
+
+    <!-- 🔴 NEW: BACK TO TOP BUTTON -->
+    <button id="backToTop" title="Lên đầu trang">
+        <i class="fas fa-arrow-up"></i>
+    </button>
 
     <!-- FILE MODAL (For certificates & Images) -->
     <div id="fileModal" class="modal-overlay">
@@ -1788,6 +1914,33 @@
         };
         animateCounters();
 
+        // 🔴 Logic Back To Top Button
+        const backToTopBtn = document.getElementById("backToTop");
+        window.addEventListener("scroll", () => {
+            if (window.scrollY > 500) {
+                backToTopBtn.classList.add("show");
+            } else {
+                backToTopBtn.classList.remove("show");
+            }
+        });
+        backToTopBtn.addEventListener("click", () => {
+            window.scrollTo({ top: 0, behavior: "smooth" });
+        });
+
+        // 🔴 Logic Nút Điều hướng Mobile cho Section "Cách tôi làm việc"
+        const processGrid = document.getElementById('processGrid');
+        const processPrevBtn = document.querySelector('.process-prev-btn');
+        const processNextBtn = document.querySelector('.process-next-btn');
+
+        if(processGrid && processPrevBtn && processNextBtn) {
+            processPrevBtn.addEventListener('click', () => {
+                processGrid.scrollBy({ left: -300, behavior: 'smooth' });
+            });
+            processNextBtn.addEventListener('click', () => {
+                processGrid.scrollBy({ left: 300, behavior: 'smooth' });
+            });
+        }
+
         // Modal Logic (Certificates & Image Zoom Navigation)
         const fileModal = document.getElementById("fileModal");
         const modalContainer = document.getElementById("modalContainer");
@@ -1808,6 +1961,7 @@
                 if(prevZoomBtn) prevZoomBtn.style.display = "none";
                 if(nextZoomBtn) nextZoomBtn.style.display = "none";
 
+                // 🔴 Khôi phục lại Logic duyệt web cũ
                 if (fileUrl.includes('google.com/viewer') || fileUrl.toLowerCase().endsWith('.pdf')) {
                     modalContainer.innerHTML = `<iframe src="${fileUrl}" type="application/pdf"></iframe>`;
                 } else {
@@ -2062,28 +2216,6 @@
                 startAutoPlay();
             }, {passive: true});
         });
-
-        // 🔴 LỆNH CHUYỂN ĐỔI TAB CHO PHẦN KINH NGHIỆM LÀM VIỆC
-        const expTabs = document.querySelectorAll('.exp-tab');
-        const expPanels = document.querySelectorAll('.exp-panel');
-
-        expTabs.forEach(tab => {
-            tab.addEventListener('click', () => {
-                // Xóa class active ở tất cả tab và panel
-                expTabs.forEach(t => t.classList.remove('active'));
-                expPanels.forEach(p => p.classList.remove('active'));
-
-                // Thêm class active cho tab được click và panel tương ứng
-                tab.classList.add('active');
-                const targetPanelId = tab.getAttribute('data-target');
-                const targetPanel = document.getElementById(targetPanelId);
-                
-                if (targetPanel) {
-                    targetPanel.classList.add('active');
-                }
-            });
-        });
-
     </script>
 </body>
 </html>
