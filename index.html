@@ -587,7 +587,7 @@
             border-radius: 3px;
         }
 
-        /* --- DATA-DRIVEN CASE STUDIES --- */
+        /* 🔴 DATA-DRIVEN CASE STUDIES (NEW SANDWICH LAYOUT) */
         .project-stack {
             display: flex;
             flex-direction: column;
@@ -603,10 +603,11 @@
             position: relative;
             overflow: hidden;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.02);
-            display: grid;
-            grid-template-columns: 1fr 1.2fr;
-            gap: 50px;
-            align-items: center; 
+            
+            /* 🔴 Chuyển sang Flexbox dọc để tách 3 tầng rõ ràng */
+            display: flex; 
+            flex-direction: column;
+            gap: 30px; 
         }
         .project-card-v2:hover {
             border-color: rgba(255, 178, 44, 0.5);
@@ -614,10 +615,12 @@
             transform: translateY(-5px);
         }
 
-        .project-content-v2 {
+        /* 🔴 TẦNG 1: HEADER FULL-WIDTH (CĂN GIỮA) */
+        .project-header-full {
+            text-align: center;
             display: flex;
             flex-direction: column;
-            height: 100%;
+            align-items: center;
         }
 
         .project-industry {
@@ -628,17 +631,27 @@
             letter-spacing: 1px;
             margin-bottom: 15px;
             display: flex;
-            justify-content: space-between;
+            justify-content: center;
             flex-wrap: wrap;
-            gap: 10px;
+            gap: 15px;
         }
         
-        .project-card-v2 h3 {
+        .project-header-full h3 {
             font-family: var(--font-header);
-            font-size: clamp(1.6rem, 3vw, 2rem);
+            font-size: clamp(1.6rem, 3vw, 2.2rem);
             margin-bottom: 15px;
             color: var(--secondary);
             line-height: 1.3;
+            max-width: 900px;
+        }
+
+        /* 🔴 CẬP NHẬT: Căn trái cho cụm Vai trò & Timeline khi được chuyển xuống cột Text */
+        .project-meta {
+            display: flex;
+            justify-content: flex-start;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-bottom: 18px;
         }
 
         .project-role, .project-timeline {
@@ -651,16 +664,29 @@
             padding: 6px 12px;
             border-radius: 6px;
             border: 1px solid rgba(0,0,0,0.06);
-            width: fit-content;
         }
         .project-role strong { color: var(--secondary); font-weight: 700; }
         .project-role i, .project-timeline i { color: var(--primary-dark); }
-        
-        .project-card-v2 p.project-desc {
+
+        /* 🔴 TẦNG 2: BODY CHIA 2 CỘT (GIẢI QUYẾT KHOẢNG TRẮNG) */
+        .project-body {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 50px;
+            align-items: center; /* Ôm khít nhau theo chiều dọc */
+        }
+
+        .project-desc-wrapper {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .project-desc {
             color: var(--text-sub);
-            margin-bottom: 20px;
+            margin-bottom: 25px;
             font-size: 0.95rem;
-            line-height: 1.6;
+            line-height: 1.7;
         }
 
         .read-more-btn {
@@ -676,36 +702,38 @@
             cursor: pointer;
             transition: var(--transition);
             align-self: flex-start;
-            margin-bottom: 25px; 
         }
         .read-more-btn i { transition: transform 0.3s ease; }
         .read-more-btn:hover { color: var(--secondary); }
         .read-more-btn:hover i { transform: translateX(5px); }
 
+        /* 🔴 TẦNG 3: FOOTER HIGHLIGHTS FULL-WIDTH (DÀN NGANG) */
         .data-showcase-v2 {
-            padding-top: 25px;
+            padding-top: 30px;
             border-top: 1px solid rgba(0, 0, 0, 0.05);
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 25px 20px;
-            margin-top: auto; 
+            display: flex;
+            justify-content: space-evenly; /* Dàn đều khoảng cách */
+            flex-wrap: wrap;
+            gap: 20px;
+            width: 100%;
         }
 
         .metric-block {
             display: flex;
             flex-direction: column;
             gap: 5px;
-        }
-        .metric-block.full-width {
-            grid-column: span 2;
+            align-items: center; /* Căn giữa text trong khối */
+            text-align: center;
+            flex: 1; /* Cho phép các khối chia đều diện tích */
+            min-width: 200px;
         }
 
         .metric-big {
             font-family: var(--font-header);
-            font-size: clamp(1.8rem, 4vw, 2.5rem); 
+            font-size: clamp(1.6rem, 3vw, 2.2rem); 
             font-weight: 800;
             color: var(--primary-dark);
-            line-height: 1;
+            line-height: 1.1;
         }
 
         .metric-desc {
@@ -833,7 +861,7 @@
             .nav-links { display: none; } 
             .cert-card { text-align: left; }
             
-            .project-card-v2 { grid-template-columns: 1fr; gap: 30px; }
+            .project-body { grid-template-columns: 1fr; gap: 30px; } /* Stack cột Text và Ảnh trên tablet */
         }
 
         @media (max-width: 600px) {
@@ -846,8 +874,7 @@
             
             .project-card-v2 { padding: 25px; border-radius: 20px;}
             
-            .data-showcase-v2 { grid-template-columns: 1fr; gap: 20px; }
-            .metric-block.full-width { grid-column: span 1; }
+            .data-showcase-v2 { flex-direction: column; gap: 20px; } /* Xếp dọc các số liệu trên mobile */
 
             .process-grid { grid-template-columns: 1fr; }
             .process-card { padding: 25px; }
@@ -1014,211 +1041,236 @@
                 
                 <!-- CASE 1 (Hyper Inkers) -->
                 <div class="project-card-v2" data-aos="fade-up">
-                    <div class="project-content-v2">
+                    
+                    <!-- 🔴 TẦNG 1: HEADER (Chỉ còn Tag & Title) -->
+                    <div class="project-header-full">
                         <div class="project-industry">
                             <span>Tattoo US (Thị trường Mỹ)</span>
                             <span style="color: var(--primary-dark);"><i class="fas fa-map-marker-alt"></i> Local SEO & AI Search</span>
                         </div>
-                        <h3>Hyper Inkers: Dominate Local Search & Kéo 162 Leads/Tháng</h3>
-                        
-                        <div style="display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 15px;">
-                            <div class="project-role" style="margin-bottom: 0;">
-                                <i class="fas fa-user-tag"></i> <span><strong>Vai trò:</strong> Lead dự án</span>
-                            </div>
-                            <div class="project-timeline" style="margin-bottom: 0;">
-                                <i class="far fa-calendar-alt"></i> T2/2025 - T2/2026
-                            </div>
-                        </div>
-                        
-                        <p class="project-desc">
-                            Dự án thuộc lĩnh vực tattoo, có mức độ cạnh tranh cao khi khách hàng tìm kiếm dịch vụ trong bán kính gần hoặc tại San Antonio. Chiến lược lõi được tôi áp dụng là triển khai Semantic SEO kết hợp Content Visual, xây dựng Topic Cluster theo từng Style xăm và chuẩn hóa Entity (Brand - Artist - Location).
-                        </p>
-                        
-                        <a class="read-more-btn open-cs-modal" data-id="hyper-inkers">Đọc Case Study chi tiết <i class="fas fa-arrow-right"></i></a>
+                        <h3 style="margin-bottom: 0;">Hyper Inkers: Dominate Local Search & Kéo 162 Leads/Tháng</h3>
+                    </div>
 
-                        <div class="data-showcase-v2">
-                            <div class="metric-block">
-                                <div class="metric-big">+8,269%</div>
-                                <div class="metric-desc">Organic Traffic</div>
+                    <!-- 🔴 TẦNG 2: BODY CHIA CỘT -->
+                    <div class="project-body">
+                        <div class="project-desc-wrapper">
+                            <!-- 🔴 Đã chuyển Vai trò & Timeline xuống đây -->
+                            <div class="project-meta">
+                                <div class="project-role" style="margin-bottom: 0;">
+                                    <i class="fas fa-user-tag"></i> <span><strong>Vai trò:</strong> Lead dự án</span>
+                                </div>
+                                <div class="project-timeline" style="margin-bottom: 0;">
+                                    <i class="far fa-calendar-alt"></i> T2/2025 - T2/2026
+                                </div>
                             </div>
-                            <div class="metric-block">
-                                <div class="metric-big">108,800</div>
-                                <div class="metric-desc">Truy cập / tháng</div>
-                            </div>
-                            <div class="metric-block full-width">
-                                <div class="metric-big">1,500+</div>
-                                <div class="metric-desc">Trích dẫn AI Search</div>
-                            </div>
+                            <p class="project-desc">
+                                Dự án thuộc lĩnh vực tattoo, có mức độ cạnh tranh cao khi khách hàng tìm kiếm dịch vụ trong bán kính gần hoặc tại San Antonio. Chiến lược lõi được tôi áp dụng là triển khai Semantic SEO kết hợp Content Visual, xây dựng Topic Cluster theo từng Style xăm và chuẩn hóa Entity (Brand - Artist - Location).
+                            </p>
+                            <a class="read-more-btn open-cs-modal" data-id="hyper-inkers">Đọc Case Study chi tiết <i class="fas fa-arrow-right"></i></a>
                         </div>
                         
-                    </div>
-                    <div class="project-gallery" data-carousel>
-                        <button class="carousel-btn prev-btn"><i class="fas fa-chevron-left"></i></button>
-                        <button class="carousel-btn next-btn"><i class="fas fa-chevron-right"></i></button>
-                        <div class="gallery-track">
-                            <img src="https://raw.githubusercontent.com/nmthaovy/portfolio/main/hyperinkers-overview.jpg" class="gallery-img" alt="Hyper Inkers Overview Data">
-                            <img src="https://raw.githubusercontent.com/nmthaovy/portfolio/main/hyperinkers-gsc.jpg" class="gallery-img" alt="Google Search Console Data">
-                            <img src="https://raw.githubusercontent.com/nmthaovy/portfolio/main/hyperinkers-semrush.jpg" class="gallery-img" alt="Semrush Traffic Trend">
-                            <img src="https://gtvseo.com/wp-content/uploads/2026/02/Du-an-Hyper-Inkers-1.webp" class="gallery-img" alt="Hyper Inkers GTV SEO Overview">
+                        <div class="project-gallery" data-carousel>
+                            <button class="carousel-btn prev-btn"><i class="fas fa-chevron-left"></i></button>
+                            <button class="carousel-btn next-btn"><i class="fas fa-chevron-right"></i></button>
+                            <div class="gallery-track">
+                                <img src="https://raw.githubusercontent.com/nmthaovy/portfolio/main/hyperinkers-overview.jpg" class="gallery-img" alt="Hyper Inkers Overview Data">
+                                <img src="https://raw.githubusercontent.com/nmthaovy/portfolio/main/hyperinkers-gsc.jpg" class="gallery-img" alt="Google Search Console Data">
+                                <img src="https://raw.githubusercontent.com/nmthaovy/portfolio/main/hyperinkers-semrush.jpg" class="gallery-img" alt="Semrush Traffic Trend">
+                                <img src="https://gtvseo.com/wp-content/uploads/2026/02/Du-an-Hyper-Inkers-1.webp" class="gallery-img" alt="Hyper Inkers GTV SEO Overview">
+                            </div>
+                            <div class="gallery-dots"></div>
                         </div>
-                        <div class="gallery-dots"></div>
                     </div>
+
+                    <!-- TẦNG 3: HIGHLIGHTS -->
+                    <div class="data-showcase-v2">
+                        <div class="metric-block">
+                            <div class="metric-big">+8,269%</div>
+                            <div class="metric-desc">Organic Traffic</div>
+                        </div>
+                        <div class="metric-block">
+                            <div class="metric-big">108,800</div>
+                            <div class="metric-desc">Truy cập / tháng</div>
+                        </div>
+                        <div class="metric-block">
+                            <div class="metric-big">1,500+</div>
+                            <div class="metric-desc">Trích dẫn AI Search</div>
+                        </div>
+                    </div>
+
                 </div>
 
-                <!-- 🔴 CASE 2 (ViBIM) - Đã được chuyển lên ngay sau Hyper Inkers -->
+                <!-- CASE 2 (ViBIM) -->
                 <div class="project-card-v2" data-aos="fade-up" data-aos-delay="100">
-                    <div class="project-content-v2">
+                    
+                    <div class="project-header-full">
                         <div class="project-industry">
-                            <span>📍 B2B Global</span>
+                            <span>📍 B2B Global (Thị trường UK, US, Canada, Australia, EU)</span>
                             <span style="color: var(--primary-dark);"><i class="fas fa-sync-alt"></i> Rebranding (New Domain)</span>
                         </div>
-                        <h3>ViBIM: Chiến lược Zero-Base Setup & Phủ Topical Map ngách B2B Global</h3>
-                        
-                        <div style="display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 15px;">
-                            <div class="project-role" style="margin-bottom: 0;">
-                                <i class="fas fa-user-tag"></i> <span><strong>Vai trò:</strong> Lead & Trực tiếp triển khai</span>
-                            </div>
-                            <div class="project-timeline" style="margin-bottom: 0;">
-                                <i class="far fa-calendar-alt"></i> T5/2023 - T5/2024
-                            </div>
-                        </div>
-
-                        <p class="project-desc">
-                            Website ViBIM cũ dính lỗ hổng cấu hình DNS (Wildcard record) dẫn đến tình trạng Subdomain Takeover, phát sinh hàng ngàn URL spam cờ bạc kết hợp với đợt tấn công Negative SEO (bơm Toxic Backlink) từ bên ngoài. Do khách hàng thiếu nền tảng quản trị Tracking (GSC) từ đầu, việc cleanup URL/Backlink tốn rất nhiều Resource nhưng vẫn chịu rủi ro dính Penalty. Để xử lý triệt để, tôi đề xuất chiến lược Zero-base Setup trên Domain mới: Tuyệt đối không dùng Redirect 301, cấu hình lại Flat Architecture, tối ưu UI/UX chuẩn B2B và phủ Topical Map chuyên sâu.
-                        </p>
-                        
-                        <a class="read-more-btn open-cs-modal" data-id="vibim">Xem chi tiết hạng mục kỹ thuật <i class="fas fa-arrow-right"></i></a>
-
-                        <div class="data-showcase-v2">
-                            <div class="metric-block">
-                                <div class="metric-big">100%</div>
-                                <div class="metric-desc">Tái thiết lập Technical & Entity</div>
-                            </div>
-                            <div class="metric-block">
-                                <div class="metric-big">32%</div>
-                                <div class="metric-desc">Keywords TOP 3</div>
-                            </div>
-                            <div class="metric-block full-width">
-                                <div class="metric-big">2,500+</div>
-                                <div class="metric-desc">Organic Sessions / tháng</div>
-                            </div>
-                        </div>
-
+                        <h3 style="margin-bottom: 0;">ViBIM: Chiến lược Zero-Base Setup & Phủ Topical Map ngách B2B Global</h3>
                     </div>
-                    <div class="project-gallery" data-carousel>
-                        <button class="carousel-btn prev-btn"><i class="fas fa-chevron-left"></i></button>
-                        <button class="carousel-btn next-btn"><i class="fas fa-chevron-right"></i></button>
-                        <div class="gallery-track">
-                            <img src="https://raw.githubusercontent.com/nmthaovy/portfolio/main/vibim.png" class="gallery-img" alt="ViBIM Overview">
-                            <img src="https://raw.githubusercontent.com/nmthaovy/portfolio/main/vibim2.png" class="gallery-img" alt="ViBIM Setup Data">
-                            <img src="https://raw.githubusercontent.com/nmthaovy/portfolio/main/vibim3.png" class="gallery-img" alt="ViBIM Keywords Tracking">
-                            <img src="https://raw.githubusercontent.com/nmthaovy/portfolio/main/vibim4.png" class="gallery-img" alt="ViBIM Analytics">
-                            <img src="https://raw.githubusercontent.com/nmthaovy/portfolio/main/forum-vibim.jpg" class="gallery-img" alt="ViBIM Forum Seeding">
+
+                    <div class="project-body">
+                        <div class="project-desc-wrapper">
+                            <!-- 🔴 Đã chuyển Vai trò & Timeline xuống đây -->
+                            <div class="project-meta">
+                                <div class="project-role" style="margin-bottom: 0;">
+                                    <i class="fas fa-user-tag"></i> <span><strong>Vai trò:</strong> Lead & Trực tiếp triển khai</span>
+                                </div>
+                                <div class="project-timeline" style="margin-bottom: 0;">
+                                    <i class="far fa-calendar-alt"></i> T5/2023 - T5/2024
+                                </div>
+                            </div>
+                            <p class="project-desc">
+                                Website ViBIM cũ dính lỗ hổng cấu hình DNS (Wildcard record) dẫn đến tình trạng Subdomain Takeover, phát sinh hàng ngàn URL spam cờ bạc kết hợp với đợt tấn công Negative SEO (bơm Toxic Backlink) từ bên ngoài. Do khách hàng thiếu nền tảng quản trị Tracking (GSC) từ đầu, việc cleanup URL/Backlink tốn rất nhiều Resource nhưng vẫn chịu rủi ro dính Penalty. Để xử lý triệt để, tôi đề xuất chiến lược Zero-base Setup trên Domain mới: Tuyệt đối không dùng Redirect 301, cấu hình lại Flat Architecture, tối ưu UI/UX chuẩn B2B và phủ Topical Map chuyên sâu.
+                            </p>
+                            <a class="read-more-btn open-cs-modal" data-id="vibim">Xem chi tiết hạng mục kỹ thuật <i class="fas fa-arrow-right"></i></a>
                         </div>
-                        <div class="gallery-dots"></div>
+                        
+                        <div class="project-gallery" data-carousel>
+                            <button class="carousel-btn prev-btn"><i class="fas fa-chevron-left"></i></button>
+                            <button class="carousel-btn next-btn"><i class="fas fa-chevron-right"></i></button>
+                            <div class="gallery-track">
+                                <img src="https://raw.githubusercontent.com/nmthaovy/portfolio/main/vibim.png" class="gallery-img" alt="ViBIM Overview">
+                                <img src="https://raw.githubusercontent.com/nmthaovy/portfolio/main/vibim2.png" class="gallery-img" alt="ViBIM Setup Data">
+                                <img src="https://raw.githubusercontent.com/nmthaovy/portfolio/main/vibim3.png" class="gallery-img" alt="ViBIM Keywords Tracking">
+                                <img src="https://raw.githubusercontent.com/nmthaovy/portfolio/main/vibim4.png" class="gallery-img" alt="ViBIM Analytics">
+                                <img src="https://raw.githubusercontent.com/nmthaovy/portfolio/main/forum-vibim.jpg" class="gallery-img" alt="ViBIM Forum Seeding">
+                            </div>
+                            <div class="gallery-dots"></div>
+                        </div>
                     </div>
+
+                    <div class="data-showcase-v2">
+                        <div class="metric-block">
+                            <div class="metric-big">100%</div>
+                            <div class="metric-desc">Tái thiết lập Entity</div>
+                        </div>
+                        <div class="metric-block">
+                            <div class="metric-big">32%</div>
+                            <div class="metric-desc">Keywords TOP 3</div>
+                        </div>
+                        <div class="metric-block">
+                            <div class="metric-big">2,500+</div>
+                            <div class="metric-desc">Organic Sessions / tháng</div>
+                        </div>
+                    </div>
+
                 </div>
 
-                <!-- 🔴 CASE 3 (Interimm) -->
+                <!-- CASE 3 (Housedesign) -->
                 <div class="project-card-v2" data-aos="fade-up" data-aos-delay="100">
-                    <div class="project-content-v2">
-                        <div class="project-industry">
-                            <span>Di trú EB5 (High-ticket)</span>
-                        </div>
-                        <h3>Interimm: Bứt phá 6.100 Traffic ngách Di trú</h3>
-                        
-                        <div style="display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 15px;">
-                            <div class="project-role" style="margin-bottom: 0;">
-                                <i class="fas fa-user-tag"></i> <span><strong>Vai trò:</strong> Trực tiếp triển khai</span>
-                            </div>
-                            <div class="project-timeline" style="margin-bottom: 0;">
-                                <i class="far fa-calendar-alt"></i> 03/2024 - 01/2025
-                            </div>
-                        </div>
-
-                        <p class="project-desc">
-                            Định cư Mỹ EB-5 là ngách High-ticket với rào cản tài chính cực cao, đòi hỏi điểm Trust tuyệt đối. Với vai trò trực tiếp thực thi, tôi tập trung xử lý triệt để rào cản Technical, đảm bảo chất lượng content đánh trúng Search Intent và tối ưu Onpage chuyên sâu nhằm dẫn dắt hiệu quả luồng tìm kiếm của tệp khách hàng V.I.P.
-                        </p>
-
-                        <a class="read-more-btn open-cs-modal" data-id="interimm">Xem chi tiết quá trình triển khai <i class="fas fa-arrow-right"></i></a>
-                        
-                        <div class="data-showcase-v2">
-                            <div class="metric-block">
-                                <div class="metric-big">170+</div>
-                                <div class="metric-desc">Keywords TOP 3</div>
-                            </div>
-                            <div class="metric-block">
-                                <div class="metric-big">6,100</div>
-                                <div class="metric-desc">Organic Traffic (+40%)</div>
-                            </div>
-                            <div class="metric-block full-width">
-                                <div class="metric-big">>91%</div>
-                                <div class="metric-desc">Engagement Rate</div>
-                            </div>
-                        </div>
-
-                    </div>
-                    <div class="project-gallery" data-carousel>
-                        <button class="carousel-btn prev-btn"><i class="fas fa-chevron-left"></i></button>
-                        <button class="carousel-btn next-btn"><i class="fas fa-chevron-right"></i></button>
-                        <div class="gallery-track">
-                            <img src="https://raw.githubusercontent.com/nmthaovy/portfolio/main/interimm.png" class="gallery-img" alt="Interimm Traffic Growth">
-                            <img src="https://raw.githubusercontent.com/nmthaovy/portfolio/main/interimm2.png" class="gallery-img" alt="Interimm Lead Conversion">
-                            <img src="https://raw.githubusercontent.com/nmthaovy/portfolio/main/hien-trang-sau-khi-trien-khai-2.png" class="gallery-img" alt="Interimm Before and After">
-                            <img src="https://raw.githubusercontent.com/nmthaovy/portfolio/main/Screenshot%202025-12-23%20145911.jpg" class="gallery-img" alt="Interimm Performance Data">
-                        </div>
-                        <div class="gallery-dots"></div>
-                    </div>
-                </div>
-                <!-- 🔴 CASE 4 (Housedesign) -->
-                <div class="project-card-v2" data-aos="fade-up" data-aos-delay="100">
-                    <div class="project-content-v2">
+                    
+                    <div class="project-header-full">
                         <div class="project-industry">
                             <span>Ngách Nội Thất</span>
                         </div>
-                        <h3>Housedesign: Chiến lược SEO "Công - Thủ" & Bứt phá 44.000 Traffic ngách Nội thất</h3>
-                        
-                        <div style="display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 15px;">
-                            <div class="project-role" style="margin-bottom: 0;">
-                                <i class="fas fa-user-tag"></i> <span><strong>Vai trò:</strong> Trực tiếp triển khai</span>
-                            </div>
-                            <div class="project-timeline" style="margin-bottom: 0;">
-                                <i class="far fa-calendar-alt"></i> 07/2024 - 01/2025
-                            </div>
-                        </div>
-
-                        <p class="project-desc">
-                            Website có dấu hiệu sụt giảm Organic Traffic do dính lỗi Thin Content từ hàng trăm trang dự án cũ, gây ra tình trạng Keyword Cannibalization và làm suy giảm Topical Authority. Để xử lý, tôi trực tiếp thực thi chiến lược 'Công - Thủ': Thủ bằng cách Audit Content, Noindex/Gộp các URL kém chất lượng để gom luồng Link Juice bảo vệ thứ hạng nhóm High-traffic; Công bằng việc tối ưu Semantic Onpage cho Core Pages và xây dựng Topic Cluster phủ ngách dịch vụ.
-                        </p>
-
-                        <a class="read-more-btn open-cs-modal" data-id="housedesign">Đọc Case Study chi tiết <i class="fas fa-arrow-right"></i></a>
-                        
-                        <div class="data-showcase-v2">
-                            <div class="metric-block">
-                                <div class="metric-big">44,000</div>
-                                <div class="metric-desc">Organic Traffic / tháng</div>
-                            </div>
-                            <div class="metric-block">
-                                <div class="metric-big">85%</div>
-                                <div class="metric-desc">Duy trì TOP 3 từ khóa cũ</div>
-                            </div>
-                            <div class="metric-block full-width">
-                                <div class="metric-big">50%</div>
-                                <div class="metric-desc">Thúc đẩy TOP 3 từ khóa mới</div>
-                            </div>
-                        </div>
-
+                        <h3 style="margin-bottom: 0;">Housedesign: Chiến lược SEO "Công - Thủ" & Bứt phá 44.000 Traffic ngách Nội thất</h3>
                     </div>
-                    <div class="project-gallery" data-carousel>
-                        <button class="carousel-btn prev-btn"><i class="fas fa-chevron-left"></i></button>
-                        <button class="carousel-btn next-btn"><i class="fas fa-chevron-right"></i></button>
-                        <div class="gallery-track">
-                            <img src="https://raw.githubusercontent.com/nmthaovy/portfolio/main/house1.png" class="gallery-img" alt="Housedesign Performance 1">
-                            <img src="https://raw.githubusercontent.com/nmthaovy/portfolio/main/house3.png" class="gallery-img" alt="Housedesign Performance 2">
+
+                    <div class="project-body">
+                        <div class="project-desc-wrapper">
+                            <!-- 🔴 Đã chuyển Vai trò & Timeline xuống đây -->
+                            <div class="project-meta">
+                                <div class="project-role" style="margin-bottom: 0;">
+                                    <i class="fas fa-user-tag"></i> <span><strong>Vai trò:</strong> Trực tiếp triển khai</span>
+                                </div>
+                                <div class="project-timeline" style="margin-bottom: 0;">
+                                    <i class="far fa-calendar-alt"></i> 07/2024 - 01/2025
+                                </div>
+                            </div>
+                            <p class="project-desc">
+                                Website có dấu hiệu sụt giảm Organic Traffic do dính lỗi Thin Content từ hàng trăm trang dự án cũ, gây ra tình trạng Keyword Cannibalization và làm suy giảm Topical Authority. Để xử lý, tôi trực tiếp thực thi chiến lược 'Công - Thủ': Thủ bằng cách Audit Content, Noindex/Gộp các URL kém chất lượng để gom luồng Link Juice bảo vệ thứ hạng nhóm High-traffic; Công bằng việc tối ưu Semantic Onpage cho Core Pages và xây dựng Topic Cluster phủ ngách dịch vụ.
+                            </p>
+                            <a class="read-more-btn open-cs-modal" data-id="housedesign">Đọc Case Study chi tiết <i class="fas fa-arrow-right"></i></a>
                         </div>
-                        <div class="gallery-dots"></div>
+                        
+                        <div class="project-gallery" data-carousel>
+                            <button class="carousel-btn prev-btn"><i class="fas fa-chevron-left"></i></button>
+                            <button class="carousel-btn next-btn"><i class="fas fa-chevron-right"></i></button>
+                            <div class="gallery-track">
+                                <img src="https://raw.githubusercontent.com/nmthaovy/portfolio/main/house1.png" class="gallery-img" alt="Housedesign Performance 1">
+                                <img src="https://raw.githubusercontent.com/nmthaovy/portfolio/main/house3.png" class="gallery-img" alt="Housedesign Performance 2">
+                            </div>
+                            <div class="gallery-dots"></div>
+                        </div>
                     </div>
+
+                    <div class="data-showcase-v2">
+                        <div class="metric-block">
+                            <div class="metric-big">44,000</div>
+                            <div class="metric-desc">Organic Traffic / tháng</div>
+                        </div>
+                        <div class="metric-block">
+                            <div class="metric-big">85%</div>
+                            <div class="metric-desc">Duy trì TOP 3 từ khóa cũ</div>
+                        </div>
+                        <div class="metric-block">
+                            <div class="metric-big">50%</div>
+                            <div class="metric-desc">Thúc đẩy TOP 3 từ khóa mới</div>
+                        </div>
+                    </div>
+
                 </div>
+
+                <!-- CASE 4 (Interimm) -->
+                <div class="project-card-v2" data-aos="fade-up" data-aos-delay="100">
+                    
+                    <div class="project-header-full">
+                        <div class="project-industry">
+                            <span>Di trú EB5 (High-ticket)</span>
+                        </div>
+                        <h3 style="margin-bottom: 0;">Interimm: Bứt phá 6.100 Traffic ngách Di trú</h3>
+                    </div>
+
+                    <div class="project-body">
+                        <div class="project-desc-wrapper">
+                            <!-- 🔴 Đã chuyển Vai trò & Timeline xuống đây -->
+                            <div class="project-meta">
+                                <div class="project-role" style="margin-bottom: 0;">
+                                    <i class="fas fa-user-tag"></i> <span><strong>Vai trò:</strong> Trực tiếp triển khai</span>
+                                </div>
+                                <div class="project-timeline" style="margin-bottom: 0;">
+                                    <i class="far fa-calendar-alt"></i> 03/2024 - 01/2025
+                                </div>
+                            </div>
+                            <p class="project-desc">
+                                Định cư Mỹ EB-5 là ngách High-ticket với rào cản tài chính cực cao, đòi hỏi điểm Trust tuyệt đối. Với vai trò trực tiếp thực thi, tôi tập trung xử lý triệt để rào cản Technical, đảm bảo chất lượng content đánh trúng Search Intent và tối ưu Onpage chuyên sâu nhằm dẫn dắt hiệu quả luồng tìm kiếm của tệp khách hàng V.I.P.
+                            </p>
+                            <a class="read-more-btn open-cs-modal" data-id="interimm">Xem chi tiết quá trình triển khai <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                        
+                        <div class="project-gallery" data-carousel>
+                            <button class="carousel-btn prev-btn"><i class="fas fa-chevron-left"></i></button>
+                            <button class="carousel-btn next-btn"><i class="fas fa-chevron-right"></i></button>
+                            <div class="gallery-track">
+                                <img src="https://raw.githubusercontent.com/nmthaovy/portfolio/main/interimm.png" class="gallery-img" alt="Interimm Traffic Growth">
+                                <img src="https://raw.githubusercontent.com/nmthaovy/portfolio/main/interimm2.png" class="gallery-img" alt="Interimm Lead Conversion">
+                                <img src="https://raw.githubusercontent.com/nmthaovy/portfolio/main/hien-trang-sau-khi-trien-khai-2.png" class="gallery-img" alt="Interimm Before and After">
+                                <img src="https://raw.githubusercontent.com/nmthaovy/portfolio/main/Screenshot%202025-12-23%20145911.jpg" class="gallery-img" alt="Interimm Performance Data">
+                            </div>
+                            <div class="gallery-dots"></div>
+                        </div>
+                    </div>
+
+                    <div class="data-showcase-v2">
+                        <div class="metric-block">
+                            <div class="metric-big">170+</div>
+                            <div class="metric-desc">Keywords TOP 3</div>
+                        </div>
+                        <div class="metric-block">
+                            <div class="metric-big">6,100</div>
+                            <div class="metric-desc">Organic Traffic (+40%)</div>
+                        </div>
+                        <div class="metric-block">
+                            <div class="metric-big">>91%</div>
+                            <div class="metric-desc">Engagement Rate</div>
+                        </div>
+                    </div>
+
+                </div>
+
             </div>
         </div>
     </section>
