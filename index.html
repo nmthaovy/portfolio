@@ -1958,6 +1958,28 @@
                 startAutoPlay();
             }, {passive: true});
         });
+
+        // 🔴 LỆNH CHUYỂN ĐỔI TAB CHO PHẦN KINH NGHIỆM LÀM VIỆC
+        const expTabs = document.querySelectorAll('.exp-tab');
+        const expPanels = document.querySelectorAll('.exp-panel');
+
+        expTabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                // Xóa class active ở tất cả tab và panel
+                expTabs.forEach(t => t.classList.remove('active'));
+                expPanels.forEach(p => p.classList.remove('active'));
+
+                // Thêm class active cho tab được click và panel tương ứng
+                tab.classList.add('active');
+                const targetPanelId = tab.getAttribute('data-target');
+                const targetPanel = document.getElementById(targetPanelId);
+                
+                if (targetPanel) {
+                    targetPanel.classList.add('active');
+                }
+            });
+        });
+
     </script>
 </body>
 </html>
