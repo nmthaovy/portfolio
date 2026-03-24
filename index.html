@@ -40,7 +40,7 @@
 
         html { 
             scroll-behavior: smooth; 
-            scrollbar-gutter: stable; /* 🔴 FIX LỖI NHẢY GIAO DIỆN (LAYOUT SHIFT) KHI BẬT/TẮT POPUP */
+            scrollbar-gutter: stable; /* FIX LỖI NHẢY GIAO DIỆN KHI BẬT/TẮT POPUP */
         }
 
         body {
@@ -547,7 +547,7 @@
         .cs-section ul { margin: 10px 0 0 20px; color: var(--text-sub); line-height: 1.7;}
         .cs-section li { margin-bottom: 8px; }
 
-        /* 🔴 LÀM NỔI BẬT KHỐI KẾT QUẢ BÊN TRONG POPUP (ĐỒNG BỘ UI BÊN NGOÀI) */
+        /* KHỐI KẾT QUẢ BÊN TRONG POPUP (ĐỒNG BỘ UI BÊN NGOÀI) */
         .cs-result-box {
             background: rgba(255, 178, 44, 0.05);
             border: 1px solid rgba(255, 178, 44, 0.2);
@@ -587,7 +587,7 @@
             border-radius: 3px;
         }
 
-        /* --- DATA-DRIVEN CASE STUDIES (V4 - ALIGNED NUMBERS) --- */
+        /* --- DATA-DRIVEN CASE STUDIES --- */
         .project-stack {
             display: flex;
             flex-direction: column;
@@ -682,7 +682,6 @@
         .read-more-btn:hover { color: var(--secondary); }
         .read-more-btn:hover i { transform: translateX(5px); }
 
-        /* 🔴 DATA BLOCK LỚN NẰM BÊN DƯỚI NÚT CTA */
         .data-showcase-v2 {
             padding-top: 25px;
             border-top: 1px solid rgba(0, 0, 0, 0.05);
@@ -1071,7 +1070,6 @@
                     <div class="project-content-v2">
                         <div class="project-industry">
                             <span>Di trú EB5 (High-ticket)</span>
-                            <!-- 🔴 Đã bỏ thẻ tag CRO FOCUS -->
                         </div>
                         <h3>Interimm: Bứt phá 6.100 Traffic ngách Di trú</h3>
                         
@@ -1123,34 +1121,37 @@
                 <div class="project-card-v2" data-aos="fade-up" data-aos-delay="100">
                     <div class="project-content-v2">
                         <div class="project-industry">
-                            <span>Nội Thất</span>
-                            <span style="color: var(--primary-dark);"><i class="fas fa-chess-knight"></i> Chiến lược Thủ/Công</span>
+                            <span>Ngách Nội Thất</span>
                         </div>
-                        <h3>Bảo vệ Top Ranking & Mở rộng Market Share</h3>
+                        <h3>Housedesign: Chiến lược SEO "Công - Thủ" & Bứt phá 44.000 Traffic ngách Nội thất</h3>
                         
                         <div style="display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 15px;">
                             <div class="project-role" style="margin-bottom: 0;">
-                                <i class="fas fa-user-tag"></i> <span><strong>Vai trò:</strong> Lead dự án</span>
+                                <i class="fas fa-user-tag"></i> <span><strong>Vai trò:</strong> Trực tiếp triển khai</span>
                             </div>
                             <div class="project-timeline" style="margin-bottom: 0;">
-                                <i class="far fa-calendar-alt"></i> T1/2024 - T12/2024
+                                <i class="far fa-calendar-alt"></i> 07/2024 - 01/2025
                             </div>
                         </div>
 
                         <p class="project-desc">
-                            Website đối mặt với đợt càn quét lớn từ Google Core Update. Chiến lược Thủ (giữ 95% Top 5 từ khóa cũ) và Công (đẩy 36% Top 3 cho nhóm từ khóa ngách mới) giúp doanh nghiệp vững vàng băng qua đợt Update khốc liệt.
+                            Website có dấu hiệu sụt giảm Organic Traffic do dính lỗi Thin Content từ hàng trăm trang dự án cũ, gây ra tình trạng Keyword Cannibalization và làm suy giảm Topical Authority. Để xử lý, tôi trực tiếp thực thi chiến lược 'Công - Thủ': Thủ bằng cách Audit Content, Noindex/Gộp các URL kém chất lượng để gom luồng Link Juice bảo vệ thứ hạng nhóm High-traffic; Công bằng việc tối ưu Semantic Onpage cho Core Pages và xây dựng Topic Cluster phủ ngách dịch vụ.
                         </p>
 
                         <a class="read-more-btn open-cs-modal" data-id="housedesign">Đọc Case Study chi tiết <i class="fas fa-arrow-right"></i></a>
                         
                         <div class="data-showcase-v2">
                             <div class="metric-block">
-                                <div class="metric-big">95%</div>
-                                <div class="metric-desc">Bảo vệ Top 5</div>
+                                <div class="metric-big">44,000</div>
+                                <div class="metric-desc">Organic Traffic / tháng</div>
                             </div>
                             <div class="metric-block">
-                                <div class="metric-big">44,000</div>
-                                <div class="metric-desc">Đỉnh Traffic</div>
+                                <div class="metric-big">85%</div>
+                                <div class="metric-desc">Duy trì TOP 3 từ khóa cũ</div>
+                            </div>
+                            <div class="metric-block full-width">
+                                <div class="metric-big">50%</div>
+                                <div class="metric-desc">Thúc đẩy TOP 3 từ khóa mới</div>
                             </div>
                         </div>
 
@@ -1159,8 +1160,8 @@
                         <button class="carousel-btn prev-btn"><i class="fas fa-chevron-left"></i></button>
                         <button class="carousel-btn next-btn"><i class="fas fa-chevron-right"></i></button>
                         <div class="gallery-track">
-                            <img src="https://via.placeholder.com/800x450.png?text=Google+Core+Update+Defense" class="gallery-img" alt="Chart 1">
-                            <img src="https://via.placeholder.com/800x450.png?text=Topic+Cluster+Performance" class="gallery-img" alt="Chart 2">
+                            <img src="https://raw.githubusercontent.com/nmthaovy/portfolio/main/house1.png" class="gallery-img" alt="Housedesign Performance 1">
+                            <img src="https://raw.githubusercontent.com/nmthaovy/portfolio/main/house3.png" class="gallery-img" alt="Housedesign Performance 2">
                         </div>
                         <div class="gallery-dots"></div>
                     </div>
@@ -1290,7 +1291,6 @@
     <!-- FILE MODAL (For certificates & Images) -->
     <div id="fileModal" class="modal-overlay">
         <span class="close-modal">&times;</span>
-        <!-- Nút điều hướng khi phóng to ảnh -->
         <button class="modal-nav-btn prev-modal-btn" style="display: none;"><i class="fas fa-chevron-left"></i></button>
         <button class="modal-nav-btn next-modal-btn" style="display: none;"><i class="fas fa-chevron-right"></i></button>
         <div class="modal-content-container" id="modalContainer">
@@ -1305,7 +1305,6 @@
                 <h3 class="cs-modal-title" id="csTitle">Tiêu đề dự án</h3>
                 
                 <div class="cs-section">
-                    <!-- 🔴 Đã gắn thêm ID để điều khiển tiêu đề linh hoạt -->
                     <div class="cs-section-title" id="csCurrentTitle"><i class="fas fa-exclamation-circle"></i> Hiện trạng & Thách thức</div>
                     <div id="csCurrent" style="color: var(--text-sub); line-height: 1.7; font-size: 1.05rem;">Nội dung hiện trạng...</div>
                 </div>
@@ -1398,7 +1397,6 @@
         const closeFileBtn = document.querySelector(".close-modal");
         const openFileBtns = document.querySelectorAll(".open-modal");
         
-        // Khai báo biến cho chức năng xem slide Popup
         const prevZoomBtn = document.querySelector(".prev-modal-btn");
         const nextZoomBtn = document.querySelector(".next-modal-btn");
         let currentZoomGroup = [];
@@ -1410,7 +1408,6 @@
                 const fileUrl = this.getAttribute("data-file");
                 modalContainer.innerHTML = ''; 
                 
-                // Ẩn nút điều hướng khi mở chứng chỉ/PDF
                 if(prevZoomBtn) prevZoomBtn.style.display = "none";
                 if(nextZoomBtn) nextZoomBtn.style.display = "none";
 
@@ -1432,23 +1429,20 @@
                 modalContainer.innerHTML = '';
                 document.body.style.overflow = ''; 
             }, 300);
-        }; // Fixed missing closing brace here
+        };
 
         closeFileBtn.addEventListener("click", closeFileModal);
         fileModal.addEventListener("click", (e) => { if(e.target === fileModal) closeFileModal(); });
 
-        // Click ảnh Gallery để phóng to & Kích hoạt xem Slide
         const galleryImages = document.querySelectorAll('.gallery-img');
         galleryImages.forEach(img => {
             img.addEventListener('click', function() {
-                // Xác định bộ sưu tập ảnh hiện tại (từ thẻ cha gallery-track)
                 const track = this.closest('.gallery-track');
                 currentZoomGroup = Array.from(track.querySelectorAll('.gallery-img'));
                 currentZoomIndex = currentZoomGroup.indexOf(this);
 
                 modalContainer.innerHTML = `<img id="zoomedImg" src="${this.src}" alt="Zoomed Image">`;
                 
-                // Hiển thị 2 nút điều hướng nếu có nhiều hơn 1 ảnh
                 if(currentZoomGroup.length > 1) {
                     if(prevZoomBtn) prevZoomBtn.style.display = "flex";
                     if(nextZoomBtn) nextZoomBtn.style.display = "flex";
@@ -1463,7 +1457,6 @@
             });
         });
 
-        // Xử lý chuyển ảnh trong Popup
         const changeZoomedImage = (direction) => {
             if(currentZoomGroup.length === 0) return;
             currentZoomIndex = (currentZoomIndex + direction + currentZoomGroup.length) % currentZoomGroup.length;
@@ -1524,18 +1517,26 @@
                 ]
             },
             'housedesign': {
-                title: 'Housedesign: Chiến lược Thủ/Công mùa Core Update',
-                currentTitle: '<i class="fas fa-exclamation-circle"></i> Hiện trạng & Thách thức',
-                current: 'Website đối mặt với đợt càn quét lớn từ Google Core Update. Nguy cơ mất Top hàng loạt ở các nhóm từ khóa hạt giống mang lại doanh thu chính của công ty thiết kế nội thất.',
-                actionTitle: '<i class="fas fa-bolt"></i> Giải pháp Triển khai',
+                title: 'Housedesign: Chiến lược SEO "Công - Thủ" & Bứt phá 44.000 Traffic ngách Nội thất',
+                currentTitle: '<i class="fas fa-bullseye"></i> Bối cảnh & Bài toán',
+                current: '<p style="margin-bottom: 10px;">Website HouseDesign sở hữu lịch sử lâu đời nhưng đang có dấu hiệu bị phạt Google Panda, Ranking và Organic Traffic sụt giảm liên tục ở giai đoạn trước. Qua bước Audit ban đầu, xác định "nút thắt" chí mạng đến từ hơn 200 trang dự án nội thất cũ thuộc diện Thin Content. Khối lượng nội dung mỏng này không chỉ làm lãng phí Crawl Budget mà còn gây ra tình trạng Keyword Cannibalization, làm suy giảm nghiêm trọng điểm Topical Authority của toàn bộ Domain.</p>',
+                actionTitle: '<i class="fas fa-tools"></i> Hạng mục triển khai',
                 action: [
-                    '<strong>Chiến lược THỦ:</strong> Audit toàn bộ content cũ, nâng cấp Semantic depth và củng cố Internal Link để bảo vệ Top ranking hiện tại.',
-                    '<strong>Chiến lược CÔNG:</strong> Triển khai thêm các cụm Topic Cluster mới ngách hơn, ít cạnh tranh hơn để mở rộng thị phần (Market share).'
+                    'Đánh giá, phân loại và cấu hình Noindex/Xóa/Gộp đối với ~200 URL dự án kém chất lượng nhằm gom Link Juice và khắc phục triệt để lỗi Cannibalization.',
+                    'Rà soát và tối ưu Information Gain cho nhóm bài "Phong cách thiết kế" (nhóm mang lại High-traffic) để khôi phục lượng traffic đã mất.',
+                    'Phối hợp với đội ngũ Dev xử lý các lỗi Technical định kỳ.',
+                    'Phối hợp với team Content lên Outline và kiểm duyệt chất lượng cho các bài viết mới target vào ngách từ khóa dịch vụ dài (nhà phố 5x15, chung cư 55m2...) và cụm Semantic bổ trợ (Phong thủy nội thất).',
+                    'Tối ưu Featured Snippet và FAQ cho các URL đang rank Top 2-5 để tăng CTR.',
+                    'Triển khai Internal Linking thiết lập luồng Contextual Internal Link từ các bài Outer trỏ về trang Core theo mô hình AIDA.',
+                    'Phát tán nội dung lên các nền tảng mạng xã hội chuyên về hình ảnh (Pinterest, Behance, 500px) để đa dạng hóa nguồn traffic đặc thù của ngành nội thất.',
+                    'Theo dõi và Audit Backlink định kỳ.'
                 ],
-                resultTitle: '<i class="fas fa-chart-line"></i> Kết quả Đạt được',
+                resultTitle: '<i class="fas fa-trophy"></i> Kết quả đạt được',
                 result: [
-                    'Bảo vệ thành công 95% Top 5 từ khóa cốt lõi giữa "tâm bão" Update.',
-                    'Đẩy thành công 36% Top 3 cho nhóm từ khóa ngách mới, đưa Traffic chạm đỉnh 44.000 visits.'
+                    'Phục hồi đà giảm và bứt phá từ <strong>27.700</strong> lên <strong>44.000 Traffic/tháng</strong> (theo Semrush).',
+                    'Thúc đẩy ranking <strong>50,0% Top 3</strong> | <strong>61,4% Top 5</strong> | <strong>82,9% Top 10</strong> bộ keyword thiết kế nhà phố, chung cư.',
+                    'Các keyword chuyển đổi chính: thiết kế nội thất chung cư hiện đại, thiết kế nội thất phòng khách chung cư, thiết kế nội thất phòng khách nhà phố,...',
+                    'Duy trì <strong>85% Top 3</strong> và <strong>95% Top 5</strong> bộ keyword cam kết Duy trì Ranking. Các keyword có độ cạnh tranh cao: phong cách nội thất tối giản, thiết kế nội thất hiện đại, phong cách nội thất retro,...'
                 ]
             },
             'vibim': {
@@ -1568,14 +1569,10 @@
 
                 if(data) {
                     document.getElementById('csTitle').innerHTML = data.title;
-                    
-                    // 🔴 Cập nhật linh hoạt các Tiêu đề con
                     document.getElementById('csCurrentTitle').innerHTML = data.currentTitle || '<i class="fas fa-exclamation-circle"></i> Hiện trạng & Thách thức';
                     document.getElementById('csActionTitle').innerHTML = data.actionTitle || '<i class="fas fa-bolt"></i> Giải pháp Triển khai';
                     document.getElementById('csResultTitle').innerHTML = data.resultTitle || '<i class="fas fa-chart-line"></i> Kết quả Đạt được';
-
                     document.getElementById('csCurrent').innerHTML = data.current;
-                    
                     const actionDescEl = document.getElementById('csActionDesc');
                     if (data.actionDesc) {
                         actionDescEl.innerHTML = data.actionDesc;
@@ -1583,10 +1580,8 @@
                     } else {
                         actionDescEl.style.display = 'none';
                     }
-                    
                     document.getElementById('csAction').innerHTML = data.action.map(item => `<li>${item}</li>`).join('');
                     document.getElementById('csResult').innerHTML = data.result.map(item => `<li>${item}</li>`).join('');
-
                     csModal.style.display = "flex";
                     setTimeout(() => csModal.classList.add("show"), 10);
                     document.body.style.overflow = 'hidden'; 
@@ -1605,7 +1600,6 @@
         csCloseBtn.addEventListener("click", closeCsModal);
         csModal.addEventListener("click", (e) => { if(e.target === csModal) closeCsModal(); });
 
-        // AUTO-PLAY CAROUSEL LOGIC WITH ARROWS
         const carousels = document.querySelectorAll('[data-carousel]');
         carousels.forEach(carousel => {
             const track = carousel.querySelector('.gallery-track');
@@ -1613,16 +1607,13 @@
             const dotsContainer = carousel.querySelector('.gallery-dots');
             const prevBtn = carousel.querySelector('.prev-btn');
             const nextBtn = carousel.querySelector('.next-btn');
-            
             if (slides.length <= 1) {
                 if(prevBtn) prevBtn.style.display = 'none';
                 if(nextBtn) nextBtn.style.display = 'none';
                 return;
             }
-
             let currentIndex = 0;
             let slideInterval;
-
             slides.forEach((_, index) => {
                 const dot = document.createElement('div');
                 dot.classList.add('dot');
@@ -1630,74 +1621,43 @@
                 dot.addEventListener('click', () => goToSlide(index));
                 dotsContainer.appendChild(dot);
             });
-
             const dots = Array.from(dotsContainer.children);
-
             const goToSlide = (index) => {
                 track.style.transform = `translateX(-${index * 100}%)`;
                 dots.forEach(d => d.classList.remove('active'));
                 dots[index].classList.add('active');
                 currentIndex = index;
             };
-
             const nextSlide = () => {
                 let nextIndex = (currentIndex + 1) % slides.length;
                 goToSlide(nextIndex);
             };
-
             const prevSlide = () => {
                 let prevIndex = (currentIndex - 1 + slides.length) % slides.length;
                 goToSlide(prevIndex);
             };
-
             if (prevBtn) {
-                prevBtn.addEventListener('click', () => {
-                    stopAutoPlay();
-                    prevSlide();
-                    startAutoPlay();
-                });
+                prevBtn.addEventListener('click', () => { stopAutoPlay(); prevSlide(); startAutoPlay(); });
             }
-
             if (nextBtn) {
-                nextBtn.addEventListener('click', () => {
-                    stopAutoPlay();
-                    nextSlide();
-                    startAutoPlay();
-                });
+                nextBtn.addEventListener('click', () => { stopAutoPlay(); nextSlide(); startAutoPlay(); });
             }
-
-            const startAutoPlay = () => {
-                slideInterval = setInterval(nextSlide, 3500);
-            };
-
-            const stopAutoPlay = () => {
-                clearInterval(slideInterval);
-            };
-
+            const startAutoPlay = () => { slideInterval = setInterval(nextSlide, 3500); };
+            const stopAutoPlay = () => { clearInterval(slideInterval); };
             startAutoPlay();
-
             carousel.addEventListener('mouseenter', stopAutoPlay);
             carousel.addEventListener('mouseleave', startAutoPlay);
-            
             let startX = 0;
-
-            carousel.addEventListener('touchstart', (e) => {
-                stopAutoPlay();
-                startX = e.touches[0].clientX;
-            }, {passive: true});
-
+            carousel.addEventListener('touchstart', (e) => { stopAutoPlay(); startX = e.touches[0].clientX; }, {passive: true});
             carousel.addEventListener('touchend', (e) => {
                 let endX = e.changedTouches[0].clientX;
-                if (startX - endX > 50) {
-                    nextSlide(); 
-                } else if (endX - startX > 50) {
+                if (startX - endX > 50) { nextSlide(); } else if (endX - startX > 50) {
                     let prevIndex = (currentIndex - 1 + slides.length) % slides.length;
                     goToSlide(prevIndex);
                 }
                 startAutoPlay();
             }, {passive: true});
         });
-
     </script>
 </body>
 </html>
