@@ -403,6 +403,7 @@
             transform: translateY(-1px);
         }
 
+        /* 🔴 ĐÃ FIX LỖI NHẢY ẢNH Ở ĐÂY */
         .modal-overlay {
             display: none;
             position: fixed;
@@ -413,23 +414,24 @@
             backdrop-filter: blur(5px);
             opacity: 0;
             transition: opacity 0.3s ease;
-        }
-        .modal-overlay.show {
-            display: flex;
-            opacity: 1;
+            /* Đưa thuộc tính căn giữa ra class gốc để không bị giật khi đóng */
             align-items: center;
             justify-content: center;
             padding: 20px;
         }
+        .modal-overlay.show {
+            opacity: 1;
+        }
+        
         .modal-content-container {
             width: 90%;
             height: 85vh;
             max-width: 1000px;
             position: relative;
-            background: #fff;
+            background: transparent; /* Đổi thành transparent để viền trắng ảnh đẹp hơn */
             border-radius: 8px;
             overflow: hidden;
-            transform: scale(0.9);
+            transform: scale(0.95);
             transition: transform 0.3s ease;
         }
         .modal-overlay.show .modal-content-container { transform: scale(1); }
@@ -449,7 +451,9 @@
             font-size: 40px; font-weight: bold;
             cursor: pointer;
             z-index: 2001;
+            transition: color 0.3s;
         }
+        .close-modal:hover { color: var(--primary); }
 
         /* Nút mũi tên cho Popup Phóng to Ảnh */
         .modal-nav-btn {
