@@ -1071,7 +1071,7 @@
                     <div class="project-content-v2">
                         <div class="project-industry">
                             <span>Di trú EB5 (High-ticket)</span>
-                            <span style="color: var(--primary-dark);"><i class="fas fa-phone-alt"></i> CRO Focus</span>
+                            <!-- 🔴 Đã bỏ thẻ tag CRO FOCUS -->
                         </div>
                         <h3>Interimm: Bứt phá 6.100 Traffic ngách Di trú</h3>
                         
@@ -1100,8 +1100,8 @@
                                 <div class="metric-desc">Organic Traffic (+40%)</div>
                             </div>
                             <div class="metric-block full-width">
-                                <div class="metric-big">+94%</div>
-                                <div class="metric-desc">Call Conversions</div>
+                                <div class="metric-big">>91%</div>
+                                <div class="metric-desc">Engagement Rate</div>
                             </div>
                         </div>
 
@@ -1305,12 +1305,13 @@
                 <h3 class="cs-modal-title" id="csTitle">Tiêu đề dự án</h3>
                 
                 <div class="cs-section">
-                    <div class="cs-section-title"><i class="fas fa-exclamation-circle"></i> Hiện trạng & Thách thức</div>
+                    <!-- 🔴 Đã gắn thêm ID để điều khiển tiêu đề linh hoạt -->
+                    <div class="cs-section-title" id="csCurrentTitle"><i class="fas fa-exclamation-circle"></i> Hiện trạng & Thách thức</div>
                     <div id="csCurrent" style="color: var(--text-sub); line-height: 1.7; font-size: 1.05rem;">Nội dung hiện trạng...</div>
                 </div>
 
                 <div class="cs-section">
-                    <div class="cs-section-title"><i class="fas fa-bolt"></i> Giải pháp Triển khai</div>
+                    <div class="cs-section-title" id="csActionTitle"><i class="fas fa-bolt"></i> Giải pháp Triển khai</div>
                     <p id="csActionDesc" style="margin-bottom: 15px; display: none;"></p>
                     <ul id="csAction">
                         <li>Công việc 1</li>
@@ -1319,7 +1320,7 @@
                 </div>
 
                 <div class="cs-section">
-                    <div class="cs-section-title"><i class="fas fa-chart-line"></i> Kết quả Đạt được</div>
+                    <div class="cs-section-title" id="csResultTitle"><i class="fas fa-chart-line"></i> Kết quả Đạt được</div>
                     <div class="cs-result-box">
                         <ul id="csResult">
                             <li>Kết quả 1</li>
@@ -1479,7 +1480,9 @@
         const caseStudyData = {
             'hyper-inkers': {
                 title: 'Hyper Inkers: Dominate Local Search tại Mỹ',
+                currentTitle: '<i class="fas fa-exclamation-circle"></i> Hiện trạng & Thách thức',
                 current: '<p style="margin-bottom: 10px;">Dự án thuộc Ngách Tattoo tại thị trường Mỹ. Khách hàng là một Studio xăm hình nghệ thuật đặt tại San Antonio, TX - đặc thù cạnh tranh cực kỳ gay gắt trên Local Search. Tại thời điểm tiếp nhận (02/2025), website chỉ lẹt đẹt ở mức 1.300 Organic Traffic/tháng, với lượng truy cập chủ yếu dựa dẫm vào trang chủ.</p><p style="margin-bottom: 10px;"><strong>3 Thách thức cốt lõi:</strong></p><ul><li><strong>Nền tảng Technical yếu:</strong> Website dính nhiều lỗi chí mạng (Page speed kém, URL 404, thiếu Canonical, cấu trúc phân tầng lộn xộn và Sitemap không đạt chuẩn).</li><li><strong>Thin Content:</strong> Sở hữu 154 bài viết nhưng tỷ lệ Thin Content là 100%, thiếu chiều sâu, không giải quyết đúng Search Intent của người dùng Mỹ và không target từ khóa rõ ràng.</li><li><strong>Đặc thù ngành khó:</strong> Khách hàng ngành Tattoo có hành vi tìm kiếm hình ảnh (Visual Search) rất cao trước khi chọn tiệm. Họ đòi hỏi sự uy tín, độ an toàn vệ sinh và năng lực thực tế của Artist (Thợ xăm). Đây là rào cản chuyển đổi cực lớn nếu website không chứng minh được tiêu chuẩn E-E-A-T.</li></ul>',
+                actionTitle: '<i class="fas fa-bolt"></i> Giải pháp Triển khai',
                 actionDesc: 'Nhận thấy các đối thủ trực tiếp khá yếu về mặt Content Blog, tôi quyết định không đánh trực diện bằng Backlink mà tập trung nguồn lực vào việc xây dựng Topical Authority và Local Entity.',
                 action: [
                     'Xử lý triệt để các rào cản kỹ thuật (Page speed, Sitemap, Canonical, 404).',
@@ -1490,6 +1493,7 @@
                     'Tận dụng kho ảnh xăm thực tế chất lượng cao, phân phối trên các nền tảng thiên về Visual như Pinterest, Behance để kéo traffic hình ảnh - đúng với hành vi cốt lõi của khách hàng xăm.',
                     'Khai thác "Lazy Link Building" (Đặc thù thị trường US): Sản xuất các nội dung nghiên cứu sâu trong ngành để tự động thu hút backlink trích dẫn tự nhiên từ các blogger/website cùng ngách.'
                 ],
+                resultTitle: '<i class="fas fa-chart-line"></i> Kết quả Đạt được',
                 result: [
                     'Đạt <strong>100% KPI</strong> chỉ trong 8 tháng triển khai.',
                     'Tăng trưởng từ <strong>1.300</strong> lên <strong>108.800 Organic Traffic/tháng</strong> (Semrush).',
@@ -1501,13 +1505,16 @@
             },
             'interimm': {
                 title: 'Interimm: Bứt phá 6.100 Traffic ngách Di trú',
+                currentTitle: '<i class="fas fa-bullseye"></i> Tổng quan thực thi',
                 current: 'Ngành Di trú Mỹ (EB-5) là sân chơi "High-ticket" cực kỳ khốc liệt. Với vai trò triển khai SEO trực tiếp cho dự án, nhiệm vụ của tôi là trực tiếp biến chiến lược thành kết quả thực tế thông qua khả năng kiểm soát chất lượng Onpage, Technical và Entity một cách kỷ luật trong suốt 10 tháng.',
+                actionTitle: '<i class="fas fa-tools"></i> Hạng mục triển khai trọng điểm',
                 actionDesc: '',
                 action: [
                     '<strong style="color: var(--secondary);">1. Tối ưu Onpage & Semantic Content</strong><ul style="margin-top: 8px; margin-bottom: 15px; list-style-type: circle;"><li>Trực tiếp quản lý tiến độ, kiểm duyệt chất lượng Outline/AM và bài viết đảm bảo tính chuyên môn cao, đánh trúng Search Intent của tệp khách V.I.P.</li><li>Triển khai hệ thống Internal Link theo cấu trúc cụm chủ đề (Topic Cluster) và thiết lập Schema Markup nâng cao (Service, BlogPosting) để giúp Google hiểu rõ thực thể website.</li><li>Follow ranking và lên action Audit Content thúc đẩy ranking keywords cam kết đảm bảo đạt KPI theo hợp đồng, đồng thời bổ sung Information Gain cho các bài viết để duy trì lợi thế cạnh tranh.</li></ul>',
                     '<strong style="color: var(--secondary);">2. Kiểm soát Technical & Trải nghiệm người dùng trên website</strong><ul style="margin-top: 8px; margin-bottom: 15px; list-style-type: circle;"><li>Thực hiện Audit Technical định kỳ, làm việc trực tiếp với đội ngũ Dev để xử lý triệt để các lỗi Technical nền tảng (Lỗi Crawl/Index, tốc độ tải trang, cấu trúc URL).</li></ul>',
                     '<strong style="color: var(--secondary);">3. Xây dựng Trust (Entity & Offsite Control)</strong><ul style="margin-top: 8px; list-style-type: circle;"><li>Quản lý và đồng bộ tín hiệu Trust đa nền tảng thông qua: Hệ thống Social Stack (Brand & CEO), Google Stack, Syndication, và bài đăng Google My Business (GMB).</li><li>Audit Backlink website định kỳ, phát hiện và Disavow các domain kém chất lượng, spam.</li></ul>'
                 ],
+                resultTitle: '<i class="fas fa-trophy"></i> Kết quả đạt được',
                 result: [
                     'Góp phần đưa dự án nghiệm thu trước thời hạn 1 tháng với bộ chỉ số vượt kỳ vọng:',
                     'Tăng trưởng từ <strong>390</strong> lên <strong>6.100 Organic Traffic/tháng</strong> (Semrush).',
@@ -1518,11 +1525,14 @@
             },
             'housedesign': {
                 title: 'Housedesign: Chiến lược Thủ/Công mùa Core Update',
+                currentTitle: '<i class="fas fa-exclamation-circle"></i> Hiện trạng & Thách thức',
                 current: 'Website đối mặt với đợt càn quét lớn từ Google Core Update. Nguy cơ mất Top hàng loạt ở các nhóm từ khóa hạt giống mang lại doanh thu chính của công ty thiết kế nội thất.',
+                actionTitle: '<i class="fas fa-bolt"></i> Giải pháp Triển khai',
                 action: [
                     '<strong>Chiến lược THỦ:</strong> Audit toàn bộ content cũ, nâng cấp Semantic depth và củng cố Internal Link để bảo vệ Top ranking hiện tại.',
                     '<strong>Chiến lược CÔNG:</strong> Triển khai thêm các cụm Topic Cluster mới ngách hơn, ít cạnh tranh hơn để mở rộng thị phần (Market share).'
                 ],
+                resultTitle: '<i class="fas fa-chart-line"></i> Kết quả Đạt được',
                 result: [
                     'Bảo vệ thành công 95% Top 5 từ khóa cốt lõi giữa "tâm bão" Update.',
                     'Đẩy thành công 36% Top 3 cho nhóm từ khóa ngách mới, đưa Traffic chạm đỉnh 44.000 visits.'
@@ -1530,12 +1540,15 @@
             },
             'vibim': {
                 title: 'ViBIM: Đánh chiếm thị trường B2B Global',
+                currentTitle: '<i class="fas fa-exclamation-circle"></i> Hiện trạng & Thách thức',
                 current: 'Bắt đầu từ một Domain mới tinh (Fresh Domain). Thách thức cực lớn khi phải đánh vào thị trường B2B quốc tế (Global SEO) với các đối thủ lâu năm và có chỉ số Authority rất cao.',
+                actionTitle: '<i class="fas fa-bolt"></i> Giải pháp Triển khai',
                 action: [
                     'Xây dựng cấu trúc Silo website chuẩn quốc tế ngay từ ngày đầu tiên.',
                     'Triển khai chiến lược Content Marketing B2B chuyên sâu, tập trung vào việc educate khách hàng và mời tải tài liệu/Demo.',
                     'Thiết lập hệ thống Tracking MQL (Marketing Qualified Leads) liên kết với form tải và LinkedIn.'
                 ],
+                resultTitle: '<i class="fas fa-chart-line"></i> Kết quả Đạt được',
                 result: [
                     'Build thành công website từ con số 0 lên 7.162 Sessions/tháng đền từ thị trường Global.',
                     'Mang về 50+ Key B2B CTAs (Lượt đăng ký Demo, điền Form tư vấn chất lượng cao).'
@@ -1555,6 +1568,12 @@
 
                 if(data) {
                     document.getElementById('csTitle').innerHTML = data.title;
+                    
+                    // 🔴 Cập nhật linh hoạt các Tiêu đề con
+                    document.getElementById('csCurrentTitle').innerHTML = data.currentTitle || '<i class="fas fa-exclamation-circle"></i> Hiện trạng & Thách thức';
+                    document.getElementById('csActionTitle').innerHTML = data.actionTitle || '<i class="fas fa-bolt"></i> Giải pháp Triển khai';
+                    document.getElementById('csResultTitle').innerHTML = data.resultTitle || '<i class="fas fa-chart-line"></i> Kết quả Đạt được';
+
                     document.getElementById('csCurrent').innerHTML = data.current;
                     
                     const actionDescEl = document.getElementById('csActionDesc');
