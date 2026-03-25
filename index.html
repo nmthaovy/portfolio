@@ -990,6 +990,77 @@
             background: rgba(255, 178, 44, 0.8);
         }
 
+        /* 🔴 NEW: TOOLS SECTION CSS (INFINITE MARQUEE) */
+        .tools-section {
+            padding: 80px 0;
+            background: #FFFFFF;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+            overflow: hidden;
+        }
+        
+        .tools-slider {
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+            padding: 20px 0;
+            white-space: nowrap;
+        }
+        
+        /* Hiệu ứng mờ dần (Fade) ở 2 mép viền màn hình */
+        .tools-slider::before, .tools-slider::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            width: 150px;
+            height: 100%;
+            z-index: 2;
+        }
+        .tools-slider::before {
+            left: 0;
+            background: linear-gradient(to right, #FFFFFF 0%, rgba(255,255,255,0) 100%);
+        }
+        .tools-slider::after {
+            right: 0;
+            background: linear-gradient(to left, #FFFFFF 0%, rgba(255,255,255,0) 100%);
+        }
+
+        .tools-track {
+            display: inline-flex;
+            align-items: center;
+            gap: 60px;
+            /* Đặt thời gian animation 35s cho nhẹ nhàng, thay đổi nếu muốn trôi nhanh/chậm hơn */
+            animation: scrollTools 35s linear infinite;
+        }
+
+        /* Tạm dừng băng chuyền khi rê chuột vào */
+        .tools-track:hover {
+            animation-play-state: paused;
+        }
+
+        @keyframes scrollTools {
+            0% { transform: translateX(0); }
+            /* Dịch chuyển đúng một nửa độ dài của track (vì ta duplicate list logo 2 lần) */
+            100% { transform: translateX(calc(-50% - 30px)); } 
+        }
+
+        .tool-logo {
+            height: 80px; /* 🔴 Tăng kích thước logo to hơn nữa */
+            object-fit: contain;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+            mix-blend-mode: multiply; /* Thủ thuật xóa phông trắng cho các ảnh JPG */
+        }
+
+        /* 🔴 Class dành riêng cho Semrush (Gấp đôi) */
+        .tool-logo.semrush {
+            height: 160px;
+        }
+
+        /* Khi Hover chỉ cần phóng to lên một chút tạo hiệu ứng tương tác */
+        .tool-logo:hover {
+            transform: scale(1.15);
+        }
+
         /* 🔴 THANKS FOR WATCHING SECTION CSS */
         .thanks-section {
             padding: 80px 0 40px;
@@ -1185,31 +1256,26 @@
                 border: 1px solid rgba(0,0,0,0.05);
                 align-items: center;
                 justify-content: center;
-                z-index: 10;
-                color: var(--secondary);
-                cursor: pointer;
+            /* Responsive Tabs */
+            .exp-wrapper { flex-direction: column; padding: 25px; gap: 25px; }
+            .exp-tabs { 
+                flex-direction: row; 
+                border-right: none; 
+                border-bottom: 2px solid rgba(0,0,0,0.05); 
+                padding-right: 0; 
+                padding-bottom: 10px; 
+                overflow-x: auto; 
+                white-space: nowrap; 
             }
-            .process-prev-btn { left: -10px; }
-            .process-next-btn { right: -10px; }
-
-            .cert-card { flex-direction: column; gap: 15px; }
-            .cs-modal-body { padding: 25px; }
-            .cs-modal-title { font-size: 1.6rem; }
-
-            .modal-nav-btn { width: 40px; height: 40px; font-size: 1rem; }
-            .prev-modal-btn { left: 10px; }
-            .next-modal-btn { right: 10px; }
-            
-            /* Responsive Timeline (Khôi phục) */
-            .timeline-container::before { left: 15px; }
-            .timeline-item { padding-left: 45px; }
-            .timeline-dot { left: 8px; top: 25px;}
-            .timeline-card { padding: 25px; }
+            .exp-tabs::-webkit-scrollbar { height: 3px; }
+            .exp-tabs::-webkit-scrollbar-thumb { background: rgba(0,0,0,0.1); border-radius: 4px; }
+            .exp-tab { padding: 10px 15px; font-size: 1rem; }
+            .exp-tab::after { right: 0; bottom: -12px; top: auto; width: 100%; height: 3px; }
             .timeline-header { flex-direction: column; align-items: flex-start; text-align: left;}
             .timeline-meta-right { text-align: left; align-items: flex-start; margin-top: 10px;}
             .timeline-role h3 { font-size: 1.4rem; }
 
-            /* Tối ưu Sticky Bar Mobile */
+            /* Responsive Sticky Bar Mobile */
             .sticky-social-bar {
                 flex-direction: row;
                 top: auto;
@@ -1235,6 +1301,12 @@
                 right: 20px;
                 width: 42px; height: 42px; font-size: 1rem;
             }
+            
+            /* Responsive Tool Slider */
+            .tools-slider::before, .tools-slider::after { width: 50px; }
+            .tool-logo { height: 55px; } /* 🔴 Tăng kích thước logo trên mobile */
+            .tool-logo.semrush { height: 110px; } /* 🔴 Semrush gấp đôi trên mobile */
+            .tools-track { gap: 40px; }
         }
     </style>
 </head>
@@ -1744,7 +1816,6 @@
                             </div>
                             <div class="timeline-meta-right">
                                 <span class="timeline-date">02/2023 - 10/2023</span>
-                                <!-- 🔴 KHÔI PHỤC LẠI GOOGLE DOCS VIEWER -->
                                 <span class="timeline-cert">Chứng nhận: <a class="open-modal" data-file="https://docs.google.com/viewer?url=https://raw.githubusercontent.com/nmthaovy/portfolio/main/t%C3%A2m%20l%C3%BD%20h%E1%BB%8Dc%20tu%E1%BB%95i%20tr%E1%BA%BB.pdf&embedded=true">Tại đây</a></span>
                             </div>
                         </div>
@@ -1757,6 +1828,51 @@
                     </div>
                 </div>
 
+            </div>
+        </div>
+    </section>
+
+    <!-- 🔴 NEW: TOOLS & TECHNOLOGIES SECTION -->
+    <section id="tools" class="tools-section">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up" style="text-align: center; margin: 0 auto 40px;">
+                <span class="section-tag">Công cụ & Nền tảng</span>
+                <h2 class="section-title">Tech Stack <i>của tôi.</i></h2>
+            </div>
+        </div>
+        
+        <!-- Băng chuyền Logo chạy ngang -->
+        <div class="tools-slider" data-aos="fade-in" data-aos-delay="100">
+            <div class="tools-track">
+                <!-- SET 1 (Danh sách chính dựa trên link cung cấp) -->
+                <img src="https://logowik.com/content/uploads/images/screaming-frog3430.logowik.com.webp" class="tool-logo" alt="Screaming Frog" title="Screaming Frog">
+                <img src="https://brandlogos.net/wp-content/uploads/2025/07/google_search_console_icon-vector_brandlogos.net_hxtfr-512x512.png" class="tool-logo" alt="Google Search Console" title="Google Search Console">
+                <img src="https://www.vixendigital.com/wp-content/uploads/2023/04/GA4_Logo.svg" class="tool-logo" alt="Google Analytics 4" title="Google Analytics 4">
+                <img src="https://strategicmarketsolutions.com/wp-content/uploads/2024/01/Looker-Studio-Logo.png" class="tool-logo" alt="Looker Studio" title="Looker Studio">
+                <!-- 🔴 Cập nhật lại link ảnh Ahrefs chuẩn -->
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ65zpE8EgHLCG5w2N4ul59-bg5mkSgYshKEw&s" class="tool-logo" alt="Ahrefs" title="Ahrefs">
+                <!-- 🔴 Thêm class "semrush" để nhân đôi kích thước -->
+                <img src="https://crystalpng.com/wp-content/uploads/2022/07/semrush-Logo.png" class="tool-logo semrush" alt="Semrush" title="Semrush">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQF5kBtVrBMvZqDR2gSsWiSYsciCWJxyF6lvg&s" class="tool-logo" alt="WordPress" title="WordPress">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fb/Adobe_Illustrator_CC_icon.svg/500px-Adobe_Illustrator_CC_icon.svg.png" class="tool-logo" alt="Adobe Illustrator" title="Adobe Illustrator">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/Adobe_Photoshop_CC_icon.svg/1280px-Adobe_Photoshop_CC_icon.svg.png" class="tool-logo" alt="Adobe Photoshop" title="Adobe Photoshop">
+                <img src="https://public.canva.site/logo/video/880b4225ad0f37556240783328b91306.jpg" class="tool-logo" style="border-radius: 8px;" alt="Canva" title="Canva">
+                <img src="https://images.icon-icons.com/2699/PNG/512/figma_logo_icon_171159.png" class="tool-logo" alt="Figma" title="Figma">
+
+                <!-- SET 2 (Nhân bản để tạo hiệu ứng vòng lặp vô tận) -->
+                <img src="https://logowik.com/content/uploads/images/screaming-frog3430.logowik.com.webp" class="tool-logo" alt="Screaming Frog" title="Screaming Frog">
+                <img src="https://brandlogos.net/wp-content/uploads/2025/07/google_search_console_icon-vector_brandlogos.net_hxtfr-512x512.png" class="tool-logo" alt="Google Search Console" title="Google Search Console">
+                <img src="https://www.vixendigital.com/wp-content/uploads/2023/04/GA4_Logo.svg" class="tool-logo" alt="Google Analytics 4" title="Google Analytics 4">
+                <img src="https://strategicmarketsolutions.com/wp-content/uploads/2024/01/Looker-Studio-Logo.png" class="tool-logo" alt="Looker Studio" title="Looker Studio">
+                <!-- 🔴 Cập nhật lại link ảnh Ahrefs chuẩn -->
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ65zpE8EgHLCG5w2N4ul59-bg5mkSgYshKEw&s" class="tool-logo" alt="Ahrefs" title="Ahrefs">
+                <!-- 🔴 Thêm class "semrush" để nhân đôi kích thước -->
+                <img src="https://crystalpng.com/wp-content/uploads/2022/07/semrush-Logo.png" class="tool-logo semrush" alt="Semrush" title="Semrush">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQF5kBtVrBMvZqDR2gSsWiSYsciCWJxyF6lvg&s" class="tool-logo" alt="WordPress" title="WordPress">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fb/Adobe_Illustrator_CC_icon.svg/500px-Adobe_Illustrator_CC_icon.svg.png" class="tool-logo" alt="Adobe Illustrator" title="Adobe Illustrator">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/Adobe_Photoshop_CC_icon.svg/1280px-Adobe_Photoshop_CC_icon.svg.png" class="tool-logo" alt="Adobe Photoshop" title="Adobe Photoshop">
+                <img src="https://public.canva.site/logo/video/880b4225ad0f37556240783328b91306.jpg" class="tool-logo" style="border-radius: 8px;" alt="Canva" title="Canva">
+                <img src="https://images.icon-icons.com/2699/PNG/512/figma_logo_icon_171159.png" class="tool-logo" alt="Figma" title="Figma">
             </div>
         </div>
     </section>
