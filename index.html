@@ -72,6 +72,14 @@
             z-index: 1000;
             border-bottom: 1px solid rgba(0, 0, 0, 0.05);
         }
+        
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            align-items: center;
+            padding: 0;
+        }
 
         .logo {
             font-family: var(--font-header);
@@ -290,10 +298,10 @@
         .avatar-frame:hover img { transform: scale(1.05); }
 
         /* --- Section Styling --- */
-        section { padding: 100px 0; }
+        section { padding: 70px 0; } /* 🔴 ĐÃ GIẢM GAP: Padding chung được rút gọn từ 100px xuống 70px */
         
         .section-header {
-            margin-bottom: 50px;
+            margin-bottom: 40px; /* 🔴 ĐÃ GIẢM GAP */
             max-width: 700px;
         }
 
@@ -590,67 +598,6 @@
             border-radius: 3px;
         }
 
-        /* 🔴 CÁC DỰ ÁN KHÁC CSS (CỐ ĐỊNH) */
-        .other-projects-section {
-            background: var(--card-bg);
-            border: 1px solid rgba(0, 0, 0, 0.08);
-            border-radius: 24px;
-            padding: 40px 20px;
-            text-align: center;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.02);
-            position: relative;
-            overflow: hidden;
-        }
-        .other-projects-title {
-            font-family: var(--font-header);
-            font-size: 1.2rem;
-            color: var(--secondary);
-            margin-bottom: 35px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-        .op-grid {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 60px;
-            flex-wrap: wrap;
-        }
-        .op-item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            gap: 15px;
-            transition: transform 0.3s ease;
-            cursor: pointer;
-        }
-        .op-item:hover { transform: translateY(-5px); }
-        .op-item img {
-            height: 50px; 
-            object-fit: contain;
-            transition: var(--transition);
-            mix-blend-mode: multiply; /* Xóa phông trắng thừa */
-        }
-        .op-item:hover img {
-            transform: scale(1.05);
-        }
-        .op-date {
-            font-size: 0.75rem;
-            font-weight: 600;
-            color: var(--text-sub);
-            background: #FAFAFA;
-            padding: 6px 16px;
-            border-radius: 100px;
-            border: 1px solid rgba(0,0,0,0.05);
-            transition: var(--transition);
-        }
-        .op-item:hover .op-date {
-            background: rgba(255, 178, 44, 0.1);
-            color: var(--primary-dark);
-            border-color: rgba(255, 178, 44, 0.3);
-        }
-
         /* --- DATA-DRIVEN CASE STUDIES --- */
         .project-stack {
             display: flex;
@@ -909,12 +856,12 @@
             display: none;
         }
 
-        /* 🔴 NEW: KHÔI PHỤC TIMELINE SECTION CSS */
+        /* 🔴 TIMELINE SECTION CSS */
         .timeline-container {
             position: relative;
             max-width: 900px;
             margin: 0 auto;
-            padding: 20px 0;
+            padding: 0; /* ĐÃ GIẢM GAP */
         }
         /* Vertical Line */
         .timeline-container::before {
@@ -929,7 +876,7 @@
         .timeline-item {
             position: relative;
             padding-left: 70px;
-            margin-bottom: 50px;
+            margin-bottom: 35px; /* 🔴 ĐÃ GIẢM GAP: Rút gọn khoảng cách giữa các khối kinh nghiệm */
         }
         .timeline-item:last-child { margin-bottom: 0; }
         
@@ -1051,9 +998,9 @@
             background: rgba(255, 178, 44, 0.8);
         }
 
-        /* 🔴 NEW: TOOLS SECTION CSS (INFINITE MARQUEE) */
+        /* 🔴 TOOLS SECTION CSS (INFINITE MARQUEE) */
         .tools-section {
-            padding: 80px 0;
+            padding: 50px 0 80px 0; /* 🔴 ĐÃ GIẢM GAP */
             background: #FFFFFF;
             border-bottom: 1px solid rgba(0,0,0,0.05);
             overflow: hidden;
@@ -1105,19 +1052,17 @@
         }
 
         .tool-logo {
-            height: 80px; /* 🔴 Tăng kích thước logo to hơn nữa */
+            height: 80px;
             object-fit: contain;
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             cursor: pointer;
             mix-blend-mode: multiply; /* Thủ thuật xóa phông trắng cho các ảnh JPG */
         }
 
-        /* 🔴 Class dành riêng cho Semrush (Gấp đôi) */
         .tool-logo.semrush {
             height: 160px;
         }
 
-        /* Khi Hover chỉ cần phóng to lên một chút tạo hiệu ứng tương tác */
         .tool-logo:hover {
             transform: scale(1.15);
         }
@@ -1247,6 +1192,72 @@
         .footer-cta h2 { font-family: var(--font-header); font-size: clamp(2rem, 5vw, 3.5rem); margin-bottom: 20px;}
         .footer-cta p { font-size: 1.1rem; color: #CCCCCC; margin-bottom: 40px; max-width: 600px; margin-inline: auto;}
 
+        /* 🔴 ẨN NÚT TOGGLE MENU TRÊN DESKTOP */
+        .mobile-toggle { display: none; font-size: 1.5rem; background: none; border: none; color: var(--secondary); cursor: pointer; transition: var(--transition); }
+        .mobile-toggle:hover { color: var(--primary-dark); }
+
+        /* 🔴 BỔ SUNG LẠI CSS BỊ THIẾU CHO SECTION "CÁC DỰ ÁN KHÁC" ĐỂ FIX LỖI LOGO KHỔNG LỒ */
+        .other-projects-section {
+            background: var(--card-bg);
+            border: 1px solid rgba(0, 0, 0, 0.08);
+            border-radius: 24px;
+            padding: 40px 20px;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.02);
+            position: relative;
+            overflow: hidden;
+            margin-top: 50px;
+        }
+        .other-projects-title {
+            font-family: var(--font-header);
+            font-size: 1.2rem;
+            color: var(--secondary);
+            margin-bottom: 35px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .op-grid {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 60px;
+            flex-wrap: wrap;
+        }
+        .op-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            transition: transform 0.3s ease;
+            cursor: pointer;
+        }
+        .op-item:hover { transform: translateY(-5px); }
+        .op-item img {
+            height: 50px; 
+            object-fit: contain;
+            transition: var(--transition);
+            mix-blend-mode: multiply; /* Xóa phông trắng thừa */
+        }
+        .op-item:hover img {
+            transform: scale(1.05);
+        }
+        .op-date {
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--text-sub);
+            background: #FAFAFA;
+            padding: 6px 16px;
+            border-radius: 100px;
+            border: 1px solid rgba(0,0,0,0.05);
+            transition: var(--transition);
+        }
+        .op-item:hover .op-date {
+            background: rgba(255, 178, 44, 0.1);
+            color: var(--primary-dark);
+            border-color: rgba(255, 178, 44, 0.3);
+        }
+
         /* 🔴 RESPONSIVE MOBILE TỐI ƯU TOÀN DIỆN */
         @media (max-width: 1024px) {
             .hero-grid, .about-grid { grid-template-columns: 1fr; text-align: center; }
@@ -1254,15 +1265,50 @@
             .hero-stats { justify-content: center; }
             .btn-group { justify-content: center; }
             .avatar-frame { max-width: 450px; margin: 0 auto; }
-            .nav-links { display: none; } 
             .cert-card { text-align: left; }
-            
             .project-body { grid-template-columns: 1fr; gap: 30px; } 
+
+            /* 🔴 ĐÃ FIX LẠI GIAO DIỆN HAMBURGER MENU XỔ XUỐNG NHƯ INSIEUTOC.VN */
+            nav { padding: 15px 0; }
+            .nav-container { flex-direction: row; position: relative; }
+            .mobile-toggle { display: block; }
+            .logo { align-self: center; }
+            .nav-links { 
+                display: none; /* Ẩn menu mặc định */
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: rgba(255, 255, 255, 0.98);
+                padding: 10px 5% 20px;
+                box-shadow: 0 15px 30px rgba(0,0,0,0.08);
+                border-top: 1px solid rgba(0,0,0,0.05);
+                gap: 15px;
+                border-radius: 0 0 15px 15px;
+                text-align: left;
+            }
+            .nav-links.active { 
+                display: flex; 
+                animation: slideDown 0.3s cubic-bezier(0.4, 0, 0.2, 1); 
+            }
+            @keyframes slideDown {
+                from { opacity: 0; transform: translateY(-10px); }
+                to { opacity: 1; transform: translateY(0); }
+            }
+            .nav-links a { 
+                font-size: 1.1rem; 
+                padding: 12px 0; 
+                display: block; 
+                border-bottom: 1px solid rgba(0,0,0,0.03); 
+                white-space: normal; 
+            }
+            .nav-links li:last-child a { border-bottom: none; }
         }
 
         @media (max-width: 600px) {
-            section { padding: 60px 0; }
-            .hero { padding-top: 100px; }
+            section { padding: 40px 0; } /* 🔴 ĐÃ GIẢM GAP */
+            .hero { padding-top: 120px; }
             .hero-stats { gap: 15px; justify-content: space-between; }
             .stat-item { width: 45%; text-align: left;} 
             .stat-item .number { font-size: 2rem; }
@@ -1303,7 +1349,6 @@
             .process-step { font-size: 2.5rem; }
             .process-card h3 { font-size: 1.25rem; }
             
-            /* 🔴 Hiển thị 2 nút điều hướng Slider trên Mobile */
             .process-nav-btn {
                 display: flex;
                 position: absolute;
@@ -1338,7 +1383,7 @@
             .op-grid { gap: 30px; flex-direction: column; }
             .op-item img { height: 40px; }
 
-            /* Responsive Timeline (Khôi phục) */
+            /* Responsive Timeline */
             .timeline-container::before { left: 15px; }
             .timeline-item { padding-left: 45px; }
             .timeline-dot { left: 8px; top: 25px;}
@@ -1376,8 +1421,8 @@
             
             /* Responsive Tool Slider */
             .tools-slider::before, .tools-slider::after { width: 50px; }
-            .tool-logo { height: 55px; } /* 🔴 Tăng kích thước logo trên mobile */
-            .tool-logo.semrush { height: 110px; } /* 🔴 Semrush gấp đôi trên mobile */
+            .tool-logo { height: 55px; }
+            .tool-logo.semrush { height: 110px; }
             .tools-track { gap: 40px; }
         }
     </style>
@@ -1386,8 +1431,12 @@
 
     <!-- Navigation -->
     <nav>
-        <div class="container" style="display: flex; justify-content: space-between; width: 100%; align-items: center; padding: 0;">
+        <div class="container nav-container">
             <a href="#" class="logo">Vy<span>.</span>Nguyen</a>
+            
+            <!-- 🔴 THÊM NÚT HAMBURGER CHO MOBILE -->
+            <button class="mobile-toggle" aria-label="Toggle Menu"><i class="fas fa-bars"></i></button>
+
             <ul class="nav-links">
                 <li><a href="#about">Về Tôi</a></li>
                 <li><a href="#projects">Case Studies</a></li>
@@ -1436,7 +1485,6 @@
                     </div>
 
                     <div class="btn-group">
-                        <!-- 🔴 ĐÃ FIX LỖI: Chuyển sang Raw Link + Google Docs Viewer -->
                         <a href="javascript:void(0)" data-file="https://docs.google.com/viewer?url=https://raw.githubusercontent.com/nmthaovy/portfolio/main/CV%20-%20NGUYEN%20MAI%20THAO%20VY%20-%20SEO%20EXECUTIVE.pdf&embedded=true" class="btn btn-primary open-modal">
                             Xem CV PDF <i class="fas fa-file-pdf"></i>
                         </a>
@@ -1710,7 +1758,7 @@
                         <div class="project-industry">
                             <span>Di trú EB5 (High-ticket)</span>
                         </div>
-                        <h3 style="margin-bottom: 0;">Interimm: Bứt phá 6.100 Traffic ngách Di trú</h3>
+                        <h3 style="margin-bottom: 0;">Bứt phá 6.100 Traffic ngách Di trú</h3>
                     </div>
 
                     <div class="project-body">
@@ -1834,7 +1882,7 @@
     <!-- 🔴 ĐÃ KHÔI PHỤC LẠI TIMELINE SECTION XỔ DỌC -->
     <section id="experience" style="background: #FAFAFA; border-top: 1px solid rgba(0,0,0,0.05); border-bottom: 1px solid rgba(0,0,0,0.05);">
         <div class="container">
-            <div class="section-header" data-aos="fade-up" style="text-align: center; margin: 0 auto 60px;">
+            <div class="section-header" data-aos="fade-up" style="text-align: center; margin: 0 auto 40px;">
                 <span class="section-tag">Quá trình làm việc</span>
                 <h2 class="section-title">Kinh nghiệm <i>thực chiến.</i></h2>
             </div>
@@ -1936,9 +1984,7 @@
                 <img src="https://brandlogos.net/wp-content/uploads/2025/07/google_search_console_icon-vector_brandlogos.net_hxtfr-512x512.png" class="tool-logo" alt="Google Search Console" title="Google Search Console">
                 <img src="https://www.vixendigital.com/wp-content/uploads/2023/04/GA4_Logo.svg" class="tool-logo" alt="Google Analytics 4" title="Google Analytics 4">
                 <img src="https://strategicmarketsolutions.com/wp-content/uploads/2024/01/Looker-Studio-Logo.png" class="tool-logo" alt="Looker Studio" title="Looker Studio">
-                <!-- 🔴 Cập nhật lại link ảnh Ahrefs chuẩn -->
                 <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ65zpE8EgHLCG5w2N4ul59-bg5mkSgYshKEw&s" class="tool-logo" alt="Ahrefs" title="Ahrefs">
-                <!-- 🔴 Thêm class "semrush" để nhân đôi kích thước -->
                 <img src="https://crystalpng.com/wp-content/uploads/2022/07/semrush-Logo.png" class="tool-logo semrush" alt="Semrush" title="Semrush">
                 <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQF5kBtVrBMvZqDR2gSsWiSYsciCWJxyF6lvg&s" class="tool-logo" alt="WordPress" title="WordPress">
                 <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fb/Adobe_Illustrator_CC_icon.svg/500px-Adobe_Illustrator_CC_icon.svg.png" class="tool-logo" alt="Adobe Illustrator" title="Adobe Illustrator">
@@ -1951,9 +1997,7 @@
                 <img src="https://brandlogos.net/wp-content/uploads/2025/07/google_search_console_icon-vector_brandlogos.net_hxtfr-512x512.png" class="tool-logo" alt="Google Search Console" title="Google Search Console">
                 <img src="https://www.vixendigital.com/wp-content/uploads/2023/04/GA4_Logo.svg" class="tool-logo" alt="Google Analytics 4" title="Google Analytics 4">
                 <img src="https://strategicmarketsolutions.com/wp-content/uploads/2024/01/Looker-Studio-Logo.png" class="tool-logo" alt="Looker Studio" title="Looker Studio">
-                <!-- 🔴 Cập nhật lại link ảnh Ahrefs chuẩn -->
                 <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ65zpE8EgHLCG5w2N4ul59-bg5mkSgYshKEw&s" class="tool-logo" alt="Ahrefs" title="Ahrefs">
-                <!-- 🔴 Thêm class "semrush" để nhân đôi kích thước -->
                 <img src="https://crystalpng.com/wp-content/uploads/2022/07/semrush-Logo.png" class="tool-logo semrush" alt="Semrush" title="Semrush">
                 <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQF5kBtVrBMvZqDR2gSsWiSYsciCWJxyF6lvg&s" class="tool-logo" alt="WordPress" title="WordPress">
                 <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fb/Adobe_Illustrator_CC_icon.svg/500px-Adobe_Illustrator_CC_icon.svg.png" class="tool-logo" alt="Adobe Illustrator" title="Adobe Illustrator">
@@ -2419,6 +2463,35 @@
                 startAutoPlay();
             }, {passive: true});
         });
+
+        // 🔴 LOGIC ĐÓNG/MỞ MENU MOBILE (HAMBURGER)
+        const mobileToggle = document.querySelector('.mobile-toggle');
+        const navLinks = document.querySelector('.nav-links');
+        
+        if(mobileToggle && navLinks) {
+            mobileToggle.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+                const icon = mobileToggle.querySelector('i');
+                if(navLinks.classList.contains('active')) {
+                    icon.classList.remove('fa-bars');
+                    icon.classList.add('fa-times'); // Đổi thành nút X khi mở
+                } else {
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');  // Trở lại nút 3 gạch khi đóng
+                }
+            });
+
+            // Tự động đóng menu khi người dùng click vào 1 link
+            const navItems = navLinks.querySelectorAll('a');
+            navItems.forEach(item => {
+                item.addEventListener('click', () => {
+                    navLinks.classList.remove('active');
+                    const icon = mobileToggle.querySelector('i');
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                });
+            });
+        }
     </script>
 </body>
 </html>
