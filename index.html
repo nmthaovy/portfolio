@@ -590,6 +590,67 @@
             border-radius: 3px;
         }
 
+        /* 🔴 CÁC DỰ ÁN KHÁC CSS (CỐ ĐỊNH) */
+        .other-projects-section {
+            background: var(--card-bg);
+            border: 1px solid rgba(0, 0, 0, 0.08);
+            border-radius: 24px;
+            padding: 40px 20px;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.02);
+            position: relative;
+            overflow: hidden;
+        }
+        .other-projects-title {
+            font-family: var(--font-header);
+            font-size: 1.2rem;
+            color: var(--secondary);
+            margin-bottom: 35px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .op-grid {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 60px;
+            flex-wrap: wrap;
+        }
+        .op-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            transition: transform 0.3s ease;
+            cursor: pointer;
+        }
+        .op-item:hover { transform: translateY(-5px); }
+        .op-item img {
+            height: 50px; 
+            object-fit: contain;
+            transition: var(--transition);
+            mix-blend-mode: multiply; /* Xóa phông trắng thừa */
+        }
+        .op-item:hover img {
+            transform: scale(1.05);
+        }
+        .op-date {
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--text-sub);
+            background: #FAFAFA;
+            padding: 6px 16px;
+            border-radius: 100px;
+            border: 1px solid rgba(0,0,0,0.05);
+            transition: var(--transition);
+        }
+        .op-item:hover .op-date {
+            background: rgba(255, 178, 44, 0.1);
+            color: var(--primary-dark);
+            border-color: rgba(255, 178, 44, 0.3);
+        }
+
         /* --- DATA-DRIVEN CASE STUDIES --- */
         .project-stack {
             display: flex;
@@ -1271,6 +1332,12 @@
             .prev-modal-btn { left: 10px; }
             .next-modal-btn { right: 10px; }
             
+            /* Responsive Other Projects */
+            .other-projects-section { padding: 30px 15px; border-radius: 20px; }
+            .other-projects-title { font-size: 1.1rem; margin-bottom: 25px; }
+            .op-grid { gap: 30px; flex-direction: column; }
+            .op-item img { height: 40px; }
+
             /* Responsive Timeline (Khôi phục) */
             .timeline-container::before { left: 15px; }
             .timeline-item { padding-left: 45px; }
@@ -1690,6 +1757,21 @@
                         </div>
                     </div>
 
+                </div>
+
+                <!-- 🔴 CÁC DỰ ÁN KHÁC (CỐ ĐỊNH) -->
+                <div class="other-projects-section" data-aos="fade-up">
+                    <h3 class="other-projects-title">Các dự án khác từng tham gia</h3>
+                    <div class="op-grid">
+                        <div class="op-item">
+                            <img src="https://dienmaythanhan.vn/wp-content/uploads/2020/09/logo-dien-may-thanh-an-600x168.png" alt="Điện máy Thành An">
+                            <span class="op-date">02/2025 - 04/2025</span>
+                        </div>
+                        <div class="op-item">
+                            <img src="https://insieutoc.vn/wp-content/uploads/2024/12/Logo.gif" alt="In Siêu Tốc">
+                            <span class="op-date">10/2025 - 03/2026</span>
+                        </div>
+                    </div>
                 </div>
 
             </div>
