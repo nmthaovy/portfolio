@@ -1256,26 +1256,31 @@
                 border: 1px solid rgba(0,0,0,0.05);
                 align-items: center;
                 justify-content: center;
-            /* Responsive Tabs */
-            .exp-wrapper { flex-direction: column; padding: 25px; gap: 25px; }
-            .exp-tabs { 
-                flex-direction: row; 
-                border-right: none; 
-                border-bottom: 2px solid rgba(0,0,0,0.05); 
-                padding-right: 0; 
-                padding-bottom: 10px; 
-                overflow-x: auto; 
-                white-space: nowrap; 
+                z-index: 10;
+                color: var(--secondary);
+                cursor: pointer;
             }
-            .exp-tabs::-webkit-scrollbar { height: 3px; }
-            .exp-tabs::-webkit-scrollbar-thumb { background: rgba(0,0,0,0.1); border-radius: 4px; }
-            .exp-tab { padding: 10px 15px; font-size: 1rem; }
-            .exp-tab::after { right: 0; bottom: -12px; top: auto; width: 100%; height: 3px; }
+            .process-prev-btn { left: -10px; }
+            .process-next-btn { right: -10px; }
+
+            .cert-card { flex-direction: column; gap: 15px; }
+            .cs-modal-body { padding: 25px; }
+            .cs-modal-title { font-size: 1.6rem; }
+
+            .modal-nav-btn { width: 40px; height: 40px; font-size: 1rem; }
+            .prev-modal-btn { left: 10px; }
+            .next-modal-btn { right: 10px; }
+            
+            /* Responsive Timeline (Khôi phục) */
+            .timeline-container::before { left: 15px; }
+            .timeline-item { padding-left: 45px; }
+            .timeline-dot { left: 8px; top: 25px;}
+            .timeline-card { padding: 25px; }
             .timeline-header { flex-direction: column; align-items: flex-start; text-align: left;}
             .timeline-meta-right { text-align: left; align-items: flex-start; margin-top: 10px;}
             .timeline-role h3 { font-size: 1.4rem; }
 
-            /* Responsive Sticky Bar Mobile */
+            /* Tối ưu Sticky Bar Mobile */
             .sticky-social-bar {
                 flex-direction: row;
                 top: auto;
@@ -1364,8 +1369,9 @@
                     </div>
 
                     <div class="btn-group">
-                        <a href="#contact" class="btn btn-primary">
-                            Tải CV PDF <i class="fas fa-file-pdf"></i>
+                        <!-- 🔴 ĐÃ THAY ĐỔI TEXT VÀ ADD CLASS OPEN-MODAL CHO CV -->
+                        <a href="javascript:void(0)" data-file="https://docs.google.com/viewer?url=https://raw.githubusercontent.com/nmthaovy/portfolio/main/CV%20-%20NGUYEN%20MAI%20THAO%20VY%20-%20SEO%20EXECUTIVE.pdf&embedded=true" class="btn btn-primary open-modal">
+                            Xem CV PDF <i class="fas fa-file-pdf"></i>
                         </a>
                         <a href="#projects" class="btn btn-secondary">
                             Case Studies <i class="fas fa-arrow-right"></i>
@@ -1422,7 +1428,6 @@
                                 <ul style="margin: 0; padding-left: 15px; color: var(--text-sub);">
                                     <li style="margin-bottom: 8px;">
                                         <strong style="color: var(--text-main);">Fundamentals of Digital Marketing</strong> 
-                                        <!-- 🔴 KHÔI PHỤC LẠI GOOGLE DOCS VIEWER -->
                                         <a href="javascript:void(0)" data-file="https://docs.google.com/viewer?url=https://raw.githubusercontent.com/nmthaovy/portfolio/main/digitalgarage_certificate.pdf&embedded=true" class="credential-link open-modal">Xem <i class="fas fa-search-plus" style="font-size: 0.6rem;"></i></a>
                                         <br>Cấp bởi Google (2021)
                                     </li>
@@ -1440,7 +1445,6 @@
                             <h4>Giải thưởng thực chiến</h4>
                             <div style="font-size: 0.9rem; color: var(--text-sub); margin-top: 8px;">
                                 <strong style="color: var(--secondary);">Nhân viên xuất sắc</strong>
-                                <!-- 🔴 KHÔI PHỤC LẠI GOOGLE DOCS VIEWER -->
                                 <a href="javascript:void(0)" data-file="https://docs.google.com/viewer?url=https://raw.githubusercontent.com/nmthaovy/portfolio/main/GTV_CT2026_Gi%25E1%25BA%25A5y%2520khen%2520Vy%2520Nguyen.pdf&embedded=true" class="credential-link open-modal">Xem <i class="fas fa-search-plus" style="font-size: 0.6rem;"></i></a>
                                 <br>
                                 Được GTV SEO vinh danh vì sự cống hiến tận tâm, bền bỉ và những đóng góp xuất sắc.
@@ -1665,6 +1669,7 @@
                                 <img src="https://raw.githubusercontent.com/nmthaovy/portfolio/main/interimm.png" class="gallery-img" alt="Interimm Traffic Growth">
                                 <img src="https://raw.githubusercontent.com/nmthaovy/portfolio/main/interimm2.png" class="gallery-img" alt="Interimm Lead Conversion">
                                 <img src="https://raw.githubusercontent.com/nmthaovy/portfolio/main/hien-trang-sau-khi-trien-khai-2.png" class="gallery-img" alt="Interimm Before and After">
+                                <img src="https://raw.githubusercontent.com/nmthaovy/portfolio/main/Screenshot%202025-12-23%20145911.jpg" class="gallery-img" alt="Interimm Performance Data">
                             </div>
                             <div class="gallery-dots"></div>
                         </div>
@@ -1815,6 +1820,7 @@
                             </div>
                             <div class="timeline-meta-right">
                                 <span class="timeline-date">02/2023 - 10/2023</span>
+                                <!-- 🔴 KHÔI PHỤC LẠI GOOGLE DOCS VIEWER -->
                                 <span class="timeline-cert">Chứng nhận: <a class="open-modal" data-file="https://docs.google.com/viewer?url=https://raw.githubusercontent.com/nmthaovy/portfolio/main/t%C3%A2m%20l%C3%BD%20h%E1%BB%8Dc%20tu%E1%BB%95i%20tr%E1%BA%BB.pdf&embedded=true">Tại đây</a></span>
                             </div>
                         </div>
