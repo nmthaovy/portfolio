@@ -152,13 +152,37 @@
         .stat-item .label { font-size: 0.75rem; font-weight: 800; color: var(--secondary); margin-top: 8px; text-transform: uppercase; letter-spacing: 1px;}
 
         /* --- BUTTON CRO OPTIMIZATION --- */
-        .btn-group { display: flex; gap: 15px; }
+        .btn-group { display: flex; gap: 15px; flex-wrap: wrap; }
+        
+        .hero-cta-wrapper { display: flex; flex-direction: column; gap: 20px; align-items: flex-start; margin-top: 10px; }
+        .hero-cta-group { display: flex; gap: 15px; flex-wrap: wrap; align-items: center; }
+        
+        /* Tối ưu mạnh tay nút CTA Case Studies trên Hero */
+        .btn-main-action { 
+            padding: 20px 45px !important; 
+            font-size: 1.1rem !important; 
+            font-weight: 800 !important;
+            border-width: 3px;
+            letter-spacing: 1px;
+            box-shadow: 0 10px 30px rgba(255, 178, 44, 0.6);
+            animation: mainHeroPulse 2s infinite !important;
+        }
+        .btn-main-action:hover {
+            transform: translateY(-4px) scale(1.03);
+            box-shadow: 0 15px 35px rgba(255, 178, 44, 0.8);
+        }
+        @keyframes mainHeroPulse {
+            0% { box-shadow: 0 0 0 0 rgba(255, 178, 44, 0.8); }
+            70% { box-shadow: 0 0 0 20px rgba(255, 178, 44, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(255, 178, 44, 0); }
+        }
+
         .btn { 
-            padding: 18px 40px; 
+            padding: 16px 36px; 
             font-family: var(--font-header); 
             font-weight: 700; 
             text-decoration: none; 
-            border-radius: 50px; /* Cập nhật nút thành dạng Pill Shape hiện đại */
+            border-radius: 50px; 
             font-size: 0.95rem; 
             text-transform: uppercase; 
             letter-spacing: 1px; 
@@ -172,15 +196,12 @@
             z-index: 1;
         }
         .btn i { transition: transform 0.3s ease; }
-        .btn:hover i { transform: translateX(4px) scale(1.1); } /* Hiệu ứng kéo icon khi hover */
+        .btn:hover i { transform: translateX(4px) scale(1.1); } 
         
-        /* Primary Button: Nhấn mạnh bằng viền, pulse, và shine effect */
         .btn-primary { 
             background: var(--primary); 
             color: #000000; 
             border: 2px solid var(--primary);
-            box-shadow: 0 8px 20px rgba(255, 178, 44, 0.4);
-            animation: heroPulse 2.5s infinite;
         }
         .btn-primary::before {
             content: ''; position: absolute; top: 0; left: -100%; width: 50%; height: 100%;
@@ -191,28 +212,16 @@
             background: var(--primary-dark); 
             border-color: var(--primary-dark); 
             transform: translateY(-3px);
-            box-shadow: 0 12px 25px rgba(255, 178, 44, 0.6);
-        }
-        
-        /* Secondary Button: Giảm độ nặng, tạo độ tương phản với nút chính */
-        .btn-secondary { 
-            background: transparent; 
-            color: var(--secondary); 
-            border: 2px solid var(--secondary);
-        }
-        .btn-secondary:hover { 
-            background: var(--secondary); 
-            color: #fff; 
-            transform: translateY(-3px);
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
         }
+        
+        .btn-secondary { background: transparent; color: var(--secondary); border: 2px solid var(--secondary); }
+        .btn-secondary:hover { background: var(--secondary); color: #fff; transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15); }
 
-        /* Animations cho nút */
-        @keyframes heroPulse {
-            0% { box-shadow: 0 0 0 0 rgba(255, 178, 44, 0.6); }
-            70% { box-shadow: 0 0 0 15px rgba(255, 178, 44, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(255, 178, 44, 0); }
-        }
+        /* Nút AI Workflow đặc biệt trên Hero */
+        .btn-ai { background: transparent; color: #8B5CF6; border: 2px solid #8B5CF6; }
+        .btn-ai:hover { background: #8B5CF6; color: #fff; transform: translateY(-3px); box-shadow: 0 10px 20px rgba(139, 92, 246, 0.2); }
+
         @keyframes shine {
             0% { left: -100%; }
             20% { left: 200%; }
@@ -231,14 +240,13 @@
         .section-title { font-family: var(--font-header); font-size: clamp(2.2rem, 5vw, 3.5rem); line-height: 1.1; color: var(--secondary); letter-spacing: -1px;}
         .section-title i { color: var(--primary); font-style: normal; text-decoration: underline; text-decoration-color: rgba(255, 178, 44, 0.4); text-underline-offset: 8px;}
 
-        /* --- ABOUT ME SECTION (TỐI ƯU LẠI GRID ĐỂ XÓA KHOẢNG TRẮNG DƯ THỪA) --- */
+        /* --- ABOUT ME SECTION --- */
         #about { background: #FAFAFA; border-top: 1px solid rgba(0,0,0,0.05); border-bottom: 1px solid rgba(0,0,0,0.05);}
-        .about-grid { display: grid; grid-template-columns: 1.3fr 1fr; gap: 50px; align-items: flex-start;} /* Ép cột trái rộng hơn, căn lề trên cùng */
-        .about-bottom-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; margin-top: 50px; align-items: stretch;} /* Lưới mới cho 2 card bên dưới */
+        .about-grid { display: grid; grid-template-columns: 1.3fr 1fr; gap: 50px; align-items: flex-start;} 
+        .about-bottom-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; margin-top: 50px; align-items: stretch;} 
         .about-text h3 { font-family: var(--font-header); font-size: 2rem; margin-bottom: 20px; color: var(--secondary);}
         .about-text p { font-size: 1.1rem; color: var(--text-sub); margin-bottom: 20px;}
 
-        /* --- CẬP NHẬT LẠI CẤU TRÚC CERT CARD CHỨA THUMBNAIL --- */
         .cert-card { background: var(--bg); border: 2px solid var(--secondary); padding: 25px; border-radius: 12px; margin-bottom: 20px; display: flex; flex-direction: column; gap: 15px; box-shadow: 4px 4px 0px var(--primary); transition: var(--transition);}
         .cert-card:hover { transform: translate(-2px, -2px); box-shadow: 6px 6px 0px var(--primary);}
         .cert-header { display: flex; gap: 20px; align-items: flex-start; }
@@ -254,46 +262,7 @@
         .thumb-overlay { position: absolute; inset: 0; background: rgba(0,0,0,0.4); display: flex; align-items: center; justify-content: center; color: white; font-size: 2rem; opacity: 0; transition: opacity 0.3s ease; }
         .cert-thumbnail:hover .thumb-overlay { opacity: 1; }
         
-        /* Cấu trúc caption xám nhạt tách rời dưới ảnh */
         .cert-caption { background: #F8F9FA; border: 1px solid rgba(0,0,0,0.08); border-radius: 6px; padding: 10px 15px; font-size: 0.85rem; color: var(--text-sub); text-align: center; font-style: italic; line-height: 1.5; }
-
-        .credential-link { display: inline-flex; align-items: center; gap: 5px; font-size: 0.7rem; font-weight: 700; color: var(--primary-dark); text-decoration: none; background: rgba(255, 178, 44, 0.15); padding: 3px 10px; border-radius: 100px; margin-left: 8px; transition: var(--transition); vertical-align: middle; text-transform: uppercase; letter-spacing: 0.5px;}
-        .credential-link:hover { background: var(--primary); color: #000000; transform: translateY(-1px);}
-
-        /* KHUNG POPUP */
-        .modal-overlay { display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.85); backdrop-filter: blur(5px); opacity: 0; transition: opacity 0.3s ease; align-items: center; justify-content: center; padding: 20px; }
-        .modal-overlay.show { opacity: 1;}
-        .modal-content-container { width: 90%; height: 85vh; max-width: 1000px; position: relative; background: transparent; border-radius: 8px; overflow: hidden; transform: scale(0.95); transition: transform 0.3s ease;}
-        .modal-overlay.show .modal-content-container { transform: scale(1); }
-        .modal-content-container iframe, .modal-content-container img { width: 100%; height: 100%; border: none; object-fit: contain;}
-        .close-modal { position: absolute; top: 20px; right: 35px; color: #f1f1f1; font-size: 40px; font-weight: bold; cursor: pointer; z-index: 2001; transition: color 0.3s;}
-        .close-modal:hover { color: var(--primary); }
-        .modal-nav-btn { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(255, 255, 255, 0.1); color: rgba(255,255,255,0.7); border: 1px solid rgba(255,255,255,0.2); width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; z-index: 2002; transition: var(--transition); font-size: 1.2rem; backdrop-filter: blur(5px);}
-        .modal-nav-btn:hover { background: var(--primary); color: #000; border-color: var(--primary);}
-        .prev-modal-btn { left: 30px; }
-        .next-modal-btn { right: 30px; }
-
-        /* --- CASE STUDY TEXT MODAL CSS --- */
-        .cs-modal-overlay { display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.7); backdrop-filter: blur(8px); opacity: 0; transition: opacity 0.3s ease; align-items: center; justify-content: center; padding: 20px;}
-        .cs-modal-overlay.show { display: flex; opacity: 1;}
-        .cs-modal-box { background: #fff; width: 100%; max-width: 700px; max-height: 85vh; border-radius: 20px; overflow-y: auto; position: relative; transform: translateY(30px); transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1); box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25); border: 1px solid rgba(0,0,0,0.1);}
-        .cs-modal-overlay.show .cs-modal-box { transform: translateY(0);}
-        .cs-close-btn { position: sticky; top: 20px; right: 20px; float: right; width: 36px; height: 36px; background: #f1f1f1; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; color: #000; cursor: pointer; transition: var(--transition); z-index: 10;}
-        .cs-close-btn:hover { background: var(--primary); }
-        .cs-modal-body { padding: 40px; }
-        .cs-modal-title { font-family: var(--font-header); font-size: 2rem; color: var(--secondary); margin-bottom: 30px; line-height: 1.2; padding-right: 40px;}
-        .cs-section { margin-bottom: 30px; }
-        .cs-section-title { display: flex; align-items: center; gap: 10px; font-family: var(--font-header); font-size: 1.1rem; text-transform: uppercase; letter-spacing: 1px; color: var(--secondary); margin-bottom: 15px; border-bottom: 2px solid rgba(255, 178, 44, 0.3); padding-bottom: 10px;}
-        .cs-section-title i { color: var(--primary-dark); font-size: 1.3rem;}
-        .cs-section p { color: var(--text-sub); line-height: 1.7; font-size: 1.05rem; margin: 0;}
-        .cs-section ul { margin: 10px 0 0 20px; color: var(--text-sub); line-height: 1.7;}
-        .cs-section li { margin-bottom: 8px; }
-        .cs-result-box { background: rgba(255, 178, 44, 0.05); border: 1px solid rgba(255, 178, 44, 0.2); border-radius: 12px; padding: 25px; margin-top: 15px;}
-        .cs-result-box ul { list-style: none !important; padding: 0 !important; margin: 0 !important;}
-        .cs-result-box li { position: relative; padding-left: 32px !important; margin-bottom: 12px !important; font-size: 1.05rem; color: var(--text-sub); line-height: 1.6;}
-        .cs-result-box li:last-child { margin-bottom: 0 !important; }
-        .cs-result-box li::before { content: '\f058'; font-family: 'Font Awesome 6 Free'; font-weight: 900; position: absolute; left: 0; top: 2px; color: var(--primary-dark); font-size: 1.2rem;}
-        .cs-result-box li strong { color: var(--secondary); font-weight: 800; background: linear-gradient(120deg, rgba(255,178,44,0.4) 0%, rgba(255,178,44,0) 100%); padding: 0 4px; border-radius: 3px;}
 
         /* --- DATA-DRIVEN CASE STUDIES --- */
         .project-stack { display: flex; flex-direction: column; gap: 50px; }
@@ -329,6 +298,58 @@
         .carousel-btn:hover { background: var(--primary); color: #000; border-color: var(--primary); transform: translateY(-50%) scale(1.1);}
         .prev-btn { left: 25px; }
         .next-btn { right: 25px; }
+
+        /* --- NEW: AUTOMATION SECTION CSS --- */
+        .automation-grid-v2 { 
+            display: grid; 
+            grid-template-columns: 1.2fr 1fr; 
+            gap: 50px; 
+            align-items: center; 
+            margin-top: 40px;
+        }
+
+        /* Cột trái: Ảnh Workflow */
+        .auto-preview-box {
+            background: #fff;
+            border: 1px solid rgba(0,0,0,0.1);
+            border-radius: 20px;
+            padding: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+        .auto-preview-box .cert-thumbnail { 
+            aspect-ratio: auto; 
+            border-radius: 12px;
+            border: none;
+        }
+
+        /* Cột phải: Grid Logo AI */
+        .ai-stack-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr); 
+            gap: 20px;
+        }
+        .ai-logo-item {
+            background: #fff;
+            border: 1px solid rgba(0,0,0,0.06);
+            border-radius: 15px;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+            aspect-ratio: 1/1;
+        }
+        .ai-logo-item:hover {
+            transform: translateY(-5px);
+            border-color: #8B5CF6;
+            box-shadow: 0 10px 20px rgba(139, 92, 246, 0.1);
+        }
+        .ai-logo-item img {
+            max-width: 80%;
+            max-height: 80%;
+            object-fit: contain;
+            filter: grayscale(20%);
+        }
 
         /* --- Process Section --- */
         .process-slider-wrapper { position: relative; width: 100%;}
@@ -382,7 +403,7 @@
         .thanks-title { font-family: var(--font-header); font-size: clamp(4rem, 10vw, 8rem); font-weight: 800; color: var(--primary); line-height: 1; letter-spacing: -2px; text-shadow: 4px 4px 0px var(--secondary); margin-bottom: 15px; text-transform: uppercase;}
         .thanks-subtitle { font-weight: 800; letter-spacing: 12px; color: var(--text-sub); font-size: 0.95rem; text-transform: uppercase;}
 
-        /* STICKY SOCIAL BAR (TỐI ƯU KÍCH THƯỚC + MÀU SẮC + ANIMATION) */
+        /* STICKY SOCIAL BAR */
         .sticky-social-bar { position: fixed; right: 30px; bottom: 30px; display: flex; flex-direction: column; gap: 15px; z-index: 999;}
         .social-btn { width: 56px; height: 56px; border-radius: 50%; color: #fff; display: flex; align-items: center; justify-content: center; font-size: 1.6rem; box-shadow: 0 4px 15px rgba(0,0,0,0.15); text-decoration: none; transition: var(--transition); position: relative;}
         .social-btn::after { content: attr(data-tooltip); position: absolute; right: 120%; top: 50%; transform: translateY(-50%) translateX(10px); background: var(--secondary); color: #fff; padding: 6px 12px; border-radius: 6px; font-size: 0.85rem; white-space: nowrap; opacity: 0; visibility: hidden; transition: var(--transition); font-family: var(--font-body); font-weight: 700; pointer-events: none;}
@@ -397,6 +418,41 @@
         @keyframes pulseZalo { 0% { box-shadow: 0 0 0 0 rgba(0, 104, 255, 0.7); } 70% { box-shadow: 0 0 0 15px rgba(0, 104, 255, 0); } 100% { box-shadow: 0 0 0 0 rgba(0, 104, 255, 0); } }
         @keyframes pulsePhone { 0% { box-shadow: 0 0 0 0 rgba(0, 177, 79, 0.7); } 70% { box-shadow: 0 0 0 15px rgba(0, 177, 79, 0); } 100% { box-shadow: 0 0 0 0 rgba(0, 177, 79, 0); } }
         @keyframes pulseEmail { 0% { box-shadow: 0 0 0 0 rgba(255, 178, 44, 0.7); } 70% { box-shadow: 0 0 0 15px rgba(255, 178, 44, 0); } 100% { box-shadow: 0 0 0 0 rgba(255, 178, 44, 0); } }
+
+        /* KHUNG POPUP MODAL */
+        .modal-overlay { display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.85); backdrop-filter: blur(5px); opacity: 0; transition: opacity 0.3s ease; align-items: center; justify-content: center; padding: 20px; }
+        .modal-overlay.show { opacity: 1;}
+        .modal-content-container { width: 90%; height: 85vh; max-width: 1000px; position: relative; background: transparent; border-radius: 8px; overflow: hidden; transform: scale(0.95); transition: transform 0.3s ease;}
+        .modal-overlay.show .modal-content-container { transform: scale(1); }
+        .modal-content-container iframe, .modal-content-container img { width: 100%; height: 100%; border: none; object-fit: contain;}
+        .close-modal { position: absolute; top: 20px; right: 35px; color: #f1f1f1; font-size: 40px; font-weight: bold; cursor: pointer; z-index: 2001; transition: color 0.3s;}
+        .close-modal:hover { color: var(--primary); }
+        .modal-nav-btn { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(255, 255, 255, 0.1); color: rgba(255,255,255,0.7); border: 1px solid rgba(255,255,255,0.2); width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; z-index: 2002; transition: var(--transition); font-size: 1.2rem; backdrop-filter: blur(5px);}
+        .modal-nav-btn:hover { background: var(--primary); color: #000; border-color: var(--primary);}
+        .prev-modal-btn { left: 30px; }
+        .next-modal-btn { right: 30px; }
+
+        /* --- CASE STUDY TEXT MODAL CSS --- */
+        .cs-modal-overlay { display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.7); backdrop-filter: blur(8px); opacity: 0; transition: opacity 0.3s ease; align-items: center; justify-content: center; padding: 20px;}
+        .cs-modal-overlay.show { display: flex; opacity: 1;}
+        .cs-modal-box { background: #fff; width: 100%; max-width: 700px; max-height: 85vh; border-radius: 20px; overflow-y: auto; position: relative; transform: translateY(30px); transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1); box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25); border: 1px solid rgba(0,0,0,0.1);}
+        .cs-modal-overlay.show .cs-modal-box { transform: translateY(0);}
+        .cs-close-btn { position: sticky; top: 20px; right: 20px; float: right; width: 36px; height: 36px; background: #f1f1f1; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; color: #000; cursor: pointer; transition: var(--transition); z-index: 10;}
+        .cs-close-btn:hover { background: var(--primary); }
+        .cs-modal-body { padding: 40px; }
+        .cs-modal-title { font-family: var(--font-header); font-size: 2rem; color: var(--secondary); margin-bottom: 30px; line-height: 1.2; padding-right: 40px;}
+        .cs-section { margin-bottom: 30px; }
+        .cs-section-title { display: flex; align-items: center; gap: 10px; font-family: var(--font-header); font-size: 1.1rem; text-transform: uppercase; letter-spacing: 1px; color: var(--secondary); margin-bottom: 15px; border-bottom: 2px solid rgba(255, 178, 44, 0.3); padding-bottom: 10px;}
+        .cs-section-title i { color: var(--primary-dark); font-size: 1.3rem;}
+        .cs-section p { color: var(--text-sub); line-height: 1.7; font-size: 1.05rem; margin: 0;}
+        .cs-section ul { margin: 10px 0 0 20px; color: var(--text-sub); line-height: 1.7;}
+        .cs-section li { margin-bottom: 8px; }
+        .cs-result-box { background: rgba(255, 178, 44, 0.05); border: 1px solid rgba(255, 178, 44, 0.2); border-radius: 12px; padding: 25px; margin-top: 15px;}
+        .cs-result-box ul { list-style: none !important; padding: 0 !important; margin: 0 !important;}
+        .cs-result-box li { position: relative; padding-left: 32px !important; margin-bottom: 12px !important; font-size: 1.05rem; color: var(--text-sub); line-height: 1.6;}
+        .cs-result-box li:last-child { margin-bottom: 0 !important; }
+        .cs-result-box li::before { content: '\f058'; font-family: 'Font Awesome 6 Free'; font-weight: 900; position: absolute; left: 0; top: 2px; color: var(--primary-dark); font-size: 1.2rem;}
+        .cs-result-box li strong { color: var(--secondary); font-weight: 800; background: linear-gradient(120deg, rgba(255,178,44,0.4) 0%, rgba(255,178,44,0) 100%); padding: 0 4px; border-radius: 3px;}
 
         /* BACK TO TOP BUTTON CSS */
         #backToTop { position: fixed; left: 30px; bottom: 30px; width: 48px; height: 48px; border-radius: 50%; background: var(--secondary); color: #fff; border: none; font-size: 1.2rem; cursor: pointer; box-shadow: 0 4px 15px rgba(0,0,0,0.2); transition: var(--transition); opacity: 0; visibility: hidden; transform: translateY(20px); z-index: 998;}
@@ -426,8 +482,11 @@
 
         /* RESPONSIVE MOBILE TỐI ƯU TOÀN DIỆN */
         @media (max-width: 1024px) {
-            .hero-grid, .about-grid, .about-bottom-grid { grid-template-columns: 1fr; text-align: center; }
+            .hero-grid, .about-grid, .about-bottom-grid, .automation-grid-v2 { grid-template-columns: 1fr; text-align: center; }
             .about-bottom-grid { gap: 30px; margin-top: 30px; }
+            .automation-grid-v2 { gap: 40px; }
+            .ai-stack-grid { max-width: 500px; margin: 0 auto; }
+            
             .hero-desc, .about-text p { margin: 0 auto 30px; text-align: left;}
             .hero-stats { justify-content: center; }
             .btn-group { justify-content: center; }
@@ -457,8 +516,12 @@
             .hero-stats { gap: 15px; justify-content: space-between; }
             .stat-item { width: 45%; text-align: left;} 
             .stat-item .number { font-size: 2rem; }
+            
             .btn-group { flex-direction: column; width: 100%; gap: 12px; }
+            .hero-cta-wrapper { width: 100%; }
+            .hero-cta-group { flex-direction: column; width: 100%; gap: 12px; }
             .btn { width: 100%; padding: 18px; }
+            .btn-main-action { padding: 18px !important; font-size: 1.1rem !important; }
             
             .project-card-v2 { padding: 25px 20px; border-radius: 20px; gap: 25px;}
             .project-header-full h3 { font-size: 1.5rem; }
@@ -504,41 +567,19 @@
             .timeline-meta-right { text-align: left; align-items: flex-start; margin-top: 10px;}
             .timeline-role h3 { font-size: 1.4rem; }
 
-            /* --- CẤU TRÚC MOBILE CTA (ĐÃ TỐI ƯU UI NỔI BẬT & PREMIUM) --- */
-            .sticky-social-bar { 
-                flex-direction: row; 
-                top: auto; 
-                bottom: calc(20px + env(safe-area-inset-bottom, 0px)); /* An toàn cho viền Home của iPhone */
-                left: 50%; right: auto; 
-                transform: translateX(-50%); 
-                background: rgba(255, 255, 255, 0.85); 
-                backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
-                padding: 10px 20px; 
-                border-radius: 50px; 
-                box-shadow: 0 10px 30px rgba(0,0,0,0.15), inset 0 1px 0 rgba(255,255,255,0.8); 
-                border: 1px solid rgba(0,0,0,0.08); 
-                gap: 15px; 
-                width: auto;
-                max-width: 95vw;
-            }
-            .social-btn { 
-                width: 46px; height: 46px; 
-                font-size: 1.3rem;
-                border: 2px solid #ffffff; /* Viền trắng giúp bật tone màu của nút */
-            }
+            /* --- CẤU TRÚC MOBILE CTA --- */
+            .sticky-social-bar { flex-direction: row; top: auto; bottom: 20px; left: 50%; right: auto; transform: translateX(-50%); background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); padding: 15px 25px; border-radius: 50px; box-shadow: 0 10px 30px rgba(0,0,0,0.15); border: 1px solid rgba(0,0,0,0.08); gap: 20px; width: max-content;}
+            .social-btn { width: 45px; height: 45px; font-size: 1.25rem;}
             .social-btn::after { display: none; }
             
-            /* Thu gọn bóng Pulse trên Mobile để không bị lem vào nhau */
-            @keyframes pulseZalo { 0% { box-shadow: 0 0 0 0 rgba(0, 104, 255, 0.6); } 70% { box-shadow: 0 0 0 10px rgba(0, 104, 255, 0); } 100% { box-shadow: 0 0 0 0 rgba(0, 104, 255, 0); } }
-            @keyframes pulsePhone { 0% { box-shadow: 0 0 0 0 rgba(0, 177, 79, 0.6); } 70% { box-shadow: 0 0 0 10px rgba(0, 177, 79, 0); } 100% { box-shadow: 0 0 0 0 rgba(0, 177, 79, 0); } }
-            @keyframes pulseEmail { 0% { box-shadow: 0 0 0 0 rgba(255, 178, 44, 0.6); } 70% { box-shadow: 0 0 0 10px rgba(255, 178, 44, 0); } 100% { box-shadow: 0 0 0 0 rgba(255, 178, 44, 0); } }
-            
-            #backToTop { bottom: calc(95px + env(safe-area-inset-bottom, 0px)); left: auto; right: 20px; width: 42px; height: 42px; font-size: 1rem; }
+            #backToTop { bottom: 95px; left: auto; right: 20px; width: 42px; height: 42px; font-size: 1rem; }
             
             .tools-slider::before, .tools-slider::after { width: 50px; }
             .tool-logo { height: 55px; }
             .tool-logo.semrush { height: 110px; }
             .tools-track { gap: 40px; }
+            
+            .ai-stack-grid { grid-template-columns: repeat(2, 1fr); gap: 15px; }
         }
     </style>
 </head>
@@ -553,6 +594,7 @@
             <ul class="nav-links">
                 <li><a href="#about"><span class="vi">Về Tôi</span><span class="en">About Me</span></a></li>
                 <li><a href="#projects">Case Studies</a></li>
+                <li><a href="#automation"><span class="vi">Automation</span><span class="en">Automation</span></a></li>
                 <li><a href="#process"><span class="vi">Tư duy</span><span class="en">Mindset</span></a></li>
                 <li><a href="#experience"><span class="vi">Kinh nghiệm</span><span class="en">Experience</span></a></li>
                 <li><a href="#contact" style="color: var(--primary-dark);"><span class="vi">Liên hệ</span><span class="en">Contact</span></a></li>
@@ -606,18 +648,17 @@
                         </div>
                     </div>
 
-                    <div class="btn-group">
-                        <a href="#" data-file="https://docs.google.com/viewer?url=https://raw.githubusercontent.com/nmthaovy/portfolio/main/CV%20-%20NGUYEN%20MAI%20THAO%20VY%20-%20SEO%20EXECUTIVE.pdf&embedded=true" class="btn btn-primary open-modal vi" role="button">
-                            Xem CV PDF <i class="fas fa-file-pdf"></i>
-                        </a>
-                        
-                        <a href="#" data-file="https://docs.google.com/viewer?url=https://raw.githubusercontent.com/nmthaovy/portfolio/main/CV%20-%20NGUYEN%20MAI%20THAO%20VY%20-%20SEO%20EXECUTIVE%20-%20EN.pdf&embedded=true" class="btn btn-primary open-modal en" role="button">
-                            View CV PDF <i class="fas fa-file-pdf"></i>
-                        </a>
-
-                        <a href="#projects" class="btn btn-secondary">
-                            Case Studies <i class="fas fa-arrow-right"></i>
-                        </a>
+                    <!-- KIẾN TRÚC CTA MỚI: TẬP TRUNG ĐIỀU HƯỚNG VÀO DỰ ÁN THỰC TẾ -->
+                    <div class="hero-cta-wrapper">
+                        <div class="hero-cta-group">
+                            <a href="#projects" class="btn btn-primary btn-main-action">
+                                Case Studies <i class="fas fa-arrow-right"></i>
+                            </a>
+                            
+                            <a href="#automation" class="btn btn-ai">
+                                <i class="fas fa-robot"></i> <span class="vi">AI Workflows</span><span class="en">AI Workflows</span>
+                            </a>
+                        </div>
                     </div>
                 </div>
 
@@ -633,7 +674,7 @@
     <!-- ABOUT ME SECTION -->
     <section id="about">
         <div class="container">
-            <!-- NEW: ĐƯA HEADING RA NGOÀI VÀ CĂN GIỮA -->
+            <!-- HEADING CĂN GIỮA -->
             <div class="section-header" data-aos="fade-up" style="text-align: center; margin: 0 auto 50px;">
                 <span class="section-tag"><span class="vi">Về tôi</span><span class="en">About Me</span></span>
                 <h2 class="section-title">
@@ -656,7 +697,20 @@
                     <p class="en">
                         With over 2 years of hands-on experience at an SEO Agency, I firmly believe that in the era of AI Search (SGE, GEO), "keyword stuffing" is dead. Optimizing Entities, structuring data, and genuinely understanding user behavior are the keys to survival and breakthrough.
                     </p>
+                    
                     <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Google_%22G%22_logo.svg/120px-Google_%22G%22_logo.svg.png" alt="Google" style="height: 30px; margin-top: 20px; filter: grayscale(100%); opacity: 0.5;" loading="lazy">
+                    
+                    <!-- ĐÃ DỜI NÚT CV XUỐNG ĐÂY (NẰM DƯỚI TEXT VÀ LOGO GOOGLE) -->
+                    <div class="cv-buttons-container" style="margin-top: 30px;">
+                        <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+                            <a href="#" data-file="https://docs.google.com/viewer?url=https://raw.githubusercontent.com/nmthaovy/portfolio/main/CV%20-%20NGUYEN%20MAI%20THAO%20VY%20-%20SEO%20EXECUTIVE.pdf&embedded=true" class="btn btn-primary open-modal vi" role="button" style="padding: 12px 24px; font-size: 0.85rem;">
+                                Xem CV PDF <i class="fas fa-file-pdf"></i>
+                            </a>
+                            <a href="#" data-file="https://docs.google.com/viewer?url=https://raw.githubusercontent.com/nmthaovy/portfolio/main/CV%20-%20NGUYEN%20MAI%20THAO%20VY%20-%20SEO%20EXECUTIVE%20-%20EN.pdf&embedded=true" class="btn btn-primary open-modal en" role="button" style="padding: 12px 24px; font-size: 0.85rem;">
+                                View CV PDF <i class="fas fa-file-pdf"></i>
+                            </a>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="about-edu-wrapper" data-aos="fade-left">
@@ -688,7 +742,7 @@
 
             <!-- ROW 2: CHỨNG CHỈ & GIẢI THƯỞNG DÀN NGANG DƯỚI CÙNG -->
             <div class="about-bottom-grid" data-aos="fade-up">
-                <!-- CARD 2: CHỨNG CHỈ (CÓ ẢNH PREVIEW) -->
+                <!-- CARD 2: CHỨNG CHỈ (ẢNH TÁCH RỜI) -->
                 <div class="cert-card" style="margin-bottom: 0; height: 100%;">
                     <div class="cert-header">
                         <div class="cert-icon"><i class="fas fa-certificate"></i></div>
@@ -707,10 +761,9 @@
                             </div>
                         </div>
                     </div>
-                    <!-- Khối ảnh Thumbnail thay thế cho nút Xem -->
+                    
                     <div class="cert-preview-wrapper">
                         <div class="cert-thumbnail open-modal" data-file="https://docs.google.com/viewer?url=https://raw.githubusercontent.com/nmthaovy/portfolio/main/digitalgarage_certificate.pdf&embedded=true" role="button" title="Click để xem bản PDF">
-                            <!-- Đã trỏ thẳng về link .jpg trên Github của bạn (Nếu chưa có, sẽ hiện ảnh mẫu của Udemy) -->
                             <img src="https://raw.githubusercontent.com/nmthaovy/portfolio/main/digitalgarage_certificate.jpg" onerror="this.onerror=null; this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/Certificate_of_completion.jpg/800px-Certificate_of_completion.jpg';" alt="Google Certificate Preview">
                             <div class="thumb-overlay"><i class="fas fa-expand"></i></div>
                         </div>
@@ -721,7 +774,7 @@
                     </div>
                 </div>
 
-                <!-- CARD 3: GIẢI THƯỞNG (CÓ ẢNH PREVIEW) -->
+                <!-- CARD 3: GIẢI THƯỞNG (ẢNH TÁCH RỜI) -->
                 <div class="cert-card" style="margin-bottom: 0; height: 100%;">
                     <div class="cert-header">
                         <div class="cert-icon"><i class="fas fa-trophy"></i></div>
@@ -737,10 +790,9 @@
                             </div>
                         </div>
                     </div>
-                    <!-- Khối ảnh Thumbnail thay thế cho nút Xem -->
+                    
                     <div class="cert-preview-wrapper">
                         <div class="cert-thumbnail open-modal" data-file="https://docs.google.com/viewer?url=https://raw.githubusercontent.com/nmthaovy/portfolio/main/GTV_CT2026_Gi%25E1%25BA%25A5y%2520khen%2520Vy%2520Nguyen.pdf&embedded=true" role="button" title="Click để xem bản PDF">
-                            <!-- Đã trỏ thẳng về link .jpg trên Github của bạn -->
                             <img src="https://raw.githubusercontent.com/nmthaovy/portfolio/main/GTV_CT2026_Gi%E1%BA%A5y%20khen%20Vy%20Nguyen.jpg" onerror="this.onerror=null; this.src='https://images.template.net/wp-content/uploads/2016/09/16111815/Award-Certificate-Template1.jpg';" alt="Award Preview">
                             <div class="thumb-overlay"><i class="fas fa-expand"></i></div>
                         </div>
@@ -1024,6 +1076,49 @@
         </div>
     </section>
 
+    <!-- SECTION: AI & AUTOMATION WORKFLOWS -->
+    <section id="automation" style="background: #FAFAFA; border-top: 1px solid rgba(0,0,0,0.05); border-bottom: 1px solid rgba(0,0,0,0.05);">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up" style="max-width: 800px;">
+                <span class="section-tag" style="color: #8B5CF6;"><span class="vi">Tối ưu nguồn lực</span><span class="en">Resource Optimization</span></span>
+                <h2 class="section-title">
+                    <span class="vi">Hệ thống <i>AI & Automation.</i></span>
+                    <span class="en"><i>AI & Automation</i> Systems.</span>
+                </h2>
+                <p style="color: var(--text-sub); margin-top: 15px; font-size: 1.1rem;">
+                    <span class="vi">Ứng dụng Automation và AI để tối ưu 80% tác vụ lặp đi lặp lại: từ Syndication Content, Research từ khóa đến hệ thống Audit dữ liệu hàng loạt.</span>
+                    <span class="en">Applying Automation and AI to optimize 80% of repetitive tasks: from Content Syndication and Keyword Research to bulk data auditing systems.</span>
+                </p>
+            </div>
+
+            <div class="automation-grid-v2">
+                <!-- Cột Trái: Ảnh Workflow N8N -->
+                <div class="auto-preview-box" data-aos="fade-right">
+                    <div class="cert-preview-wrapper" style="margin-top: 0; box-shadow: none;">
+                        <div class="cert-thumbnail open-modal" data-file="https://raw.githubusercontent.com/nmthaovy/portfolio/main/AI-automation-syndication.jpg" role="button" title="Click để phóng to sơ đồ">
+                            <img src="https://raw.githubusercontent.com/nmthaovy/portfolio/main/AI-automation-syndication.jpg" alt="n8n Workflow Preview">
+                            <div class="thumb-overlay"><i class="fas fa-search-plus"></i></div>
+                        </div>
+                        <div class="cert-caption" style="margin-top: 10px;">
+                            <span class="vi">Hệ thống Automated Content Syndication build trên n8n.</span>
+                            <span class="en">Automated Content Syndication system built on n8n.</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Cột Phải: Stack Logo AI -->
+                <div class="ai-stack-grid" data-aos="fade-left">
+                    <div class="ai-logo-item" title="ChatGPT"><img src="https://upload.wikimedia.org/wikipedia/commons/0/04/ChatGPT_logo.svg" alt="ChatGPT"></div>
+                    <div class="ai-logo-item" title="Google Gemini"><img src="https://upload.wikimedia.org/wikipedia/commons/8/8a/Google_Gemini_logo.svg" alt="Gemini"></div>
+                    <div class="ai-logo-item" title="Claude AI"><img src="https://www.memoryplugin.com/_next/image?url=%2Fimages%2FClaude-ai-logo%20(1).png&w=3840&q=75" alt="Claude"></div>
+                    <div class="ai-logo-item" title="Perplexity"><img src="https://ekeyms.net/wp-content/uploads/2025/03/solution_logo_08142024_37287581.png" alt="Perplexity"></div>
+                    <div class="ai-logo-item" title="n8n.io"><img src="https://raw.githubusercontent.com/n8n-io/n8n/master/assets/n8n-logo.png" alt="n8n" style="max-width: 60%;"></div>
+                    <div class="ai-logo-item" title="Make.com"><img src="https://cdn.prod.website-files.com/671a430070c6c15ad757a8bc/6745e94cb450dacda80bc10c_logo-make.png" alt="Make" style="max-width: 70%;"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- SECTION: HOW I WORK -->
     <section id="process">
         <div class="container">
@@ -1114,7 +1209,7 @@
                         <div class="timeline-body">
                             <ul class="vi">
                                 <li><strong>Hoạch định chiến lược SEO tổng thể:</strong> Phân tích thị trường/đối thủ, phân rã milestone, các hạng mục công việc cần thực thi và trực tiếp quản lý tiến độ dự án, chịu trách nhiệm KPI.</li>
-                                <li><strong>Technical Audits:</strong> Thực hiện Audit website định kỳ, xử lý triệt để các vấn đề về khả năng thu thập dữ liệu và lập chỉ mục. Phối hợp chặt chẽ với đội ngũ DEV để tối ưu Core Web Vitals và nâng cao trải nghiệm người dùng.</li>
+                                <li><strong>Technical Audits:</strong> Thực hiện Audit website định kỳ, xử lý triệt để các vấn đề về khả năng thu thập dữ liệu và lập chỉ mục. Phối hợp chặtẽ với đội ngũ DEV để tối ưu Core Web Vitals và nâng cao trải nghiệm người dùng.</li>
                                 <li><strong>Content Strategy:</strong> Xây dựng Topical Map và kiểm soát chất lượng content đảm bảo nội dung phù hợp với Search Intent, thông tin fact và có giá trị chuyển đổi cao.</li>
                                 <li><strong>Offsite Strategy:</strong> Xây dựng kế hoạch triển khai Offsite góp phần tăng trust domain và cải thiện thứ hạng keyword mục tiêu.</li>
                                 <li><strong>Tối ưu hóa GEO:</strong> Nghiên cứu và áp dụng các kỹ thuật tối ưu cấu trúc dữ liệu và nội dung theo tiêu chuẩn AI-Ready để tăng khả năng hiển thị trong các câu trả lời từ AI.</li>
@@ -1232,29 +1327,6 @@
         </div>
     </section>
 
-    <!-- DẢI BĂNG CHUYỀN SỐ 2 (AI TOOLS) -->
-    <section id="ai-tools" class="tools-section">
-        <div class="container">
-            <div class="section-header" data-aos="fade-up" style="text-align: center; margin: 0 auto 40px;">
-                <h2 class="section-title">🤖 AI Workflow</h2>
-            </div>
-        </div>
-        <div class="op-grid">
-            <div class="op-item">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/0/04/ChatGPT_logo.svg" class="tool-logo" alt="ChatGPT" title="ChatGPT" loading="lazy">
-            </div>
-            <div class="op-item">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/8/8a/Google_Gemini_logo.svg" class="tool-logo" alt="Google Gemini" title="Google Gemini" loading="lazy">
-            </div>
-            <div class="op-item">
-                <img src="https://www.memoryplugin.com/_next/image?url=%2Fimages%2FClaude-ai-logo%20(1).png&w=3840&q=75" class="tool-logo" alt="Claude AI" title="Claude AI" loading="lazy">
-            </div>
-            <div class="op-item">
-                <img src="https://ekeyms.net/wp-content/uploads/2025/03/solution_logo_08142024_37287581.png" class="tool-logo" alt="Perplexity" title="Perplexity" loading="lazy">
-            </div>
-        </div>
-    </section>
-
     <!-- THANKS FOR WATCHING SECTION -->
     <section class="thanks-section" data-aos="zoom-in">
         <div class="container">
@@ -1306,12 +1378,7 @@
         </a>
     </div>
 
-    <!-- BACK TO TOP BUTTON -->
-    <button id="backToTop" title="Lên đầu trang">
-        <i class="fas fa-arrow-up"></i>
-    </button>
-
-    <!-- FILE MODAL (For certificates & Images) -->
+    <!-- KHUNG POPUP MODAL -->
     <div id="fileModal" class="modal-overlay">
         <span class="close-modal">&times;</span>
         <button class="modal-nav-btn prev-modal-btn" style="display: none;"><i class="fas fa-chevron-left"></i></button>
@@ -1452,19 +1519,6 @@
             }
         };
         animateCounters();
-
-        // Logic Back To Top Button
-        const backToTopBtn = document.getElementById("backToTop");
-        window.addEventListener("scroll", () => {
-            if (window.scrollY > 500) {
-                backToTopBtn.classList.add("show");
-            } else {
-                backToTopBtn.classList.remove("show");
-            }
-        });
-        backToTopBtn.addEventListener("click", () => {
-            window.scrollTo({ top: 0, behavior: "smooth" });
-        });
 
         // Logic Nút Điều hướng Mobile
         const processGrid = document.getElementById('processGrid');
