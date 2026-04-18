@@ -81,21 +81,28 @@
 
         .container { max-width: 1280px; margin: 0 auto; padding: 0 5%; }
 
-        /* --- Navigation --- */
+        /* --- Navigation (TỐI ƯU HIỂN THỊ NỔI BẬT - FLOATING PILL) --- */
         nav {
             position: fixed;
-            top: 0; width: 100%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px 0;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
+            top: 20px; 
+            left: 50%;
+            transform: translateX(-50%);
+            width: calc(100% - 40px);
+            max-width: 1000px;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
             z-index: 1000;
-            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(0, 0, 0, 0.08);
+            border-radius: 100px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08), 0 5px 15px rgba(0, 0, 0, 0.03);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
         
-        .nav-container { display: flex; justify-content: space-between; width: 100%; align-items: center; padding: 0; }
+        .nav-container { 
+            display: flex; justify-content: space-between; width: 100%; align-items: center; 
+            padding: 12px 30px;
+        }
 
         .logo {
             font-family: var(--font-header); font-weight: 800; font-size: 1.4rem;
@@ -144,12 +151,73 @@
         .stat-item .number { font-family: var(--font-header); font-size: clamp(2.5rem, 5vw, 3.8rem); font-weight: 800; color: var(--primary); line-height: 1; letter-spacing: -2px;}
         .stat-item .label { font-size: 0.75rem; font-weight: 800; color: var(--secondary); margin-top: 8px; text-transform: uppercase; letter-spacing: 1px;}
 
+        /* --- BUTTON CRO OPTIMIZATION --- */
         .btn-group { display: flex; gap: 15px; }
-        .btn { padding: 16px 36px; font-family: var(--font-header); font-weight: 700; text-decoration: none; border-radius: 6px; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; transition: var(--transition); display: inline-flex; align-items: center; justify-content: center; gap: 10px;}
-        .btn-primary { background: var(--primary); color: #000000; box-shadow: 0 4px 15px rgba(255, 178, 44, 0.3);}
-        .btn-primary:hover { background: var(--primary-dark); color: #000000; transform: translateY(-2px);}
-        .btn-secondary { background: var(--secondary); color: #fff; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);}
-        .btn-secondary:hover { background: #222222; transform: translateY(-2px);}
+        .btn { 
+            padding: 18px 40px; 
+            font-family: var(--font-header); 
+            font-weight: 700; 
+            text-decoration: none; 
+            border-radius: 50px; /* Cập nhật nút thành dạng Pill Shape hiện đại */
+            font-size: 0.95rem; 
+            text-transform: uppercase; 
+            letter-spacing: 1px; 
+            transition: var(--transition); 
+            display: inline-flex; 
+            align-items: center; 
+            justify-content: center; 
+            gap: 10px;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+        .btn i { transition: transform 0.3s ease; }
+        .btn:hover i { transform: translateX(4px) scale(1.1); } /* Hiệu ứng kéo icon khi hover */
+        
+        /* Primary Button: Nhấn mạnh bằng viền, pulse, và shine effect */
+        .btn-primary { 
+            background: var(--primary); 
+            color: #000000; 
+            border: 2px solid var(--primary);
+            box-shadow: 0 8px 20px rgba(255, 178, 44, 0.4);
+            animation: heroPulse 2.5s infinite;
+        }
+        .btn-primary::before {
+            content: ''; position: absolute; top: 0; left: -100%; width: 50%; height: 100%;
+            background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.5) 50%, rgba(255,255,255,0) 100%);
+            transform: skewX(-25deg); animation: shine 3s infinite; z-index: -1;
+        }
+        .btn-primary:hover { 
+            background: var(--primary-dark); 
+            border-color: var(--primary-dark); 
+            transform: translateY(-3px);
+            box-shadow: 0 12px 25px rgba(255, 178, 44, 0.6);
+        }
+        
+        /* Secondary Button: Giảm độ nặng, tạo độ tương phản với nút chính */
+        .btn-secondary { 
+            background: transparent; 
+            color: var(--secondary); 
+            border: 2px solid var(--secondary);
+        }
+        .btn-secondary:hover { 
+            background: var(--secondary); 
+            color: #fff; 
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Animations cho nút */
+        @keyframes heroPulse {
+            0% { box-shadow: 0 0 0 0 rgba(255, 178, 44, 0.6); }
+            70% { box-shadow: 0 0 0 15px rgba(255, 178, 44, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(255, 178, 44, 0); }
+        }
+        @keyframes shine {
+            0% { left: -100%; }
+            20% { left: 200%; }
+            100% { left: 200%; }
+        }
 
         /* --- Avatar Box --- */
         .avatar-frame { width: 100%; max-width: 440px; margin-left: auto; aspect-ratio: 4/5; border-radius: 24px; overflow: hidden; position: relative; background: var(--card-bg); box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.1); }
@@ -325,6 +393,9 @@
         footer { background: var(--secondary); color: #FFFFFF; padding: 100px 0 50px; text-align: center;}
         .footer-cta h2 { font-family: var(--font-header); font-size: clamp(2rem, 5vw, 3.5rem); margin-bottom: 20px;}
         .footer-cta p { font-size: 1.1rem; color: #CCCCCC; margin-bottom: 40px; max-width: 600px; margin-inline: auto;}
+        
+        /* Tùy chỉnh lại nút bấm nếu nó nằm trong thẻ footer để không bị trùng CSS với Hero CTA */
+        footer .btn-secondary:hover { background: #fff; color: var(--secondary) !important; border-color: #fff !important; }
 
         .mobile-toggle { display: none; font-size: 1.5rem; background: none; border: none; color: var(--secondary); cursor: pointer; transition: var(--transition); }
         .mobile-toggle:hover { color: var(--primary-dark); }
@@ -349,14 +420,14 @@
             .cert-card { text-align: left; }
             .project-body { grid-template-columns: 1fr; gap: 30px; } 
             
-            nav { padding: 15px 0; }
-            .nav-container { flex-direction: row; position: relative; }
+            nav { top: 15px; width: calc(100% - 30px); }
+            .nav-container { flex-direction: row; position: relative; padding: 10px 20px; }
             .mobile-toggle { display: block; }
             .logo { align-self: center; }
             .nav-links { 
-                display: none; flex-direction: column; position: absolute; top: 100%; left: 0; width: 100%;
-                background: rgba(255, 255, 255, 0.98); padding: 10px 5% 20px; box-shadow: 0 15px 30px rgba(0,0,0,0.08);
-                border-top: 1px solid rgba(0,0,0,0.05); gap: 15px; border-radius: 0 0 15px 15px; text-align: left;
+                display: none; flex-direction: column; position: absolute; top: calc(100% + 15px); left: 0; width: 100%;
+                background: rgba(255, 255, 255, 0.98); padding: 20px; box-shadow: 0 15px 40px rgba(0,0,0,0.12);
+                border: 1px solid rgba(0,0,0,0.05); gap: 15px; border-radius: 24px; text-align: left;
             }
             .nav-links.active { display: flex; animation: slideDown 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
             @keyframes slideDown { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
