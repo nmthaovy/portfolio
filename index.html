@@ -300,19 +300,24 @@
         .thanks-title { font-family: var(--font-header); font-size: clamp(4rem, 10vw, 8rem); font-weight: 800; color: var(--primary); line-height: 1; letter-spacing: -2px; text-shadow: 4px 4px 0px var(--secondary); margin-bottom: 15px; text-transform: uppercase;}
         .thanks-subtitle { font-weight: 800; letter-spacing: 12px; color: var(--text-sub); font-size: 0.95rem; text-transform: uppercase;}
 
-        /* STICKY SOCIAL BAR */
-        .sticky-social-bar { position: fixed; right: 30px; bottom: 30px; display: flex; flex-direction: column; gap: 12px; z-index: 999;}
-        .social-btn { width: 48px; height: 48px; border-radius: 50%; background: #fff; color: var(--secondary); display: flex; align-items: center; justify-content: center; font-size: 1.3rem; box-shadow: 0 4px 15px rgba(0,0,0,0.1); text-decoration: none; transition: var(--transition); border: 1px solid rgba(0,0,0,0.05); position: relative;}
-        .social-btn::after { content: attr(data-tooltip); position: absolute; right: 120%; top: 50%; transform: translateY(-50%) translateX(10px); background: var(--secondary); color: #fff; padding: 6px 12px; border-radius: 6px; font-size: 0.8rem; white-space: nowrap; opacity: 0; visibility: hidden; transition: var(--transition); font-family: var(--font-body); font-weight: 700; pointer-events: none;}
-        .social-btn.zalo:hover { background: #0068FF; color: #fff; border-color: #0068FF;}
-        .social-btn.phone:hover { background: #00B14F; color: #fff; border-color: #00B14F;}
-        .social-btn.email:hover { background: var(--primary); color: #000; border-color: var(--primary);}
-        .social-btn.linkedin:hover { background: #0077b5; color: #fff; border-color: #0077b5;}
-        .social-btn:hover { transform: scale(1.1); }
+        /* STICKY SOCIAL BAR (TỐI ƯU KÍCH THƯỚC + MÀU SẮC + ANIMATION) */
+        .sticky-social-bar { position: fixed; right: 30px; bottom: 30px; display: flex; flex-direction: column; gap: 15px; z-index: 999;}
+        .social-btn { width: 56px; height: 56px; border-radius: 50%; color: #fff; display: flex; align-items: center; justify-content: center; font-size: 1.6rem; box-shadow: 0 4px 15px rgba(0,0,0,0.15); text-decoration: none; transition: var(--transition); position: relative;}
+        .social-btn::after { content: attr(data-tooltip); position: absolute; right: 120%; top: 50%; transform: translateY(-50%) translateX(10px); background: var(--secondary); color: #fff; padding: 6px 12px; border-radius: 6px; font-size: 0.85rem; white-space: nowrap; opacity: 0; visibility: hidden; transition: var(--transition); font-family: var(--font-body); font-weight: 700; pointer-events: none;}
+        .social-btn:hover { transform: scale(1.15); }
         .social-btn:hover::after { opacity: 1; visibility: visible; transform: translateY(-50%) translateX(0);}
+        
+        .social-btn.zalo { background: #0068FF; animation: pulseZalo 2s infinite;}
+        .social-btn.phone { background: #00B14F; animation: pulsePhone 2s infinite 0.6s;}
+        .social-btn.email { background: var(--primary); color: #000; animation: pulseEmail 2s infinite 1.2s;}
+        .social-btn.linkedin { background: #0077b5; }
+        
+        @keyframes pulseZalo { 0% { box-shadow: 0 0 0 0 rgba(0, 104, 255, 0.7); } 70% { box-shadow: 0 0 0 15px rgba(0, 104, 255, 0); } 100% { box-shadow: 0 0 0 0 rgba(0, 104, 255, 0); } }
+        @keyframes pulsePhone { 0% { box-shadow: 0 0 0 0 rgba(0, 177, 79, 0.7); } 70% { box-shadow: 0 0 0 15px rgba(0, 177, 79, 0); } 100% { box-shadow: 0 0 0 0 rgba(0, 177, 79, 0); } }
+        @keyframes pulseEmail { 0% { box-shadow: 0 0 0 0 rgba(255, 178, 44, 0.7); } 70% { box-shadow: 0 0 0 15px rgba(255, 178, 44, 0); } 100% { box-shadow: 0 0 0 0 rgba(255, 178, 44, 0); } }
 
         /* BACK TO TOP BUTTON CSS */
-        #backToTop { position: fixed; left: 30px; bottom: 30px; width: 48px; height: 48px; border-radius: 50%; background: var(--secondary); color: #fff; border: none; font-size: 1.2rem; cursor: pointer; box-shadow: 0 4px 15px rgba(0,0,0,0.2); transition: var(--transition); opacity: 0; visibility: hidden; transform: translateY(20px); z-index: 999;}
+        #backToTop { position: fixed; left: 30px; bottom: 30px; width: 48px; height: 48px; border-radius: 50%; background: var(--secondary); color: #fff; border: none; font-size: 1.2rem; cursor: pointer; box-shadow: 0 4px 15px rgba(0,0,0,0.2); transition: var(--transition); opacity: 0; visibility: hidden; transform: translateY(20px); z-index: 998;}
         #backToTop.show { opacity: 1; visibility: visible; transform: translateY(0);}
         #backToTop:hover { background: var(--primary); color: #000; transform: translateY(-5px);}
 
@@ -413,11 +418,36 @@
             .timeline-meta-right { text-align: left; align-items: flex-start; margin-top: 10px;}
             .timeline-role h3 { font-size: 1.4rem; }
 
-            .sticky-social-bar { flex-direction: row; top: auto; bottom: 20px; left: 50%; right: auto; transform: translateX(-50%); background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); padding: 10px 20px; border-radius: 50px; box-shadow: 0 10px 30px rgba(0,0,0,0.15); border: 1px solid rgba(0,0,0,0.08); gap: 20px;}
-            .social-btn { width: 40px; height: 40px; font-size: 1.1rem; box-shadow: none; border: none; background: #FAFAFA;}
+            /* --- CẤU TRÚC MOBILE CTA (ĐÃ TỐI ƯU UI NỔI BẬT & PREMIUM) --- */
+            .sticky-social-bar { 
+                flex-direction: row; 
+                top: auto; 
+                bottom: calc(20px + env(safe-area-inset-bottom, 0px)); /* An toàn cho viền Home của iPhone */
+                left: 50%; right: auto; 
+                transform: translateX(-50%); 
+                background: rgba(255, 255, 255, 0.85); 
+                backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
+                padding: 10px 20px; 
+                border-radius: 50px; 
+                box-shadow: 0 10px 30px rgba(0,0,0,0.15), inset 0 1px 0 rgba(255,255,255,0.8); 
+                border: 1px solid rgba(0,0,0,0.08); 
+                gap: 15px; 
+                width: auto;
+                max-width: 95vw;
+            }
+            .social-btn { 
+                width: 46px; height: 46px; 
+                font-size: 1.3rem;
+                border: 2px solid #ffffff; /* Viền trắng giúp bật tone màu của nút */
+            }
             .social-btn::after { display: none; }
-
-            #backToTop { bottom: 90px; left: auto; right: 20px; width: 42px; height: 42px; font-size: 1rem; }
+            
+            /* Thu gọn bóng Pulse trên Mobile để không bị lem vào nhau */
+            @keyframes pulseZalo { 0% { box-shadow: 0 0 0 0 rgba(0, 104, 255, 0.6); } 70% { box-shadow: 0 0 0 10px rgba(0, 104, 255, 0); } 100% { box-shadow: 0 0 0 0 rgba(0, 104, 255, 0); } }
+            @keyframes pulsePhone { 0% { box-shadow: 0 0 0 0 rgba(0, 177, 79, 0.6); } 70% { box-shadow: 0 0 0 10px rgba(0, 177, 79, 0); } 100% { box-shadow: 0 0 0 0 rgba(0, 177, 79, 0); } }
+            @keyframes pulseEmail { 0% { box-shadow: 0 0 0 0 rgba(255, 178, 44, 0.6); } 70% { box-shadow: 0 0 0 10px rgba(255, 178, 44, 0); } 100% { box-shadow: 0 0 0 0 rgba(255, 178, 44, 0); } }
+            
+            #backToTop { bottom: calc(95px + env(safe-area-inset-bottom, 0px)); left: auto; right: 20px; width: 42px; height: 42px; font-size: 1rem; }
             
             .tools-slider::before, .tools-slider::after { width: 50px; }
             .tool-logo { height: 55px; }
@@ -460,24 +490,20 @@
                         <span class="vi">Kỷ nguyên SEO mới: Tập trung GEO</span>
                         <span class="en">New SEO Era: GEO-Focused</span>
                     </div>
-                   
-                    <!-- 1. CẬP NHẬT TÊN KHÔNG DẤU CHO BẢN TIẾNG ANH -->
+                    
                     <h1 class="name-heading">
                         <span class="surname"><span class="vi">NGUYỄN MAI</span><span class="en">NGUYEN MAI</span></span>
                         <span class="firstname"><span class="vi">THẢO VY</span><span class="en">THAO VY</span></span>
                     </h1>
 
-
                     <div class="typing-container">
                         <span class="vi">Tối ưu hóa</span><span class="en">Optimizing</span> <br class="mobile-break" style="display: none;"> <span id="typed"></span>
                     </div>
-
 
                     <blockquote class="hero-desc">
                         <span class="vi">"SEO không chỉ là về các thuật toán; đó là về việc thấu hiểu ý định tìm kiếm của người dùng và dẫn dắt họ trong kỷ nguyên tìm kiếm bằng AI."</span>
                         <span class="en">"SEO isn't just about algorithms; it's about deeply understanding user intent and guiding them through the era of AI Search."</span>
                     </blockquote>
-
 
                     <div class="hero-stats">
                         <div class="stat-item">
@@ -494,26 +520,20 @@
                         </div>
                     </div>
 
-
-                    <!-- 2. CẬP NHẬT 2 NÚT CV RIÊNG BIỆT (EN/VI) -->
                     <div class="btn-group">
-                        <!-- NÚT MỞ CV TIẾNG VIỆT -->
                         <a href="#" data-file="https://docs.google.com/viewer?url=https://raw.githubusercontent.com/nmthaovy/portfolio/main/CV%20-%20NGUYEN%20MAI%20THAO%20VY%20-%20SEO%20EXECUTIVE.pdf&embedded=true" class="btn btn-primary open-modal vi" role="button">
                             Xem CV PDF <i class="fas fa-file-pdf"></i>
                         </a>
-                       
-                        <!-- NÚT MỞ CV TIẾNG ANH -->
+                        
                         <a href="#" data-file="https://docs.google.com/viewer?url=https://raw.githubusercontent.com/nmthaovy/portfolio/main/CV%20-%20NGUYEN%20MAI%20THAO%20VY%20-%20SEO%20EXECUTIVE%20-%20EN.pdf&embedded=true" class="btn btn-primary open-modal en" role="button">
                             View CV PDF <i class="fas fa-file-pdf"></i>
                         </a>
-
 
                         <a href="#projects" class="btn btn-secondary">
                             Case Studies <i class="fas fa-arrow-right"></i>
                         </a>
                     </div>
                 </div>
-
 
                 <div data-aos="zoom-in" data-aos-delay="200">
                     <div class="avatar-frame">
@@ -523,7 +543,6 @@
             </div>
         </div>
     </header>
-
 
     <!-- ABOUT ME SECTION -->
     <section id="about">
@@ -711,7 +730,7 @@
                                 </div>
                             </div>
                             <p class="project-desc">
-                                <span class="vi">Website dự án cũ dính lỗ hổng cấu hình DNS dẫn đến tình trạng Subdomain Takeover và đợt tấn công Negative SEO. Để xử lý triệt để mà không dính Penalty, team đề xuất chiến lược Zero-base Setup trên Domain mới: Tuyệt đối không dùng Redirect 301, cấu hình lại Flat Architecture, tối ưu UI/UX chuẩn B2B và phủ Topical Map chuyên sâu.</span>
+                                <span class="vi">Website dự án cũ dính lỗ hổng cấu hình DNS dẫn đến tình trạng Subdomain Takeover và đợt tấn tấn công Negative SEO. Để xử lý triệt để mà không dính Penalty, team đề xuất chiến lược Zero-base Setup trên Domain mới: Tuyệt đối không dùng Redirect 301, cấu hình lại Flat Architecture, tối ưu UI/UX chuẩn B2B và phủ Topical Map chuyên sâu.</span>
                                 <span class="en">The old website suffered from a DNS configuration flaw leading to Subdomain Takeover and Negative SEO attacks. To completely resolve this without facing Google Penalties, we proposed a Zero-base Setup strategy on a new domain: No 301 Redirects, reconfiguring Flat Architecture, optimizing B2B UI/UX, and establishing a deep Topical Map.</span>
                             </p>
                             <a href="#" class="read-more-btn open-cs-modal" data-id="vibim" role="button"><span class="vi">Xem chi tiết hạng mục kỹ thuật</span><span class="en">View Technical Details</span> <i class="fas fa-arrow-right"></i></a>
@@ -971,10 +990,10 @@
                         <div class="timeline-body">
                             <ul class="vi">
                                 <li><strong>Hoạch định chiến lược SEO tổng thể:</strong> Phân tích thị trường/đối thủ, phân rã milestone, các hạng mục công việc cần thực thi và trực tiếp quản lý tiến độ dự án, chịu trách nhiệm KPI.</li>
-                                <li><strong>Technical Audits:</strong> Thực hiện Audit website định kỳ, xử lý triệt để các vấn đề về khả năng thu thập dữ liệu và lập chỉ mục. Phối hợp chặt chẽ với đội ngũ DEV để tối ưu Core Web Vitals và nâng cao trải nghiệm người dùng.li>
-<li><strong>Content Strategy:</strong> Xây dựng Topical Map và kiểm soát chất lượng content đảm bảo nội dung phù hợp với Search Intent, thông tin fact và có giá trị chuyển đổi cao.</li>
-<li><strong>Offsite Strategy:</strong> Xây dựng kế hoạch triển khai Offsite góp phần tăng trust domain và cải thiện thứ hạng keyword mục tiêu.</li>
-<li><strong>Tối ưu hóa GEO:</strong> Nghiên cứu và áp dụng các kỹ thuật tối ưu cấu trúc dữ liệu và nội dung theo tiêu chuẩn AI-Ready để tăng khả năng hiển thị trong các câu trả lời từ AI.</li>
+                                <li><strong>Technical Audits:</strong> Thực hiện Audit website định kỳ, xử lý triệt để các vấn đề về khả năng thu thập dữ liệu và lập chỉ mục. Phối hợp chặt chẽ với đội ngũ DEV để tối ưu Core Web Vitals và nâng cao trải nghiệm người dùng.</li>
+                                <li><strong>Content Strategy:</strong> Xây dựng Topical Map và kiểm soát chất lượng content đảm bảo nội dung phù hợp với Search Intent, thông tin fact và có giá trị chuyển đổi cao.</li>
+                                <li><strong>Offsite Strategy:</strong> Xây dựng kế hoạch triển khai Offsite góp phần tăng trust domain và cải thiện thứ hạng keyword mục tiêu.</li>
+                                <li><strong>Tối ưu hóa GEO:</strong> Nghiên cứu và áp dụng các kỹ thuật tối ưu cấu trúc dữ liệu và nội dung theo tiêu chuẩn AI-Ready để tăng khả năng hiển thị trong các câu trả lời từ AI.</li>
                                 <li><strong>Phân tích dữ liệu & CRO:</strong> Theo dõi hiệu suất trên GA4, GSC và xây dựng dashboard báo cáo. Phân tích chuyên sâu dữ liệu hành vi người dùng để đưa ra đề xuất Tối ưu hóa tỷ lệ chuyển đổi (CRO).</li>
                                 <li><strong>Đào tạo & Quản lý:</strong> Trực tiếp hướng dẫn, đào tạo nhân sự mới về tư duy SEO thực chiến và quy trình vận hành dự án.</li>
                             </ul>
@@ -1142,7 +1161,7 @@
             </div>
             
             <p style="margin-top: 100px; font-size: 0.8rem; opacity: 0.4; letter-spacing: 2px; text-transform: uppercase;">
-               Copyright &copy; 2026 - <span class="vi"> THẢO VY</span><span class="en">THAO VY</span>
+               Copyright &copy; 2026 - <span class="vi">THẢO VY</span><span class="en">THAO VY</span>
             </p>
         </div>
     </footer>
@@ -1765,5 +1784,3 @@
     </script>
 </body>
 </html>
-
-
