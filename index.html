@@ -231,17 +231,31 @@
         .section-title { font-family: var(--font-header); font-size: clamp(2.2rem, 5vw, 3.5rem); line-height: 1.1; color: var(--secondary); letter-spacing: -1px;}
         .section-title i { color: var(--primary); font-style: normal; text-decoration: underline; text-decoration-color: rgba(255, 178, 44, 0.4); text-underline-offset: 8px;}
 
-        /* --- ABOUT ME SECTION --- */
+        /* --- ABOUT ME SECTION (TỐI ƯU LẠI GRID ĐỂ XÓA KHOẢNG TRẮNG DƯ THỪA) --- */
         #about { background: #FAFAFA; border-top: 1px solid rgba(0,0,0,0.05); border-bottom: 1px solid rgba(0,0,0,0.05);}
-        .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center;}
+        .about-grid { display: grid; grid-template-columns: 1.3fr 1fr; gap: 50px; align-items: flex-start;} /* Ép cột trái rộng hơn, căn lề trên cùng */
+        .about-bottom-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; margin-top: 50px; align-items: stretch;} /* Lưới mới cho 2 card bên dưới */
         .about-text h3 { font-family: var(--font-header); font-size: 2rem; margin-bottom: 20px; color: var(--secondary);}
         .about-text p { font-size: 1.1rem; color: var(--text-sub); margin-bottom: 20px;}
 
-        .cert-card { background: var(--bg); border: 2px solid var(--secondary); padding: 25px; border-radius: 12px; margin-bottom: 20px; display: flex; gap: 20px; align-items: flex-start; box-shadow: 4px 4px 0px var(--primary); transition: var(--transition);}
+        /* --- CẬP NHẬT LẠI CẤU TRÚC CERT CARD CHỨA THUMBNAIL --- */
+        .cert-card { background: var(--bg); border: 2px solid var(--secondary); padding: 25px; border-radius: 12px; margin-bottom: 20px; display: flex; flex-direction: column; gap: 15px; box-shadow: 4px 4px 0px var(--primary); transition: var(--transition);}
         .cert-card:hover { transform: translate(-2px, -2px); box-shadow: 6px 6px 0px var(--primary);}
+        .cert-header { display: flex; gap: 20px; align-items: flex-start; }
         .cert-icon { font-size: 2rem; color: var(--secondary); margin-top: 5px;}
         .cert-content h4 { font-family: var(--font-header); font-size: 1.2rem; margin-bottom: 5px; color: var(--secondary);}
         .cert-content p { font-size: 0.9rem; color: var(--text-sub); margin: 0;}
+
+        /* CSS CHUẨN CRO CHO ẢNH PREVIEW CHỨNG CHỈ (ẢNH VÀ CAPTION TÁCH RỜI) */
+        .cert-preview-wrapper { margin-top: 15px; display: flex; flex-direction: column; gap: 12px; }
+        .cert-thumbnail { width: 100%; aspect-ratio: 16/9; height: auto; border-radius: 8px; border: 1px solid rgba(0,0,0,0.1); overflow: hidden; position: relative; cursor: pointer; background: #e9ecef; box-shadow: 0 4px 10px rgba(0,0,0,0.03); }
+        .cert-thumbnail img { width: 100%; height: 100%; object-fit: contain; object-position: center; transition: transform 0.5s ease; padding: 5px; background: #ffffff; }
+        .cert-thumbnail:hover img { transform: scale(1.05); }
+        .thumb-overlay { position: absolute; inset: 0; background: rgba(0,0,0,0.4); display: flex; align-items: center; justify-content: center; color: white; font-size: 2rem; opacity: 0; transition: opacity 0.3s ease; }
+        .cert-thumbnail:hover .thumb-overlay { opacity: 1; }
+        
+        /* Cấu trúc caption xám nhạt tách rời dưới ảnh */
+        .cert-caption { background: #F8F9FA; border: 1px solid rgba(0,0,0,0.08); border-radius: 6px; padding: 10px 15px; font-size: 0.85rem; color: var(--text-sub); text-align: center; font-style: italic; line-height: 1.5; }
 
         .credential-link { display: inline-flex; align-items: center; gap: 5px; font-size: 0.7rem; font-weight: 700; color: var(--primary-dark); text-decoration: none; background: rgba(255, 178, 44, 0.15); padding: 3px 10px; border-radius: 100px; margin-left: 8px; transition: var(--transition); vertical-align: middle; text-transform: uppercase; letter-spacing: 0.5px;}
         .credential-link:hover { background: var(--primary); color: #000000; transform: translateY(-1px);}
@@ -412,7 +426,8 @@
 
         /* RESPONSIVE MOBILE TỐI ƯU TOÀN DIỆN */
         @media (max-width: 1024px) {
-            .hero-grid, .about-grid { grid-template-columns: 1fr; text-align: center; }
+            .hero-grid, .about-grid, .about-bottom-grid { grid-template-columns: 1fr; text-align: center; }
+            .about-bottom-grid { gap: 30px; margin-top: 30px; }
             .hero-desc, .about-text p { margin: 0 auto 30px; text-align: left;}
             .hero-stats { justify-content: center; }
             .btn-group { justify-content: center; }
@@ -618,13 +633,17 @@
     <!-- ABOUT ME SECTION -->
     <section id="about">
         <div class="container">
+            <!-- NEW: ĐƯA HEADING RA NGOÀI VÀ CĂN GIỮA -->
+            <div class="section-header" data-aos="fade-up" style="text-align: center; margin: 0 auto 50px;">
+                <span class="section-tag"><span class="vi">Về tôi</span><span class="en">About Me</span></span>
+                <h2 class="section-title">
+                    <span class="vi">Tư duy Logic. <br>Hành động <i>bằng Data.</i></span>
+                    <span class="en">Logical Mindset. <br>Data-Driven <i>Execution.</i></span>
+                </h2>
+            </div>
+
             <div class="about-grid">
                 <div class="about-text" data-aos="fade-right">
-                    <span class="section-tag"><span class="vi">Về tôi</span><span class="en">About Me</span></span>
-                    <h2 class="section-title" style="margin-bottom: 30px;">
-                        <span class="vi">Tư duy Logic. <br>Hành động <i>bằng Data.</i></span>
-                        <span class="en">Logical Mindset. <br>Data-Driven <i>Execution.</i></span>
-                    </h2>
                     <p class="vi">
                         Xuất phát điểm là một <strong>Cử nhân Thương mại Điện tử</strong>, tôi tiếp cận SEO không chỉ như một công cụ kéo Traffic, mà như một kênh mang lại doanh thu thực tế cho doanh nghiệp.
                     </p>
@@ -640,29 +659,38 @@
                     <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Google_%22G%22_logo.svg/120px-Google_%22G%22_logo.svg.png" alt="Google" style="height: 30px; margin-top: 20px; filter: grayscale(100%); opacity: 0.5;" loading="lazy">
                 </div>
 
-                <div class="about-credentials" data-aos="fade-left">
-                    <div class="cert-card">
-                        <div class="cert-icon"><i class="fas fa-graduation-cap"></i></div>
-                        <div class="cert-content">
-                            <h4><span class="vi">Học vấn</span><span class="en">Education</span></h4>
-                            <div style="font-size: 0.9rem; color: var(--text-sub); margin-top: 8px;">
-                                <strong style="color: var(--secondary);">
-                                    <span class="vi">Trường Đại học Công nghiệp TP.HCM</span>
-                                    <span class="en">Industrial University of Ho Chi Minh City</span>
-                                </strong> (2021 - 2025)<br>
-                                <span class="vi">Cử nhân Thương mại Điện tử</span>
-                                <span class="en">Bachelor of E-commerce</span>
-                                <ul style="margin-top: 5px; padding-left: 15px; color: var(--text-sub);">
-                                    <li class="vi">Tốt nghiệp loại Giỏi (GPA: 3.52/4.0)</li>
-                                    <li class="en">Graduated with Honors (GPA: 3.52/4.0)</li>
-                                    <li class="vi">Nhận học bổng xuất sắc 4 học kỳ liên tiếp.</li>
-                                    <li class="en">Received Merit Scholarships for 4 consecutive semesters.</li>
-                                </ul>
+                <div class="about-edu-wrapper" data-aos="fade-left">
+                    <!-- CARD 1: HỌC VẤN (CÙNG HÀNG VỚI TEXT) -->
+                    <div class="cert-card" style="margin-bottom: 0;">
+                        <div class="cert-header">
+                            <div class="cert-icon"><i class="fas fa-graduation-cap"></i></div>
+                            <div class="cert-content">
+                                <h4><span class="vi">Học vấn</span><span class="en">Education</span></h4>
+                                <div style="font-size: 0.9rem; color: var(--text-sub); margin-top: 8px;">
+                                    <strong style="color: var(--secondary);">
+                                        <span class="vi">Trường Đại học Công nghiệp TP.HCM</span>
+                                        <span class="en">Industrial University of Ho Chi Minh City</span>
+                                    </strong> (2021 - 2025)<br>
+                                    <span class="vi">Cử nhân Thương mại Điện tử</span>
+                                    <span class="en">Bachelor of E-commerce</span>
+                                    <ul style="margin-top: 5px; padding-left: 15px; color: var(--text-sub);">
+                                        <li class="vi">Tốt nghiệp loại Giỏi (GPA: 3.52/4.0)</li>
+                                        <li class="en">Graduated with Honors (GPA: 3.52/4.0)</li>
+                                        <li class="vi">Nhận học bổng xuất sắc 4 học kỳ liên tiếp.</li>
+                                        <li class="en">Received Merit Scholarships for 4 consecutive semesters.</li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
                     </div>
+                </div>
+            </div>
 
-                    <div class="cert-card">
+            <!-- ROW 2: CHỨNG CHỈ & GIẢI THƯỞNG DÀN NGANG DƯỚI CÙNG -->
+            <div class="about-bottom-grid" data-aos="fade-up">
+                <!-- CARD 2: CHỨNG CHỈ (CÓ ẢNH PREVIEW) -->
+                <div class="cert-card" style="margin-bottom: 0; height: 100%;">
+                    <div class="cert-header">
                         <div class="cert-icon"><i class="fas fa-certificate"></i></div>
                         <div class="cert-content">
                             <h4><span class="vi">Chứng chỉ chuyên môn</span><span class="en">Certifications</span></h4>
@@ -670,7 +698,6 @@
                                 <ul style="margin: 0; padding-left: 15px; color: var(--text-sub);">
                                     <li style="margin-bottom: 8px;">
                                         <strong style="color: var(--text-main);">Fundamentals of Digital Marketing</strong> 
-                                        <a href="#" data-file="https://docs.google.com/viewer?url=https://raw.githubusercontent.com/nmthaovy/portfolio/main/digitalgarage_certificate.pdf&embedded=true" class="credential-link open-modal" role="button"><span class="vi">Xem</span><span class="en">View</span> <i class="fas fa-search-plus" style="font-size: 0.6rem;"></i></a>
                                         <br><span class="vi">Cấp bởi Google</span><span class="en">Issued by Google</span> (2021)
                                     </li>
                                     <li>
@@ -680,8 +707,23 @@
                             </div>
                         </div>
                     </div>
+                    <!-- Khối ảnh Thumbnail thay thế cho nút Xem -->
+                    <div class="cert-preview-wrapper">
+                        <div class="cert-thumbnail open-modal" data-file="https://docs.google.com/viewer?url=https://raw.githubusercontent.com/nmthaovy/portfolio/main/digitalgarage_certificate.pdf&embedded=true" role="button" title="Click để xem bản PDF">
+                            <!-- Đã trỏ thẳng về link .jpg trên Github của bạn (Nếu chưa có, sẽ hiện ảnh mẫu của Udemy) -->
+                            <img src="https://raw.githubusercontent.com/nmthaovy/portfolio/main/digitalgarage_certificate.jpg" onerror="this.onerror=null; this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/Certificate_of_completion.jpg/800px-Certificate_of_completion.jpg';" alt="Google Certificate Preview">
+                            <div class="thumb-overlay"><i class="fas fa-expand"></i></div>
+                        </div>
+                        <div class="cert-caption">
+                            <span class="vi">Chứng chỉ Fundamentals of Digital Marketing cấp bởi Google (2021).</span>
+                            <span class="en">Fundamentals of Digital Marketing Certificate issued by Google (2021).</span>
+                        </div>
+                    </div>
+                </div>
 
-                    <div class="cert-card">
+                <!-- CARD 3: GIẢI THƯỞNG (CÓ ẢNH PREVIEW) -->
+                <div class="cert-card" style="margin-bottom: 0; height: 100%;">
+                    <div class="cert-header">
                         <div class="cert-icon"><i class="fas fa-trophy"></i></div>
                         <div class="cert-content">
                             <h4><span class="vi">Giải thưởng thực chiến</span><span class="en">Awards & Recognition</span></h4>
@@ -689,15 +731,26 @@
                                 <strong style="color: var(--secondary);">
                                     <span class="vi">Nhân viên xuất sắc</span><span class="en">Employee of the Year</span>
                                 </strong>
-                                <a href="#" data-file="https://docs.google.com/viewer?url=https://raw.githubusercontent.com/nmthaovy/portfolio/main/GTV_CT2026_Gi%25E1%25BA%25A5y%2520khen%2520Vy%2520Nguyen.pdf&embedded=true" class="credential-link open-modal" role="button"><span class="vi">Xem</span><span class="en">View</span> <i class="fas fa-search-plus" style="font-size: 0.6rem;"></i></a>
                                 <br>
                                 <span class="vi">Được GTV SEO vinh danh vì sự cống hiến tận tâm, bền bỉ và những đóng góp xuất sắc.</span>
                                 <span class="en">Honored by GTV SEO for dedication, resilience, and outstanding contributions.</span>
                             </div>
                         </div>
                     </div>
+                    <!-- Khối ảnh Thumbnail thay thế cho nút Xem -->
+                    <div class="cert-preview-wrapper">
+                        <div class="cert-thumbnail open-modal" data-file="https://docs.google.com/viewer?url=https://raw.githubusercontent.com/nmthaovy/portfolio/main/GTV_CT2026_Gi%25E1%25BA%25A5y%2520khen%2520Vy%2520Nguyen.pdf&embedded=true" role="button" title="Click để xem bản PDF">
+                            <!-- Đã trỏ thẳng về link .jpg trên Github của bạn (Nếu chưa có, sẽ hiện ảnh mẫu) -->
+                            <img src="https://raw.githubusercontent.com/nmthaovy/portfolio/main/GTV_CT2026_Giay_khen_Vy_Nguyen.jpg" onerror="this.onerror=null; this.src='https://images.template.net/wp-content/uploads/2016/09/16111815/Award-Certificate-Template1.jpg';" alt="Award Preview">
+                            <div class="thumb-overlay"><i class="fas fa-expand"></i></div>
+                        </div>
+                        <div class="cert-caption">
+                            <span class="vi">Giấy khen Nhân viên Xuất sắc do GTV SEO trao tặng.</span>
+                            <span class="en">Best Employee Award presented by GTV SEO.</span>
+                        </div>
+                    </div>
                 </div>
-            </div>
+            </div> <!-- Đóng div.about-bottom-grid -->
         </div>
     </section>
 
