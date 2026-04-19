@@ -264,6 +264,9 @@
         
         .cert-caption { background: #F8F9FA; border: 1px solid rgba(0,0,0,0.08); border-radius: 6px; padding: 10px 15px; font-size: 0.85rem; color: var(--text-sub); text-align: center; font-style: italic; line-height: 1.5; }
 
+        .credential-link { display: inline-flex; align-items: center; gap: 5px; font-size: 0.7rem; font-weight: 700; color: var(--primary-dark); text-decoration: none; background: rgba(255, 178, 44, 0.15); padding: 3px 10px; border-radius: 100px; margin-left: 8px; transition: var(--transition); vertical-align: middle; text-transform: uppercase; letter-spacing: 0.5px;}
+        .credential-link:hover { background: var(--primary); color: #000000; transform: translateY(-1px);}
+
         /* --- DATA-DRIVEN CASE STUDIES --- */
         .project-stack { display: flex; flex-direction: column; gap: 50px; }
         .project-card-v2 { background: var(--card-bg); border: 1px solid rgba(0, 0, 0, 0.08); border-radius: 24px; padding: 40px; transition: var(--transition); position: relative; overflow: hidden; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.02); display: flex; flex-direction: column; gap: 30px; }
@@ -299,7 +302,16 @@
         .prev-btn { left: 25px; }
         .next-btn { right: 25px; }
 
-        /* --- NEW: AUTOMATION SECTION CSS --- */
+        /* --- AUTOMATION SECTION CSS --- */
+        .automation-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-bottom: 40px; }
+        .auto-card { background: var(--card-bg); border: 1px solid rgba(0,0,0,0.08); border-radius: 20px; padding: 35px; transition: var(--transition); box-shadow: 0 4px 10px rgba(0, 0, 0, 0.02); }
+        .auto-card:hover { transform: translateY(-5px); border-color: #8B5CF6; box-shadow: 0 15px 30px rgba(139, 92, 246, 0.1); }
+        .auto-icon { width: 56px; height: 56px; border-radius: 14px; background: rgba(139, 92, 246, 0.1); color: #8B5CF6; display: flex; align-items: center; justify-content: center; font-size: 1.6rem; margin-bottom: 25px; }
+        .auto-card h3 { font-family: var(--font-header); font-size: 1.3rem; margin-bottom: 15px; color: var(--secondary); line-height: 1.3; }
+        .auto-card p { font-size: 0.95rem; color: var(--text-sub); margin-bottom: 25px; line-height: 1.6; }
+        .tech-stack-mini { display: flex; gap: 8px; flex-wrap: wrap; }
+        .tech-stack-mini span { font-size: 0.75rem; font-weight: 700; padding: 6px 12px; border-radius: 100px; background: #F8F9FA; color: var(--text-main); border: 1px solid rgba(0,0,0,0.05); }
+
         .automation-grid-v2 { 
             display: grid; 
             grid-template-columns: 1.2fr 1fr; 
@@ -307,8 +319,6 @@
             align-items: center; 
             margin-top: 40px;
         }
-
-        /* Cột trái: Ảnh Workflow */
         .auto-preview-box {
             background: #fff;
             border: 1px solid rgba(0,0,0,0.1);
@@ -321,8 +331,6 @@
             border-radius: 12px;
             border: none;
         }
-
-        /* Cột phải: Grid Logo AI */
         .ai-stack-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr); 
@@ -348,7 +356,6 @@
             max-width: 80%;
             max-height: 80%;
             object-fit: contain;
-            filter: grayscale(20%);
         }
 
         /* --- Process Section --- */
@@ -683,7 +690,6 @@
                 </h2>
             </div>
 
-       
             <div class="about-grid">
                 <div class="about-text" data-aos="fade-right">
                     <p class="vi">
@@ -717,6 +723,7 @@
                     </div>
 
                 </div>
+
                 <div class="about-edu-wrapper" data-aos="fade-left">
                     <!-- CARD 1: HỌC VẤN (CÙNG HÀNG VỚI TEXT) -->
                     <div class="cert-card" style="margin-bottom: 0;">
@@ -1083,41 +1090,65 @@
     <!-- SECTION: AI & AUTOMATION WORKFLOWS -->
     <section id="automation" style="background: #FAFAFA; border-top: 1px solid rgba(0,0,0,0.05); border-bottom: 1px solid rgba(0,0,0,0.05);">
         <div class="container">
-            <div class="section-header" data-aos="fade-up" style="max-width: 800px;">
+            <div class="section-header" data-aos="fade-up" style="max-width: 850px;">
                 <span class="section-tag" style="color: #8B5CF6;"><span class="vi">Tối ưu nguồn lực</span><span class="en">Resource Optimization</span></span>
                 <h2 class="section-title">
                     <span class="vi">Hệ thống <i>AI & Automation.</i></span>
                     <span class="en"><i>AI & Automation</i> Systems.</span>
                 </h2>
                 <p style="color: var(--text-sub); margin-top: 15px; font-size: 1.1rem;">
-                    <span class="vi">Ứng dụng Automation và AI để tối ưu 80% tác vụ lặp đi lặp lại: từ Syndication Content, Research từ khóa đến hệ thống Audit dữ liệu hàng loạt.</span>
-                    <span class="en">Applying Automation and AI to optimize 80% of repetitive tasks: from Content Syndication and Keyword Research to bulk data auditing systems.</span>
+                    <span class="vi">Tôi không lạm dụng AI để sản xuất nội dung hàng loạt. Trong quy trình của tôi, <strong>AI là trợ lý phân tích, con người là người ra quyết định.</strong> Automation chỉ được thiết lập ở các khâu phân phối (Distribution) để tối ưu hóa nguồn lực kỹ thuật.</span>
+                    <span class="en">I don't abuse AI for mass content generation. In my workflow, <strong>AI acts as an analytical assistant, humans make the decisions.</strong> Automation is strictly applied to distribution phases to optimize technical resources.</span>
                 </p>
             </div>
 
+            <!-- Dòng 1: Hai phương pháp ứng dụng AI/Automation cốt lõi -->
+            <div class="automation-grid">
+                <div class="auto-card" data-aos="fade-up">
+                    <div class="auto-icon"><i class="fas fa-brain"></i></div>
+                    <h3><span class="vi">AI-Assisted Analysis</span><span class="en">AI-Assisted Analysis</span></h3>
+                    <p class="vi">Sử dụng các mô hình LLM (ChatGPT, Gemini, Claude) như một trợ lý đắc lực để hỗ trợ xử lý dữ liệu lớn: bóc tách Search Intent, nhóm cụm từ khóa (Clustering) và phân tích Content Gap từ đối thủ. <strong style="color: var(--text-main);">Mọi đầu ra đều được tôi kiểm duyệt và tinh chỉnh thủ công</strong> trước khi đưa vào ứng dụng để đảm bảo tuyệt đối tiêu chuẩn E-E-A-T.</p>
+                    <p class="en">Using LLM models (ChatGPT, Gemini, Claude) as powerful assistants to process large data: extracting Search Intent, Keyword Clustering, and analyzing competitor Content Gaps. <strong style="color: var(--text-main);">All outputs are manually reviewed and refined by me</strong> before application to ensure absolute E-E-A-T compliance.</p>
+                    <div class="tech-stack-mini">
+                        <span>Data Analysis</span><span>Prompt Engineering</span><span>Human-in-the-loop</span>
+                    </div>
+                </div>
+
+                <div class="auto-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="auto-icon"><i class="fas fa-share-nodes"></i></div>
+                    <h3><span class="vi">Automated Syndication</span><span class="en">Automated Syndication</span></h3>
+                    <p class="vi">Tự động hóa hoàn toàn quy trình phân phối nội dung (Syndication). Ngay khi một bài viết được Publish trên website, hệ thống Automation (n8n/Make) sẽ tự động trigger và phát tán tín hiệu lên hàng loạt mạng xã hội Web 2.0, Blog vệ tinh. Giúp tiết kiệm 80% thời gian xây dựng Entity và Social Signals.</p>
+                    <p class="en">Fully automating the content distribution (Syndication) process. As soon as an article is published on the site, the Automation system (n8n/Make) automatically triggers and broadcasts signals across various Web 2.0 social networks and satellite blogs. Saves 80% of time building Entities and Social Signals.</p>
+                    <div class="tech-stack-mini">
+                        <span>n8n</span><span>Make (Integromat)</span><span>RSS</span><span>Web 2.0 API</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Dòng 2: Minh họa Workflow thực tế (Cột trái Ảnh, Cột phải Logos) -->
             <div class="automation-grid-v2">
                 <!-- Cột Trái: Ảnh Workflow N8N -->
                 <div class="auto-preview-box" data-aos="fade-right">
                     <div class="cert-preview-wrapper" style="margin-top: 0; box-shadow: none;">
                         <div class="cert-thumbnail open-modal" data-file="https://raw.githubusercontent.com/nmthaovy/portfolio/main/AI-automation-syndication.jpg" role="button" title="Click để phóng to sơ đồ">
-                            <img src="https://raw.githubusercontent.com/nmthaovy/portfolio/main/AI-automation-syndication.jpg" alt="n8n Workflow Preview">
+                            <img src="https://raw.githubusercontent.com/nmthaovy/portfolio/main/AI-automation-syndication.jpg" alt="n8n Workflow Preview" style="object-position: left center;">
                             <div class="thumb-overlay"><i class="fas fa-search-plus"></i></div>
                         </div>
-                        <div class="cert-caption" style="margin-top: 10px;">
+                        <div class="cert-caption" style="margin-top: 10px; background: transparent; border: none; padding: 5px 0;">
                             <span class="vi">Hệ thống Automated Content Syndication build trên n8n.</span>
                             <span class="en">Automated Content Syndication system built on n8n.</span>
                         </div>
                     </div>
                 </div>
 
-                <!-- Cột Phải: Stack Logo AI -->
+                <!-- Cột Phải: Stack Logo AI (2 hàng x 3 cột) -->
                 <div class="ai-stack-grid" data-aos="fade-left">
                     <div class="ai-logo-item" title="ChatGPT"><img src="https://upload.wikimedia.org/wikipedia/commons/0/04/ChatGPT_logo.svg" alt="ChatGPT"></div>
                     <div class="ai-logo-item" title="Google Gemini"><img src="https://upload.wikimedia.org/wikipedia/commons/8/8a/Google_Gemini_logo.svg" alt="Gemini"></div>
                     <div class="ai-logo-item" title="Claude AI"><img src="https://www.memoryplugin.com/_next/image?url=%2Fimages%2FClaude-ai-logo%20(1).png&w=3840&q=75" alt="Claude"></div>
                     <div class="ai-logo-item" title="Perplexity"><img src="https://ekeyms.net/wp-content/uploads/2025/03/solution_logo_08142024_37287581.png" alt="Perplexity"></div>
                     <div class="ai-logo-item" title="n8n.io"><img src="https://raw.githubusercontent.com/n8n-io/n8n/master/assets/n8n-logo.png" alt="n8n" style="max-width: 60%;"></div>
-                    <div class="ai-logo-item" title="Make.com"><img src="https://cdn.prod.website-files.com/644d2f3aa527d53cc6072c67/68e3e900628ec4c3aaba451b_make-logo-freelogovectors.net_.png" alt="Make" style="max-width: 70%;"></div>
+                    <div class="ai-logo-item" title="Make.com"><img src="https://cdn-1.webcatalog.io/catalog/make/make-icon-filled-256.png" alt="Make" style="max-width: 70%; border-radius: 8px;"></div>
                 </div>
             </div>
         </div>
